@@ -1,0 +1,1 @@
+This folder is here to host images to be used on the easyflow wiki page on github. You can safely delete this folder and it's contents.
