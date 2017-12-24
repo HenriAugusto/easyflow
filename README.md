@@ -149,14 +149,14 @@ This innocent-seeming question is not so simple. It was not an easy choice but i
 
 See those links about that:
 
-https://stackoverflow.com/questions/7320686/why-does-the-indexing-start-with-zero-in-c
+[Stack Overflow: Why does the indexing start with zero in 'C'?](https://stackoverflow.com/questions/7320686/why-does-the-indexing-start-with-zero-in-c)
 
-http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html
+[Edsger W. Dijkstra - Why numbering should start at zero](http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html)
 
 There is no right or wrong. Each context has it's needs.
 Some languages like Lua, Mathematica and R use 1-based indexes.
 
-https://en.wikipedia.org/wiki/Comparison_of_programming_languages_%28array%29#Array_system_cross-reference_list
+[Wiki - Array system cross-reference list - default base indexes](https://en.wikipedia.org/wiki/Comparison_of_programming_languages_%28array%29#Array_system_cross-reference_list)
 
 Nevertheless its useful to a program to be able to "convert" between those ranges. You can always do arithmetic in the range that is easier for you and then simply convert it back with a [+ 1] or [- 1].
 
