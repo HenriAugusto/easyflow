@@ -1,0 +1,43 @@
+#N canvas 822 90 632 706 10;
+#X obj 499 672 easyflow-info;
+#X text 71 150 [labelCnvF 1];
+#X text 72 175 [labelCnvF 2 64 200 200];
+#X obj 50 150 labelCnvF 1;
+#X obj 49 295 labelCnvF 1234 154 255 128;
+#X obj 49 176 labelCnvF 2 64 200 200;
+#X text 172 150 use only a label text for a black bkg and white label
+;
+#X text 45 109 Usage: [labelCnvF labelText bkgColor -L labelColor]
+;
+#X text 98 296 [labelCnvF 1234 154 255 128];
+#X text 43 263 [labelCnvF] resizes the canvas as needed;
+#X obj 49 203 labelCnvF Y hotPink;
+#X text 73 203 [labelCnvF Y hotPink];
+#X obj 48 230 labelCnvF RGB 0 0 128 RGB;
+#X text 86 230 [labelCnvF RGB 0 0 128 RGB];
+#X obj 49 326 labelCnvF someBigLabelText 200 240 60;
+#X text 189 325 [labelCnvF someBigLabelText 200 240 60];
+#X text 55 368 You can use any valid syntax \, as definied by;
+#X text 53 401 1) from 2nd argument up to -L to define the background
+color;
+#X text 54 422 2) after -L to define the label color;
+#X text 47 468 it allows you to mix syntaxes when defining colors.
+You can \, for example \, use a color name for the bkg and three floats
+for the label color. You can also specify the mode when using three
+floats.;
+#X obj 49 539 labelCnvF name_value black -L 20 240 160;
+#X text 183 539 [labelCnvF name_value black -L 20 240 160];
+#X obj 48 602 labelCnvF value+mode_name 0 0 64 rgb -L peach;
+#X text 183 601 [labelCnvF value+mode_name 0 0 64 rgb -L peach];
+#X obj 47 570 labelCnvF name_value+mode black -L 0 255 0 rgb;
+#X text 182 569 [labelCnvF name_value+mode black -L 0 255 0 rgb];
+#X obj 48 631 labelCnvF name_name hotPink -L black;
+#X text 184 633 [labelCnvF name_name hotPink -L black];
+#X obj 44 673 colorHighlighting-info;
+#X obj 376 368 colorSyntax;
+#X text 45 25 [labelCnvF] is a factory method that creates a colored
+rectangle of variable size and with a label. After creation you can
+copy-paste the [cnv] into yoru code. Just remember to delete it's receive
+symbol. It is a multi purpose tool to help you organizing your code.
+;
+#X coords 0 706 1 705 10 17 0;

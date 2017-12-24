@@ -1,0 +1,24 @@
+#N canvas 0 50 465 252 10;
+#X obj 369 71 loadbang;
+#X msg 369 93 dsp 1;
+#X obj 369 115 s pd;
+#X obj 31 82 osc~ 0.1;
+#X obj 31 124 metrosnap~ 20;
+#X obj 34 176 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 11269 1;
+#X text 29 29 [metrosnap~] convenietly bundle [snapshot~] with an [metro]
+;
+#X obj 322 207 easyflow-info;
+#X floatatom 119 82 5 20 2000 0 - - -, f 5;
+#X text 135 122 arg: 1) metro timing (ms);
+#X text 164 79 set timing (ms);
+#X floatatom 31 196 5 0 0 0 - - -, f 5;
+#X obj 75 103 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 11 0;
+#X connect 8 0 4 2;
+#X connect 12 0 4 1;

@@ -1,0 +1,25 @@
+#N canvas 517 361 439 299 10;
+#X obj 69 79 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X floatatom 66 99 5 0 0 0 - - -, f 5;
+#X floatatom 66 174 5 0 0 0 - - -, f 5;
+#X obj 291 242 easyflow-info;
+#X obj 69 199 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 66 219 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 140 125 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 56 261 see also:;
+#X obj 133 262 keepMin;
+#X text 167 122 <- reset to argument 1;
+#X text 157 151 arg = initial value (default = 0);
+#X obj 66 152 keepMax 0.2;
+#X text 38 16 Outputs the biggest number received since initialization
+or last bang on cold inlet., f 43;
+#X connect 0 0 1 0;
+#X connect 1 0 11 0;
+#X connect 2 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 11 1;
+#X connect 11 0 2 0;

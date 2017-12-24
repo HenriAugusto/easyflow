@@ -1,0 +1,38 @@
+#N canvas 491 114 632 458 10;
+#X obj 274 141 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 274 194 color \$1;
+#X obj 274 216 tgl 30 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 34 305 15 0 0 0 - - -, f 15;
+#X msg 34 324 color \$1;
+#X obj 34 346 tgl 30 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 377 405 easyflow/easyflow-info;
+#X text 403 163 argument: initial color;
+#X obj 34 193 hexColor;
+#X msg 34 85 #FF0000;
+#X msg 50 110 #00ff00;
+#X msg 60 134 #0000ff;
+#X text 34 19 Accepts a hexcode and outputs the decimal representation
+of the color through the leftmost outlet. The rightmost outputs the
+RGB values.;
+#X obj 87 222 unpack f f f;
+#X floatatom 87 245 5 0 0 0 - - -, f 5;
+#X floatatom 127 245 5 0 0 0 - - -, f 5;
+#X floatatom 168 245 5 0 0 0 - - -, f 5;
+#X text 25 404 (you can use upper an lower case codes);
+#X obj 274 163 hexColor #FFC125;
+#X connect 0 0 18 0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 8 0 3 0;
+#X connect 8 1 13 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 11 0 8 0;
+#X connect 13 0 14 0;
+#X connect 13 1 15 0;
+#X connect 13 2 16 0;
+#X connect 18 0 1 0;

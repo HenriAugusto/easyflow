@@ -1,0 +1,135 @@
+#N canvas 571 151 795 510 10;
+#X obj 83 26 inlet;
+#X obj 83 154 list length;
+#X obj 507 93 list;
+#X obj 83 283 easyflow/for;
+#X floatatom 164 308 5 0 0 0 - - -, f 5;
+#X obj 164 327 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 507 225 list split 2;
+#X obj 507 267 t b l;
+#X msg 539 295 set \$1\$2;
+#X obj 507 372 list append;
+#X obj 616 131 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 581 51 r \$0-updateList;
+#X obj 570 51 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 496 410 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 507 410 s \$0-updateList;
+#X obj 83 118 trigger list list bang;
+#X msg 234 143 0;
+#X obj 83 305 t b b;
+#X msg 115 398 1;
+#X obj 616 193 outlet;
+#X obj 605 105 cnv 10 10 17 empty empty empty 20 12 0 14 -49039 -66577
+0;
+#X obj 616 105 r \$0-whereToSendList;
+#X obj 223 170 cnv 10 10 17 empty empty empty 20 12 0 14 -49039 -66577
+0;
+#X obj 234 170 s \$0-whereToSendList;
+#X obj 104 425 cnv 10 10 17 empty empty empty 20 12 0 14 -49039 -66577
+0;
+#X obj 115 425 s \$0-whereToSendList;
+#X obj 147 199 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 158 199 s \$0-updateList;
+#X obj 496 19 cnv 10 10 17 empty empty empty 20 12 0 14 -250021 -66577
+0;
+#X obj 507 19 r \$0-bangList;
+#X obj 153 352 cnv 10 10 17 empty empty empty 20 12 0 14 -250021 -66577
+0;
+#X obj 164 352 s \$0-bangList;
+#X obj 72 460 cnv 10 10 17 empty empty empty 20 12 0 14 -250021 -66577
+0;
+#X obj 83 460 s \$0-bangList;
+#X text 267 123 list should go to;
+#X text 268 140 concatenation;
+#X text 269 419 list should go to;
+#X text 270 436 outlet;
+#X text 266 358 elements 1 and 2;
+#X text 266 344 concatenate list;
+#X text 191 459 output list to outlet;
+#X obj 548 463 easyflow/easyflow-info;
+#X obj 643 157 cnv 10 10 17 empty empty empty 20 12 0 14 -1 -66577
+0;
+#X obj 654 157 r \$0-outlet;
+#N canvas 1139 152 385 490 testForOneElementLists 1;
+#X obj 21 20 inlet;
+#X obj 21 392 outlet;
+#X obj 21 65 route list;
+#X obj 21 112 list;
+#X obj 186 335 cnv 10 10 17 empty empty empty 20 12 0 14 -1 -66577
+0;
+#X obj 197 335 s \$0-outlet;
+#X obj 30 90 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 260 178 list length;
+#X floatatom 260 200 5 0 0 0 - - -, f 5;
+#X obj 260 241 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 88 294 list;
+#X obj 98 88 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 260 219 == 1;
+#X obj 88 132 trigger anything anything;
+#X obj 88 272 easyflow/switch2;
+#X obj 197 300 list append;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 6 0;
+#X connect 2 1 11 0;
+#X connect 2 1 13 0;
+#X connect 3 0 1 0;
+#X connect 7 0 8 0;
+#X connect 8 0 12 0;
+#X connect 9 0 14 1;
+#X connect 10 0 1 0;
+#X connect 12 0 9 0;
+#X connect 13 0 14 0;
+#X connect 13 1 7 0;
+#X connect 14 0 10 0;
+#X connect 14 1 15 0;
+#X connect 15 0 5 0;
+#X restore 83 56 pd testForOneElementLists;
+#X obj 67 343 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 470 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 83 200 5 0 0 0 - - -, f 5;
+#X obj 68 59 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -1 0;
+#X msg 507 329 a1b2c3a4;
+#X obj 507 162 easyflow/Switch2;
+#X connect 0 0 44 0;
+#X connect 1 0 47 0;
+#X connect 2 0 46 0;
+#X connect 2 0 50 0;
+#X connect 3 0 17 0;
+#X connect 3 1 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 31 0;
+#X connect 6 0 7 0;
+#X connect 6 1 9 1;
+#X connect 7 0 49 0;
+#X connect 7 1 8 0;
+#X connect 8 0 49 0;
+#X connect 9 0 14 0;
+#X connect 10 0 50 1;
+#X connect 11 0 2 1;
+#X connect 15 0 1 0;
+#X connect 15 1 27 0;
+#X connect 15 2 16 0;
+#X connect 16 0 23 0;
+#X connect 17 0 33 0;
+#X connect 17 0 45 0;
+#X connect 17 1 18 0;
+#X connect 18 0 25 0;
+#X connect 21 0 10 0;
+#X connect 29 0 2 0;
+#X connect 43 0 19 0;
+#X connect 44 0 15 0;
+#X connect 47 0 3 0;
+#X connect 49 0 9 0;
+#X connect 50 0 6 0;
+#X connect 50 1 19 0;

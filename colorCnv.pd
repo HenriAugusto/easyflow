@@ -1,0 +1,24 @@
+#N canvas 192 294 845 275 10;
+#X obj 100 100 cnv 10 10 17 empty \$0-cnv empty 20 12 0 14 -262144
+-1 0;
+#X obj 206 25 loadbang;
+#X obj 573 30 r \$0-tellMeMyColor;
+#X obj 206 129 list trim;
+#X obj 206 181 send globalColorHighlighting;
+#X obj 206 107 list append getColor \$1 \$0-tellMeMyColor;
+#X obj 573 127 s \$0-cnv;
+#X obj 622 82 loadbang;
+#X msg 622 104 color -1;
+#X obj 206 77 del 100;
+#X msg 573 52 color \$1;
+#X obj 283 35 r globalColorHighlightingUpdateAll;
+#X connect 1 0 9 0;
+#X connect 2 0 10 0;
+#X connect 3 0 4 0;
+#X connect 5 0 3 0;
+#X connect 7 0 8 0;
+#X connect 8 0 6 0;
+#X connect 9 0 5 0;
+#X connect 10 0 6 0;
+#X connect 11 0 9 0;
+#X coords 0 1 1 10 10 17 2 100 100;

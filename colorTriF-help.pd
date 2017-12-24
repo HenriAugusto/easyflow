@@ -1,0 +1,76 @@
+#N canvas 485 90 649 624 10;
+#X obj 166 131 colorTriF 0 0 0;
+#X obj 29 131 colorTriF 0 255 128;
+#X obj 77 131 colorTriF 64 255 128;
+#X obj 100 131 colorTriF 18 255 128;
+#X obj 143 131 colorTriF 192 255 128;
+#X obj 53 131 colorTriF 32 255 128;
+#X obj 121 131 colorTriF 154 255 128;
+#X obj 305 168 colorSyntax;
+#X text 279 123 The arguments parsing is powered by:, f 21;
+#X text 279 198 see it's help file for more information., f 21;
+#N canvas 0 50 330 174 more examples 0;
+#X obj 36 40 colorTriF 0 255 128;
+#X text 54 37 [colorTriF 0 255 128];
+#X obj 36 60 colorTriF 64 64 255 rgb;
+#X text 54 57 [colorTriF 64 64 255 rgb];
+#X obj 36 101 colorTriF 30 128 200 hsb;
+#X text 52 97 [colorTriF 30 128 200 hsb];
+#X obj 36 80 colorTriF 195 128 132 hsl;
+#X text 53 79 [colorTriF 195 128 132 hsl];
+#X obj 36 123 colorTriF 55 128 90 hsl;
+#X text 52 121 [colorTriF 55 128 90 hsl];
+#X restore 290 242 pd more examples;
+#X obj 30 167 colorTriF black;
+#X text 48 164 [colorTriF black];
+#X obj 30 185 colorTriF hotPink;
+#X text 48 182 [colorTriF hotPink];
+#X obj 30 204 colorTriF sky;
+#X text 48 201 [colorTriF sky];
+#X obj 30 221 colorTriF orange;
+#X text 48 219 [colorTriF orange];
+#X obj 298 381 r \$0-left;
+#X obj 396 381 r \$0-right;
+#X floatatom 298 403 5 0 0 0 - - -, f 5;
+#X floatatom 396 403 5 0 0 0 - - -, f 5;
+#X obj 162 395 send;
+#X obj 162 363 unpack f s;
+#X obj 42 312 list append \$0-left;
+#X obj 242 311 list append \$0-right;
+#X floatatom 42 287 5 0 0 0 - - -, f 5;
+#X floatatom 242 288 5 0 0 0 - - -, f 5;
+#X text 38 459 Example of usage: see [guilla/colorPicker] or see the
+tutorial on https://github.com/HenriAugusto/wiki if you do not have
+guilla., f 62;
+#X obj 288 381 cnv 10 10 17 empty empty empty 20 12 0 14 -1600 -1 0
+;
+#X obj 385 381 cnv 10 10 17 empty empty empty 20 12 0 14 -135232 -1
+0;
+#X obj 25 314 cnv 10 10 17 empty empty ▲ 1 5 0 18 -262144 -1600 0
+;
+#X obj 128 396 cnv 10 10 17 empty empty ▲ 1 5 0 18 -262144 -1600
+0;
+#X obj 225 314 cnv 10 10 17 empty empty ▲ 1 5 0 18 -262144 -135232
+0;
+#X obj 143 396 cnv 10 10 17 empty empty ▲ 1 5 0 18 -262144 -135232
+0;
+#X text 19 33 [colorTriF] is a factory abstraction that creates a colored
+triangle of fixed size. Then you can copy-paste the [cnv] into your
+patch. (don't forget to delete the receive name);
+#X text 20 97 It is used to mark variable send/receive names;
+#X obj 483 574 easyflow-info;
+#X obj 307 572 colorHighlighting-info;
+#X obj 307 544 cnv 11 164 17 empty empty complete information 2 9
+0 14 -1 -262144 0;
+#X text 37 562 see also:;
+#X text 131 562 [colorTri];
+#X obj 114 564 colorTri;
+#X connect 19 0 21 0;
+#X connect 20 0 22 0;
+#X connect 24 0 23 0;
+#X connect 24 1 23 1;
+#X connect 25 0 24 0;
+#X connect 26 0 24 0;
+#X connect 27 0 25 0;
+#X connect 28 0 26 0;
+#X coords 0 624 1 623 10 17 0;

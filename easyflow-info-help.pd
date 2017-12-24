@@ -1,0 +1,179 @@
+#N canvas 594 97 550 344 10;
+#X obj 39 21 cnv 15 250 25 empty empty easyflow abstractions 5 12
+0 14 -131089 -262144 0;
+#X obj 191 65 cnv 15 150 20 empty empty Symbols 5 9 0 14 -105674 -262144
+0;
+#X obj 342 65 cnv 15 150 20 empty empty Signals 5 9 0 14 -33289 -262144
+0;
+#X obj 40 144 cnv 15 150 20 empty empty Utilities 5 9 0 14 -165038
+-262144 0;
+#X obj 340 144 cnv 15 150 20 empty empty Math 5 9 0 14 -258065 -262144
+0;
+#X obj 342 221 cnv 15 150 20 empty empty Coding 5 9 0 14 -221436 -262144
+0;
+#X obj 41 221 cnv 15 150 20 empty empty Color 5 9 0 14 -22713 -262144
+0;
+#N canvas 88 348 356 207 math 0;
+#X obj 43 90 map 0 1 0 255;
+#X obj 43 43 nearest;
+#X obj 43 66 numbersBetween 5 10;
+#X obj 43 11 cnv 15 150 20 empty empty Math 5 9 0 14 -258065 -262144
+0;
+#X obj 43 138 hexCharToDec;
+#X obj 109 114 keepMin;
+#X obj 42 114 keepMax;
+#X restore 342 178 pd math;
+#X obj 40 65 cnv 15 150 20 empty empty Lists 5 9 0 14 -226404 -262144
+0;
+#X obj 191 144 cnv 15 150 20 empty empty Flow control 5 9 0 14 -2097
+-262144 0;
+#N canvas 115 84 310 207 flow 0;
+#X obj 34 51 Alternate;
+#X obj 34 19 cnv 15 150 20 empty empty Flow control 5 9 0 14 -2097
+-262144 0;
+#X obj 124 144 Switch7, f 11;
+#X obj 149 114 switch4;
+#X obj 206 114 switch5;
+#X obj 33 144 Switch6, f 11;
+#X obj 92 114 switch3;
+#X obj 33 79 compare;
+#X obj 33 114 switch2;
+#X restore 195 177 pd flow control;
+#N canvas 153 285 288 244 utilities 0;
+#X obj 26 102 keyChange;
+#X obj 26 129 hold;
+#X obj 26 56 easyflow/counter;
+#X obj 28 17 cnv 15 150 20 empty empty Utils 5 9 0 14 -165038 -262144
+0;
+#X obj 25 79 for;
+#X obj 26 157 metrosnap~;
+#X obj 26 181 mixAB;
+#X restore 41 176 pd utilities;
+#N canvas 510 119 751 634 coding 0;
+#X text 166 203 [colorCnvF];
+#N canvas 0 50 450 300 GOPTool 0;
+#X obj 32 34 GOPTool;
+#X restore 472 113 pd GOPTool;
+#X text 167 232 [colorCircF];
+#X obj 56 258 easyflow/colorTriF;
+#X text 168 257 [colorTriF];
+#X text 534 144 [printHere];
+#X obj 52 23 cnv 15 150 20 empty empty Coding 5 9 0 14 -221436 -262144
+0;
+#X obj 142 201 colorCnvF 0 0 0;
+#X obj 58 201 colorCnvF 0 255 128;
+#X obj 86 201 colorCnvF 64 255 128;
+#X obj 100 201 colorCnvF 18 255 128;
+#X obj 128 201 colorCnvF 192 255 128;
+#X obj 72 201 colorCnvF 32 255 128;
+#X obj 114 201 colorCnvF 154 255 128;
+#X obj 76 258 colorTriF gold;
+#X obj 95 258 colorTriF hotPink;
+#X obj 57 235 easyflow/colorCircF 156 200 128;
+#X obj 95 235 colorCircF purple;
+#X obj 77 235 easyflow/colorCircF 64 200 200;
+#X obj 53 100 colorHighlighting-info;
+#X obj 473 138 printHere;
+#X obj 52 379 colorHighlighting;
+#X obj 53 415 colorDef \$0-listOfObjects deepPink;
+#X obj 54 461 colorCnv \$0-listOfObjects;
+#X obj 54 487 colorCirc \$0-listOfObjects;
+#X text 78 459 [colorCnv \$0-listOfObjects];
+#X text 78 484 [colorCirc \$0-listOfObjects];
+#X text 78 508 [colorTri \$0-listOfObjects];
+#X obj 50 542 labelCnv \$0-listOfObjects labelCnv;
+#X obj 58 284 labelCnvF labelCnvF navyBlue;
+#X text 168 285 [labelCnvF labelCnvF navyBlue];
+#X obj 52 65 cnv 15 160 20 empty empty Color highlighting 5 9 0 14
+-1 -262144 0;
+#X obj 51 165 cnv 15 160 17 empty empty →factory abstractions←
+5 9 0 13 -262144 -1 0;
+#X obj 52 335 cnv 15 165 17 empty empty →automatic abstractions←
+5 9 0 13 -262144 -33289 0;
+#X obj 472 75 cnv 15 160 20 empty empty Other 5 9 0 14 -1 -262144 0
+;
+#X obj 52 126 cnv 1 160 1 empty empty empty 5 9 0 14 -1 -262144 0;
+#X obj 53 511 colorTri \$0-listOfObjects;
+#X text 131 541 [labelCnv \$0-listOfObjects labelCnv];
+#X restore 342 255 pd coding;
+#N canvas 219 126 296 288 color 0;
+#X obj 24 24 cnv 15 150 20 empty empty Color 5 9 0 14 -22713 -262144
+0;
+#X obj 26 60 RedGreenBlue;
+#X obj 26 84 HueSaturationBrightness;
+#X obj 26 110 HueSaturationLuminosity;
+#N canvas 0 50 502 265 LINKS 0;
+#X text 24 36 https://www.w3schools.com/colors/colors_names.asp;
+#X text 24 59 http://www.color-hex.com/color-names.html;
+#X text 23 79 https://en.wikipedia.org/wiki/List_of_color_spaces_and_their_uses
+;
+#X text 22 117 https://photo.stackexchange.com/questions/48984/what-is-the-difference-or-relation-between-a-color-model-and-a-color-space
+;
+#X text 23 165 http://colorizer.org/;
+#X restore 172 249 pd LINKS;
+#X obj 24 180 hexColor #FF00FF;
+#X obj 24 207 colorSyntax;
+#X obj 24 145 colorNames purple;
+#X restore 41 252 pd color;
+#X obj 191 221 cnv 15 150 20 empty empty Tables 5 9 0 14 -203406 -262144
+0;
+#N canvas 17 50 343 535 Lists 0;
+#X obj 28 30 cnv 15 150 20 empty empty Lists 5 9 0 14 -2065 -262144
+0;
+#X obj 27 212 passNthElement;
+#X obj 28 125 left2Right;
+#X obj 28 147 right2Left;
+#X obj 114 125 l2r;
+#X obj 114 146 r2l;
+#X obj 27 376 listReplaceAtIndex;
+#X obj 75 240 passPair;
+#X obj 229 240 listPickPair;
+#X text 27 233 |__;
+#X text 52 239 >;
+#X text 180 233 |__;
+#X text 212 239 >;
+#X obj 27 352 searchElem;
+#X obj 27 400 listReplace;
+#X obj 180 212 listPick;
+#X obj 28 169 funnel;
+#X obj 90 169 labelcnv =;
+#X obj 153 171 labelcnv +;
+#X obj 144 212 labelcnv !=;
+#X obj 28 61 addList;
+#X obj 28 83 copyList;
+#X obj 27 305 listCompare;
+#X obj 27 327 listConcatenate;
+#X obj 114 171 l2r;
+#X obj 177 171 r2l;
+#X obj 27 447 listToSymbol;
+#X obj 27 283 listPlus;
+#X obj 27 423 listSplit;
+#X obj 26 477 popLastN;
+#X restore 40 97 pd Lists;
+#N canvas 254 69 394 445 audio 0;
+#X obj 22 24 cnv 15 150 20 empty empty Signals 5 9 0 14 -33289 -262144
+0;
+#X text 187 127 equal-power panning;
+#X obj 21 171 sample~;
+#X obj 22 57 AudioSpigot~;
+#X obj 22 87 Switch2~;
+#X obj 21 117 mixAB~;
+#X restore 342 97 pd audio;
+#N canvas 380 50 292 238 symbols 0;
+#X obj 36 16 cnv 15 150 20 empty empty Symbols 5 9 0 14 -41 -262144
+0;
+#X obj 35 168 symbolSplit;
+#X obj 36 69 symbolize;
+#X obj 36 92 numberSymbol;
+#X obj 36 143 getFolder;
+#X obj 113 116 upperCase;
+#X obj 36 116 lowerCase;
+#X restore 191 97 pd symbols;
+#X obj 398 298 easyflow-info;
+#N canvas 165 50 316 200 tables 0;
+#X obj 40 29 cnv 15 150 20 empty empty Tables 5 9 0 14 -203406 -262144
+0;
+#X obj 43 59 tabReverse;
+#X obj 43 89 tabReverseCopy;
+#X obj 43 117 tabCopy;
+#X restore 195 254 pd tables;

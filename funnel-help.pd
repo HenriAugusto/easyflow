@@ -1,0 +1,37 @@
+#N canvas 962 118 792 434 10;
+#X text 55 23 This abstraction outputs elements of a list \, one at
+a time.;
+#X msg 60 162 1 2 3 4 5 6 7;
+#X obj 601 366 easyflow-info;
+#X obj 60 207 print Funnel-Help;
+#X msg 60 270 1 2 3 a b c;
+#X obj 60 350 print Funnel-Help;
+#X obj 99 297 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 371 304 print Funnel-Help;
+#X msg 479 246 l2r;
+#X msg 371 220 q w e r t y;
+#X msg 438 246 r2l;
+#X text 279 158 -> r2l or 1: elements are output from right to left
+;
+#X obj 60 185 funnel;
+#X text 279 178 -> l2r \, 0 (or anything else) : output from left to
+right;
+#X obj 60 322 funnel;
+#X obj 371 276 funnel r2l;
+#X text 54 59 It can output either with left-2-right order or right-2-left
+order. Thus it makes it easier to switch between reading a list forward/backwards.
+, f 83;
+#X text 280 117 Use the argument and the right inlet to control how
+the elements will be output.;
+#X text 37 138 default = left-2-right;
+#X text 120 295 switch!;
+#X connect 1 0 12 0;
+#X connect 4 0 14 0;
+#X connect 6 0 14 1;
+#X connect 8 0 15 1;
+#X connect 9 0 15 0;
+#X connect 10 0 15 1;
+#X connect 12 0 3 0;
+#X connect 14 0 5 0;
+#X connect 15 0 7 0;

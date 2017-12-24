@@ -1,0 +1,186 @@
+#N canvas 472 102 590 705 10;
+#N canvas 0 50 791 566 listConcatenate 0;
+#X obj 83 26 inlet;
+#X obj 83 154 list length;
+#X obj 83 178 - 1;
+#X obj 507 93 list;
+#X obj 83 283 easyflow/for;
+#X floatatom 164 308 5 0 0 0 - - -, f 5;
+#X obj 164 327 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 507 225 list split 2;
+#X obj 507 267 t b l;
+#X msg 539 295 set \$1\$2;
+#X msg 507 329 iiissii;
+#X obj 507 372 list append;
+#X obj 616 131 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 581 51 r \$0-updateList;
+#X obj 507 410 s \$0-updateList;
+#X obj 83 118 trigger list list bang;
+#X msg 234 143 0;
+#X obj 83 305 t b b;
+#X msg 115 398 1;
+#X obj 616 193 outlet;
+#X obj 616 105 r \$0-whereToSendList;
+#X obj 234 170 s \$0-whereToSendList;
+#X obj 115 425 s \$0-whereToSendList;
+#X obj 158 199 s \$0-updateList;
+#X obj 507 19 r \$0-bangList;
+#X obj 164 352 s \$0-bangList;
+#X obj 83 460 s \$0-bangList;
+#X text 267 123 list should go to;
+#X text 268 140 concatenation;
+#X text 269 419 list should go to;
+#X text 270 436 outlet;
+#X text 266 358 elements 1 and 2;
+#X text 266 344 concatenate list;
+#X text 191 459 output list to outlet;
+#X obj 548 463 easyflow/easyflow-info;
+#X obj 647 157 r \$0-outlet;
+#N canvas 1139 152 385 490 testForOneElementLists 0;
+#X obj 21 20 inlet;
+#X obj 21 392 outlet;
+#X obj 21 65 route list;
+#X obj 21 112 list;
+#X obj 134 335 s \$0-outlet;
+#X obj 30 90 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 260 178 list length;
+#X floatatom 260 200 5 0 0 0 - - -, f 5;
+#X obj 260 241 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 88 294 list;
+#X obj 98 88 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 260 219 == 1;
+#X obj 141 301 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 88 132 trigger anything anything;
+#X obj 88 272 switch2;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 5 0;
+#X connect 2 1 10 0;
+#X connect 2 1 13 0;
+#X connect 3 0 1 0;
+#X connect 6 0 7 0;
+#X connect 7 0 11 0;
+#X connect 8 0 14 1;
+#X connect 9 0 1 0;
+#X connect 11 0 8 0;
+#X connect 13 0 14 0;
+#X connect 13 1 6 0;
+#X connect 14 0 9 0;
+#X connect 14 1 4 0;
+#X connect 14 1 12 0;
+#X restore 83 56 pd testForOneElementLists;
+#X obj 67 343 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 470 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 83 200 5 0 0 0 - - -, f 5;
+#X obj 507 162 easyflow/Switch2;
+#X connect 0 0 36 0;
+#X connect 1 0 2 0;
+#X connect 2 0 39 0;
+#X connect 3 0 38 0;
+#X connect 3 0 40 0;
+#X connect 4 0 17 0;
+#X connect 4 1 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 25 0;
+#X connect 7 0 8 0;
+#X connect 7 1 11 1;
+#X connect 8 0 10 0;
+#X connect 8 1 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 14 0;
+#X connect 12 0 40 1;
+#X connect 13 0 3 1;
+#X connect 15 0 1 0;
+#X connect 15 1 23 0;
+#X connect 15 2 16 0;
+#X connect 16 0 21 0;
+#X connect 17 0 26 0;
+#X connect 17 0 37 0;
+#X connect 17 1 18 0;
+#X connect 18 0 22 0;
+#X connect 20 0 12 0;
+#X connect 24 0 3 0;
+#X connect 35 0 19 0;
+#X connect 36 0 15 0;
+#X connect 39 0 4 0;
+#X connect 40 0 7 0;
+#X connect 40 1 19 0;
+#X restore 245 596 pd listConcatenate;
+#X obj 48 596 easyflow/listConcatenate;
+#X obj 46 373 r \$0-name1;
+#X obj 144 373 r \$0-name2;
+#X obj 242 423 s \$0-name1;
+#X obj 44 423 s \$0-name2;
+#X obj 143 423 s \$0-name3;
+#X obj 456 674 easyflow-info;
+#X obj 349 373 v \$0-variable1;
+#X text 52 495 Example: compare [listConcatenate] implementation (with
+colored canvases) with the subpatch (exactly the same logic \, but
+without the colored canvases). How fast can you find matching names
+on both of them?;
+#X text 48 175 [colorCnvF green];
+#X obj 34 133 colorCnvF 0 255 128;
+#X obj 82 133 colorCnvF 64 255 128;
+#X obj 106 133 colorCnvF 18 255 128;
+#X obj 148 133 colorCnvF 192 255 128;
+#X obj 58 133 colorCnvF 32 255 128;
+#X obj 171 133 colorCnvF 0 0 0;
+#X obj 126 133 colorCnvF 154 255 128;
+#X obj 35 373 colorCnvF 0 255 128;
+#X obj 133 373 colorCnvF 64 255 128;
+#X obj 231 373 colorCnvF 154 255 128;
+#X obj 231 423 colorCnvF 0 255 128;
+#X obj 132 423 colorCnvF 154 255 128;
+#X obj 339 423 colorCnvF 32 255 128;
+#X obj 33 423 colorCnvF 64 255 128;
+#X obj 33 175 easyflow/colorCnvF green;
+#X obj 33 197 easyflow/colorCnvF navyBlue;
+#X obj 33 219 easyflow/colorCnvF wine;
+#X text 46 220 [colorCnvF wine];
+#X obj 33 241 easyflow/colorCnvF gold;
+#X text 48 242 [colorCnvF gold];
+#X obj 242 373 r \$0-name3;
+#X obj 339 373 colorCnvF 192 255 128;
+#X text 48 198 [colorCnvF navyBlue];
+#X obj 33 264 easyflow/colorCnvF purple;
+#X text 48 265 [colorCnvF purple];
+#X obj 349 423 v \$0-variable2;
+#X text 276 573 without;
+#X text 121 573 with;
+#X obj 365 188 colorSyntax;
+#X text 339 143 The arguments parsing is powered by:, f 21;
+#X text 339 218 see it's help file for more information., f 21;
+#X text 33 87 It is used to mark [send/receive] objects with the same
+names and [value] objects to make it easier to find matching names.
+, f 62;
+#N canvas 0 50 521 138 more examples 0;
+#X obj 246 64 easyflow/colorCnvF 196 255 255 hsb;
+#X text 267 65 [colorCnvF 196 255 255 hsb];
+#X obj 22 67 easyflow/colorCnvF 66 200 160 hsl;
+#X text 42 66 [colorCnvF 66 200 160 hsl];
+#X obj 22 40 colorCnvF 66 200 160;
+#X text 42 41 [colorCnvF 66 200 160];
+#X text 265 37 [colorCnvF 32 64 255 rgb];
+#X obj 246 37 colorCnvF 32 64 255 rgb;
+#X restore 350 262 pd more examples;
+#X text 36 331 [send/receive] objects with the same name are marked
+with an cnv with the same color.;
+#X obj 283 674 colorHighlighting-info;
+#X obj 282 650 cnv 11 164 17 empty empty complete information 2 9
+0 14 -1 -262144 0;
+#X text 37 648 see also:;
+#X obj 115 648 colorCnv;
+#X text 131 648 [colorCnv];
+#X text 32 25 [colorCnvF] is a factory abstraction that creates a colored
+rectangle of fixed size. Then you can copy-paste the [cnv] into your
+patch. (don't forget to delete the receive name);
+#X coords 0 705 1 704 10 17 0;

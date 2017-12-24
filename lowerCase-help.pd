@@ -1,0 +1,10 @@
+#N canvas 861 73 399 285 10;
+#X obj 50 144 easyflow/lowerCase;
+#X msg 50 78 symbol ABCXYZ;
+#X obj 206 241 easyflow/easyflow-info;
+#X text 50 28 Converts a symbol to lower case.;
+#X msg 109 106 symbol JuStSomeRandoMSTUFF;
+#X obj 50 166 easyflow/printHere -s;
+#X connect 0 0 5 0;
+#X connect 1 0 0 0;
+#X connect 4 0 0 0;

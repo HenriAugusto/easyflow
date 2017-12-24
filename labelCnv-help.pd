@@ -1,0 +1,23 @@
+#N canvas 839 117 664 439 10;
+#X text 45 38 [labelcnv] creates a colored rectangle of variable size
+and with a label. It's color is read automatically. It is a multi purpose
+tool to help you organizing your code.;
+#X obj 56 153 colorHighlighting;
+#N canvas 29 521 354 208 colorDefinitions 0;
+#X obj 35 39 colorDef \$0-label1 lawn;
+#X obj 35 64 colorDef \$0-label2 lightPurple;
+#X restore 278 156 pd colorDefinitions;
+#X text 278 117 colors are defined with [colorDef], f 18;
+#X text 60 120 this abstraction makes the colors, f 17;
+#X obj 475 344 easyflow-info;
+#X obj 296 343 colorHighlighting-info;
+#X obj 297 316 cnv 11 164 17 empty empty complete information 2 9
+0 14 -1 -262144 0;
+#X text 27 332 see also:;
+#X text 180 330 [labelCnvF];
+#X obj 100 331 labelCnvF labelCnvF olive;
+#X obj 62 248 labelCnv \$0-label2 update;
+#X text 189 219 [labelCnv \$0-label1 initialization];
+#X obj 62 220 labelCnv \$0-label1 initialization;
+#X text 190 249 [labelCnv \$0-label2 update];
+#X coords 0 439 1 438 10 17 0;
