@@ -1,0 +1,4 @@
+#N canvas 293 54 309 204 10;
+#X obj 103 104 easyflow-info;
+#X obj 89 60 switch2;
+#X text 38 31 see the help file for;

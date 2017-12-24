@@ -1,0 +1,4 @@
+#N canvas 1186 232 330 134 10;
+#X text 34 10 [rgb] is an abreviation for;
+#X obj 38 40 easyflow/redGreenBlue;
+#X obj 191 77 easyflow-info;

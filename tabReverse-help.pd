@@ -1,0 +1,33 @@
+#N canvas 98 50 651 220 10;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-table1 100 float 0;
+#X coords 0 1 100 -1 100 70 1 0 0;
+#X restore 338 41 graph;
+#X obj 499 184 easyflow-info;
+#X obj 60 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 375 359 450 300 initializeTable 0;
+#X obj 59 40 loadbang;
+#X obj 59 62 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 59 82 set 0 \, 100;
+#X obj 59 104 easyflow/counter;
+#X floatatom 59 126 5 0 0 0 - - -, f 5;
+#X obj 59 145 trigger float float;
+#X obj 59 198 tabwrite \$0-table1;
+#X obj 59 167 expr sin(2*3.14159*$f1/100*4)*(1-$f1/100);
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 7 0;
+#X connect 5 1 6 1;
+#X connect 7 0 6 0;
+#X restore 477 45 pd initializeTable;
+#X obj 60 120 tabReverse \$0-table1;
+#X text 52 25 [tabReverse] reverse an array.;
+#X text 73 179 see also:;
+#X obj 156 180 tabReverseCopy;
+#X obj 272 179 tabCopy;
+#X connect 2 0 4 0;

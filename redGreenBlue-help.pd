@@ -1,0 +1,35 @@
+#N canvas 816 191 515 419 10;
+#X obj 67 64 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 67 228 color \$1 \$1 \$1;
+#X obj 67 251 tgl 30 0 empty empty empty 17 7 0 10 -258065 -258065
+-258065 0 1;
+#X floatatom 112 130 5 0 255 0 - - -, f 5;
+#X floatatom 179 130 5 0 255 0 - - -, f 5;
+#X floatatom 246 130 5 0 255 0 - - -, f 5;
+#X text 114 108 red;
+#X text 175 108 green;
+#X text 247 110 blue;
+#X text 35 45 bang to output;
+#X floatatom 67 199 15 0 0 0 - - -, f 15;
+#X text 224 178 args: red \, green \, blue;
+#X text 26 16 Outputs a integer representing an RGB color as used by
+pd.;
+#X text 224 200 arguments range from 0 to 255;
+#X obj 397 363 easyflow-info;
+#X text 58 301 abrev:;
+#X text 28 331 see also:;
+#X msg 90 80 255 0 64;
+#X text 157 79 RGB;
+#X obj 67 177 redGreenBlue 0 255 0;
+#X obj 113 302 rgb;
+#X obj 113 332 hueSaturationBrightness;
+#X obj 113 357 hueSaturationLuminosity;
+#X connect 0 0 19 0;
+#X connect 1 0 2 0;
+#X connect 3 0 19 1;
+#X connect 4 0 19 2;
+#X connect 5 0 19 3;
+#X connect 10 0 1 0;
+#X connect 17 0 19 0;
+#X connect 19 0 10 0;

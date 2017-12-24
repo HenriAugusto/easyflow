@@ -1,0 +1,105 @@
+#N canvas 243 182 759 651 10;
+#X msg 54 91 symbol 3;
+#X symbolatom 54 113 10 0 0 0 - - -, f 10;
+#X obj 50 181 symbol 3;
+#X obj 50 160 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X symbolatom 50 203 10 0 0 0 - - -, f 10;
+#X text 133 201 blank output!;
+#X text 135 113 blank output!;
+#X floatatom 50 257 5 0 0 0 - - -, f 5;
+#X symbolatom 50 300 10 0 0 0 - - -, f 10;
+#X text 41 28 [numberSymbol] allows you to have a number with a symbol
+selector., f 66;
+#X floatatom 433 89 5 0 0 0 - - -, f 5;
+#X msg 433 108 symbol foo\$1;
+#X symbolatom 433 181 10 0 0 0 - - -, f 10;
+#X text 379 67 You can mix symbols in the data stream;
+#X floatatom 382 88 5 0 0 0 - - -, f 5;
+#X symbolatom 433 381 10 0 0 0 - - -, f 10;
+#X msg 433 288 1 2 3 4;
+#X text 379 239 Lists too. In this case the first element;
+#X text 379 257 will be used.;
+#X symbolatom 480 539 25 0 0 0 - - -, f 25;
+#X text 426 415 Messages other than bang \, floats \, symbols;
+#X text 426 435 and lists will be treated like symbols.;
+#X obj 433 359 numberSymbol;
+#X msg 480 466 customSelector;
+#X msg 498 492 test;
+#X obj 480 517 numberSymbol;
+#X obj 50 278 numberSymbol;
+#X obj 433 159 numberSymbol;
+#X msg 456 318 list foo foo2 foo3;
+#X text 128 299 symbol output;
+#X obj 614 601 easyflow-info;
+#N canvas 0 50 672 394 applications/motivation 0;
+#X obj 61 199 keyname;
+#X floatatom 61 221 5 0 0 0 - - -, f 5;
+#X symbolatom 107 221 10 0 0 0 - - -, f 10;
+#X obj 107 258 select foo;
+#X obj 107 280 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 174 281 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 202 156 loadbang;
+#X msg 202 178 3;
+#X obj 202 200 numberSymbol;
+#X symbolatom 202 222 10 0 0 0 - - -, f 10;
+#X text 42 18 When using keyname it was not possible to detect numbers
+in the stream because you weren't able to send a number with a symbol
+selector to the cold inlet of the [select].;
+#X text 424 125 Doesn't work;
+#X text 129 129 Work;
+#X obj 361 199 keyname;
+#X floatatom 361 221 5 0 0 0 - - -, f 5;
+#X symbolatom 407 221 10 0 0 0 - - -, f 10;
+#X obj 407 258 select foo;
+#X obj 407 280 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 474 281 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 503 176 loadbang;
+#X obj 503 198 symbol 3;
+#X symbolatom 503 220 10 0 0 0 - - -, f 10;
+#X text 214 75 Try pressing the key 3;
+#X text 121 328 (i've encountered this issue on Windows. I'm not sure
+if it happens on other platforms).;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 3 1;
+#X connect 13 0 14 0;
+#X connect 13 1 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 21 0 16 1;
+#X restore 86 486 pd applications/motivation;
+#N canvas 0 50 549 118 comment 0;
+#X text 57 23 Since this is a somewhat unusual thing in pure data i
+have decided to make this abstraction especially to deal with that
+instead of adding that functionality to the [easyflow/symbolize] abstraction
+(which is more "natural");
+#X restore 136 531 pd comment;
+#X connect 0 0 1 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 7 0 26 0;
+#X connect 10 0 11 0;
+#X connect 11 0 27 0;
+#X connect 14 0 27 0;
+#X connect 16 0 22 0;
+#X connect 22 0 15 0;
+#X connect 23 0 25 0;
+#X connect 24 0 25 0;
+#X connect 25 0 19 0;
+#X connect 26 0 8 0;
+#X connect 27 0 12 0;
+#X connect 28 0 22 0;
