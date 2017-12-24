@@ -27,6 +27,20 @@ Here are some highlights. Some are simple yet very useful because PD lacks some 
 - **[HSB][HSL][RGB][colorNames][hexColor][colorSyntax]** = Easily generate colors to edit Pure Data vanilla GUI objects.
 - **[colorHighlighting]+related** - color highlighting for better code. See the [easyflow wiki](https://github.com/HenriAugusto/easyflow/wiki) for more information
 
+## Some gifs
+
+**[hueSaturationBrightness]**
+
+![hsbDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/hueSaturationBrightnessDemo.gif)
+
+**[printHere]**
+
+![printHereDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/printHereDemo.gif)
+
+**[GOPTool]**
+
+![GOPToolDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/GOPToolGif.gif)
+
 ## Installing and how to use
 
 If you don't have one create a path where you're going to store all of your externals. For example: _"C:\Users\User\Dropbox\PureData\shared extras"_;
