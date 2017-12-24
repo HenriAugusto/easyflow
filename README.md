@@ -120,11 +120,19 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 
 ### Coding
 
-- *[colorCirc]* - factory abstraction for color highlighting
-- *[colorCnv]* - factory abstraction for color highlighting
-- *[colorTri]* - factory abstraction for color highlighting
+#### Color highlighting
+
+- *[colorHighlighting]* - process colors for the automatic highlighting abstractions
+- *[colorDef]* - define (unique name,color) associations
+- *[colorCirc]* - automatically colored abstraction for color highlighting [send][receive][value] objects
+- *[colorCnv]* - automatically colored abstraction for telling what "names" are inside a subpatch
+- *[colorTri]* - automatically colored abstraction for marking variable wireless connections
+- *[labelCnv]* - automatically colored and resized abstraction to display a labeled [cnv]. Multi-purpose abstraction
+- *[colorCircF][colorCnvF][colorTriF][labelCnvF]* - factory abstraction for color highlighting and tagging
+
+#### Debugging and utilities
+
 - *[GOPTool]* - abstraction to quickly manage your graph-on-parent settings without suffering with PD's gui.
-- *[labelcnv]* - factory abstraction for color highlighting and tagging
 - *[printHere]* - in-patch console for debugging without having to switch windows.
 
 
