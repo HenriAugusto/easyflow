@@ -1,0 +1,10 @@
+#N canvas 836 134 371 249 10;
+#X obj 59 176 print;
+#X msg 59 82 symbol C:/Vst/Samples;
+#X obj 59 142 symbolSplit /;
+#X msg 69 112 symbol a/b/c/1/2/3;
+#X text 59 23 splits a symbol in a specified char;
+#X obj 229 209 easyflow-info;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;

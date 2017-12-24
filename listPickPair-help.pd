@@ -1,0 +1,29 @@
+#N canvas 488 108 594 382 10;
+#X obj 136 141 loadbang;
+#X obj 136 163 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 136 185 a b c d e f g;
+#X obj 55 173 + 1;
+#X floatatom 55 195 5 0 0 0 - - -, f 5;
+#X obj 55 59 vradio 15 1 0 7 empty empty try me 0 -8 0 10 -262144
+-1 -1 0;
+#X text 48 326 see also:;
+#X obj 55 221 listPickPair;
+#X obj 124 327 listPick;
+#X obj 194 327 passPair;
+#X obj 416 326 easyflow/easyflow-info;
+#X obj 55 253 easyflow/printHere -s;
+#X obj 123 248 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 45 16 pick elements \, in pairs \, from a previously stored
+list;
+#X text 156 241 (does not output if you try to get a pair from the
+last position in a list);
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 7 1;
+#X connect 3 0 4 0;
+#X connect 4 0 7 0;
+#X connect 5 0 3 0;
+#X connect 7 0 11 0;
+#X connect 7 0 12 0;

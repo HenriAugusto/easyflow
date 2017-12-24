@@ -1,0 +1,11 @@
+#N canvas 1189 220 442 381 10;
+#X obj 220 323 easyflow/easyflow-info;
+#X obj 37 246 print;
+#X msg 37 116 a b c / d e f / g h i;
+#X obj 37 154 listSplit /;
+#X text 124 185 outputs like;
+#X msg 103 206 a b c \, d e f \, g h i;
+#X text 35 37 Splits a list on a given symbol.;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 5 0 1 0;

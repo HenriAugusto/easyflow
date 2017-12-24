@@ -1,0 +1,112 @@
+#N canvas 349 123 765 503 10;
+#N canvas 299 89 450 300 bangAtEachChange 0;
+#X obj 101 20 inlet;
+#X obj 51 137 outlet;
+#X obj 114 137 outlet;
+#X obj 186 136 outlet;
+#X obj 249 136 outlet;
+#X obj 101 42 i;
+#X obj 101 64 t b f;
+#X obj 181 21 inlet;
+#X obj 181 43 i;
+#X obj 181 65 t b f;
+#X obj 255 15 inlet;
+#X obj 255 37 i;
+#X obj 255 59 t b f;
+#X connect 0 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 1 0;
+#X connect 6 1 2 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 1 0;
+#X connect 9 1 3 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 1 0;
+#X connect 12 1 4 0;
+#X restore 49 262 pd bangAtEachChange;
+#X msg 49 363 color \$1 \$1 \$1;
+#X obj 49 385 tgl 30 0 empty empty empty 17 7 0 10 -244234 -244234
+-244234 0 1;
+#X obj 49 73 vsl 15 128 0 255 0 0 empty empty Hue 0 -9 0 10 -262144
+-1 -1 0 0;
+#X floatatom 49 209 5 0 0 0 - - -, f 5;
+#X obj 114 72 vsl 15 128 0 255 0 0 empty empty Saturation -22 -9 0
+10 -262144 -1 -1 0 0;
+#X floatatom 114 208 5 0 0 0 - - -, f 5;
+#X obj 179 72 vsl 15 128 0 255 0 0 empty empty Luminosity -13 -9 0
+10 -262144 -1 -1 0 0;
+#X floatatom 179 208 5 0 0 0 - - -, f 5;
+#X floatatom 49 336 15 0 0 0 - - -, f 15;
+#X text 324 327 (non initialized-arguments are set to the default:
+0);
+#X msg 318 225 color \$1 \$1 \$1;
+#X obj 318 247 tgl 15 0 empty empty empty 17 7 0 10 -258064 -258064
+-258064 0 1;
+#X obj 318 135 tgl 20 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 0 50 280 171 rotateHue 0;
+#X obj 64 86 easyflow/counter;
+#X obj 64 108 % 256;
+#X obj 64 130 t b f;
+#X obj 64 64 metro 50;
+#X obj 64 39 inlet;
+#X obj 64 182 outlet;
+#X obj 96 153 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 2 1 6 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X restore 318 164 pd rotateHue;
+#X text 346 136 <-rotate Hue;
+#X obj 635 463 easyflow-info;
+#X text 266 30 Outputs a number that represents a color on th HSL colorspace.
+Internally it converts from HSB to RGB since RGB is the colorspace
+used by Pure Data.;
+#X text 267 79 Both H \, S and L range from 0 to 255;
+#X obj 140 408 cnv 15 125 20 empty empty IMPORTANT 10 11 0 14 -1 -262144
+0;
+#X obj 180 434 easyflow/HSL;
+#X text 142 455 (For that object you must use the slash declaration
+as [hsl] is the native horizontal slider);
+#X obj 318 194 hueSaturationLuminosity 64 255 128;
+#X text 139 434 abrv:;
+#X text 326 309 Args: Hue \, Saturation \, Luminosity;
+#X obj 49 311 hueSaturationLuminosity 255 255 128;
+#N canvas 0 50 450 300 input 1;
+#X msg 60 169 color \$1;
+#X obj 60 191 tgl 40 0 empty empty empty 17 7 0 10 -114177 -1 -1 0
+1;
+#X obj 63 67 hsl 128 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5600 0;
+#X floatatom 60 87 5 0 0 0 - - -, f 5;
+#X text 60 21 You can input a 3-element list for ease of use;
+#X obj 60 147 hueSaturationLuminosity;
+#X msg 60 115 64 255 \$1;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 0;
+#X connect 5 0 0 0;
+#X connect 6 0 5 0;
+#X restore 325 371 pd input as a list;
+#X connect 0 0 25 0;
+#X connect 0 1 25 1;
+#X connect 0 2 25 2;
+#X connect 0 3 25 3;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 5 0 6 0;
+#X connect 6 0 0 1;
+#X connect 7 0 8 0;
+#X connect 8 0 0 2;
+#X connect 9 0 1 0;
+#X connect 11 0 12 0;
+#X connect 13 0 14 0;
+#X connect 14 0 22 0;
+#X connect 14 1 22 1;
+#X connect 22 0 11 0;
+#X connect 25 0 9 0;

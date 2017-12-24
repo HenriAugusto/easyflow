@@ -1,0 +1,58 @@
+#N canvas 98 50 899 279 10;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-table1 100 float 0;
+#X coords 0 1 100 -1 100 70 1 0 0;
+#X restore 388 35 graph;
+#X obj 727 246 easyflow-info;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-table2 100 float 0;
+#X coords 0 1 100 -1 100 70 1 0 0;
+#X restore 508 35 graph;
+#X text 398 117 size = 100;
+#X text 516 118 size = 100;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-tableBigger 200 float 0;
+#X coords 0 1 199 -1 100 70 1 0 0;
+#X restore 618 35 graph;
+#X text 626 118 size = 200;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-tableSmaller 50 float 0;
+#X coords 0 1 49 -1 100 70 1 0 0;
+#X restore 738 35 graph;
+#X text 753 118 size = 50;
+#X obj 60 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 60 154 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 60 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 1045 87 450 300 initializeTable 0;
+#X obj 59 40 loadbang;
+#X obj 59 62 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 59 82 set 0 \, 100;
+#X obj 59 104 easyflow/counter;
+#X floatatom 59 126 5 0 0 0 - - -, f 5;
+#X obj 59 145 trigger float float;
+#X obj 59 198 tabwrite \$0-table1;
+#X obj 59 167 expr sin(2*3.14159*$f1/100*4)*(1-$f1/100);
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 7 0;
+#X connect 5 1 6 1;
+#X connect 7 0 6 0;
+#X restore 697 167 pd initializeTable;
+#X obj 60 120 tabReverseCopy \$0-table1 \$0-table2;
+#X obj 60 179 tabReverseCopy \$0-table1 \$0-tableBigger;
+#X obj 60 237 tabReverseCopy \$0-table1 \$0-tableSmaller;
+#X text 425 233 see also:;
+#X obj 505 234 tabReverse;
+#X text 52 25 [tabReverseCopy] reverses an array and writes to another.
+It does not resize the destination array., f 44;
+#X obj 587 234 tabCopy;
+#X connect 9 0 13 0;
+#X connect 10 0 14 0;
+#X connect 11 0 15 0;

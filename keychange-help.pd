@@ -1,0 +1,28 @@
+#N canvas 337 194 379 323 10;
+#X obj 56 125 keychange;
+#X floatatom 56 147 5 0 0 0 - - -, f 5;
+#X symbolatom 116 148 10 0 0 0 - - -, f 10;
+#X obj 56 166 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 116 167 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 201 148 5 0 0 0 - - -, f 5;
+#X symbolatom 261 149 10 0 0 0 - - -, f 10;
+#X obj 201 167 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 261 168 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 201 126 keyname;
+#X text 36 15 Works like keyname \, but only outputs when;
+#X text 35 33 something change. Try holding down a key.;
+#X text 35 55 [keyname] might behave differently on;
+#X text 36 71 different operational systems.;
+#X obj 250 254 easyflow-info;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 4 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 9 0 5 0;
+#X connect 9 1 6 0;

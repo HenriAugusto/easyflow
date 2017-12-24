@@ -1,0 +1,20 @@
+#N canvas 709 256 484 348 10;
+#X obj 333 200 easyflow-info;
+#X msg 37 78 a b c d e f g;
+#X floatatom 146 148 5 1 7 0 - - -, f 5;
+#X msg 62 106 1 2 3 4 5 6 7;
+#X obj 37 182 passNthElement 4;
+#X text 185 83 (Notice the selectors on the console);
+#X text 190 146 (first index: 1);
+#X obj 37 204 print;
+#X text 34 14 Takes a list and passes only its nth element. Like an
+"bandpass" for lists \, hence the name.;
+#X text 39 252 see also:;
+#X obj 111 251 listPick;
+#X text 108 312 [list-abs/list-nth];
+#X text 39 312 similar:;
+#X text 162 181 arg: initial index;
+#X connect 1 0 4 0;
+#X connect 2 0 4 1;
+#X connect 3 0 4 0;
+#X connect 4 0 7 0;

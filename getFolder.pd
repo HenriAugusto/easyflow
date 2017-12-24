@@ -1,0 +1,62 @@
+#N canvas 0 50 446 755 10;
+#X obj 54 28 inlet;
+#X obj 54 50 list fromsymbol;
+#X obj 205 151 list length;
+#X floatatom 205 185 5 0 0 0 - - -, f 5;
+#X obj 54 112 trigger bang list list;
+#X msg 54 213 \$2 \$3;
+#X obj 54 235 easyflow/for;
+#X floatatom 135 260 5 0 0 0 - - -, f 5;
+#X obj 135 339 easyflow/listPick;
+#X obj 54 174 pack 5 f 1;
+#X obj 135 361 select 47;
+#X obj 135 279 trigger float float;
+#X obj 233 442 float;
+#X obj 233 525 list;
+#X obj 233 464 trigger bang float;
+#X obj 233 558 list split;
+#X obj 233 600 list tosymbol;
+#X obj 135 383 trigger bang bang;
+#X obj 233 622 outlet;
+#X obj 129 142 s \$0-list;
+#X obj 119 142 cnv 10 10 17 empty \empty empty 20 12 0 14 -244615
+-1 0;
+#X obj 248 493 cnv 10 10 17 empty \empty empty 20 12 0 14 -244615
+-1 0;
+#X obj 258 493 r \$0-list;
+#X obj 241 316 cnv 10 10 17 empty \empty empty 20 12 0 14 -244615
+-1 0;
+#X obj 251 316 r \$0-list;
+#X obj 125 210 cnv 10 10 17 empty \empty empty 20 12 0 14 -2112
+-1 0;
+#X obj 135 210 r \$0-stopFor;
+#X obj 241 406 cnv 10 10 17 empty \empty empty 20 12 0 14 -2112
+-1 0;
+#X obj 251 406 s \$0-stopFor;
+#X obj 220 684 easyflow/easyflow-info;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 9 1;
+#X connect 4 0 9 0;
+#X connect 4 1 19 0;
+#X connect 4 2 2 0;
+#X connect 5 0 6 0;
+#X connect 6 1 7 0;
+#X connect 7 0 11 0;
+#X connect 8 0 10 0;
+#X connect 9 0 5 0;
+#X connect 10 0 17 0;
+#X connect 11 0 8 0;
+#X connect 11 1 12 1;
+#X connect 12 0 14 0;
+#X connect 13 0 15 0;
+#X connect 14 0 13 0;
+#X connect 14 1 15 1;
+#X connect 15 0 16 0;
+#X connect 16 0 18 0;
+#X connect 17 0 12 0;
+#X connect 17 1 28 0;
+#X connect 22 0 13 1;
+#X connect 24 0 8 1;
+#X connect 26 0 6 1;

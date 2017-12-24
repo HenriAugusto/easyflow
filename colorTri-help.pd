@@ -1,0 +1,49 @@
+#N canvas 485 90 642 599 10;
+#X obj 298 336 r \$0-left;
+#X obj 396 336 r \$0-right;
+#X floatatom 298 358 5 0 0 0 - - -, f 5;
+#X floatatom 396 358 5 0 0 0 - - -, f 5;
+#X obj 162 350 send;
+#X obj 162 318 unpack f s;
+#X obj 42 267 list append \$0-left;
+#X obj 242 266 list append \$0-right;
+#X floatatom 42 242 5 0 0 0 - - -, f 5;
+#X floatatom 242 243 5 0 0 0 - - -, f 5;
+#X text 38 414 Example of usage: see [guilla/colorPicker] or see the
+tutorial on https://github.com/HenriAugusto/wiki if you do not have
+guilla., f 62;
+#X obj 288 336 cnv 10 10 17 empty empty empty 20 12 0 14 -1600 -1 0
+;
+#X obj 385 336 cnv 10 10 17 empty empty empty 20 12 0 14 -135232 -1
+0;
+#X text 19 38 [colorTri] is a factory abstraction that creates a colored
+triangle of fixed size. Then you can copy-paste the [cnv] into your
+patch. (don't forget to delete the receive name);
+#X text 20 102 It is used to mark variable send/receive names;
+#X obj 483 529 easyflow-info;
+#X obj 307 527 colorHighlighting-info;
+#X obj 307 499 cnv 11 164 17 empty empty complete information 2 9
+0 14 -1 -262144 0;
+#X text 37 517 see also:;
+#X obj 36 175 colorHighlighting;
+#N canvas 29 521 354 208 colorDefinitions 0;
+#X obj 35 39 colorDef \$0-left flowerBlue;
+#X obj 35 64 colorDef \$0-right purple;
+#X restore 258 178 pd colorDefinitions;
+#X text 258 139 colors are defined with [colorDef], f 18;
+#X text 40 142 this abstraction makes the colors, f 17;
+#X obj 23 269 colorTri \$0-left;
+#X obj 114 517 colorTriF;
+#X text 131 517 [colorTriF];
+#X obj 128 351 colorTri \$0-left;
+#X obj 223 268 colorTri \$0-right;
+#X obj 143 351 colorTri \$0-right;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 5 0 4 0;
+#X connect 5 1 4 1;
+#X connect 6 0 5 0;
+#X connect 7 0 5 0;
+#X connect 8 0 6 0;
+#X connect 9 0 7 0;
+#X coords 0 599 1 598 10 17 0;

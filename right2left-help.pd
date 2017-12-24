@@ -1,0 +1,13 @@
+#N canvas 488 61 336 279 10;
+#X obj 54 133 easyflow/right2left;
+#X obj 54 155 print;
+#X text 34 212 abrev:;
+#X obj 90 212 r2l;
+#X text 34 241 see also:;
+#X obj 113 241 left2right;
+#X obj 223 241 easyflow-info;
+#X msg 54 95 a 1 b 2 c 3 d 4;
+#X text 28 21 This abstraction takes a list and outputs it's elements
+one at a time. Right to Left Order., f 31;
+#X connect 0 0 1 0;
+#X connect 7 0 0 0;

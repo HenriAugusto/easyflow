@@ -1,0 +1,90 @@
+#N canvas 931 157 621 406 10;
+#X obj 37 300 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 93 225 symbol test;
+#X obj 83 197 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 37 116 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 83 300 print;
+#X msg 47 138 symbol test;
+#X msg 103 248 foo;
+#X obj 496 355 easyflow-info;
+#X msg 60 166 foo;
+#X obj 37 330 print [compare];
+#X obj 37 278 compare;
+#X text 36 18 [compare] allows one to compare data streams with both
+symbols and floats. See the motivation bellow:;
+#N canvas 0 50 478 522 motivation 0;
+#X floatatom 39 82 5 0 0 0 - - -, f 5;
+#X obj 39 131 t a a;
+#X obj 39 196 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 78 196 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 39 174 select;
+#X text 36 55 only works with floats :(;
+#X floatatom 266 82 5 0 0 0 - - -, f 5;
+#X obj 266 131 t a a;
+#X obj 266 196 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 319 196 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 54 109 symbol test;
+#X msg 281 106 symbol test;
+#X obj 266 174 select s;
+#X text 107 20 (watch the errors on the console);
+#X floatatom 159 302 5 0 0 0 - - -, f 5;
+#X obj 159 371 t a a;
+#X obj 159 436 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 174 329 symbol test;
+#X obj 205 437 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 152 268 works with both!;
+#X obj 159 414 compare;
+#X text 263 55 only works with symbols :(;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 1 1 4 1;
+#X connect 4 0 2 0;
+#X connect 4 1 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 12 0;
+#X connect 7 1 12 1;
+#X connect 10 0 1 0;
+#X connect 11 0 7 0;
+#X connect 12 0 8 0;
+#X connect 12 1 9 0;
+#X connect 14 0 15 0;
+#X connect 15 0 20 0;
+#X connect 15 1 20 1;
+#X connect 17 0 15 0;
+#X connect 20 0 16 0;
+#X connect 20 1 18 0;
+#X restore 157 64 pd motivation;
+#X text 137 247 implicitly converted to symbol, f 17;
+#X obj 316 211 compare foo;
+#X obj 316 233 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 316 102 foo;
+#X msg 332 124 symbol foo;
+#X text 456 188 converted to symbol;
+#X msg 340 149 symbol dogmeat;
+#X msg 390 189 dogmeat;
+#X text 420 67 custom selectors are implicitly converted to symbols
+, f 24;
+#X connect 0 0 9 0;
+#X connect 1 0 10 1;
+#X connect 2 0 10 1;
+#X connect 3 0 10 0;
+#X connect 5 0 10 0;
+#X connect 6 0 10 1;
+#X connect 8 0 10 0;
+#X connect 10 0 0 0;
+#X connect 10 1 4 0;
+#X connect 14 0 15 0;
+#X connect 16 0 14 0;
+#X connect 17 0 14 0;
+#X connect 19 0 14 0;
+#X connect 20 0 14 1;

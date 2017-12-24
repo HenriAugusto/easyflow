@@ -1,0 +1,4 @@
+#N canvas 349 123 267 145 10;
+#X text 32 22 See the help file for;
+#X obj 34 53 hueSaturationBrightness;
+#X obj 155 104 easyflow-info;

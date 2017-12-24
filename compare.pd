@@ -1,0 +1,172 @@
+#N canvas 316 117 575 480 10;
+#X obj 50 34 inlet;
+#X obj 284 36 inlet;
+#X obj 37 34 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 271 36 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 284 154 makefilename %d;
+#X obj 92 343 select s;
+#X obj 79 425 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 92 425 outlet;
+#X obj 50 76 route float symbol;
+#X obj 284 74 route float symbol;
+#X obj 407 100 easyflow/symbolize;
+#X obj 79 290 cnv 11 12 17 empty empty empty 2 9 0 14 -213332 -262144
+0;
+#X obj 92 290 r \$0-selHot;
+#N canvas 0 50 428 543 recoverInput 0;
+#X obj 47 475 outlet;
+#X obj 101 386 float;
+#X obj 120 358 cnv 11 12 17 empty empty empty 2 9 0 14 -48090 -262144
+0;
+#X obj 133 358 r \$0-float;
+#X obj 47 59 t a b;
+#X obj 129 47 cnv 11 12 17 empty empty empty 2 9 0 14 -41460 -262144
+0;
+#X obj 47 38 inlet;
+#X obj 142 47 r \$0-inputSelector;
+#X obj 103 94 symbol;
+#X symbolatom 142 69 10 0 0 0 - - -, f 10;
+#X msg 274 168 symbol haueh;
+#X symbolatom 274 190 10 0 0 0 - - -, f 10;
+#X msg 274 209 \$1;
+#X obj 274 231 print;
+#X obj 47 298 easyflow/switch3;
+#X floatatom 103 237 5 0 0 0 - - -, f 5;
+#X msg 103 151 0;
+#X obj 103 120 select s f o;
+#X msg 130 173 1;
+#X msg 157 203 2;
+#X obj 101 331 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 182 382 cnv 11 12 17 empty empty empty 2 9 0 14 -260097 -262144
+0;
+#X obj 195 382 r \$0-other;
+#X obj 156 413 symbol;
+#X msg 156 435 \$1;
+#X text 195 437 trim symbol selector;
+#X obj 156 330 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 60 327 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X symbolatom 227 409 10 0 0 0 - - -, f 10;
+#X connect 1 0 0 0;
+#X connect 3 0 1 1;
+#X connect 4 0 14 0;
+#X connect 4 1 8 0;
+#X connect 6 0 4 0;
+#X connect 7 0 9 0;
+#X connect 8 0 17 0;
+#X connect 9 0 8 1;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 14 0 0 0;
+#X connect 14 0 27 0;
+#X connect 14 1 20 0;
+#X connect 14 2 26 0;
+#X connect 15 0 14 1;
+#X connect 16 0 15 0;
+#X connect 17 0 16 0;
+#X connect 17 1 18 0;
+#X connect 17 2 19 0;
+#X connect 18 0 15 0;
+#X connect 19 0 15 0;
+#X connect 20 0 1 0;
+#X connect 22 0 23 1;
+#X connect 22 0 28 0;
+#X connect 23 0 24 0;
+#X connect 24 0 0 0;
+#X connect 26 0 23 0;
+#X restore 145 373 pd recoverInput;
+#X obj 132 401 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 145 401 outlet;
+#X obj 132 320 cnv 11 12 17 empty empty empty 2 9 0 14 -59819 -262144
+0;
+#X obj 145 320 r \$0-selCold;
+#X obj 332 218 cnv 11 12 17 empty empty empty 2 9 0 14 -59819 -262144
+0;
+#X obj 345 218 s \$0-selCold;
+#N canvas 0 50 297 329 floats 0;
+#X obj 45 234 makefilename %d;
+#X obj 45 48 t f b;
+#X obj 45 150 t f f;
+#X obj 64 203 cnv 11 12 17 empty empty empty 2 9 0 14 -48090 -262144
+0;
+#X obj 77 203 s \$0-float;
+#X msg 77 71 symbol f;
+#X obj 32 261 cnv 11 12 17 empty empty empty 2 9 0 14 -213332 -262144
+0;
+#X obj 45 261 s \$0-selHot;
+#X obj 64 97 cnv 11 12 17 empty empty empty 2 9 0 14 -41460 -262144
+0;
+#X obj 77 97 s \$0-inputSelector;
+#X obj 45 20 inlet;
+#X connect 0 0 7 0;
+#X connect 1 0 2 0;
+#X connect 1 1 5 0;
+#X connect 2 0 0 0;
+#X connect 2 1 4 0;
+#X connect 5 0 9 0;
+#X connect 10 0 1 0;
+#X restore 50 160 pd floats;
+#N canvas 0 50 450 300 symbols 0;
+#X obj 70 157 cnv 11 12 17 empty empty empty 2 9 0 14 -41460 -262144
+0;
+#X obj 51 54 t s b;
+#X obj 83 157 s \$0-inputSelector;
+#X msg 83 118 symbol s;
+#X obj 38 77 cnv 11 12 17 empty empty empty 2 9 0 14 -213332 -262144
+0;
+#X obj 51 77 s \$0-selHot;
+#X obj 51 32 inlet;
+#X connect 1 0 5 0;
+#X connect 1 1 3 0;
+#X connect 3 0 2 0;
+#X connect 6 0 1 0;
+#X restore 111 130 pd symbols;
+#N canvas 0 50 377 330 others 0;
+#X obj 44 64 easyflow/symbolize;
+#X msg 133 148 symbol o;
+#X obj 31 209 cnv 11 12 17 empty empty empty 2 9 0 14 -213332 -262144
+0;
+#X obj 44 209 s \$0-selHot;
+#X obj 120 175 cnv 11 12 17 empty empty empty 2 9 0 14 -41460 -262144
+0;
+#X obj 133 175 s \$0-inputSelector;
+#X obj 44 39 inlet;
+#X obj 210 125 cnv 11 12 17 empty empty empty 2 9 0 14 -260097 -262144
+0;
+#X obj 44 86 trigger symbol bang symbol;
+#X obj 223 125 s \$0-other;
+#X connect 0 0 8 0;
+#X connect 1 0 5 0;
+#X connect 6 0 0 0;
+#X connect 8 0 3 0;
+#X connect 8 1 1 0;
+#X connect 8 2 9 0;
+#X restore 173 107 pd others;
+#N canvas 0 50 181 143 initialization 1;
+#X obj 26 31 loadbang;
+#X obj 26 53 list 666 \$1;
+#X msg 26 75 \$2;
+#X obj 26 97 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X restore 336 34 pd initialization;
+#X connect 0 0 8 0;
+#X connect 1 0 9 0;
+#X connect 4 0 19 0;
+#X connect 5 0 7 0;
+#X connect 5 1 13 0;
+#X connect 8 0 20 0;
+#X connect 8 1 21 0;
+#X connect 8 2 22 0;
+#X connect 9 0 4 0;
+#X connect 9 1 19 0;
+#X connect 9 2 10 0;
+#X connect 10 0 19 0;
+#X connect 12 0 5 0;
+#X connect 13 0 15 0;
+#X connect 17 0 5 1;
+#X connect 23 0 9 0;

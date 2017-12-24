@@ -1,0 +1,22 @@
+#N canvas 664 169 723 298 10;
+#X obj 516 256 easyflow-info;
+#X msg 37 78 a b c d e f g;
+#X floatatom 104 216 5 1 7 0 - - -, f 5;
+#X obj 37 264 print;
+#X msg 62 106 1 2 3 4 5 6 7;
+#X text 194 67 (Notice the selectors on the console);
+#X text 118 242 arg: initial inddex;
+#X obj 37 242 passPair 4;
+#X text 34 14 Takes a list and passes its nth element and the next
+one. Like an "bandpass" for lists \, hence the name.;
+#X msg 104 152 6;
+#X msg 141 152 7;
+#X text 187 144 It won't pass a single value if you try to read on
+the end of the list. Compare Index 6 and 7 for that list of 7 elements.
+;
+#X connect 1 0 7 0;
+#X connect 2 0 7 1;
+#X connect 4 0 7 0;
+#X connect 7 0 3 0;
+#X connect 9 0 2 0;
+#X connect 10 0 2 0;

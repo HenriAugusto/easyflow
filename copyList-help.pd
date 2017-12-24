@@ -1,0 +1,19 @@
+#N canvas 410 134 426 440 10;
+#X obj 47 152 CopyList;
+#X msg 47 254 q w e r t y;
+#X obj 105 198 loadbang;
+#X floatatom 47 88 5 0 0 0 - - -, f 5;
+#X msg 47 120 \$1 a b c;
+#X text 44 26 Takes a incoming list then copies it to the msg boxes
+connects to it's outlet.;
+#X obj 292 383 easyflow-info;
+#X msg 105 220 set;
+#X text 33 326 [copyList] can be a light-weight alternative to [printHere
+-s] depending on your situation., f 48;
+#X msg 125 124 q w e r t y;
+#X connect 0 0 1 0;
+#X connect 2 0 7 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 7 0 1 0;
+#X connect 9 0 0 0;

@@ -1,0 +1,113 @@
+#N canvas 135 50 669 804 10;
+#X obj 372 121 outlet;
+#X obj 32 30 inlet;
+#X floatatom 188 295 5 0 0 0 - - -, f 5;
+#X obj 188 314 trigger bang float;
+#X obj 32 52 route symbol;
+#X obj 32 73 list fromsymbol;
+#X obj 363 225 list tosymbol;
+#X symbolatom 363 247 10 0 0 0 - - -, f 10;
+#X msg 183 119 set;
+#X obj 107 190 trigger bang float, f 37;
+#X obj 32 95 trigger bang list bang;
+#X obj 107 168 easyflow/left2right;
+#X obj 188 442 easyflow/passPair;
+#X obj 311 388 expr $f1*2-1;
+#X symbolatom 188 665 10 0 0 0 - - -, f 10;
+#X obj 188 512 route foo;
+#X obj 188 464 list trim;
+#X obj 96 632 symbol;
+#X msg 96 673 add2 \$1;
+#X msg 188 684 add2 \$1;
+#X symbolatom 96 654 10 0 0 0 - - -, f 10;
+#X obj 32 668 t b;
+#X msg 188 344 A a B b C c D d E e F f G g H h I i J j K k L l M m
+N n O o P p Q q R r S s T t U u V v W w X x Y y Z z;
+#X obj 372 91 easyflow/ListConcatenate;
+#X obj 172 143 cnv 10 10 17 empty \$0-color empty 20 12 0 14 -92334
+-262144 0;
+#X obj 183 143 s \$0-msgBox;
+#X obj 85 741 cnv 10 10 17 empty \$0-color empty 20 12 0 14 -92334
+-262144 0;
+#X obj 96 741 s \$0-msgBox;
+#X obj 20 30 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 360 121 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 361 34 cnv 10 10 17 empty \$0-color empty 20 12 0 14 -92334
+-262144 0;
+#X obj 372 34 r \$0-msgBox;
+#X obj 311 411 t f f;
+#X obj 343 433 sel 51;
+#X msg 343 455 1;
+#X obj 343 477 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 237 491 cnv 10 10 17 empty \$0-color empty 20 12 0 14 -142796
+-262144 0;
+#X obj 83 584 cnv 10 10 17 empty \$0-color empty 20 12 0 14 -142796
+-262144 0;
+#X obj 94 584 r \$0-char;
+#X obj 248 491 r \$0-char;
+#X obj 352 265 cnv 10 10 17 empty \$0-color empty 20 12 0 14 -142796
+-262144 0;
+#X obj 363 265 s \$0-char;
+#X obj 304 539 spigot;
+#X msg 382 455 0;
+#X obj 304 561 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 177 229 cnv 10 10 17 empty \$0-color empty 20 12 0 14 -215054
+-262144 0;
+#X msg 107 237 26;
+#X obj 107 259 easyflow/for;
+#X obj 188 534 t a b;
+#X obj 209 559 cnv 10 10 17 empty \$0-color empty 20 12 0 14 -215054
+-262144 0;
+#X obj 188 229 r \$0-next;
+#X obj 220 559 s \$0-next;
+#X obj 188 635 easyflow/symbolize;
+#X msg 372 69;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 22 0;
+#X connect 3 1 13 0;
+#X connect 4 0 5 0;
+#X connect 5 0 10 0;
+#X connect 6 0 7 0;
+#X connect 7 0 41 0;
+#X connect 8 0 25 0;
+#X connect 9 0 46 0;
+#X connect 9 1 6 0;
+#X connect 10 0 21 0;
+#X connect 10 1 11 0;
+#X connect 10 2 8 0;
+#X connect 11 0 9 0;
+#X connect 12 0 16 0;
+#X connect 13 0 32 0;
+#X connect 14 0 19 0;
+#X connect 15 0 48 0;
+#X connect 15 1 42 0;
+#X connect 16 0 15 0;
+#X connect 17 0 20 0;
+#X connect 18 0 27 0;
+#X connect 19 0 27 0;
+#X connect 20 0 18 0;
+#X connect 21 0 27 0;
+#X connect 22 0 12 0;
+#X connect 23 0 0 0;
+#X connect 31 0 53 0;
+#X connect 32 0 12 1;
+#X connect 32 1 33 0;
+#X connect 33 0 34 0;
+#X connect 33 1 43 0;
+#X connect 34 0 35 0;
+#X connect 35 0 42 1;
+#X connect 38 0 17 1;
+#X connect 39 0 15 1;
+#X connect 42 0 44 0;
+#X connect 43 0 35 0;
+#X connect 44 0 17 0;
+#X connect 46 0 47 0;
+#X connect 47 1 2 0;
+#X connect 48 0 52 0;
+#X connect 48 1 51 0;
+#X connect 50 0 47 1;
+#X connect 52 0 14 0;
+#X connect 53 0 23 0;

@@ -1,0 +1,21 @@
+#N canvas 909 178 445 308 10;
+#X obj 100 100 cnv 10 10 12 empty \$0-cnv ● 1 5 0 15 -262144 -30201
+0;
+#X obj 183 47 loadbang;
+#X obj 183 69 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 183 100 easyflow/colorSyntax \$1 \$2 \$3 \$4;
+#X obj 183 173 s \$0-cnv;
+#X obj 40 177 inlet;
+#X obj 40 199 route set;
+#X obj 40 246 s \$0-cnv;
+#X msg 183 138 color 0 \$1 \$1;
+#X msg 40 224 color 0 \$1 \$1;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 8 0;
+#X connect 5 0 6 0;
+#X connect 6 0 9 0;
+#X connect 8 0 4 0;
+#X connect 9 0 7 0;
+#X coords 0 1 1 10 10 12 2 100 100;

@@ -1,0 +1,55 @@
+#N canvas 611 131 584 698 10;
+#X obj 45 79 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 45 257 5 0 0 0 - - -, f 5;
+#X floatatom 154 213 5 0 0 0 - - -, f 5;
+#X msg 66 135 increment -3;
+#X msg 57 109 increment 5;
+#X text 169 117 change increment;
+#X obj 391 628 easyflow-info;
+#X text 75 77 bang to output the next value;
+#X text 45 551 Since there are many objects named [counter] \, use
+the following syntax to avoid name conflicts.;
+#X obj 45 235 easyflow/counter;
+#X obj 50 611 easyflow/counter;
+#X obj 45 276 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 43 457 5 0 0 0 - - -, f 5;
+#X obj 43 476 print;
+#X msg 43 341 10;
+#X text 81 341 send a float to step n times, f 15;
+#X text 152 392 counts from 0 to 9, f 11;
+#X msg 73 393 set 0 \, 10;
+#X obj 43 435 easyflow/Counter;
+#X text 46 20 [easyflow/counter] is a simple abstraction to output
+sequences of numbers;
+#X floatatom 336 434 5 0 0 0 - - -, f 5;
+#X msg 336 348 10;
+#X msg 253 439 stop;
+#X obj 336 457 % 5;
+#X obj 336 479 sel 0;
+#X text 374 348 coutn 10 times;
+#X text 381 456 stop after 5 times;
+#X obj 336 412 easyflow/Counter 1;
+#X floatatom 89 164 5 0 0 0 - - -, f 5;
+#X msg 89 183 set \$1;
+#X text 150 181 sets next value;
+#X text 200 211 sets next value;
+#X connect 0 0 9 0;
+#X connect 1 0 11 0;
+#X connect 2 0 9 1;
+#X connect 3 0 9 0;
+#X connect 4 0 9 0;
+#X connect 9 0 1 0;
+#X connect 12 0 13 0;
+#X connect 14 0 18 0;
+#X connect 17 0 18 0;
+#X connect 18 0 12 0;
+#X connect 20 0 23 0;
+#X connect 21 0 27 0;
+#X connect 22 0 27 0;
+#X connect 23 0 24 0;
+#X connect 24 0 22 0;
+#X connect 27 0 20 0;
+#X connect 28 0 29 0;
+#X connect 29 0 9 0;

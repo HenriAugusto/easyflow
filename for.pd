@@ -1,0 +1,271 @@
+#N canvas 9 42 470 579 10;
+#X obj 76 18 inlet;
+#X obj 76 232 f;
+#X obj 111 232 + 1;
+#X obj 206 352 outlet rightmost = index;
+#X msg 234 96 1;
+#X obj 76 471 outlet leftmost = bang when finished;
+#X obj 76 298 trigger float float;
+#X obj 76 437 select;
+#X obj 76 150 until 0;
+#X obj 334 24 inlet;
+#X obj 334 46 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 317 529 easyflow-info;
+#N canvas 321 199 450 300 adjustRange 0;
+#X obj 121 55 inlet;
+#X obj 121 197 outlet;
+#X obj 153 101 v \$0-initialNumber;
+#X obj 121 157 + 0;
+#X obj 121 77 t f b;
+#X floatatom 153 123 5 0 0 0 - - -, f 5;
+#X obj 142 101 cnv 10 10 17 empty empty empty 20 12 0 14 -131009 -131009
+0;
+#X connect 0 0 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 0;
+#X connect 4 1 2 0;
+#X connect 5 0 3 1;
+#X restore 76 262 pd adjustRange;
+#X obj 76 70 trigger float bang bang;
+#X obj 155 392 v \$0-finalNumber;
+#X floatatom 155 414 5 0 0 0 - - -, f 5;
+#X obj 129 189 r \$0-direction;
+#X floatatom 129 211 5 0 0 0 - - -, f 5;
+#N canvas 549 124 514 300 test 0;
+#X obj 48 74 inlet;
+#X obj 171 236 outlet;
+#X obj 171 206 spigot;
+#X obj 210 184 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 199 140 cnv 10 10 17 empty empty empty 20 12 0 14 -245085 -225470
+0;
+#X obj 210 140 r \$0-stop;
+#X msg 210 162 0;
+#X text 49 20 this subpatch tests if a bang message was received on
+the second inlet (to stop the for) BETWEEN outputs of [trigger float
+float] as result of the output on the second outlet.;
+#X obj 48 95 trigger bang float;
+#X msg 48 117 1;
+#X connect 0 0 8 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 1;
+#X connect 5 0 6 0;
+#X connect 6 0 3 0;
+#X connect 8 0 9 0;
+#X connect 8 1 2 0;
+#X connect 9 0 3 0;
+#X restore 76 360 pd test;
+#X obj 323 66 cnv 10 10 17 empty empty empty 20 12 0 14 -245085 -225470
+0;
+#X obj 334 66 s \$0-stop;
+#X obj 111 127 cnv 10 10 17 empty empty empty 20 12 0 14 -245085 -225470
+0;
+#X obj 122 127 r \$0-stop;
+#X obj 118 189 cnv 10 10 17 empty empty empty 20 12 0 14 -20160 -225470
+0;
+#X obj 64 44 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -20160 0
+;
+#X obj 52 44 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -131009
+0;
+#X obj 62 363 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -245085
+0;
+#X obj 40 44 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -225470
+0;
+#X obj 144 392 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 61 265 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -131009
+0;
+#X obj 63 18 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 63 471 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 322 24 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 193 352 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#N canvas 502 62 532 770 modeCheck 1;
+#X obj 59 19 inlet;
+#X obj 59 700 outlet;
+#X obj 59 41 route float list;
+#X obj 168 69 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 168 117 print [for] error;
+#X msg 113 141 \$1 \$2;
+#X msg 113 345 \$1;
+#X msg 167 185 \$2;
+#X obj 167 237 route float;
+#X obj 113 377 route float;
+#N canvas 0 50 453 300 error 0;
+#X obj 71 52 inlet;
+#X obj 103 131 print [for] error;
+#X msg 103 105 second element is not an number (\$1);
+#X obj 71 74 t b a;
+#X msg 71 156 0;
+#X obj 71 178 outlet;
+#X connect 0 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 3 1 2 0;
+#X connect 4 0 5 0;
+#X restore 241 258 pd error;
+#N canvas 0 50 450 300 error 0;
+#X obj 71 52 inlet;
+#X obj 71 104 print [for] error;
+#X msg 71 78 first element is not an float (\$1);
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 187 404 pd error;
+#X obj 113 439 pack f f;
+#X obj 152 295 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 113 321 spigot;
+#X obj 113 163 trigger a a bang;
+#X msg 222 185 1;
+#N canvas 1020 63 353 488 mode2 1;
+#X obj 62 46 inlet;
+#X obj 62 440 outlet;
+#X obj 161 234 v \$0-initialNumber;
+#X msg 62 128 \$2 \$1;
+#X obj 62 150 unpack f f;
+#X floatatom 161 215 5 0 0 0 - - -, f 5;
+#X obj 129 170 t f f;
+#X obj 161 193 - 1;
+#X obj 62 404 + 1;
+#X obj 94 300 v \$0-finalNumber;
+#X floatatom 94 282 5 0 0 0 - - -, f 5;
+#X obj 62 261 t f f;
+#N canvas 1041 615 364 283 checkDirection 1;
+#X obj 63 30 inlet;
+#X obj 63 192 outlet;
+#X obj 63 52 trigger a a;
+#X obj 137 75 unpack f f;
+#X floatatom 204 97 5 0 0 0 - - -, f 5;
+#X floatatom 137 97 5 0 0 0 - - -, f 5;
+#X floatatom 137 138 5 0 0 0 - - -, f 5;
+#X obj 137 116 >;
+#X obj 137 157 sel 1 0;
+#X msg 137 179 -1;
+#X msg 170 179 1;
+#X obj 137 211 s \$0-direction;
+#X obj 127 211 cnv 10 10 17 empty empty empty 20 12 0 14 -20160 -225470
+0;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 2 1 3 0;
+#X connect 3 0 5 0;
+#X connect 3 1 4 0;
+#X connect 4 0 7 1;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X restore 62 76 pd checkDirection;
+#X obj 62 342 - 0;
+#X obj 62 374 abs;
+#X obj 45 80 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -20160 0
+;
+#X obj 150 234 cnv 10 10 17 empty empty empty 20 12 0 14 -131009 -131009
+0;
+#X obj 84 300 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X connect 0 0 12 0;
+#X connect 3 0 4 0;
+#X connect 4 0 11 0;
+#X connect 4 1 6 0;
+#X connect 5 0 2 0;
+#X connect 6 0 13 1;
+#X connect 6 1 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 1 0;
+#X connect 10 0 9 0;
+#X connect 11 0 13 0;
+#X connect 11 1 10 0;
+#X connect 12 0 3 0;
+#X connect 13 0 14 0;
+#X connect 14 0 8 0;
+#X restore 113 469 pd mode2;
+#X obj 99 473 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -20160
+0;
+#X obj 45 611 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -20160
+0;
+#X obj 33 611 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -131009
+0;
+#X obj 87 473 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -131009
+0;
+#X obj 74 473 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -225470
+0;
+#X obj 21 611 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -225470
+0;
+#X msg 168 91 only accepts floats and pairs of floats;
+#N canvas 22 660 450 300 mode1 1;
+#X obj 102 227 v \$0-initialNumber;
+#X msg 102 194 0;
+#X obj 159 182 v \$0-finalNumber;
+#X floatatom 159 164 5 0 0 0 - - -, f 5;
+#X obj 45 77 trigger float bang f bang;
+#X msg 217 100 1;
+#X obj 217 138 s \$0-direction;
+#X obj 45 49 inlet;
+#X obj 45 259 outlet;
+#X obj 91 227 cnv 10 10 17 empty empty empty 20 12 0 14 -131009 -131009
+0;
+#X obj 148 182 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 206 138 cnv 10 10 17 empty empty empty 20 12 0 14 -20160 -225470
+0;
+#X connect 1 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 8 0;
+#X connect 4 1 1 0;
+#X connect 4 2 3 0;
+#X connect 4 3 5 0;
+#X connect 5 0 6 0;
+#X connect 7 0 4 0;
+#X restore 59 607 pd mode1;
+#X connect 0 0 2 0;
+#X connect 2 0 25 0;
+#X connect 2 1 5 0;
+#X connect 2 2 3 0;
+#X connect 3 0 24 0;
+#X connect 5 0 15 0;
+#X connect 6 0 9 0;
+#X connect 7 0 8 0;
+#X connect 8 0 12 1;
+#X connect 8 1 10 0;
+#X connect 9 0 12 0;
+#X connect 9 1 11 0;
+#X connect 10 0 13 0;
+#X connect 12 0 17 0;
+#X connect 13 0 14 1;
+#X connect 14 0 6 0;
+#X connect 15 0 14 0;
+#X connect 15 1 7 0;
+#X connect 15 2 16 0;
+#X connect 16 0 13 0;
+#X connect 17 0 1 0;
+#X connect 24 0 4 0;
+#X connect 25 0 1 0;
+#X restore 76 42 pd modeCheck;
+#X connect 0 0 34 0;
+#X connect 1 0 2 0;
+#X connect 1 0 12 0;
+#X connect 2 0 1 1;
+#X connect 4 0 1 1;
+#X connect 6 0 18 0;
+#X connect 6 1 3 0;
+#X connect 7 0 5 0;
+#X connect 8 0 1 0;
+#X connect 9 0 10 0;
+#X connect 10 0 20 0;
+#X connect 12 0 6 0;
+#X connect 13 0 8 0;
+#X connect 13 1 14 0;
+#X connect 13 2 4 0;
+#X connect 14 0 15 0;
+#X connect 14 0 7 1;
+#X connect 16 0 17 0;
+#X connect 17 0 2 1;
+#X connect 18 0 7 0;
+#X connect 22 0 8 1;
+#X connect 34 0 13 0;

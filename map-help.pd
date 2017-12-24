@@ -1,0 +1,35 @@
+#N canvas 118 50 531 445 10;
+#X obj 22 127 easyflow/map 0 255 0 1;
+#X text 204 129 args: range1 min;
+#X text 246 145 range1 max;
+#X text 246 161 range2 min;
+#X text 246 178 range2 max;
+#X floatatom 22 149 5 0 0 0 - - -, f 5;
+#X obj 25 84 hsl 128 15 0 255 0 0 empty empty empty -2 -8 0 10 -85253
+-1 -1 12700 0;
+#X floatatom 22 104 5 0 0 0 - - -, f 5;
+#X text 29 28 Converts a number stream from a numeric range to another.
+;
+#X obj 361 398 easyflow-info;
+#X text 168 82 <- slide to test;
+#X obj 26 374 easyflow/map 0 255 0 1;
+#X floatatom 177 356 5 0 0 0 - - -, f 5;
+#X floatatom 139 338 5 0 0 0 - - -, f 5;
+#X floatatom 101 319 5 0 0 0 - - -, f 5;
+#X floatatom 63 301 5 0 0 0 - - -, f 5;
+#X floatatom 26 253 5 0 0 0 - - -, f 5;
+#X floatatom 26 396 5 0 0 0 - - -, f 5;
+#X text 144 316 range1 max;
+#X text 180 335 range2 min;
+#X text 221 353 range2 max;
+#X text 104 298 range1 min;
+#X text 68 251 numeric stream to convert;
+#X connect 0 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 0;
+#X connect 11 0 17 0;
+#X connect 12 0 11 4;
+#X connect 13 0 11 3;
+#X connect 14 0 11 2;
+#X connect 15 0 11 1;
+#X connect 16 0 11 0;

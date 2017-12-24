@@ -1,0 +1,15 @@
+#N canvas 397 50 700 310 10;
+#X text 35 27 [colorDef] defines a color to be used with the automatic
+color highlighting objects.;
+#X obj 201 76 colorHighlighting;
+#X text 37 76 See the help file for;
+#X obj 51 118 colorDef \$0-colorDefDemo1 lightGreen;
+#X obj 51 176 colorCnv \$0-colorDefDemo1;
+#X text 68 176 [colorCnv \$0-colorDefDemo1];
+#X obj 51 209 colorCirc \$0-colorDefDemo2;
+#X obj 50 145 colorDef \$0-colorDefDemo2 gold;
+#X text 68 207 [colorCirc \$0-colorDefDemo2];
+#X obj 375 260 colorHighlighting-info;
+#X obj 554 261 easyflow-info;
+#X obj 445 149 colorSyntax;
+#X text 420 111 The arguments parsing is powered by:, f 21;

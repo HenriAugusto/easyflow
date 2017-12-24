@@ -1,0 +1,23 @@
+#N canvas 488 108 398 364 10;
+#X obj 55 221 listPick;
+#X obj 108 131 loadbang;
+#X obj 108 153 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 108 175 a b c d e f g;
+#X obj 55 253 easyflow/printHere -s;
+#X obj 55 173 + 1;
+#X floatatom 55 195 5 0 0 0 - - -, f 5;
+#X obj 55 59 vradio 15 1 0 7 empty empty try me 0 -8 0 10 -262144
+-1 -1 4;
+#X text 50 17 pick elements from a previously stored list;
+#X text 45 317 see also:;
+#X obj 122 317 listPickPair;
+#X obj 249 316 easyflow-info;
+#X obj 200 59 easyflow/audioSpigot~;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 1;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;
+#X connect 7 0 5 0;

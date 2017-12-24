@@ -3,62 +3,139 @@
 _EasyFlow_ is an library of PureData abstractions with two objectives:
 
 - Simplify your work by solving common problems of data flow.
-- Suggest and exemplify good practices of Pure Data programming.
+- Suggest and exemplify good Pure Data programming practices and stimulate thought and discussion on writing better organized and maintainable PD code.
 
-While the former is very straight-forward the latter is far from that. I've spent much time dealing with dataflow problems, dealing tasks that a lot of times are effortlessly done in textual languages like C++, Java and Python. Due to it's graphical nature programming PD means managing space and dealing with all the problems of connecting a lot of objects on the screen and avoind bugs when using wireless connections. Those good practices of PD programming come from my years of experience with PD which, curiously, i've spent more in the "control part" than in the "dsp" part. I guess i liked the challenge.
+While the former is very straight-forward the latter is far from that. I've spent much time dealing with dataflow problems, spending time tasks that a lot of times are effortlessly done in textual languages like C++, Java and Python. For that reason i've set the first objective.
 
-I've made those abstractions throughout the years and some, but not many, are old and most are new (designed after my experience). Everytime i face a problem and i think it's a common dataflow-related problem i write an easyflow abstraction. I try my best to exemplify my suggestions of good PD programming practices but some old objects still needs to be updated (nonetheless they're intended to work perfectly, of course)
+Also, due to it's graphical nature, programming PD means managing space and dealing with all the problems of connecting a lot of objects and avoiding bugs when using wireless connections.  I've wrote some abstractions and the easyflow wiki to share my experience of how i've started better organizing my code. This is why i've set the second objective. See the [easyflow wiki](https://github.com/HenriAugusto/easyflow/wiki) regarding that matter.
 
-The library was designed to be elementar so it is %100 vanilla an has no dependencies.
+If you think about it those objectives are somewhat different sides of the same thing.
 
-## Highlights
+_I've made those abstractions throughout the years and some, but not many, are old and most are new (designed after my experience). Everytime i face a problem and i think it's a common dataflow-related problem i write an easyflow abstraction. I try my best to exemplify my suggestions of good PD programming practices but some old objects might still need to be updated in terms of better organization. Nonetheless they're intended to work perfectly, of course._
+
+The library was designed to be basic so it is 100% vanilla.
+
+### Highlights
+
+Here are some highlights. Some are simple yet very useful because PD lacks some basic functionality and others are complex.
 
 - **[for]** = convenient object to iterate over numeric intervals. Similar to a for in textual languages
-- **[map]** = Converts a numeric stream from one range to another. Easy linear interpolation, baby!
-- **[HSB][HSL][RGB][colorNames][hexColor]** = Easily generate colors to edit Pure Data vanilla GUI objects.
-- **[colorcnv]** - the best way to organize your code. Lets you find matching **[s]** and **[r]** in an instant.
-- **[copylist]** - very useful for debugging. You can use it like a list box. Just put a message box after it. This way you don't need to watch the console all the time.
-- **[printHere]** - a console-like that you can use directly on your patch. No more switching windows!
+- **[map]** = Converts a numeric stream from one range to another. "One-line" linear interpolation!
+- **[printHere]** - a portable console-like abstraction that you can use directly on your patch. No more switching windows!
 - **[GOPTool]** = controls the Graph-on-parent values directly from pd. No more editing vlaues then clicking apply!
-- **[colorcnv][labelcnv][colorcirc][colortri]** - make your code easier and faster to read and organize
-- **sample~** - easily play audio files. Uses the new [soundfiler] ability to get the sample rate! (bugged as 0.48.0 but working on 0.48.1)
+- **[listToSymbol]** - converts a list to a symbol, adding the special char " " between words. Great to add more than one word to labels.
+- **[HSB][HSL][RGB][colorNames][hexColor][colorSyntax]** = Easily generate colors to edit Pure Data vanilla GUI objects.
+- **[colorHighlighting]+related** - color highlighting for better code. See the [easyflow wiki](https://github.com/HenriAugusto/easyflow/wiki) for more information
 
-(Lots of EasyFlow abstractions uses other abstractions from the library. In most of those cases, that other abstractions were included
-as subpatches to eliminate dependencies. This way you can simply copy the abstractions you need if you don't want the entire library).
+## Installing and how to use
+
+If you don't have one create a path where you're going to store all of your externals. For example: _"C:\Users\User\Dropbox\PureData\shared extras"_;
+
+Open Pure Data and go to **File->preferences->path** and add a path to that directory.
+
+Do **not** create a path directly to your externals. By using a shared folder you can use folders like namespaces.
+
+See [How to install externals, libraries, gui plug-ins, etc.](https://forum.pdpatchrepo.info/topic/6743/how-to-install-externals-libraries-gui-plug-ins-etc) on that. The method you should use is the one described in that page on the section _"Loading objects or abstractions using namespaces"_. 
+
+This way you can avoid naming conflicts. Easyflow have an abstraction called [counter]  which is very likely to conflict with other libraries and an abstraction called [hsl] which is **guaranteed** to conclift with vanilla's [hsl]. Easyflow is a 100% so you don't need to use [declare].
 
 ## Abstractions
 
-- *[addList]* - just like |add2 $1( but with an entire list
-- *[alternate]* - Passes it's input one time to the left, then to the right, then to the left...
-- *[audioSpigot~]* - just like [spigot], but for signals, with a [line~]
-- *[counter]* - Simple counter object.
-- *[compare]* - this abstraction solves the problem of dealing with selectors and [sel] for you.
-- *[concatenate]* - Concatenate a list of symbols that it receives into one symbol.
-- *[copyList]* - Copies a list on a message box.
-- *[invert]* - just like |$2 $1(
-- *[keychange]* - like [keyname] but only outputs when a key change
-- *[for]* - Works like until, but with an integrated counter on it's right outlet. It "bangs" on it's left outlet after it's done.
-- *[l2R]* - (Left to Right) - Takes a list and outputs it's elements one at a time, from left to right order.
-- *[r2L]* - (Right to Left) - Takes a list and outputs it's elements one at a time, from right to left order.
-- *[funnel]* - Abstraction that switches between l2r and r2l.
-- *[getNthElement]* - Receives an index N on it's cold inlet and when it receives a list on it's hot inlet,
-it outputs it's Nth element. See _ListPick_.
-- *[getPair]* - Just like _GetNthElement_ but outputs a pair. (the Nth element and it's sucessor)
-- *[listPick]* - Store a list on it's cold inlet and get it's elements by sending it's indexes on ListPick
-hot inlet. Works with the inverse order of GetNthElement. Notice what triggers the output on each abstraction.
-- *[l2r]* - outputs elements of a list one at a time in left to right order. See _r2l_
-- *[list+]* - Sums an argument to every float in a list
-- *[listCompare]* - Compare two lists
-- *[listConcatenate]* - Concatenate two lists
-- *[popNthElement]* - Passes a list through without it's N-th element.
-- *[popLastN]* - Passes a list without it's last N elements.
-- *[r2l]* - outputs elements of a list one at a time in right to left order. See _l2r_
-- *[search]* - Search for a specific value on a list and outputs it's indexes. Outputs -1 if not found.
-- *[searchNDestroy]* - Store symbols as variables and call them by their ID.
-- *[substituteNthElement]* - Passes a list through without it's N-th element.
-- *[switch]* - Passes it's input through it's left or right outlet depending on what you send to it's cold inlet.
-- *[symbolize]* - convenient shortcut to [list prepend symbol] ==> [list trim].
-- *[nearest]* - rounds a float to the nearest integer (easier to remember than [expr rint($f1)])
+### Lists
+
+- *[addList]* - adds a incoming list to a message box
+- *[copyList]* - copies a incoming list on a message box.
+- *[left2right][l2r]* - outputs one element of a list at a time, from left to right
+- *[right2left][r2l]* - outputs one element of a list at a time, from right to left
+- *[funnel]* - outputs a list one element at a time (switches between [l2r] and [r2l]).
+- *[passNthElement]* - takes an incoming list and let only it's nth element pass
+- *[passPair]* - takes an incoming list and a pair starting at it's nth element to pass
+- *[listPlus]* - add a value to each element on an input list
+- *[listCompare]* - compare two lists then output left if they're equal or right if they're different.
+- *[listConcatenate]* - ListConcatenate takes a message and outputs a symbol which is a concatenation of all of its elements
+- *[listPick]* - pick elements from a previously stored list
+- *[listPickPair]* - pick element pairs from a previously stored list
+- *[listReplace]* - replaces all occurences of an element on a list
+- *[listReplaceAtIndex]* - substitutes the n-th element of a incoming list. 
+- *[listSplit]* - splits a list on a given symbol.
+- *[popLastN]* - outputs a list without it's last n elements
+- *[searchElem]* - search for the position of elements on a list
+
+
+
+### Symbols 
+
+- *[symbolize]* - Just a shortcut to add a symbol selector to messages
+- *[numberSymbol]* - allows you to have symbols that contain only numeric chars
+- *[lowerCase][upperCase]* - converts a symbol to lowerCase/upperCase
+- *[getFolder]* - get the folder from a symbol containing a file path
+- *[symbolSplit]* - splits a symbol in a specified char
+
+
+### Signals
+
+- *[audioSpigot]* - [spigot] for signals
+- *[switch2~]* - lets you control if a singnal passes through it's left or right outlet (like [switch2] but for signals)
+- *[mixAB~]* - easy equal-power panning with a built-in gui and ramps.
+- *[sample~]* - easily load play audio files. Great for experimenting without having spend much time doing the setup. Uses the new [soundfiler] ability to get the sample rate! (bugged as 0.48.0 but working on 0.48.1)
+
+
+### Utilities
+
+- *[counter]* - simple counter object to output sequences of numbers
+- *[for]* - works like until, but with an integrated counter on it's right outlet. It "bangs" on it's left outlet when it's done.
+- *[keyChange]* - works like vanilla's [keyname] but only output changes (ie: if you hold a key it will not trigger constantly)
+- *[hold]* - Interpolates linearly from a input number to 0 in a give time.
+- *[metrosnap~]* - simple [snapshot~] and [metro] bundle
+- *[mixAB]* - general purpose utility to mix two signals. Implements useful ramp methods.
+
+### Flow Control
+
+- *[alternate]* - alternates banging on the left and right inlet
+- *[compare]* - lets you compare symbols and floats on the same stream
+- *[switch2]...[switch7]* - having from 2 to 7 outlets it gives you control of which outlet will be used to pass what comes through it's inlet
+
+### Math
+
+- *[nearest]* - rounds to the nearest integer ([i] rounds to th elowest). Works exactly like [expr rint($f1)] but it's name is easier to remember (heh)
+- *[numbersbetween]* - part a numeric stream depending on a specified given range (inside, over and under the range)
+- *[map]* = Converts a numeric stream from one range to another. Easy linear interpolation, baby!
+- *[keepMax][keepMin]* - Outputs the biggest/smallest number received since initialization or last bang on cold inlet.
+- *[hexCharToDec]* - converts an Hexadecimal char to an Decimal number 
+
+### Color
+
+- *[colorNames]* - outputs a color depending on it's name (green, navyBlue, hotPink, etc)
+- *[redGreenBlue][rgb]* - Uses Red, Green and Blue information and outputs a integer representing an color to be used with PD vanilla objects.
+- *[hueSaturationBrightness][hsb]* - Uses Hue, Saturation and Brightness information and outputs a integer representing an color to be used with PD vanilla objects.
+- *[hueSaturationLuminosity][easyflow/hsl]* - Uses Hue, Saturation and Luminosity information and outputs a integer representing an color to be used with PD vanilla objects. (use the slash declaration to avoid confusion with vanilla's [hsl])
+- *[hexColor]* - Uses hexadecimal Red, Green and Blue information and outputs a integer representing an color to be used with PD vanilla objects.
+- *[colorSyntax]* - parses the color syntax used in [easyflow] and outputs a integer representing an color to be used with PD vanilla objects. Can be used in any object.
+
+### Tables
+
+- *[tabCopy]* - copies an array into another, resizing the destination when needed.
+- *[tabReverse]* - reverses an array and write on the same array
+- *[tabReverseCopy]* - reverses an array and writes writes on other array
+
+### Coding
+
+#### Color highlighting
+
+- *[colorHighlighting]* - process colors for the automatic highlighting abstractions
+- *[colorDef]* - define (unique name,color) associations
+- *[colorCirc]* - automatically colored abstraction for color highlighting [send][receive][value] objects
+- *[colorCnv]* - automatically colored abstraction for telling what "names" are inside a subpatch
+- *[colorTri]* - automatically colored abstraction for marking variable wireless connections
+- *[labelCnv]* - automatically colored and resized abstraction to display a labeled [cnv]. Multi-purpose abstraction
+- *[colorCircF][colorCnvF][colorTriF][labelCnvF]* - factory abstraction for color highlighting and tagging
+
+#### Debugging and utilities
+
+- *[GOPTool]* - abstraction to quickly manage your graph-on-parent settings without suffering with PD's gui.
+- *[printHere]* - in-patch console for debugging without having to switch windows.
+
+
 
 ## Conventions
 
@@ -66,7 +143,9 @@ hot inlet. Works with the inverse order of GetNthElement. Notice what triggers t
 
 When dealing with lists indexes always start at 1! For me it makes more sense in Pure Data because it matches the $1, $2, $3, ... $n notation.
 
-This innocent-seeming question is not so simple. It was not an easy choice but it seems to me this 
+_(yet on pd table indexes starts at 0, so future table objects might have indexes starting at 0)_
+
+This innocent-seeming question is not so simple. It was not an easy choice but it seems to me this fits pd best.
 
 See those links about that:
 
@@ -83,17 +162,6 @@ Nevertheless its useful to a program to be able to "convert" between those range
 
 The sample below generates 50 numbers to iterate 5 times over a hipotetical list of 10 elements.
 
-|set 0, 50(             % numbers from 0 to 49
-|
-[easyflow/counter]
-|
-[% 10]                   % numbers from 0 to 9
-|
-[+ 1]                    % numbers from 1 to 10
-|
-[easyflow/listPick]
+![zeroAndOneIndexBase.png](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/zeroAndOneIndexBase.png)
 
-
-
-
-[easyflow/map] is there to help you in difficult cases
+By the way **[easyflow/map]** is there to help you in difficult cases.

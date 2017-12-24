@@ -1,0 +1,18 @@
+#N canvas 408 116 352 379 10;
+#X obj 31 94 nearest;
+#X floatatom 31 70 5 0 0 0 - - -, f 5;
+#X floatatom 31 116 5 0 0 0 - - -, f 5;
+#X floatatom 27 210 5 0 0 0 - - -, f 5;
+#X obj 27 229 i;
+#X floatatom 27 251 5 0 0 0 - - -, f 5;
+#X obj 235 329 easyflow-info;
+#X text 32 20 Rounds a float to the nearest integer;
+#X text 25 172 (Always rounds to the lowest);
+#X text 117 89 use shift+drag to test;
+#X obj 19 308 expr rint($f1);
+#X text 15 287 works like;
+#X text 15 328 but might be easier to remember, f 18;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;

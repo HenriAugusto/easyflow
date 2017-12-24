@@ -1,0 +1,18 @@
+#N canvas 706 265 442 275 10;
+#X msg 48 62 9 8 7 6 5 4 3 2 1;
+#X obj 48 114 popLastN 5;
+#X obj 304 230 easyflow-info;
+#X floatatom 115 93 5 0 9 0 - - -, f 5;
+#X text 147 114 arg: initial number of elements to pop;
+#X text 55 15 Passes a list without its last N elements;
+#X obj 48 172 easyflow/printHere -s;
+#X obj 115 142 easyflow/printHere -s;
+#N canvas 0 50 386 156 comment 0;
+#X text 22 21 Therre is no need for a popFirstN. Just use [list split]
+in that case. [popLastN] just simplify getting the list length \, subtracting
+one and sending to [list split]., f 39;
+#X restore 44 233 pd comment;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 1 1 7 0;
+#X connect 3 0 1 1;

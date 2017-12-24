@@ -1,0 +1,72 @@
+#N canvas 712 258 567 439 10;
+#X obj 49 95 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 9500 0;
+#X obj 49 245 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 46 205 5 0 0 0 - - -, f 5;
+#X floatatom 46 115 5 0 0 0 - - -, f 5;
+#X obj 209 245 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 206 205 5 0 0 0 - - -, f 5;
+#X text 50 35 Interpolates linearly from a input number to 0 in a give
+time.;
+#X text 302 182 args: 1 - hold time (ms);
+#X text 307 119 cold inlet = set hold time (ms);
+#X floatatom 266 122 5 100 3000 0 - - -, f 5;
+#X obj 448 397 easyflow-info;
+#N canvas 0 50 477 302 example 0;
+#X obj 51 211 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 48 134 5 0 0 0 - - -, f 5;
+#X obj 51 158 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 48 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 48 44 trigger bang bang;
+#X msg 164 66 100;
+#X msg 48 88 25;
+#X obj 271 211 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 268 134 5 0 0 0 - - -, f 5;
+#X obj 271 158 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 268 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 268 44 trigger bang bang;
+#X msg 384 66 100;
+#X msg 268 88 75;
+#X obj 48 66 del 1500;
+#X obj 268 184 hold 3000;
+#X obj 268 66 del 1500;
+#X obj 48 184 hold 3000;
+#X connect 1 0 2 0;
+#X connect 2 0 17 0;
+#X connect 3 0 4 0;
+#X connect 4 0 14 0;
+#X connect 4 1 5 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 0;
+#X connect 8 0 9 0;
+#X connect 9 0 15 0;
+#X connect 10 0 11 0;
+#X connect 11 0 16 0;
+#X connect 11 1 12 0;
+#X connect 12 0 8 0;
+#X connect 13 0 8 0;
+#X connect 14 0 6 0;
+#X connect 15 0 7 0;
+#X connect 16 0 13 0;
+#X connect 17 0 0 0;
+#X restore 44 364 pd example;
+#X obj 46 183 hold 1000;
+#X obj 206 183 hold 3000;
+#X text 43 317 hold only updates it's "trajectory" if a number bigger
+than the current value is inputed.;
+#X connect 0 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 12 0;
+#X connect 3 0 13 0;
+#X connect 5 0 4 0;
+#X connect 9 0 13 1;
+#X connect 12 0 2 0;
+#X connect 13 0 5 0;

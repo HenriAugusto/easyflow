@@ -1,0 +1,22 @@
+#N canvas 626 101 528 307 10;
+#X msg 58 74 WaterChip;
+#X obj 58 161 t a a;
+#X obj 58 209 symbolize;
+#X obj 386 237 easyflow-info;
+#X text 41 31 Just a shortcut to add a symbol selector to messages
+;
+#X obj 90 184 print before;
+#X obj 58 231 print after;
+#X msg 78 99 symbol vault13;
+#X text 193 98 unnafected;
+#X obj 337 141 easyflow/numberSymbol;
+#X text 132 124 floats aren't converted!;
+#X msg 95 125 5;
+#X text 329 104 if you want to convert floats to symbols use:, f 23
+;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 5 0;
+#X connect 2 0 6 0;
+#X connect 7 0 1 0;
+#X connect 11 0 1 0;

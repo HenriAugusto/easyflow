@@ -1,0 +1,9 @@
+#N canvas 483 151 410 252 10;
+#X obj 44 109 easyflow/hexCharToDec;
+#X obj 219 197 easyflow/easyflow-info;
+#X obj 44 131 easyflow/printHere;
+#X msg 44 84 0 \, 1 \, 2 \, 3 \, 4 \, 5 \, 6 \, 7 \, 8 \, 9 \, a \,
+b \, c \, D \, E \, F;
+#X text 37 40 converts an Hexadecimal char to an Decimal number;
+#X connect 0 0 2 0;
+#X connect 3 0 0 0;

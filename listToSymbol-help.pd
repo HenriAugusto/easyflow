@@ -1,0 +1,22 @@
+#N canvas 373 389 392 449 10;
+#X obj 57 229 easyflow/listToSymbol;
+#X symbolatom 57 291 35 0 0 0 - - -, f 35;
+#X msg 57 85 i hate underlines in labels;
+#X obj 251 402 easyflow-info;
+#X obj 60 364 hsl 128 15 0 127 0 0 empty empty empty 10 -8 0 15 -262144
+-1 -1 0 1;
+#X msg 57 320 label \$1;
+#X msg 80 114 1 2 3 4;
+#X msg 143 147 a b c;
+#X msg 143 177 list a b c;
+#X msg 87 141 10;
+#X text 57 23 converts a list to a symbol \, adding the special char
+" " between words., f 36;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 2 0 0 0;
+#X connect 5 0 4 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;

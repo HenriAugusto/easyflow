@@ -1,0 +1,74 @@
+#N canvas 686 56 745 736 10;
+#X obj 43 32 colorHighlighting;
+#X floatatom 42 294 5 0 0 0 - - -, f 5;
+#X floatatom 172 291 5 0 0 0 - - -, f 5;
+#X floatatom 42 370 5 0 0 0 - - -, f 5;
+#X floatatom 172 371 5 0 0 0 - - -, f 5;
+#X floatatom 353 348 5 0 0 0 - - -, f 5;
+#X floatatom 493 348 5 0 0 0 - - -, f 5;
+#X floatatom 493 418 5 0 0 0 - - -, f 5;
+#X obj 42 210 colorDef \$0-testName3 196 255 128;
+#X text 60 478 [colorCnv \$0-testName3];
+#X text 58 529 [colorCirc \$0-testName4];
+#X obj 42 322 s \$0-testName3;
+#X obj 172 322 s \$0-testName1;
+#X obj 42 392 s \$0-testName2;
+#X obj 172 392 s \$0-testName4;
+#X obj 353 391 r \$0-testName2;
+#X obj 353 321 r \$0-testName1;
+#X obj 493 321 r \$0-testName3;
+#X obj 493 391 r \$0-testName4;
+#X text 58 510 [colorCirc \$0-testName1];
+#X obj 42 478 colorCnv \$0-testName3;
+#X obj 31 322 colorCnv \$0-testName3;
+#X obj 483 321 colorCnv \$0-testName3;
+#X obj 161 322 colorCnv \$0-testName1;
+#X obj 342 321 colorCnv \$0-testName1;
+#X obj 31 392 colorCnv \$0-testName2;
+#X obj 342 391 colorCnv \$0-testName2;
+#X floatatom 353 413 5 0 0 0 - - -, f 5;
+#X obj 161 392 colorCnv \$0-testName4;
+#X obj 482 391 colorCnv \$0-testName4;
+#X obj 42 453 colorCnv \$0-testName1;
+#X text 60 452 [colorCnv \$0-testName1];
+#X text 58 553 [colorTri \$0-testName1];
+#X text 58 570 [colorTri \$0-testName2];
+#X text 359 78 syntax parsing powered by:;
+#X obj 405 105 colorSyntax;
+#X obj 42 532 colorCirc \$0-testName4;
+#X obj 379 685 colorHighlighting-info;
+#X text 274 21 [colorHighlighting] is the main object that stores and
+process the colors for every automatically colored objects.;
+#X text 45 94 [colorDef] defines a color to be associated with a name
+, f 29;
+#X obj 380 658 cnv 11 164 17 empty empty complete information 2 9
+0 14 -1 -262144 0;
+#X text 340 134 see it's help file for definitions.;
+#X obj 41 628 easyflow/labelcnv \$0-testName3 init;
+#X obj 41 600 easyflow/labelcnv \$0-testName1 update;
+#X text 99 601 [labelCnv \$0-testName1 update];
+#X text 99 627 [labelCnv \$0-testName3 init];
+#X text 307 194 <-- try changing the colors on those objects;
+#X obj 42 240 colorDef \$0-testName4 255 0 128 RGB;
+#X obj 42 179 colorDef \$0-testName2 olive;
+#X obj 42 150 colorDef \$0-testName1 navyBlue;
+#X text 271 505 Those objects will read the colors associated with
+the argument.;
+#X obj 614 684 easyflow-info;
+#N canvas 0 50 500 142 comment 0;
+#X text 39 35 Please note that while having multiple [colorHighlighting]
+objects will still work it is not advised as all color calculations
+will be done multiple times and loading times may increase significantly!
+;
+#X restore 128 686 pd comment;
+#X obj 42 574 colorTri \$0-testName2;
+#X obj 42 556 colorTri \$0-testName1;
+#X obj 42 512 colorCirc \$0-testName1;
+#X connect 1 0 11 0;
+#X connect 2 0 12 0;
+#X connect 3 0 13 0;
+#X connect 4 0 14 0;
+#X connect 15 0 27 0;
+#X connect 16 0 5 0;
+#X connect 17 0 6 0;
+#X connect 18 0 7 0;

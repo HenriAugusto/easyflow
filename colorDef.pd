@@ -1,0 +1,17 @@
+#N canvas 576 151 464 239 10;
+#X obj 95 24 loadbang;
+#X obj 95 208 send globalColorHighlighting;
+#X obj 95 156 list append setColor \$1 \$2 \$3 \$4 \$5;
+#X obj 95 178 list trim;
+#X obj 95 128 del 50;
+#X obj 171 24 r globalColorHighlightingUpdateAll;
+#X obj 183 66 del 25;
+#X msg 183 88 updateAll;
+#X obj 183 124 s globalColorHighlighting;
+#X connect 0 0 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;

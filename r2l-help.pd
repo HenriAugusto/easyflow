@@ -1,0 +1,3 @@
+#N canvas 207 50 293 108 10;
+#X obj 28 46 right2left;
+#X text 25 17 [r2l] is an abreviation for:;
