@@ -1,0 +1,401 @@
+#N canvas 623 56 674 426 10;
+#N canvas 9 50 593 404 Windows 0;
+#X obj 258 154 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 259 342 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 259 318 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 56 91 0 \, 1 2000;
+#X text 398 340 sinWin;
+#X text 398 316 Blackman-Harris;
+#X text 175 57 Syntax = [sinWin];
+#X text 175 72 Syntax = [Blackman-Harris];
+#X obj 56 113 vline~;
+#X obj 255 132 metrosnap~;
+#X obj 56 240 metrosnap~;
+#X obj 256 240 metrosnap~;
+#X obj 256 203 curves~ Blackman-Harris;
+#X obj 56 203 curves~ sinWin;
+#X connect 3 0 8 0;
+#X connect 8 0 9 0;
+#X connect 8 0 12 0;
+#X connect 8 0 13 0;
+#X connect 9 0 0 0;
+#X connect 10 0 1 0;
+#X connect 11 0 2 0;
+#X connect 12 0 11 0;
+#X connect 13 0 10 0;
+#X restore 487 151 pd Windows;
+#N canvas 0 50 678 446 Exponentials 0;
+#X text 176 23 Syntax = [exp exponent];
+#X obj 222 330 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 222 351 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 222 372 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 219 301 t f;
+#X text 364 349 0.2;
+#X text 364 371 3;
+#X msg 219 54 0 \, 1 2000;
+#X obj 219 86 vline~;
+#X obj 221 149 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 37 269 metrosnap~;
+#X obj 218 118 metrosnap~;
+#X text 363 328 0.4;
+#X obj 219 258 metrosnap~;
+#X obj 425 258 metrosnap~;
+#X obj 37 222 curves~ exp 0.4;
+#X obj 219 221 curves~ exp 0.2;
+#X obj 425 221 curves~ exp 3;
+#X connect 4 0 3 0;
+#X connect 7 0 8 0;
+#X connect 8 0 11 0;
+#X connect 8 0 15 0;
+#X connect 8 0 16 0;
+#X connect 8 0 17 0;
+#X connect 10 0 1 0;
+#X connect 11 0 9 0;
+#X connect 13 0 2 0;
+#X connect 14 0 4 0;
+#X connect 15 0 10 0;
+#X connect 16 0 13 0;
+#X connect 17 0 14 0;
+#X restore 487 84 pd Exponentials;
+#N canvas 146 287 759 576 rangeConversion 0;
+#X obj 45 242 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X floatatom 42 262 5 0 0 0 - - -, f 5;
+#X msg 42 196 0 \, 127 2000;
+#X floatatom 42 409 0 0 0 0 - - -;
+#X obj 45 438 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 188 240 from 0 to 127;
+#X text 43 132 By default all ranges expects input form 0 to 1 If you
+need to use input in a different range you can simply convert it to
+0:1 then convert it back to the original range.;
+#X obj 405 232 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 402 202 line 10;
+#X msg 402 180 0 \, 127 2000;
+#X floatatom 402 419 5 0 0 0 - - -, f 5;
+#X obj 405 438 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 548 230 from 0 to 127;
+#X text 548 436 from 0 to 127;
+#X text 254 436 2048;
+#X text 282 436 383;
+#X text 185 436 from 0 to;
+#X obj 402 261 map 0 127 0 1;
+#X obj 402 390 map 0 1 0 127;
+#X obj 405 367 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 543 367 from 0 to 1;
+#X obj 405 287 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 543 287 from 0 to 1;
+#X text 123 491 You can use [curves lin] instead of [easyflow/map]
+but map is more lightweight because it contains only linear logic!
+, f 66;
+#X text 122 533 You could also substitute [map 0 127 0 1] for [/ 127]
+and [map 0 1 0 127 for [*127];
+#X obj 42 326 curves exp 3;
+#X obj 402 316 curves exp 3;
+#X obj 42 218 line 10;
+#X text 45 15 __this examples uses [curve] instead of [curve~] just
+for brevity (so we don't need to convert signals to control data) but
+the math is the same!__, f 90;
+#X text 42 63 You can use [curvesmap~] for that purpose. But if you
+want to know the math it is really simple:;
+#X text 42 96 ( [curves~ lin] is the only exception in the sense that
+it does not necessarily expects input between 0 and 1.), f 66;
+#X connect 0 0 1 0;
+#X connect 1 0 25 0;
+#X connect 2 0 27 0;
+#X connect 3 0 4 0;
+#X connect 7 0 17 0;
+#X connect 8 0 7 0;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 17 0 21 0;
+#X connect 18 0 10 0;
+#X connect 19 0 18 0;
+#X connect 21 0 26 0;
+#X connect 25 0 3 0;
+#X connect 26 0 19 0;
+#X connect 27 0 0 0;
+#X restore 487 215 pd rangeConversion;
+#N canvas 0 50 761 666 bounce 0;
+#X obj 50 272 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 250 272 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 440 272 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 246 80 0 \, 1 2000;
+#X obj 75 510 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 275 510 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 485 510 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 8980 1;
+#X msg 272 339 0 \, 1 2000;
+#X text 72 536 starts slow ends fast, f 11;
+#X text 290 544 constant speed;
+#X text 512 536 starts slow ends fast jump on start, f 13;
+#X text 100 22 Syntax: [bounce n] where n is the number of "hits on
+the grounds";
+#X text 98 60 That is equivalent ot the times where f(x) = 0 AND x
+!= 0;
+#X obj 246 112 vline~;
+#X obj 359 124 metrosnap~;
+#X obj 362 146 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 47 249 metrosnap~;
+#X obj 247 249 metrosnap~;
+#X obj 437 248 metrosnap~;
+#X obj 272 371 vline~;
+#X obj 409 379 metrosnap~;
+#X obj 412 401 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 272 450 curves~ bounce2 6;
+#X obj 72 488 metrosnap~;
+#X obj 272 487 metrosnap~;
+#X obj 482 486 metrosnap~;
+#X obj 47 212 curves~ bounce 4;
+#X obj 247 212 curves~ bounce 6;
+#X obj 437 211 curves~ bounce 10;
+#X obj 72 451 curves~ bounce 6;
+#X obj 482 449 curves~ bounce3 6;
+#X connect 3 0 13 0;
+#X connect 7 0 19 0;
+#X connect 13 0 14 0;
+#X connect 13 0 26 0;
+#X connect 13 0 27 0;
+#X connect 13 0 28 0;
+#X connect 14 0 15 0;
+#X connect 16 0 0 0;
+#X connect 17 0 1 0;
+#X connect 18 0 2 0;
+#X connect 19 0 20 0;
+#X connect 19 0 22 0;
+#X connect 19 0 29 0;
+#X connect 19 0 30 0;
+#X connect 20 0 21 0;
+#X connect 22 0 24 0;
+#X connect 23 0 4 0;
+#X connect 24 0 5 0;
+#X connect 25 0 6 0;
+#X connect 26 0 16 0;
+#X connect 27 0 17 0;
+#X connect 28 0 18 0;
+#X connect 29 0 23 0;
+#X connect 30 0 25 0;
+#X restore 487 173 pd bounce;
+#N canvas 0 50 533 325 Sinusoidals 0;
+#X text 56 32 Syntax = [sin amp freq phase];
+#X obj 60 247 hsl 128 15 -5 5 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6350 1;
+#X msg 147 61 0 \, 1 2000;
+#X obj 270 247 hsl 128 15 -2 2 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X obj 147 83 vline~;
+#X obj 147 105 metrosnap~;
+#X obj 150 127 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 57 218 metrosnap~;
+#X obj 267 222 metrosnap~;
+#X obj 57 181 curves~ sin 5 1 0;
+#X obj 267 181 curves~ sin 2 3 1.5708;
+#X connect 2 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 0 9 0;
+#X connect 4 0 10 0;
+#X connect 5 0 6 0;
+#X connect 7 0 1 0;
+#X connect 8 0 3 0;
+#X connect 9 0 7 0;
+#X connect 10 0 8 0;
+#X restore 487 128 pd Sinusoidals;
+#N canvas 422 352 938 528 Log 0;
+#X obj 222 330 hsl 128 15 -20 0 0 0 empty \$0-ln empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 222 350 hsl 128 15 -20 0 0 0 empty \$0-log empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 222 372 hsl 128 15 -20 0 0 0 empty \$0-logb10 empty -2 -8 0
+10 -262144 -1 -1 5715 1;
+#X obj 222 394 hsl 128 15 -20 0 0 0 empty \$0-logb2 empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X text 363 328 ln;
+#X text 364 349 log;
+#X text 364 371 logb10;
+#X text 364 394 logb 2;
+#X obj 37 283 s \$0-ln;
+#X obj 219 282 s \$0-log;
+#X obj 425 283 s \$0-logb10;
+#X obj 645 283 s \$0-logb2;
+#X text 331 42 Syntax = [ln];
+#X text 433 41 = [log];
+#X text 331 62 Syntax = [logb base;
+#X text 403 334 (both are natural log);
+#X obj 219 86 vline~;
+#X obj 219 138 metrosnap~;
+#X obj 222 160 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 37 259 metrosnap~;
+#X obj 219 258 metrosnap~;
+#X obj 425 258 metrosnap~;
+#X obj 645 258 metrosnap~;
+#X msg 219 54 0 \, 1 3000;
+#X obj 37 222 curves~ ln;
+#X obj 219 221 curves~ log;
+#X obj 425 221 curves~ logb 10;
+#X obj 645 221 curves~ logb 2;
+#X connect 16 0 17 0;
+#X connect 16 0 24 0;
+#X connect 16 0 25 0;
+#X connect 16 0 26 0;
+#X connect 16 0 27 0;
+#X connect 17 0 18 0;
+#X connect 19 0 8 0;
+#X connect 20 0 9 0;
+#X connect 21 0 10 0;
+#X connect 22 0 11 0;
+#X connect 23 0 16 0;
+#X connect 24 0 19 0;
+#X connect 25 0 20 0;
+#X connect 26 0 21 0;
+#X connect 27 0 22 0;
+#X restore 487 105 pd Log;
+#N canvas 783 206 562 439 Linear 0;
+#X text 210 142 0 to 1;
+#X text 188 263 -100 to 100;
+#X text 33 37 Syntax = [lin range1_min range1_max range2_min range2_max]
+;
+#X obj 67 144 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 46 264 hsl 128 15 -100 100 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X msg 43 64 0 \, 1 2000;
+#X text 47 344 this one is exactly analogous to [easyflow/map] still
+it provides the ability to change between modes so it might be useful.
+That said if you know you are only using the linear function then you
+should use map which is more lightweight;
+#X obj 43 86 vline~;
+#X obj 43 230 metrosnap~ 20;
+#X obj 64 121 metrosnap~ 20;
+#X obj 43 183 curves~ lin 0 1 -100 100;
+#X connect 5 0 7 0;
+#X connect 7 0 9 0;
+#X connect 7 0 10 0;
+#X connect 8 0 4 0;
+#X connect 9 0 3 0;
+#X connect 10 0 8 0;
+#X restore 488 60 pd Linear;
+#X obj 47 103 vline~;
+#X obj 201 217 hsl 128 15 0 1 0 0 empty \$0-exp empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 47 71 0 \, 1 2000 50;
+#X obj 201 194 hsl 128 15 0 1 0 0 empty \$0-linear empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 68 155 s \$0-linear;
+#X obj 48 283 s \$0-exp;
+#X text 342 192 \$0-linear;
+#X text 344 217 \$0-exp;
+#X obj 537 281 loadbang;
+#X msg 537 303 dsp 1;
+#X obj 537 325 s pd;
+#X obj 68 133 metrosnap~ 20;
+#X obj 48 254 metrosnap~ 20;
+#X obj 47 195 curves~ exp 0.2;
+#X text 38 331 see also:;
+#X obj 201 324 curvesmap;
+#X obj 201 364 curvesmap~;
+#X text 45 372 signals:;
+#X obj 120 324 curves;
+#X obj 527 381 easyflow-info;
+#N canvas 281 213 1002 478 alternating 0;
+#X obj 58 276 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 50 402 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6350 1;
+#X obj 47 65 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 47 109 easyflow/counter;
+#X obj 47 153 trigger bang float;
+#N canvas 0 50 467 352 modes 0;
+#X msg 78 188 set Blackman-Harris;
+#X msg 103 164 set bounce 6;
+#X msg 53 215 set exp 0.3;
+#X obj 53 15 inlet;
+#X msg 153 117 set logb 3;
+#X obj 53 60 select 0 1 2 3 4 5, f 22;
+#X obj 157 282 outlet;
+#X msg 178 87 set sin 1 1 0;
+#X msg 128 140 set lin 0 1 -1 1;
+#X connect 0 0 6 0;
+#X connect 1 0 6 0;
+#X connect 2 0 6 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 5 0 2 0;
+#X connect 5 1 0 0;
+#X connect 5 2 1 0;
+#X connect 5 3 8 0;
+#X connect 5 4 4 0;
+#X connect 5 5 7 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 0;
+#X restore 207 248 pd modes;
+#X obj 47 131 % 6;
+#X text 104 419 0;
+#X text 173 419 1;
+#X text 37 419 -1;
+#X msg 585 110 set Blackman-Harris;
+#X msg 602 146 setGraph Blackman-Harris;
+#X msg 612 174 setGraph log 4;
+#X obj 207 400 easyflow/printHere -s;
+#X obj 47 87 metro 3000;
+#X msg 47 191 0 \, 1 3000;
+#X text 73 60 <- init;
+#X text 46 20 You can use set messages to change between curves!;
+#X obj 47 223 vline~;
+#X obj 47 342 curves~ exp 0.3;
+#X obj 47 379 metrosnap~;
+#X obj 483 210 curves~ exp 0.3;
+#X text 479 31 lease note that set does NOT updates the visualization.
+That design ensures maximum performance when needed. If you want to
+update the visualization after changing the curve then use setGraph
+;
+#X text 439 322 the signal version receives messages on the right inlet!
+;
+#X obj 55 249 metrosnap~;
+#X connect 2 0 14 0;
+#X connect 3 0 6 0;
+#X connect 4 0 15 0;
+#X connect 4 1 5 0;
+#X connect 5 0 13 0;
+#X connect 5 0 19 1;
+#X connect 6 0 4 0;
+#X connect 10 0 21 1;
+#X connect 11 0 21 1;
+#X connect 12 0 21 1;
+#X connect 14 0 3 0;
+#X connect 15 0 18 0;
+#X connect 18 0 19 0;
+#X connect 18 0 24 0;
+#X connect 19 0 20 0;
+#X connect 20 0 1 0;
+#X connect 24 0 0 0;
+#X restore 330 121 pd alternating;
+#X text 47 15 [curves~] is like [curves] but for signals.;
+#X connect 7 0 18 0;
+#X connect 7 0 20 0;
+#X connect 9 0 7 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 18 0 11 0;
+#X connect 19 0 12 0;
+#X connect 20 0 19 0;

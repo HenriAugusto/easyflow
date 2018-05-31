@@ -1,0 +1,44 @@
+#N canvas 488 108 587 414 10;
+#X obj 55 221 listPick;
+#X obj 55 253 easyflow/printHere -s;
+#X obj 55 173 + 1;
+#X floatatom 55 195 5 0 0 0 - - -, f 5;
+#X obj 55 59 vradio 15 1 0 7 empty empty try me 0 -8 0 10 -262144
+-1 -1 1;
+#X text 50 17 pick elements from a previously stored list;
+#X text 45 317 see also:;
+#X obj 122 317 listPickPair;
+#X obj 249 316 easyflow-info;
+#X obj 415 32 loadbang;
+#X obj 415 54 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 415 76 a b c d e f g;
+#X obj 235 253 easyflow/printHere -s;
+#X obj 235 173 + 1;
+#X floatatom 235 195 5 0 0 0 - - -, f 5;
+#X obj 235 59 vradio 15 1 0 7 empty empty try me 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 235 221 listPick 2;
+#X obj 404 98 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
+0;
+#X obj 292 187 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
+0;
+#X obj 98 193 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
+0;
+#X obj 415 98 s \$0-init;
+#X obj 302 187 r \$0-init;
+#X obj 108 193 r \$0-init;
+#X text 347 214 number of elements to pick, f 12;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 2 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 20 0;
+#X connect 13 0 14 0;
+#X connect 14 0 16 0;
+#X connect 15 0 13 0;
+#X connect 16 0 12 0;
+#X connect 21 0 16 1;
+#X connect 22 0 0 1;

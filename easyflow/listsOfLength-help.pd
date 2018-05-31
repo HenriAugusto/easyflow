@@ -1,0 +1,20 @@
+#N canvas 971 235 496 347 10;
+#X msg 73 101 1 \, 1 2 \, 1 2 3 \, 1 2 3 4 \, 1 2 3 4 5;
+#X obj 73 185 listsOfLength 3;
+#X msg 175 132 1;
+#X floatatom 175 165 5 0 0 0 - - -, f 5;
+#X obj 73 230 easyflow/printHere -s;
+#X obj 215 231 easyflow/printHere -m4;
+#X msg 210 132 2;
+#X msg 249 132 3;
+#X text 198 187 arg: list length;
+#X obj 367 309 easyflow-info;
+#X text 33 29 [listsOfLength] passes lists of the desired length through
+its left outlet and other lists to the right outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 1 1 5 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 1;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;

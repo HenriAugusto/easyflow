@@ -1,0 +1,341 @@
+#N canvas 521 73 1049 528 10;
+#X obj 498 160 inlet~;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array \$0-scope 32768 float 0;
+#X coords 0 1 32767 -1 150 105 1 0 0;
+#X restore 65 106 graph;
+#X obj 122 13 namecanvas \$0-this;
+#X obj 421 9 loadbang;
+#X msg 421 42 1;
+#N canvas 966 194 598 394 gopTool 0;
+#X obj 17 23 easyflow/GOPTool;
+#X obj 17 241 s \$0-this;
+#X msg 318 248 coords 0 1 1 -1 204.824 165.176 1 46.6078 70.9804 1
+;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 2 0 0 0;
+#X restore 44 13 pd gopTool;
+#X obj 498 233 tabwrite~ \$0-scope;
+#X obj 421 65 s \$0-loadbang;
+#X obj 68 217 hsl 145 10 64 32768 0 0 empty \$0-hZoomSlider zoom 55
+5 0 10 -262144 -1 -1 14400 0;
+#X obj 410 65 cnv 10 10 17 empty empty empty 20 12 0 14 -199729 -1
+0;
+#X obj 486 160 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#N canvas 0 50 450 300 UpdateGraph30fps 0;
+#X obj 31 68 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 31 98 metro 30;
+#X obj 31 121 f \$0;
+#X floatatom 31 194 5 0 0 0 - - -, f 5;
+#X obj 31 171 expr size("$s1");
+#X msg 31 144 symbol \$1-scope;
+#X obj 31 239 s \$0-scope;
+#X msg 31 216 resize \$1;
+#X text 102 95 Update graph at 30 FPS;
+#X msg 31 43 1;
+#X obj 31 18 r \$0-loadbang;
+#X obj 20 18 cnv 10 10 17 empty empty empty 20 12 0 14 -199729 -1 0
+;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 7 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 7 0 6 0;
+#X connect 9 0 0 0;
+#X connect 10 0 9 0;
+#X coords 0 -1 1 1 25 35 1 28 51;
+#X restore 543 14 pd UpdateGraph30fps;
+#X obj 221 108 vsl 10 100 1 64 1 0 empty \$0-vZoomSlider empty 0 -9
+0 10 -262144 -1 -1 0 0;
+#N canvas 0 52 409 521 verticalZoom 0;
+#X obj 51 470 s \$0-scope;
+#X obj 244 171 f \$0;
+#X obj 244 221 expr size("$s1");
+#X msg 244 194 symbol \$1-scope;
+#X obj 51 235 t f f;
+#X obj 83 266 * -1;
+#X obj 51 397 pack f f f;
+#X obj 51 26 inlet;
+#X obj 123 297 cnv 10 10 17 empty empty empty 20 12 0 14 -260097 -1
+0;
+#X obj 51 350 + 0;
+#X obj 84 350 + 0;
+#X obj 205 71 cnv 10 10 17 empty empty empty 20 12 0 14 -75885 -1 0
+;
+#X msg 51 431 bounds 0 \$1 \$3 \$2;
+#X obj 216 71 v \$0-vZoom;
+#X obj 122 94 cnv 10 10 17 empty empty empty 20 12 0 14 -217651 -1
+0;
+#X obj 51 48 trigger float bang float;
+#X obj 133 94 s \$0-updateYLabels;
+#X obj 134 297 v \$0-vOffset;
+#X obj 51 125 trigger float bang, f 28;
+#X obj 51 147 trigger float bang;
+#X obj 244 334 t f;
+#X connect 1 0 3 0;
+#X connect 2 0 20 0;
+#X connect 3 0 2 0;
+#X connect 4 0 9 0;
+#X connect 4 1 5 0;
+#X connect 5 0 10 0;
+#X connect 6 0 12 0;
+#X connect 7 0 15 0;
+#X connect 9 0 6 0;
+#X connect 10 0 6 1;
+#X connect 12 0 0 0;
+#X connect 15 0 18 0;
+#X connect 15 1 16 0;
+#X connect 15 2 13 0;
+#X connect 17 0 9 1;
+#X connect 17 0 10 1;
+#X connect 18 0 19 0;
+#X connect 18 1 1 0;
+#X connect 19 0 4 0;
+#X connect 19 1 17 0;
+#X connect 20 0 6 2;
+#X restore 221 342 pd verticalZoom;
+#X obj 506 190 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 518 190 outlet~;
+#X obj 749 148 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 761 148 inlet;
+#X obj 816 222 s \$0-vZoomSlider;
+#X obj 761 247 s \$0-hZoomSlider;
+#X obj 235 108 vsl 10 100 -10 10 0 0 empty \$0-vOffsetSlider empty
+0 -9 0 10 -262144 -1 -1 4950 0;
+#N canvas 220 535 353 203 verticalOffset 0;
+#X obj 26 41 inlet;
+#X obj 138 128 cnv 10 10 17 empty empty empty 20 12 0 14 -260097 -1
+0;
+#X obj 26 104 trigger bang float;
+#X obj 26 126 outlet;
+#X floatatom 26 85 5 0 0 0 - - -, f 5;
+#X obj 149 128 v \$0-vOffset;
+#X connect 0 0 4 0;
+#X connect 2 0 3 0;
+#X connect 2 1 5 0;
+#X connect 4 0 2 0;
+#X restore 235 262 pd verticalOffset;
+#X obj 234 216 bng 12 250 50 0 \$0-resetOffsetButton empty empty 17
+7 0 10 -262144 -1 -1;
+#X obj 871 196 s \$0-vOffsetSlider;
+#X obj 235 239 i;
+#N canvas 0 50 450 300 update y labels 0;
+#X obj 71 248 s \$0-scope;
+#X obj 60 64 cnv 10 10 17 empty empty empty 20 12 0 14 -75885 -1 0
+;
+#X obj 71 64 v \$0-vZoom;
+#X obj 60 35 cnv 10 10 17 empty empty empty 20 12 0 14 -217651 -1 0
+;
+#X obj 71 35 r \$0-updateYLabels;
+#X obj 71 86 trigger float float bang;
+#X obj 225 113 cnv 10 10 17 empty empty empty 20 12 0 14 -260097 -1
+0;
+#X obj 236 113 v \$0-vOffset;
+#X obj 71 186 pack float float float;
+#X msg 71 226 ylabel 0 \$2 \$3 \$1;
+#N canvas 0 50 368 207 getMin 0;
+#X obj 34 25 inlet;
+#X obj 34 47 trigger bang bang;
+#X obj 139 74 cnv 10 10 17 empty empty empty 20 12 0 14 -75885 -1 0
+;
+#X obj 150 74 v \$0-vZoom;
+#X obj 23 74 cnv 10 10 17 empty empty empty 20 12 0 14 -260097 -1 0
+;
+#X obj 34 74 v \$0-vOffset;
+#X obj 34 106 -;
+#X obj 34 128 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 1 1 3 0;
+#X connect 3 0 6 1;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X restore 71 120 pd getMin;
+#N canvas 0 50 368 207 getMax 0;
+#X obj 34 25 inlet;
+#X obj 34 47 trigger bang bang;
+#X obj 139 74 cnv 10 10 17 empty empty empty 20 12 0 14 -75885 -1 0
+;
+#X obj 150 74 v \$0-vZoom;
+#X obj 23 74 cnv 10 10 17 empty empty empty 20 12 0 14 -260097 -1 0
+;
+#X obj 34 74 v \$0-vOffset;
+#X obj 34 128 outlet;
+#X obj 34 106 +;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 1 1 3 0;
+#X connect 3 0 7 1;
+#X connect 5 0 7 0;
+#X connect 7 0 6 0;
+#X restore 146 150 pd getMax;
+#X connect 2 0 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 10 0;
+#X connect 5 1 11 0;
+#X connect 5 2 7 0;
+#X connect 7 0 8 2;
+#X connect 8 0 9 0;
+#X connect 9 0 0 0;
+#X connect 10 0 8 0;
+#X connect 11 0 8 1;
+#X restore 736 14 pd update y labels;
+#X obj 720 16 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -217651
+0;
+#X obj 49 255 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -34256
+0;
+#N canvas 0 50 341 299 updateHZoom 0;
+#X floatatom 56 79 12 0 0 0 - - -, f 12;
+#X obj 56 101 i;
+#X msg 88 161 resize \$1;
+#X obj 88 184 s \$0-scope;
+#X obj 56 124 t b f;
+#X obj 45 212 cnv 10 10 17 empty empty empty 20 12 0 14 -34256 -1 0
+;
+#X obj 56 212 s \$0-updateWriteSpeed;
+#X obj 56 44 inlet;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 4 0 6 0;
+#X connect 4 1 2 0;
+#X connect 7 0 0 0;
+#X restore 65 251 pd updateHZoom;
+#N canvas 0 50 335 260 bangTabWrite 0;
+#X obj 89 42 r \$0-loadbang;
+#X obj 121 145 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 54 188 metro 1000;
+#X obj 54 111 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 78 42 cnv 10 10 17 empty empty empty 20 12 0 14 -199729 -1 0
+;
+#X obj 131 117 cnv 10 10 17 empty empty empty 20 12 0 14 -34256 -1
+0;
+#X obj 142 117 r \$0-updateWriteSpeed;
+#N canvas 0 50 305 323 getWriteSpeed 0;
+#X obj 43 47 f \$0;
+#X floatatom 43 120 5 0 0 0 - - -, f 5;
+#X obj 43 97 expr size("$s1");
+#X msg 43 70 symbol \$1-scope;
+#X obj 43 142 trigger float bang;
+#X obj 166 170 samplerate~;
+#X floatatom 166 193 5 0 0 0 - - -, f 5;
+#X floatatom 43 208 15 0 0 0 - - -, f 15;
+#X floatatom 43 253 20 0 0 0 - - -, f 20;
+#X obj 43 230 * 1000;
+#X obj 43 165 /;
+#X obj 43 17 inlet;
+#X obj 43 272 outlet;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X connect 4 0 10 0;
+#X connect 4 1 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 10 1;
+#X connect 7 0 9 0;
+#X connect 8 0 12 0;
+#X connect 9 0 8 0;
+#X connect 10 0 7 0;
+#X connect 11 0 0 0;
+#X restore 121 166 pd getWriteSpeed;
+#X obj 89 64 t b b;
+#X msg 89 86 1;
+#X obj 54 210 outlet;
+#X connect 0 0 8 0;
+#X connect 1 0 7 0;
+#X connect 2 0 10 0;
+#X connect 3 0 2 0;
+#X connect 6 0 1 0;
+#X connect 7 0 2 1;
+#X connect 8 0 9 0;
+#X connect 8 1 1 0;
+#X connect 9 0 3 0;
+#X restore 618 181 pd bangTabWrite;
+#X obj 618 203 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 592 184 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -199729
+0;
+#X obj 604 184 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -34256
+0;
+#X obj 708 16 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -75885
+0;
+#X obj 695 16 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260097
+0;
+#X obj 761 170 route hZoom vZoom vOffset center;
+#X obj 761 202 * 64;
+#X obj 528 15 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -199729
+0;
+#X obj 227 265 cnv 6 6 12 empty empty ● -1 5 0 15 -262144 -260097
+0;
+#X obj 207 346 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -217651
+0;
+#X obj 195 346 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -75885
+0;
+#X obj 182 346 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260097
+0;
+#N canvas 0 50 290 164 resetOffsetButton 0;
+#X obj 38 81 s \$0-vOffsetSlider;
+#X msg 38 59 0;
+#X obj 38 35 r \$0-resetOffsetButton;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X restore 278 214 pd resetOffsetButton;
+#X text 253 213 <-;
+#X obj 221 295 i 1;
+#X floatatom 221 317 5 0 0 0 - - -, f 5;
+#X obj 721 39 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -199729
+0;
+#X obj 709 39 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -75885
+0;
+#N canvas 0 50 405 184 initializeTicksAndVZoom 1;
+#X obj 142 85 cnv 10 10 17 empty empty empty 20 12 0 14 -75885 -1 0
+;
+#X obj 153 85 v \$0-vZoom;
+#X msg 153 61 1;
+#X obj 53 16 cnv 10 10 17 empty empty empty 20 12 0 14 -199729 -1 0
+;
+#X obj 64 16 r \$0-loadbang;
+#X msg 64 94 0;
+#X obj 64 116 s \$0-vOffsetSlider;
+#X obj 243 141 s \$0-hZoomSlider;
+#X msg 243 65 64;
+#X obj 243 87 * 512;
+#X msg 243 114 set \$1;
+#X obj 64 38 trigger bang bang bang, f 26;
+#X connect 2 0 1 0;
+#X connect 4 0 11 0;
+#X connect 5 0 6 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;
+#X connect 11 0 5 0;
+#X connect 11 1 2 0;
+#X connect 11 2 8 0;
+#X restore 735 36 pd initializeTicksAndVZoom;
+#X connect 0 0 6 0;
+#X connect 0 0 15 0;
+#X connect 3 0 4 0;
+#X connect 4 0 7 0;
+#X connect 8 0 28 0;
+#X connect 12 0 44 0;
+#X connect 17 0 35 0;
+#X connect 20 0 24 0;
+#X connect 21 0 44 0;
+#X connect 24 0 21 0;
+#X connect 29 0 30 0;
+#X connect 30 0 6 0;
+#X connect 35 0 36 0;
+#X connect 35 1 18 0;
+#X connect 35 2 23 0;
+#X connect 35 3 23 0;
+#X connect 36 0 19 0;
+#X connect 44 0 45 0;
+#X connect 45 0 13 0;
+#X coords 0 1 1 -1 204 165 1 46 70;

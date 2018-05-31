@@ -19,13 +19,19 @@ The library was designed to be basic so it is 100% vanilla.
 
 Here are some highlights. Some are simple yet very useful because PD lacks some basic functionality and others are complex.
 
-- **[for]** = convenient object to iterate over numeric intervals. Similar to a for in textual languages
+- **[for]** = Convenient object to iterate over numeric intervals. Similar to a for in textual languages.
 - **[map]** = Converts a numeric stream from one range to another. "One-line" linear interpolation!
 - **[printHere]** - a portable console-like abstraction that you can use directly on your patch. No more switching windows!
 - **[GOPTool]** = controls the Graph-on-parent values directly from pd. No more editing vlaues then clicking apply!
-- **[listToSymbol]** - converts a list to a symbol, adding the special char " " between words. Great to add more than one word to labels.
+- **[listToSymbol]** - converts a list to a symbol, adding the special char " " between words. Great to add more than one word to labels.
 - **[HSB][HSL][RGB][colorNames][hexColor][colorSyntax]** = Easily generate colors to edit Pure Data vanilla GUI objects.
+- **[left2right][right2left][l2r][r2l]** - Miss Java iterators, huh? Yeah, me too. Let's fix this.
+- **[sublist][substring]** - Takes subsets on lists or symbols (strings).
 - **[colorHighlighting]+related** - color highlighting for better code. See the [easyflow wiki](https://github.com/HenriAugusto/easyflow/wiki) for more information
+* **[arrayList]** - holds a list and provides index based get, set and remove methods. Similar to Java's ArrayList.
+* **[curves][curvesmap][curves~][curvesmap~}** - an abstraction for converting numeric streams between different curves.
+* **[any]** - object able to store any kind of control data. It's like [float][symbol]and [list] packed into one. Also stores custom selectors.
+* **[var]** - behaves just like [value] but stores any kind of data (using [anything]) including custom selectors.
 
 ## Some gifs
 
@@ -61,7 +67,7 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 - *[copyList]* - copies a incoming list on a message box.
 - *[left2right][l2r]* - outputs one element of a list at a time, from left to right
 - *[right2left][r2l]* - outputs one element of a list at a time, from right to left
-- *[funnel]* - outputs a list one element at a time (switches between [l2r] and [r2l]).
+- *[funnel]* - outputs a list one element at a time (switches between [l2r] and [r2l]. It's like both in the same abstraction).
 - *[passNthElement]* - takes an incoming list and let only it's nth element pass
 - *[passPair]* - takes an incoming list and a pair starting at it's nth element to pass
 - *[listPlus]* - add a value to each element on an input list
@@ -82,13 +88,14 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 - *[symbolize]* - Just a shortcut to add a symbol selector to messages
 - *[numberSymbol]* - allows you to have symbols that contain only numeric chars
 - *[lowerCase][upperCase]* - converts a symbol to lowerCase/upperCase
-- *[getFolder]* - get the folder from a symbol containing a file path
+- *[getFolder]* - get the folder from a symbol containing a file path (and additionally outputs the file name)
+- *[getFile]* - get the file name from a symbol containing a file path (and additionally outputs the folder path)
 - *[symbolSplit]* - splits a symbol in a specified char
 
 
 ### Signals
 
-- *[audioSpigot]* - [spigot] for signals
+- *[spigot~]* - [spigot] for signals
 - *[switch2~]* - lets you control if a singnal passes through it's left or right outlet (like [switch2] but for signals)
 - *[mixAB~]* - easy equal-power panning with a built-in gui and ramps.
 - *[sample~]* - easily load play audio files. Great for experimenting without having spend much time doing the setup. Uses the new [soundfiler] ability to get the sample rate! (bugged as 0.48.0 but working on 0.48.1)
@@ -158,6 +165,10 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 When dealing with lists indexes always start at 1! For me it makes more sense in Pure Data because it matches the $1, $2, $3, ... $n notation.
 
 _(yet on pd table indexes starts at 0, so future table objects might have indexes starting at 0)_
+
+Also, some objects like [easyflow/substring] use 0-based indexes because substring methods traditionally work like this (Java, etc) and symbols are not lists.
+
+_But note how [sublist] and [arrayList] use 1-based indexes because it deals with lists!_
 
 This innocent-seeming question is not so simple. It was not an easy choice but it seems to me this fits pd best.
 

@@ -1,0 +1,25 @@
+#N canvas 409 146 362 489 10;
+#X obj 239 453 easyflow-info;
+#X obj 47 309 mixAB~;
+#X obj 48 394 dac~;
+#X obj 47 163 *~ 0.1;
+#X text 21 30 easy equal-power panning with a built-in gui;
+#X msg 181 278 1000;
+#X msg 136 278 1000;
+#X msg 107 236 set 0.5;
+#X text 105 215 set the current value;
+#X obj 86 89 vsl 15 64 0 0.4 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 700 1;
+#X text 112 115 Master volume;
+#X text 227 275 ramp left or right in 1000ms, f 9;
+#X obj 47 61 osc~ 440;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 3 0 1 0;
+#X connect 3 0 1 1;
+#X connect 5 0 1 3;
+#X connect 6 0 1 2;
+#X connect 7 0 1 2;
+#X connect 9 0 3 1;
+#X connect 12 0 3 0;
+#X coords 0 489 1 488 150 40 0;

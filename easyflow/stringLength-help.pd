@@ -1,0 +1,11 @@
+#N canvas 0 50 312 230 10;
+#X obj 55 121 stringLength;
+#X floatatom 55 143 5 0 0 0 - - -, f 5;
+#X obj 175 182 easyflow-info;
+#X msg 55 66 symbol abcdefgh;
+#X text 42 23 [stringLength] is a shorthand to get the length of a
+symbol, f 31;
+#X msg 72 91 symbol Shade;
+#X connect 0 0 1 0;
+#X connect 3 0 0 0;
+#X connect 5 0 0 0;

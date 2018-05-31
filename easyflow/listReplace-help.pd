@@ -1,0 +1,18 @@
+#N canvas 801 159 448 336 10;
+#X obj 48 212 easyflow/printHere -s;
+#X obj 48 169 easyflow/listReplace c sub;
+#X msg 173 113 b;
+#X msg 190 136 3;
+#X msg 58 139 1 2 3 a b c;
+#X msg 48 109 a b c c b a;
+#X msg 162 88 symbol a;
+#X text 46 37 Replaces all occurences of an element on a list;
+#X obj 281 275 easyflow-info;
+#X text 38 274 see also:;
+#X obj 112 274 listReplace;
+#X connect 1 0 0 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 1;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 1;

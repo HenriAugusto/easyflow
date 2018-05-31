@@ -1,0 +1,15 @@
+#N canvas 936 80 220 230 10;
+#X obj 40 54 inlet;
+#X obj 40 76 getFolder;
+#X obj 40 108 list prepend;
+#X obj 40 130 list trim;
+#X obj 40 182 outlet;
+#X obj 110 183 outlet;
+#X obj 40 152 list split 1;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 2 0 3 0;
+#X connect 3 0 6 0;
+#X connect 6 0 4 0;
+#X connect 6 1 5 0;
