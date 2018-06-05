@@ -39,6 +39,16 @@ Here are some highlights. Some are simple yet very useful because PD lacks some 
 
 ![hsbDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/hueSaturationBrightnessDemo.gif)
 
+**[curves]**
+
+![curves demo bounce](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/curves%20bounce%20demo.gif)
+
+![curves demo exp](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/curves%20exp%20demo.gif)
+
+**some automatic color highlighting**
+
+![sColor rColor demo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/sColor%20rColor%20demo.gif)
+
 **[printHere]**
 
 ![printHereDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/printHereDemo.gif)
