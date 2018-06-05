@@ -1,0 +1,33 @@
+#N canvas 625 128 635 513 10;
+#X obj 492 465 easyflow-info;
+#X floatatom 39 69 5 0 0 0 - - -, f 5;
+#X msg 67 92 symbol name1;
+#X msg 80 119 symbol name2;
+#X msg 93 147 list a b c d;
+#X obj 13 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 308 175 5 0 0 0 - - -, f 5;
+#X msg 309 193 symbol tic;
+#X msg 309 214 symbol toc;
+#X msg 309 238 list x y z;
+#X obj 39 343 easyflow/printHere;
+#X msg 103 177 list x y z;
+#X msg 102 206 customSelector;
+#X msg 309 261 customSelector;
+#X text 30 8 anything stores any kind of data. Think of it as a [f]
+[s] and [list] object packed into one. It also can hold custom selectors!
+;
+#X obj 39 318 any;
+#X connect 1 0 15 0;
+#X connect 2 0 15 0;
+#X connect 3 0 15 0;
+#X connect 4 0 15 0;
+#X connect 5 0 15 0;
+#X connect 6 0 15 1;
+#X connect 7 0 15 1;
+#X connect 8 0 15 1;
+#X connect 9 0 15 1;
+#X connect 11 0 15 0;
+#X connect 12 0 15 0;
+#X connect 13 0 15 1;
+#X connect 15 0 10 0;

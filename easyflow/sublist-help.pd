@@ -1,0 +1,36 @@
+#N canvas 920 167 563 713 10;
+#X obj 405 667 easyflow-info;
+#X text 49 76 Currently it does NOT check if the indexes are valid.
+, f 25;
+#X floatatom 91 259 5 0 0 0 - - -, f 5;
+#X floatatom 135 259 5 0 0 0 - - -, f 5;
+#X msg 54 230 list a b c d e f g;
+#X obj 54 305 easyflow/printHere -s;
+#X obj 54 454 easyflow/printHere -s;
+#X obj 54 604 easyflow/printHere -s;
+#X msg 54 550 list 10 9 8 7 6 5 4 3 2 1;
+#X text 49 15 [sublist] takes a symbol and outputs a sublist starting
+and ending at given values., f 25;
+#X text 49 129 So [sublist 5 2] will fail silently., f 25;
+#X text 50 340 You can use negative numbers to count from the list
+end., f 27;
+#X text 55 501 You can use "L" or "l" to use the list length., f 23
+;
+#X msg 54 400 list 1 2 3 4 5;
+#X text 49 168 The index is 1-based as it deals with lists., f 25
+;
+#X obj 54 283 sublist 2 4;
+#X obj 54 582 sublist -3 L;
+#X text 148 283 get a list from the 2nd element to the 4th;
+#X obj 54 432 sublist 2 -1;
+#X text 164 430 gets a list from the 2nd and leave the last;
+#X text 155 581 gets the last 3 elements;
+#X text 246 176 <===================;
+#X connect 2 0 15 1;
+#X connect 3 0 15 2;
+#X connect 4 0 15 0;
+#X connect 8 0 16 0;
+#X connect 13 0 18 0;
+#X connect 15 0 5 0;
+#X connect 16 0 7 0;
+#X connect 18 0 6 0;

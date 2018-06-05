@@ -2,6 +2,7 @@
 
 1. [symbolSplit] end up converting floats to symbols. Is this desireble?
 2. [sample~] send a number to the inlet to play the sample at different playbackspeeds. (2 = two times faster. 0.5 = two times slower, etc)
+3. [printHere] adjust GOP settings when resizing.
 
 ## Bug fixes
 

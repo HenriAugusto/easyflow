@@ -1,0 +1,37 @@
+#N canvas 500 191 450 403 10;
+#X obj 65 28 inlet;
+#X obj 188 329 outlet;
+#X obj 188 99 list prepend traverse;
+#X obj 188 121 list trim;
+#X obj 188 213 pointer;
+#X obj 65 50 trigger bang bang;
+#X obj 234 238 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 146 126 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 146 146 next;
+#X obj 175 329 cnv 8 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 52 28 cnv 8 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 188 77 symbol pd-\$1;
+#X msg 65 72 5000;
+#X obj 65 94 easyflow/for;
+#N canvas 0 50 450 300 printError 0;
+#X obj 36 32 inlet;
+#X obj 36 54 print [easyflow/getAllScalars] More than 5000 scalars
+or wrong argument (dollar1 = \$1);
+#X connect 0 0 1 0;
+#X restore 65 185 pd printError;
+#X connect 0 0 5 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 4 1 6 0;
+#X connect 5 0 12 0;
+#X connect 5 1 11 0;
+#X connect 6 0 13 1;
+#X connect 7 0 8 0;
+#X connect 8 0 4 0;
+#X connect 11 0 2 0;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 13 1 7 0;

@@ -1,0 +1,125 @@
+#N canvas 568 82 766 557 10;
+#X obj 50 169 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X floatatom 47 189 5 0 0 0 - - -, f 5;
+#X floatatom 47 260 5 0 0 0 - - -, f 5;
+#X obj 47 143 line 10;
+#X obj 50 282 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 570 499 easyflow/easyflow-info;
+#X text 47 15 [curvesmap] is an abstraction to converting between different
+curves just like [curves] but in addition it allows you to specify
+the expected input range and output range.;
+#X obj 310 169 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X floatatom 307 189 5 0 0 0 - - -, f 5;
+#X floatatom 307 260 5 0 0 0 - - -, f 5;
+#X obj 307 143 line 10;
+#X obj 310 282 hsl 128 15 -100 70 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X msg 307 111 0 \, 50 2000;
+#X msg 47 111 0 \, 1 2000;
+#X obj 191 73 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 192 168 0 to 1;
+#X text 192 281 0 to 1;
+#X text 462 168 0 to 50;
+#X text 455 281 -100 to 70;
+#X text 546 208 notice that 70 comes BEFORE -100 so it goes backwards
+, f 21;
+#X text 52 333 Syntax [curvesmap in_start in_end out_start out_end
+(exp|log|bounce|etc) (parameters)], f 86;
+#X text 51 365 (Anything you can use with curves can be used with curvesmap
+after the 4 first arguments);
+#X obj 47 212 curves exp 0.3;
+#X text 53 428 Example:;
+#N canvas 0 50 608 419 more 0;
+#X obj 317 120 line;
+#X obj 320 144 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 464 144 0 to 50;
+#X obj 320 277 hsl 128 15 3 5 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 317 247 5 0 0 0 - - -, f 5;
+#X text 464 276 3 to 5;
+#X obj 82 120 line;
+#X obj 85 144 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 85 277 hsl 128 15 -11 0 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 82 247 5 0 0 0 - - -, f 5;
+#X text 229 276 -11 to 0;
+#X text 229 144 0 to 1;
+#X obj 82 41 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 82 184 curves logb 10;
+#X obj 82 61 trigger bang bang, f 34;
+#X msg 317 98 0 \, 50 1000;
+#X msg 82 98 0 \, 1 1000;
+#X msg 215 97 0;
+#X text 109 326 Try clicking the 0 to see f(0) for both log curves
+(since the start goes up really fast);
+#X obj 317 184 curvesmap 0 50 3 5 logb 10;
+#X connect 0 0 1 0;
+#X connect 1 0 19 0;
+#X connect 4 0 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 13 0;
+#X connect 9 0 8 0;
+#X connect 12 0 14 0;
+#X connect 13 0 9 0;
+#X connect 14 0 16 0;
+#X connect 14 1 15 0;
+#X connect 15 0 0 0;
+#X connect 16 0 6 0;
+#X connect 17 0 7 0;
+#X connect 17 0 1 0;
+#X connect 19 0 4 0;
+#X restore 365 426 pd more examples;
+#N canvas 313 275 686 383 set 0;
+#X obj 55 106 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X floatatom 52 126 5 0 0 0 - - -, f 5;
+#X floatatom 52 267 5 0 0 0 - - -, f 5;
+#X obj 52 80 line 10;
+#X obj 55 289 hsl 128 15 -100 70 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 52 219 curvesmap 0 50 70 -100 exp 0.3;
+#X msg 52 48 0 \, 50 2000;
+#X text 207 105 0 to 50;
+#X text 200 288 -100 to 70;
+#X msg 112 147 setGraph 0 50 70 -100 Blackman-Harris;
+#X msg 113 179 setGraph 0 50 -100 70 sin 1 2 0;
+#X text 409 143 set and setGraph messages works just like they do for
+[curves] but with additional 4 arguments that correspond to the 4 arguments
+provided in the object creation., f 29;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;
+#X connect 9 0 5 0;
+#X connect 10 0 5 0;
+#X restore 530 53 pd set and setGraph;
+#X obj 307 212 curvesmap 0 50 70 -100 exp 0.3;
+#X obj 125 418 curvesmap 0 127 -1 1 bounce 5;
+#X text 38 481 see also:;
+#X obj 121 514 curves~;
+#X obj 201 514 curvesmap~;
+#X text 45 522 signals:;
+#X obj 120 474 curves;
+#X connect 0 0 1 0;
+#X connect 1 0 22 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X connect 7 0 8 0;
+#X connect 8 0 26 0;
+#X connect 9 0 11 0;
+#X connect 10 0 7 0;
+#X connect 12 0 10 0;
+#X connect 13 0 3 0;
+#X connect 14 0 13 0;
+#X connect 14 0 12 0;
+#X connect 22 0 2 0;
+#X connect 26 0 9 0;

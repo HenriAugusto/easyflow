@@ -1,0 +1,67 @@
+#N canvas 1098 117 655 628 10;
+#X obj 58 19 inlet;
+#X obj 58 551 outlet;
+#X obj 205 278 list prepend traverse;
+#X obj 205 300 list trim;
+#X obj 205 396 pointer;
+#X obj 251 451 outlet;
+#X obj 251 422 trigger bang bang;
+#X obj 137 253 until;
+#X obj 205 256 symbol pd-\$1;
+#X msg 137 275 next;
+#X obj 58 211 trigger bang float bang;
+#X obj 58 516 pointer;
+#X obj 181 152 s \$0-outputPointer;
+#X obj 58 101 trigger float bang;
+#X msg 181 126 0;
+#X obj 168 152 cnv 11 12 17 empty empty empty 2 9 0 14 -151046 -262144
+0;
+#X obj 205 518 trigger pointer bang;
+#X obj 342 576 s \$0-outputPointer;
+#X obj 329 576 cnv 11 12 17 empty empty empty 2 9 0 14 -151046 -262144
+0;
+#X msg 342 550 1;
+#X obj 84 437 cnv 11 12 17 empty empty empty 2 9 0 14 -151046 -262144
+0;
+#X obj 97 437 r \$0-outputPointer;
+#X obj 97 459 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 58 483 spigot;
+#X obj 58 61 route float;
+#X obj 158 60 print [getNthScalar] error. Not float input;
+#X obj 367 442 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 367 482 s \$0-outputPointer;
+#X msg 367 461 0;
+#X obj 354 482 cnv 11 12 17 empty empty empty 2 9 0 14 -151046 -262144
+0;
+#X floatatom 58 41 5 0 0 0 - - -, f 5;
+#X connect 0 0 30 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 16 0;
+#X connect 4 1 6 0;
+#X connect 6 0 5 0;
+#X connect 6 1 7 1;
+#X connect 6 1 26 0;
+#X connect 7 0 9 0;
+#X connect 8 0 2 0;
+#X connect 9 0 4 0;
+#X connect 10 0 23 0;
+#X connect 10 1 7 0;
+#X connect 10 2 8 0;
+#X connect 11 0 1 0;
+#X connect 13 0 10 0;
+#X connect 13 1 14 0;
+#X connect 14 0 12 0;
+#X connect 16 0 11 1;
+#X connect 16 1 19 0;
+#X connect 19 0 17 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 1;
+#X connect 23 0 11 0;
+#X connect 24 0 13 0;
+#X connect 24 1 25 0;
+#X connect 26 0 28 0;
+#X connect 28 0 27 0;
+#X connect 30 0 24 0;

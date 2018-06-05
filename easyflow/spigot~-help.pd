@@ -1,0 +1,42 @@
+#N canvas 592 150 603 412 10;
+#X obj 192 146 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 90 174 spigot~ 40;
+#X obj 91 370 dac~;
+#X obj 410 124 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 410 146 dsp \$1;
+#X obj 410 168 s pd;
+#X obj 144 114 hsl 64 15 20 3000 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X floatatom 141 134 5 0 0 0 - - -, f 5;
+#X text 42 23 Works like [spigot] \, but for signals.;
+#X text 40 45 It makes a fade-in/fade-out instead of immediatelly blocking
+the signal.;
+#X obj 452 366 easyflow-info;
+#X text 440 122 Turn DSP On/Off;
+#X obj 140 242 hsl 64 15 0 0.05 0 0 empty empty empty -2 -8 0 10 -19915
+-1 -1 0 0;
+#X floatatom 137 262 5 0 0 0 - - -, f 5;
+#X text 140 218 Amplitude;
+#X text 218 173 opt arg: fade time;
+#X msg 137 281 \$1 500;
+#X obj 91 330 *~ 0.05;
+#X obj 89 91 noise~;
+#X obj 137 303 line~;
+#X text 220 144 on/off;
+#X text 221 112 fade;
+#X text 217 190 (default: 20);
+#X connect 0 0 1 2;
+#X connect 1 0 17 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 1 1;
+#X connect 12 0 13 0;
+#X connect 13 0 16 0;
+#X connect 16 0 19 0;
+#X connect 17 0 2 0;
+#X connect 17 0 2 1;
+#X connect 18 0 1 0;
+#X connect 19 0 17 1;

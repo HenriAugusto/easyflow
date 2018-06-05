@@ -1,0 +1,90 @@
+#N canvas 0 50 837 497 10;
+#X obj 271 164 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 44 165 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 271 315 color \$1;
+#X obj 271 347 tgl 40 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 271 290 15 0 0 0 - - -, f 15;
+#X text 40 138 [colorSyntax colorName];
+#X text 266 136 [colorSyntax v1 v2 v3];
+#X text 297 208 (HSL assumed);
+#X obj 471 164 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 466 136 [colorSyntax v1 v2 v3 colorMode];
+#X obj 75 111 cnv 11 73 17 empty empty option 1 2 9 0 14 -1 -262144
+0;
+#X obj 305 111 cnv 11 73 17 empty empty option 2 2 9 0 14 -1 -262144
+0;
+#X obj 525 111 cnv 11 73 17 empty empty option 3 2 9 0 14 -1 -262144
+0;
+#X obj 653 444 easyflow-info;
+#X obj 40 294 colorNames-help;
+#X text 44 255 for a list of colorNames:, f 13;
+#X text 470 254 color modes are:;
+#X text 588 255 RGB;
+#X text 588 269 HSB;
+#X text 588 283 HSL;
+#X text 669 249 (you can use upper or lower case as long as ou use
+only one), f 20;
+#X obj 44 186 colorSyntax navyBlue;
+#X obj 271 185 colorSyntax 0 255 128;
+#X obj 471 185 colorSyntax 0 255 128 RGB;
+#N canvas 0 50 500 394 INPUT 0;
+#X obj 53 77 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144 -1
+-1 1;
+#X symbolatom 53 139 10 0 0 0 - - -, f 10;
+#X obj 171 258 easyflow/colorSyntax;
+#X msg 171 280 color \$1;
+#X obj 171 302 tgl 30 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 0 50 458 157 getColor 0;
+#X obj 42 98 easyflow/listPick;
+#X obj 42 68 + 1;
+#X obj 158 45 loadbang;
+#X msg 158 67 list olive blood wine navyBlue hotPink;
+#X obj 42 44 inlet;
+#X obj 42 120 outlet;
+#X connect 0 0 5 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 1;
+#X connect 4 0 1 0;
+#X restore 53 103 pd getColor;
+#X msg 171 122 \$1 255 128;
+#X obj 174 98 hsl 64 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X msg 291 122 \$1 0 0 rgb;
+#X obj 294 98 hsl 64 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X text 49 18 You can pass a list or a symbol to it's inlet like you
+would do with an argument.;
+#X text 177 147 (def=HSL);
+#X msg 35 226 navyBlue;
+#X text 31 256 custom selectors are converted to symbols, f 12;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 1 0;
+#X connect 6 0 2 0;
+#X connect 7 0 6 0;
+#X connect 8 0 2 0;
+#X connect 9 0 8 0;
+#X connect 12 0 2 0;
+#X restore 266 438 pd INPUT;
+#X text 138 413 the same syntax is valid for the hot inlet.;
+#X text 55 21 [colorSyntax] is an object that outputs a color \, using
+it's own input syntax. It was made specially to be used inside other
+easyflow objects related to color \, like [colorcnv] \, to automate
+the parsing a custom syntax regarding colors that is used throughout
+this library., f 95;
+#X connect 0 0 22 0;
+#X connect 1 0 21 0;
+#X connect 2 0 3 0;
+#X connect 4 0 2 0;
+#X connect 8 0 23 0;
+#X connect 21 0 4 0;
+#X connect 22 0 4 0;
+#X connect 23 0 4 0;

@@ -1,0 +1,140 @@
+#N canvas 223 72 738 595 10;
+#X obj 67 205 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 50 312 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 47 15 [curvesmap] is an abstraction to converting between different
+curves just like [curves] but in addition it allows you to specify
+the expected input range and output range.;
+#X obj 330 199 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 310 312 hsl 128 15 -100 70 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 12700 1;
+#X msg 307 111 0 \, 50 2000;
+#X msg 47 111 0 \, 1 2000;
+#X obj 191 73 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 200 203 0 to 1;
+#X text 192 311 0 to 1;
+#X text 482 198 0 to 50;
+#X text 455 311 -100 to 70;
+#X text 546 234 notice that 70 comes BEFORE -100 so it goes backwards
+, f 21;
+#X text 52 363 Syntax [curvesmap in_start in_end out_start out_end
+(exp|log|bounce|etc) (parameters)], f 86;
+#X text 51 395 (Anything you can use with curves can be used with curvesmap
+after the 4 first arguments);
+#X text 53 458 Example:;
+#N canvas 0 50 608 419 more 0;
+#X obj 340 174 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 474 173 0 to 50;
+#X obj 320 307 hsl 128 15 3 5 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 464 306 3 to 5;
+#X obj 105 174 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 85 307 hsl 128 15 -11 0 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 229 306 -11 to 0;
+#X text 249 174 0 to 1;
+#X obj 82 31 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 82 51 trigger bang bang, f 34;
+#X msg 215 87 0;
+#X text 109 356 Try clicking the 0 to see f(0) for both log curves
+(since the start goes up really fast);
+#X obj 82 120 vline~;
+#X obj 317 120 vline~;
+#X obj 82 257 metrosnap~;
+#X floatatom 82 279 5 0 0 0 - - -, f 5;
+#X obj 317 262 metrosnap~;
+#X floatatom 317 284 5 0 0 0 - - -, f 5;
+#X obj 82 214 curves~ logb 10;
+#X obj 102 148 metrosnap~;
+#X obj 337 147 metrosnap~;
+#X msg 317 88 0 \, 50 1000;
+#X msg 82 88 0 \, 1 1000;
+#X obj 317 214 curvesmap~ 0 50 3 5 logb 10;
+#X connect 8 0 9 0;
+#X connect 9 0 22 0;
+#X connect 9 1 21 0;
+#X connect 10 0 12 0;
+#X connect 10 0 13 0;
+#X connect 12 0 18 0;
+#X connect 12 0 19 0;
+#X connect 13 0 20 0;
+#X connect 13 0 23 0;
+#X connect 14 0 15 0;
+#X connect 15 0 5 0;
+#X connect 16 0 17 0;
+#X connect 17 0 2 0;
+#X connect 18 0 14 0;
+#X connect 19 0 4 0;
+#X connect 20 0 0 0;
+#X connect 21 0 13 0;
+#X connect 22 0 12 0;
+#X connect 23 0 16 0;
+#X restore 360 457 pd more examples;
+#N canvas 313 275 622 374 set 0;
+#X obj 93 112 hsl 128 15 0 50 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 0;
+#X obj 55 289 hsl 128 15 -100 70 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X msg 52 28 0 \, 50 2000;
+#X text 245 111 0 to 50;
+#X text 200 288 -100 to 70;
+#X msg 266 147 setGraph 0 50 70 -100 Blackman-Harris;
+#X msg 289 174 setGraph 0 50 -100 70 sin 1 2 0;
+#X text 336 38 set and setGraph messages works just like they do for
+[curves~] but with additional 4 arguments that correspond to the 4
+arguments provided in the object creation., f 29;
+#X obj 52 60 vline~;
+#X obj 52 264 metrosnap~;
+#X obj 90 88 metrosnap~;
+#X obj 52 219 curvesmap~ 0 50 70 -100 exp 0.3;
+#X text 315 220 Also note that it must go on the non-signal inlet!
+, f 25;
+#X connect 2 0 8 0;
+#X connect 5 0 11 1;
+#X connect 6 0 11 1;
+#X connect 8 0 10 0;
+#X connect 8 0 11 0;
+#X connect 9 0 1 0;
+#X connect 10 0 0 0;
+#X connect 11 0 9 0;
+#X restore 530 53 pd set and setGraph;
+#X obj 125 448 curvesmap 0 127 -1 1 bounce 5;
+#X obj 47 143 vline~;
+#X obj 47 242 curves~ exp 0.3;
+#X obj 47 284 metrosnap~;
+#X obj 307 285 metrosnap~;
+#X obj 307 143 vline~;
+#X obj 327 172 metrosnap~;
+#X obj 64 174 metrosnap~;
+#X obj 307 238 curvesmap~ 0 50 70 -100 exp 0.3;
+#X text 38 511 see also:;
+#X obj 201 504 curvesmap;
+#X obj 121 544 curves~;
+#X text 45 552 signals:;
+#X obj 120 504 curves;
+#X obj 575 553 easyflow-info;
+#X obj 620 108 loadbang;
+#X msg 620 130 dsp 1;
+#X obj 620 152 s pd;
+#X connect 5 0 23 0;
+#X connect 6 0 19 0;
+#X connect 7 0 6 0;
+#X connect 7 0 5 0;
+#X connect 19 0 20 0;
+#X connect 19 0 25 0;
+#X connect 20 0 21 0;
+#X connect 21 0 1 0;
+#X connect 22 0 4 0;
+#X connect 23 0 24 0;
+#X connect 23 0 26 0;
+#X connect 24 0 3 0;
+#X connect 25 0 0 0;
+#X connect 26 0 22 0;
+#X connect 33 0 34 0;
+#X connect 34 0 35 0;

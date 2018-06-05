@@ -1,0 +1,187 @@
+#N canvas 275 97 1271 639 10;
+#X obj 43 22 inlet;
+#X obj 43 481 outlet;
+#X obj 43 54 route bang;
+#X obj 110 231 s easyflowGlobalNamespaceVarSet\$1;
+#X obj 61 274 r easyflowGlobalNamespaceVarSet\$1;
+#X obj 43 418 switch2;
+#X obj 441 46 r easyflowGlobalNamespaceVarGet\$1;
+#X msg 574 148 1;
+#X msg 441 148 0;
+#X obj 147 463 send;
+#X obj 441 124 trigger bang bang bang symbol;
+#X symbolatom 641 153 20 0 0 0 - - -, f 20;
+#X obj 436 250 loadbang;
+#X obj 459 511 symbol \$0-thisVarObject;
+#X symbolatom 459 533 20 0 0 0 - - -, f 20;
+#X obj 459 564 s easyflowGlobalNamespaceVarGet\$1;
+#X obj 115 19 r \$0-thisVarObject;
+#X obj 441 98 spigot;
+#X obj 436 272 t b b b;
+#X msg 436 296 1;
+#X obj 43 346 any;
+#X obj 162 437 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 79 372 cnv 10 10 17 empty empty empty 20 12 0 14 -255367 -66577
+0;
+#X obj 812 276 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 448 564 cnv 10 10 17 empty empty empty 20 12 0 14 -91753 -66577
+0;
+#X obj 172 437 r \$0-sendName;
+#X obj 631 174 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 641 174 s \$0-sendName;
+#X obj 89 372 r \$0-switch;
+#X obj 431 177 cnv 10 10 17 empty empty empty 20 12 0 14 -255367 -66577
+0;
+#X obj 441 177 s \$0-switch;
+#X obj 50 274 cnv 10 10 17 empty empty empty 20 12 0 14 -108893 -66577
+0;
+#X obj 99 231 cnv 10 10 17 empty empty empty 20 12 0 14 -108893 -66577
+0;
+#X obj 470 74 cnv 10 10 17 empty empty empty 20 12 0 14 -4032 -66577
+0;
+#X obj 480 74 r \$0-getSpigot;
+#X obj 503 327 cnv 10 10 17 empty empty empty 20 12 0 14 -4032 -66577
+0;
+#X obj 513 327 s \$0-getSpigot;
+#X obj 822 276 s \$0-anyHot;
+#X obj 70 302 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 80 302 r \$0-anyHot;
+#X obj 459 461 trigger bang bang;
+#X obj 430 46 cnv 10 10 17 empty empty empty 20 12 0 14 -91753 -66577
+0;
+#X obj 565 486 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -66577
+0;
+#X obj 851 60 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -66577
+0;
+#X msg 861 82 1;
+#X obj 575 486 s easyflowGlobalNamespaceVarOpenRequest\$1;
+#X obj 861 60 r easyflowGlobalNamespaceVarOpenRequest\$1;
+#X obj 861 154 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 822 176 spigot;
+#X obj 822 198 t a b;
+#X obj 916 98 cnv 10 10 17 empty empty empty 20 12 0 14 -261121 -66577
+0;
+#X obj 926 98 r easyflowGlobalNamespaceVarCloseRequest\$1;
+#X msg 926 120 0;
+#X obj 843 241 cnv 10 10 17 empty empty empty 20 12 0 14 -261121 -66577
+0;
+#X obj 854 241 s easyflowGlobalNamespaceVarCloseRequest\$1;
+#X obj 497 213 cnv 10 10 17 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 507 213 s \$0-fulfillRequest;
+#X obj 812 34 cnv 10 10 17 empty empty empty 20 12 0 14 -258113 -66577
+0;
+#X obj 822 34 r \$0-fulfillRequest;
+#X obj 31 570 loadbang;
+#X obj 31 592 f \$0;
+#X floatatom 31 614 5 0 0 0 - - -, f 5;
+#X obj 89 395 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 101 537 spigot;
+#X obj 101 570 print [var] sending from [\$0];
+#X obj 140 512 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 162 511 <- debug;
+#X msg 482 295 0;
+#X text 632 324 <- we must close the spigot because the object requesting
+the data is the first one to receive that request (in that case a request
+to itself). Upon fulfilling the request it would send its 0 value to
+easyflowGlobalnamespaceVarSet\$1;
+#X text 949 153 also we do not need to receive the data from more than
+one older [var] object so this code closes the request upon fulfilling
+it (so it is only fulfilled once), f 42;
+#X text 311 167 send the data to the requesting [var] instance, f
+18;
+#X obj 146 87 cnv 10 10 17 empty empty empty 20 12 0 14 -4034 -66577
+0;
+#X obj 110 160 switch2;
+#X obj 156 87 r \$0-getSwitch;
+#X obj 156 109 + 1;
+#X obj 156 131 % 2;
+#X obj 473 403 cnv 10 10 17 empty empty empty 20 12 0 14 -4034 -66577
+0;
+#X obj 484 403 s \$0-getSwitch;
+#X text 593 400 <- also when getting our value on [loadbang] there
+is no need to send it to other instances of [var];
+#X obj 170 303 cnv 10 10 17 empty empty empty 20 12 0 14 -217769 -66577
+0;
+#X obj 180 303 r \$0-anyCold;
+#X obj 146 187 cnv 10 10 17 empty empty empty 20 12 0 14 -217769 -66577
+0;
+#X obj 156 187 s \$0-anyCold;
+#X text 192 115 0 -> 1 1 -> 0, f 6;
+#X obj 927 520 cnv 11 116 17 empty \$0-cnv how this works 2 9 0 14
+-1 -262144 0;
+#N canvas 16 50 522 322 how 0;
+#X text 40 119 To mimic [value] we must load previously stored values
+from older [var] objects. We do this by sending a request to all older
+instances. The first one to receive the request is the requesting one
+(that intelligently ignores it). The second one will be the penultimate
+[var] instance created. It will fulfill the request and close that
+request so other instances don't send redundant data!;
+#X text 41 18 All [var] objects share data through global sendNames
+that are common for all [var] instances with same arguments (for that
+we just use \$1) in the send name. Anytime a [var] instance receives
+a new value it just sends it to the others.;
+#X text 40 252 Since the data is stored in each [var] instance if you
+delete all of them the data is lost (just like [value];
+#X restore 927 546 pd how this works;
+#X connect 0 0 2 0;
+#X connect 2 0 20 0;
+#X connect 2 1 72 0;
+#X connect 4 0 20 1;
+#X connect 5 0 1 0;
+#X connect 5 1 9 0;
+#X connect 5 1 63 0;
+#X connect 6 0 17 0;
+#X connect 7 0 30 0;
+#X connect 8 0 30 0;
+#X connect 10 0 8 0;
+#X connect 10 1 56 0;
+#X connect 10 2 7 0;
+#X connect 10 3 11 0;
+#X connect 11 0 27 0;
+#X connect 12 0 18 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 16 0 2 0;
+#X connect 17 0 10 0;
+#X connect 18 0 19 0;
+#X connect 18 1 40 0;
+#X connect 18 2 67 0;
+#X connect 19 0 36 0;
+#X connect 19 0 77 0;
+#X connect 20 0 5 0;
+#X connect 25 0 9 1;
+#X connect 28 0 62 0;
+#X connect 34 0 17 1;
+#X connect 39 0 20 0;
+#X connect 40 0 13 0;
+#X connect 40 1 45 0;
+#X connect 44 0 47 0;
+#X connect 46 0 44 0;
+#X connect 47 0 48 1;
+#X connect 48 0 49 0;
+#X connect 49 0 37 0;
+#X connect 49 1 54 0;
+#X connect 51 0 52 0;
+#X connect 52 0 47 0;
+#X connect 58 0 48 0;
+#X connect 59 0 60 0;
+#X connect 60 0 61 0;
+#X connect 62 0 5 1;
+#X connect 63 0 64 0;
+#X connect 65 0 63 1;
+#X connect 67 0 36 0;
+#X connect 67 0 77 0;
+#X connect 72 0 3 0;
+#X connect 72 1 82 0;
+#X connect 73 0 74 0;
+#X connect 74 0 75 0;
+#X connect 75 0 72 1;
+#X connect 80 0 20 1;

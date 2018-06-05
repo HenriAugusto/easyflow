@@ -19,13 +19,19 @@ The library was designed to be basic so it is 100% vanilla.
 
 Here are some highlights. Some are simple yet very useful because PD lacks some basic functionality and others are complex.
 
-- **[for]** = convenient object to iterate over numeric intervals. Similar to a for in textual languages
+- **[for]** = Convenient object to iterate over numeric intervals. Similar to a for in textual languages.
 - **[map]** = Converts a numeric stream from one range to another. "One-line" linear interpolation!
+* **[any]** - object able to store any kind of control data. It's like [float][symbol]and [list] packed into one. Also stores custom selectors.
+* **[var]** - behaves just like [value] but stores any kind of data (using [anything]) including custom selectors.
+- **[left2right][right2left][l2r][r2l]** - Miss Java iterators, huh? Yeah, me too. Let's fix this.
 - **[printHere]** - a portable console-like abstraction that you can use directly on your patch. No more switching windows!
-- **[GOPTool]** = controls the Graph-on-parent values directly from pd. No more editing vlaues then clicking apply!
-- **[listToSymbol]** - converts a list to a symbol, adding the special char " " between words. Great to add more than one word to labels.
+- **[listToSymbol]** - converts a list to a symbol, adding the special char " " between words. Great to add more than one word to labels.
 - **[HSB][HSL][RGB][colorNames][hexColor][colorSyntax]** = Easily generate colors to edit Pure Data vanilla GUI objects.
+- **[sublist][substring]** - Takes subsets on lists or symbols (strings). Includes a special "L" variable that resolves to the list/string length.
 - **[colorHighlighting]+related** - color highlighting for better code. See the [easyflow wiki](https://github.com/HenriAugusto/easyflow/wiki) for more information
+* **[arrayList]** - holds a list and provides index based get, set and remove methods. Similar to Java's ArrayList.
+* **[curves][curvesmap][curves~][curvesmap~}** - an abstraction for converting numeric streams between different curves.
+- **[GOPTool]** = controls the Graph-on-parent values directly from pd. No more editing vlaues then clicking apply!
 
 ## Some gifs
 
@@ -51,22 +57,24 @@ Do **not** create a path directly to your externals. By using a shared folder yo
 
 See [How to install externals, libraries, gui plug-ins, etc.](https://forum.pdpatchrepo.info/topic/6743/how-to-install-externals-libraries-gui-plug-ins-etc) on that. The method you should use is the one described in that page on the section _"Loading objects or abstractions using namespaces"_. 
 
-This way you can avoid naming conflicts. Easyflow have an abstraction called [counter]  which is very likely to conflict with other libraries and an abstraction called [hsl] which is **guaranteed** to conclift with vanilla's [hsl]. Easyflow is a 100% so you don't need to use [declare].
+This way you can avoid naming conflicts. Easyflow have an abstraction called [counter]  which is very likely to conflict with other libraries and an abstraction called [hsl] which is **guaranteed** to conclift with vanilla's [hsl]. Easyflow is 100% vanilla so you don't need to use [declare] (like you would with some monolithic libraries like *zexy*).
 
 ## Abstractions
 
 ### Lists
 
 - *[addList]* - adds a incoming list to a message box
+- *[arrayList]* - holds a list and provides index based get, set and remove methods. Similar to java's ArrayList.
 - *[copyList]* - copies a incoming list on a message box.
 - *[left2right][l2r]* - outputs one element of a list at a time, from left to right
 - *[right2left][r2l]* - outputs one element of a list at a time, from right to left
-- *[funnel]* - outputs a list one element at a time (switches between [l2r] and [r2l]).
+- *[funnel]* - outputs a list one element at a time (switches between [l2r] and [r2l]. It's like both in the same abstraction).
 - *[passNthElement]* - takes an incoming list and let only it's nth element pass
 - *[passPair]* - takes an incoming list and a pair starting at it's nth element to pass
 - *[listPlus]* - add a value to each element on an input list
 - *[listCompare]* - compare two lists then output left if they're equal or right if they're different.
 - *[listConcatenate]* - ListConcatenate takes a message and outputs a symbol which is a concatenation of all of its elements
+- *[listsOfLength]* - passes lists of the desired length to the left outlet and other lists to the right outlet.
 - *[listPick]* - pick elements from a previously stored list
 - *[listPickPair]* - pick element pairs from a previously stored list
 - *[listReplace]* - replaces all occurences of an element on a list
@@ -74,6 +82,7 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 - *[listSplit]* - splits a list on a given symbol.
 - *[popLastN]* - outputs a list without it's last n elements
 - *[searchElem]* - search for the position of elements on a list
+- *[sublist]* - takes a sublist from a list. Understands negative indexes and has a special variable "L" for the list length!
 
 
 
@@ -82,26 +91,33 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 - *[symbolize]* - Just a shortcut to add a symbol selector to messages
 - *[numberSymbol]* - allows you to have symbols that contain only numeric chars
 - *[lowerCase][upperCase]* - converts a symbol to lowerCase/upperCase
-- *[getFolder]* - get the folder from a symbol containing a file path
+- *[getFolder]* - get the folder from a symbol containing a file path (and additionally outputs the file name)
+- *[getFile]* - get the file name from a symbol containing a file path (and additionally outputs the folder path)
+- *[stringLength]* - convenient abstraction to shorten your code when you need to get a symbol's length.
+- *[substring]* - takes a substring from a symbol. Understands negative indexes and has a special variable "L" for the string length!
 - *[symbolSplit]* - splits a symbol in a specified char
 
 
 ### Signals
 
-- *[audioSpigot]* - [spigot] for signals
+- *[spigot~]* - [spigot] for signals
 - *[switch2~]* - lets you control if a singnal passes through it's left or right outlet (like [switch2] but for signals)
 - *[mixAB~]* - easy equal-power panning with a built-in gui and ramps.
 - *[sample~]* - easily load play audio files. Great for experimenting without having spend much time doing the setup. Uses the new [soundfiler] ability to get the sample rate! (bugged as 0.48.0 but working on 0.48.1)
+- *[scope~]* - simple and easily controllabe osciloscope!
 
 
 ### Utilities
 
+- *[any]* - object able to store any kind of control data. It's like [float][symbol]and [list] packed into one. Also stores custom selectors.
 - *[counter]* - simple counter object to output sequences of numbers
+- *[doubleClick]* - outputs a bang whenever it receives two bangs in a specified period of time.
 - *[for]* - works like until, but with an integrated counter on it's right outlet. It "bangs" on it's left outlet when it's done.
 - *[keyChange]* - works like vanilla's [keyname] but only output changes (ie: if you hold a key it will not trigger constantly)
 - *[hold]* - Interpolates linearly from a input number to 0 in a give time.
 - *[metrosnap~]* - simple [snapshot~] and [metro] bundle
 - *[mixAB]* - general purpose utility to mix two signals. Implements useful ramp methods.
+- *[var]* - behaves just like [value] but stores any kind of data (using [anything]) including custom selectors.
 
 ### Flow Control
 
@@ -116,6 +132,10 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 - *[map]* = Converts a numeric stream from one range to another. Easy linear interpolation, baby!
 - *[keepMax][keepMin]* - Outputs the biggest/smallest number received since initialization or last bang on cold inlet.
 - *[hexCharToDec]* - converts an Hexadecimal char to an Decimal number 
+- *[roundIfVeryClose]* - rounds numbers that are close to an integer (1.6401e-8 to 0, for example). 
+- *[curves][curvesmap]* - an abstraction for converting numeric streams between different curves.
+- *[curves~][curvesmap~]* - just like [curves] and [curvesmap] but for signals
+You can use arbritary precision.
 
 ### Color
 
@@ -143,11 +163,18 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 - *[colorTri]* - automatically colored abstraction for marking variable wireless connections
 - *[labelCnv]* - automatically colored and resized abstraction to display a labeled [cnv]. Multi-purpose abstraction
 - *[colorCircF][colorCnvF][colorTriF][labelCnvF]* - factory abstraction for color highlighting and tagging
+* *[colorCurly][colorCurlyF]* - Colorhighlighting abstractions containing a "{}". See the wiki for more information.
+* *[rColor][sColor]* - Automatic color highlighting and [send]/[receive] bundled together. See the wiki for more information.
 
 #### Debugging and utilities
 
 - *[GOPTool]* - abstraction to quickly manage your graph-on-parent settings without suffering with PD's gui.
 - *[printHere]* - in-patch console for debugging without having to switch windows.
+
+###Data Structures
+- *[getNthScalar]* - outputs a pointer to the Nth scalar in a given subpatch.
+- *[getNofScalars]* - outputs the number of scalars in a given subpatch.
+- *[getAllScalars]* - reads a data holding subPatch and outputs pointers to all the scalars it contains, one at a time.
 
 
 
@@ -158,6 +185,10 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 When dealing with lists indexes always start at 1! For me it makes more sense in Pure Data because it matches the $1, $2, $3, ... $n notation.
 
 _(yet on pd table indexes starts at 0, so future table objects might have indexes starting at 0)_
+
+Also, some objects like [easyflow/substring] use 0-based indexes because substring methods traditionally work like this (Java, etc) and symbols are not lists.
+
+_But note how [sublist] and [arrayList] use 1-based indexes because it deals with lists!_
 
 This innocent-seeming question is not so simple. It was not an easy choice but it seems to me this fits pd best.
 

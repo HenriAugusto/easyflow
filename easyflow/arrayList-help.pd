@@ -1,0 +1,71 @@
+#N canvas 552 353 807 540 10;
+#X obj 54 385 arrayList;
+#X obj 54 168 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 54 242 easyflow/counter;
+#X obj 54 264 % 4;
+#X obj 219 313 select 0;
+#X msg 219 345 clear;
+#X obj 54 313 select 3;
+#X obj 136 314 random 100;
+#X obj 54 286 trigger float bang float;
+#X floatatom 136 346 5 0 0 0 - - -, f 5;
+#X obj 54 215 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 54 407 easyflow/printHere -s;
+#X obj 678 491 easyflow-info;
+#X msg 54 348 getList;
+#X obj 406 369 arraylist;
+#X obj 406 391 easyflow/printHere;
+#X text 566 142 add elements;
+#X msg 458 197 getList;
+#X msg 406 114 clear;
+#X obj 54 190 metro 500;
+#X text 50 126 Sums up 4 random integers and only outputs them after
+getting all 4, f 34;
+#X text 51 57 It works similarly as an ArrayList in java but holds
+floats and symbols. ALso note that the index is 1-based to conform
+with the \$1 notation used by pd for element access in lists.;
+#X text 520 196 outputs the list;
+#X msg 458 223 get 2;
+#X text 508 223 outputs the second element;
+#X text 508 170 sets the third element;
+#X text 469 113 clears the list;
+#X text 81 165 <- init;
+#X text 51 20 [arrayList] is able to hold a list and perform index
+based get \, set and remove operations on its members.;
+#X text 528 247 removes the second element;
+#X msg 458 247 remove 2;
+#X msg 468 271 remove -1;
+#X msg 427 143 one two 3 4 five 6;
+#X text 547 270 removes last element;
+#X msg 478 294 remove -2;
+#X text 557 293 removes penultimate element, f 19;
+#X msg 439 172 set 3 new;
+#X msg 487 327 getList \, set -3 backwards \, getList \, get -3, f
+26;
+#X connect 0 0 11 0;
+#X connect 1 0 19 0;
+#X connect 2 0 3 0;
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 5 0 0 0;
+#X connect 6 0 13 0;
+#X connect 7 0 9 0;
+#X connect 8 0 6 0;
+#X connect 8 1 7 0;
+#X connect 8 2 4 0;
+#X connect 9 0 0 0;
+#X connect 10 0 2 0;
+#X connect 13 0 0 0;
+#X connect 14 0 15 0;
+#X connect 17 0 14 0;
+#X connect 18 0 14 0;
+#X connect 19 0 10 0;
+#X connect 23 0 14 0;
+#X connect 30 0 14 0;
+#X connect 31 0 14 0;
+#X connect 32 0 14 0;
+#X connect 34 0 14 0;
+#X connect 36 0 14 0;
+#X connect 37 0 14 0;

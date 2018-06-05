@@ -1,0 +1,13 @@
+#N canvas 0 50 476 289 10;
+#X msg 42 102 symbol C:/Samples/Drums/Hihat.wav;
+#X obj 342 230 easyflow-info;
+#X text 40 30 Takes an input file path (as a symbol) and outputs the
+folder;
+#X obj 42 133 getFile;
+#X symbolatom 42 180 0 0 0 0 - - -;
+#X symbolatom 88 158 0 0 0 0 - - -;
+#X text 25 230 see also:;
+#X obj 102 231 getFolder;
+#X connect 0 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 1 5 0;

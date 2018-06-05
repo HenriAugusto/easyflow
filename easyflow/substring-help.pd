@@ -1,0 +1,31 @@
+#N canvas 525 187 345 699 10;
+#X symbolatom 54 275 20 0 0 0 - - -, f 20;
+#X obj 194 633 easyflow-info;
+#X text 49 76 Currently it does NOT check if the indexes are valid.
+, f 25;
+#X floatatom 98 229 5 0 0 0 - - -, f 5;
+#X floatatom 142 229 5 0 0 0 - - -, f 5;
+#X text 49 168 The index is 0-based.;
+#X obj 54 253 substring 2 4;
+#X text 50 310 You can use negative numbers to count from the string
+end., f 27;
+#X symbolatom 54 424 20 0 0 0 - - -, f 20;
+#X msg 54 200 symbol abcdefg;
+#X msg 54 370 symbol abcdefg;
+#X symbolatom 54 577 20 0 0 0 - - -, f 20;
+#X msg 54 520 symbol abcdefg;
+#X text 55 461 You can use "L" or "l" to use the string length., f
+23;
+#X obj 54 402 substring 0 -2;
+#X obj 54 552 substring -3 L;
+#X text 49 15 [substring] takes a symbol and outputs a substring of
+that symbol., f 25;
+#X text 49 129 So [substring 5 2] will fail silently., f 25;
+#X connect 3 0 6 1;
+#X connect 4 0 6 2;
+#X connect 6 0 0 0;
+#X connect 9 0 6 0;
+#X connect 10 0 14 0;
+#X connect 12 0 15 0;
+#X connect 14 0 8 0;
+#X connect 15 0 11 0;

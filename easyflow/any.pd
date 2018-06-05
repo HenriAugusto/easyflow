@@ -1,0 +1,84 @@
+#N canvas 339 195 637 568 10;
+#X obj 51 18 inlet;
+#X obj 99 366 float;
+#X obj 51 130 route bang float symbol list, f 40;
+#X obj 182 396 symbol;
+#X obj 286 401 list;
+#X obj 99 164 t b f;
+#X obj 294 254 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 305 254 r \$0-type;
+#X obj 305 276 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 196 315 easyflow/switch4;
+#X obj 88 210 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 99 210 s \$0-type;
+#X msg 99 186 0;
+#X obj 178 210 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 189 210 s \$0-type;
+#X msg 189 186 1;
+#X obj 189 164 t b s;
+#X obj 268 210 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 279 210 s \$0-type;
+#X msg 279 186 2;
+#X obj 279 164 t b a;
+#X obj 99 468 outlet;
+#X obj 165 92 inlet;
+#X obj 118 66 t b a;
+#X obj 51 40 route bang;
+#X obj 38 18 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 152 92 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 87 468 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 358 210 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 369 210 s \$0-type;
+#X obj 369 164 t b a;
+#X msg 369 186 3;
+#X obj 362 409 symbol;
+#X obj 362 431 else/display;
+#X text 444 405 custom selector;
+#X obj 401 246 symbolize;
+#X obj 362 458 list;
+#X obj 362 480 list trim;
+#X text 277 15 For some reason you can't create an abstraction named
+anything!, f 31;
+#X connect 0 0 24 0;
+#X connect 1 0 21 0;
+#X connect 2 0 9 0;
+#X connect 2 1 5 0;
+#X connect 2 2 16 0;
+#X connect 2 3 20 0;
+#X connect 2 4 30 0;
+#X connect 3 0 21 0;
+#X connect 4 0 21 0;
+#X connect 5 0 12 0;
+#X connect 5 1 1 1;
+#X connect 7 0 8 0;
+#X connect 8 0 9 1;
+#X connect 9 0 1 0;
+#X connect 9 1 3 0;
+#X connect 9 2 4 0;
+#X connect 9 3 32 0;
+#X connect 12 0 11 0;
+#X connect 15 0 14 0;
+#X connect 16 0 15 0;
+#X connect 16 1 3 1;
+#X connect 19 0 18 0;
+#X connect 20 0 19 0;
+#X connect 20 1 4 1;
+#X connect 22 0 2 0;
+#X connect 23 0 2 0;
+#X connect 23 1 2 0;
+#X connect 24 0 2 0;
+#X connect 24 1 23 0;
+#X connect 30 0 31 0;
+#X connect 30 1 35 0;
+#X connect 31 0 29 0;
+#X connect 32 0 33 0;
+#X connect 33 0 36 0;
+#X connect 35 0 32 1;
+#X connect 36 0 37 0;
+#X connect 37 0 21 0;

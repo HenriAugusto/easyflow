@@ -1,0 +1,123 @@
+#N canvas 118 50 763 640 10;
+#X obj 60 17 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 72 17 inlet;
+#X obj 510 65 cnv 8 11 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 186 196 f \$1;
+#X obj 129 197 f \$2;
+#X obj 129 221 -;
+#X floatatom 129 243 5 0 0 0 - - -, f 5;
+#X obj 60 568 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 72 568 outlet;
+#X obj 72 311 - \$1;
+#X obj 72 353 /;
+#X obj 72 89 trigger float bang bang bang bang;
+#X text 180 242 range1 size;
+#X obj 351 320 -;
+#X floatatom 351 342 5 0 0 0 - - -, f 5;
+#X obj 351 296 f \$4;
+#X obj 408 295 f \$3;
+#X text 402 341 range2 size;
+#X text 105 442 adjust to range2 size;
+#X obj 72 445 *;
+#X obj 72 507 + \$3;
+#X text 112 314 from 0 to range1Size;
+#X text 110 355 normalize from 0 to 1;
+#X text 119 507 from rang2min to range2max;
+#X obj 582 573 easyflow-info;
+#N canvas 536 307 450 300 route 0;
+#X obj 55 19 inlet;
+#X obj 115 64 outlet;
+#X obj 55 41 route set;
+#N canvas 0 50 428 278 set 0;
+#X obj 63 64 inlet;
+#X msg 237 47 arguments \; 1-range1min \; 2-range1max \; 3-range2min
+\; 4-range2max;
+#X obj 53 180 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 84 159 cnv 10 10 17 empty empty empty 20 12 0 14 -255367 -66577
+0;
+#X obj 148 110 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 115 135 cnv 10 10 17 empty empty empty 20 12 0 14 -91753 -66577
+0;
+#X obj 63 86 unpack f f f f;
+#X obj 63 180 s \$0-arg1;
+#X obj 94 159 s \$0-arg 2;
+#X obj 126 135 s \$0-arg3;
+#X obj 158 110 s \$0-arg4;
+#X connect 0 0 6 0;
+#X connect 6 0 7 0;
+#X connect 6 1 8 0;
+#X connect 6 2 9 0;
+#X connect 6 3 10 0;
+#X restore 55 116 pd set;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 1 0;
+#X restore 72 51 pd route;
+#X obj 541 89 cnv 8 11 17 empty empty 3 2 9 0 14 -1 -262144 0;
+#X obj 201 131 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 144 163 cnv 10 10 17 empty empty empty 20 12 0 14 -255367 -66577
+0;
+#X obj 87 483 cnv 10 10 17 empty empty empty 20 12 0 14 -91753 -66577
+0;
+#X obj 366 237 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 211 131 r \$0-arg1;
+#X obj 154 163 r \$0-arg 2;
+#X obj 87 280 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 97 280 r \$0-arg1;
+#X obj 97 483 r \$0-arg3;
+#X obj 422 270 cnv 10 10 17 empty empty empty 20 12 0 14 -91753 -66577
+0;
+#X obj 433 270 r \$0-arg3;
+#X obj 376 237 r \$0-arg4;
+#X obj 512 230 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 543 209 cnv 10 10 17 empty empty empty 20 12 0 14 -255367 -66577
+0;
+#X obj 607 160 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 574 185 cnv 10 10 17 empty empty empty 20 12 0 14 -91753 -66577
+0;
+#X obj 522 230 s \$0-arg1;
+#X obj 553 209 s \$0-arg 2;
+#X obj 585 185 s \$0-arg3;
+#X obj 617 160 s \$0-arg4;
+#X obj 522 65 inlet;
+#X obj 553 89 inlet;
+#X obj 573 109 cnv 8 11 17 empty empty 4 2 9 0 14 -1 -262144 0;
+#X obj 585 109 inlet;
+#X obj 605 134 cnv 8 11 17 empty empty 5 2 9 0 14 -1 -262144 0;
+#X obj 617 134 inlet;
+#X connect 1 0 25 0;
+#X connect 3 0 5 1;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 10 1;
+#X connect 9 0 10 0;
+#X connect 10 0 19 0;
+#X connect 11 0 9 0;
+#X connect 11 1 4 0;
+#X connect 11 2 3 0;
+#X connect 11 3 15 0;
+#X connect 11 4 16 0;
+#X connect 13 0 14 0;
+#X connect 14 0 19 1;
+#X connect 15 0 13 0;
+#X connect 16 0 13 1;
+#X connect 19 0 20 0;
+#X connect 20 0 8 0;
+#X connect 25 0 11 0;
+#X connect 31 0 3 1;
+#X connect 32 0 4 1;
+#X connect 34 0 9 1;
+#X connect 35 0 20 1;
+#X connect 37 0 16 1;
+#X connect 38 0 15 1;
+#X connect 47 0 43 0;
+#X connect 48 0 44 0;
+#X connect 50 0 45 0;
+#X connect 52 0 46 0;

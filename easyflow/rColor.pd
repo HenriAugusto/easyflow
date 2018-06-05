@@ -1,0 +1,30 @@
+#N canvas 953 272 845 275 10;
+#X obj 101 101 cnv 2 1 1 empty \$0-cnv █ -10 8 0 15 -262140 -260033
+0;
+#X obj 226 25 loadbang;
+#X obj 593 30 r \$0-tellMeMyColor;
+#X obj 226 129 list trim;
+#X obj 226 181 send globalColorHighlighting;
+#X obj 226 107 list append getColor \$1 \$0-tellMeMyColor;
+#X obj 593 137 s \$0-cnv;
+#X obj 642 82 loadbang;
+#X msg 642 104 color -1;
+#X obj 226 77 del 100;
+#X obj 303 35 r globalColorHighlightingUpdateAll;
+#X obj 75 221 outlet;
+#X obj 75 199 receive \$1;
+#X msg 593 54 color -1.67772e+007 \$1 \$1;
+#X text 25 31 The [cnv] has size=2 because it's borders are drawn in
+white color over the text., f 25;
+#X text 28 8 Label char = U+2588;
+#X connect 1 0 9 0;
+#X connect 2 0 13 0;
+#X connect 3 0 4 0;
+#X connect 5 0 3 0;
+#X connect 7 0 8 0;
+#X connect 8 0 6 0;
+#X connect 9 0 5 0;
+#X connect 10 0 9 0;
+#X connect 12 0 11 0;
+#X connect 13 0 6 0;
+#X coords 0 1 1 10 10 17 1 100 100;

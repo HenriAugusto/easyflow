@@ -1,0 +1,217 @@
+#N canvas 414 229 596 411 10;
+#X obj 426 340 easyflow-info;
+#X obj 59 136 hradio 15 1 0 8 empty empty test me! 0 -8 0 10 -262144
+-1 -1 0;
+#X symbolatom 59 188 10 0 0 0 - - -, f 10;
+#X obj 59 282 tgl 30 0 empty empty empty 17 7 0 10 -1 -1 -1 0 1;
+#X obj 240 224 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 240 137 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 876 121 691 428 color 0;
+#X symbolatom 276 264 10 0 0 0 - - -, f 10;
+#X msg 276 315 color \$1;
+#X obj 276 337 tgl 35 0 empty empty empty 17 7 0 10 -200656 -1 -1 0
+1;
+#X obj 276 164 guilla/dropdownMenu \$0-this red/lightRed/darkRed/wine/blood
+;
+#X obj 276 113 r \$0-setMenu;
+#N canvas 0 50 1150 558 set 0;
+#X obj 46 44 inlet;
+#X obj 46 430 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 151 429 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 50 530 157 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options green/lightGreen/darkGreen/olive/lawn/radioactive
+;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 151 451 pd load greens;
+#N canvas 0 50 435 153 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options red/lightRed/darkRed/wine/blood;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 46 452 pd load reds;
+#X obj 246 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 50 530 157 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 62 53 options yellow/lightYellow/darkYellow/gold;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 246 286 pd load yellows;
+#X obj 151 496 s \$0-setMenu;
+#X obj 369 263 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 50 530 157 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options purple/lightPurple/darkPurple/violet;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 369 285 pd load purples+violet;
+#X obj 549 263 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 369 346 s \$0-setMenu;
+#N canvas 0 50 530 157 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options gray/lightGray/darkGray/dimGray;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 549 285 pd load grays;
+#X obj 271 429 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 50 530 157 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options blue/lightBlue/darkBlue/navyBlue/sky/vaultSuit
+;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 271 451 pd load blues;
+#X obj 46 66 select red green blue;
+#X obj 246 184 select yellow purple gray;
+#X obj 499 145 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 622 144 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 732 144 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 622 227 s \$0-setMenu;
+#N canvas 0 50 530 157 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options pink/lightPink/darkPink/hotPink/deepPink;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 499 167 pd load pink;
+#N canvas 0 50 530 157 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options orange/brown/peach;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 622 166 pd load orange;
+#N canvas 0 50 530 157 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options white/floral/ghost;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 732 166 pd load white;
+#X obj 499 65 select pink orange white;
+#X obj 869 65 select black cyan;
+#X obj 869 144 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 50 314 144 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options black/dark;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 869 166 pd load black;
+#X obj 869 215 s \$0-setMenu;
+#X obj 927 109 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 50 314 144 load 0;
+#X obj 63 32 inlet;
+#X obj 63 76 outlet;
+#X msg 63 54 options cyan/lightCyan/darkCyan;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 927 131 pd load cyan;
+#X connect 0 0 15 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 7 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 11 0;
+#X connect 8 0 9 0;
+#X connect 9 0 11 0;
+#X connect 10 0 12 0;
+#X connect 12 0 11 0;
+#X connect 13 0 14 0;
+#X connect 14 0 7 0;
+#X connect 15 0 1 0;
+#X connect 15 1 2 0;
+#X connect 15 2 13 0;
+#X connect 15 3 16 0;
+#X connect 16 0 5 0;
+#X connect 16 1 8 0;
+#X connect 16 2 10 0;
+#X connect 16 3 24 0;
+#X connect 17 0 21 0;
+#X connect 18 0 22 0;
+#X connect 19 0 23 0;
+#X connect 21 0 20 0;
+#X connect 22 0 20 0;
+#X connect 23 0 20 0;
+#X connect 24 0 17 0;
+#X connect 24 1 18 0;
+#X connect 24 2 19 0;
+#X connect 24 3 25 0;
+#X connect 25 0 26 0;
+#X connect 25 1 29 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 0;
+#X connect 29 0 30 0;
+#X connect 30 0 28 0;
+#X restore 50 244 pd set;
+#X symbolatom 50 211 10 0 0 0 - - -, f 10;
+#X text 40 72 1 - select a color group;
+#X text 275 71 2 - select a color;
+#X obj 56 16 namecanvas \$0-this;
+#X text 193 14 needed for [guilla/dropdownMenu];
+#X obj 276 283 colorNames;
+#X obj 50 108 guilla/dropdownMenu \$0-this red/orange/yellow/green/cyan/blue/purple/pink/white/gray/black
+;
+#X connect 0 0 11 0;
+#X connect 1 0 2 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 6 0 5 0;
+#X connect 11 0 1 0;
+#X connect 12 0 6 0;
+#X restore 123 21 pd color list;
+#X text 227 21 uses [guilla/dropdownMenu];
+#X text 75 62 [colorNames] allows you to get colors by their names
+without using;
+#X msg 59 249 color \$1;
+#N canvas 341 85 542 294 getColor 0;
+#X obj 70 61 inlet;
+#X obj 70 83 + 1;
+#X obj 123 103 loadbang;
+#X obj 123 125 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X symbolatom 70 205 10 0 0 0 - - -, f 10;
+#X obj 70 224 outlet;
+#X msg 123 152 list black red yellow green cyan blue purple pink;
+#X obj 70 184 listPick;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 1;
+#X connect 7 0 4 0;
+#X restore 59 166 pd getColor;
+#X msg 240 189 color \$1;
+#X text 368 159 arguments: 1 - initial color;
+#X obj 59 220 colorNames;
+#X obj 240 160 colorNames olive;
+#X connect 1 0 10 0;
+#X connect 2 0 13 0;
+#X connect 5 0 14 0;
+#X connect 9 0 3 0;
+#X connect 10 0 2 0;
+#X connect 11 0 4 0;
+#X connect 13 0 9 0;
+#X connect 14 0 11 0;

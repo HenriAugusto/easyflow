@@ -1,0 +1,16 @@
+#N canvas 505 257 328 416 10;
+#X symbolatom 54 328 20 0 0 0 - - -, f 20;
+#X obj 178 372 easyflow-info;
+#X text 49 89 Currently it does NOT check if the indexes are valid.
+, f 25;
+#X text 49 221 The index is 0-based.;
+#X text 49 15 [substringFromStart] takes a symbol and outputs a substring
+of that symbol \, counting from the start., f 25;
+#X obj 54 304 substringFromStart 2;
+#X msg 54 254 symbol abcdef;
+#X floatatom 191 274 5 0 0 0 - - -, f 5;
+#X text 49 142 So [substring -3] will fail silently. It will also fail
+silently if the argument is bigger than the string length., f 25;
+#X connect 5 0 0 0;
+#X connect 6 0 5 0;
+#X connect 7 0 5 1;

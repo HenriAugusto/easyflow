@@ -1,0 +1,41 @@
+#N canvas 927 361 502 317 10;
+#X obj 74 23 inlet;
+#X obj 368 23 inlet;
+#X floatatom 74 133 5 0 0 0 - - -, f 5;
+#X obj 368 85 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 74 247 outlet;
+#X obj 74 217 trigger float float;
+#X obj 61 23 cnv 11 12 17 empty \$0-canvas 1 2 9 0 14 -1 -262144 0
+;
+#X obj 357 169 cnv 10 10 17 empty empty empty 20 12 0 14 -30463 -1
+0;
+#X obj 368 169 s \$0-setValue;
+#X obj 102 78 cnv 10 10 17 empty empty empty 20 12 0 14 -30463 -1 0
+;
+#X obj 113 78 r \$0-setValue;
+#X obj 372 278 easyflow-info;
+#X obj 368 45 route bang float;
+#X floatatom 368 146 8 0 0 0 - - -, f 8;
+#X floatatom 422 106 5 0 0 0 - - -, f 5;
+#X obj 261 168 t f;
+#X obj 61 247 cnv 11 12 17 empty \$0-canvas 1 2 9 0 14 -1 -262144 0
+;
+#X obj 74 111 min \$1;
+#X obj 368 105 f \$1;
+#X obj 355 23 cnv 11 12 17 empty \$0-canvas 2 2 9 0 14 -1 -262144 0
+;
+#X connect 0 0 17 0;
+#X connect 1 0 12 0;
+#X connect 2 0 5 0;
+#X connect 3 0 18 0;
+#X connect 5 0 4 0;
+#X connect 5 1 15 0;
+#X connect 10 0 17 1;
+#X connect 12 0 3 0;
+#X connect 12 1 14 0;
+#X connect 13 0 8 0;
+#X connect 14 0 13 0;
+#X connect 15 0 17 1;
+#X connect 17 0 2 0;
+#X connect 18 0 13 0;

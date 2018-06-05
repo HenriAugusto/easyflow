@@ -1,0 +1,25 @@
+#N canvas 702 258 594 419 10;
+#X text 52 30 This is a simple abstraction that substitutes the n-th
+element of a list. Middle inlet takes the index. Right inlet takes
+what will go in it's place.;
+#X floatatom 115 199 5 1 6 0 - - -, f 5;
+#X text 155 125 index should be between 1 and 6;
+#X obj 61 253 listReplaceAtIndex 2 sub;
+#X msg 226 189 new;
+#X msg 170 166 symbol test;
+#X text 240 254 args: 1) index where substitution will occur;
+#X text 302 270 (index starts at 1);
+#X text 284 296 2) what will be used in the substitution;
+#X obj 450 369 easyflow-info;
+#X text 113 177 index;
+#X text 65 101 list;
+#X text 263 178 substitutions;
+#X msg 61 126 a b c d e f;
+#X obj 61 275 easyflow/printHere -s;
+#X text 42 363 See also:;
+#X obj 119 364 listReplace;
+#X connect 1 0 3 1;
+#X connect 3 0 14 0;
+#X connect 4 0 3 2;
+#X connect 5 0 3 2;
+#X connect 13 0 3 0;

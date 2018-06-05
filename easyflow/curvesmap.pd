@@ -1,0 +1,140 @@
+#N canvas 786 122 788 462 10;
+#X msg 27 90 coords 0 1 1 -1 111 37 1 160.863 153 1;
+#X obj 163 169 tgl 14 0 \$0-GOPToggle \$0-justSoInletIsHidden empty
+17 7 0 14 -262144 -1 -1 0 1;
+#X obj 182 170 cnv 11 50 13 empty empty  graph 2 6 0 10 -1 -262144
+0;
+#X obj 440 55 r \$0-GOPToggle;
+#X obj 440 77 select 0 1;
+#X msg 440 99 close;
+#X obj 320 39 inlet;
+#X obj 320 417 outlet;
+#X text 27 69 GOPTool;
+#X msg 487 99 show;
+#X obj 320 375 map 666 666 \$3 \$4;
+#X obj 349 278 r \$0-min;
+#X obj 418 278 r \$0-max;
+#X floatatom 349 300 5 0 0 0 - - -, f 5;
+#X floatatom 418 300 5 0 0 0 - - -, f 5;
+#N canvas 0 50 321 218 loadMinMax 0;
+#X obj 37 90 f \$0;
+#X obj 148 90 f \$0;
+#X msg 37 112 getmin \$1-min;
+#X msg 148 112 getmax \$1-max;
+#X obj 37 37 loadbang;
+#X obj 37 154 outlet;
+#X obj 123 36 cnv 10 10 17 empty empty empty 20 12 0 14 -260097 -225470
+0;
+#X obj 134 36 r \$0-updateMinMax;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
+#X connect 4 0 1 0;
+#X connect 7 0 1 0;
+#X connect 7 0 0 0;
+#X restore 400 172 pd loadMinMax;
+#N canvas 45 50 501 581 router 0;
+#X obj 44 35 inlet;
+#X obj 230 385 map \$1 \$2 0 1;
+#X obj 76 508 outlet;
+#X obj 73 266 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 84 266 s \$0-outputRange;
+#X obj 44 192 list split 4;
+#X obj 44 234 list split 2;
+#X obj 44 57 route set setGraph setgraph;
+#X obj 44 306 unpack f f;
+#X floatatom 44 328 5 0 0 0 - - -, f 5;
+#X floatatom 111 329 5 0 0 0 - - -, f 5;
+#X obj 44 83 t a b;
+#X msg 76 105 symbol set;
+#X obj 44 429 list prepend;
+#X obj 44 451 list trim;
+#X obj 103 405 cnv 10 10 12 empty \$0-cnv ❴❵ -3 5 0 18 -262144
+-4160 0;
+#X obj 125 403 r \$0-selector;
+#X obj 54 130 cnv 10 10 12 empty \$0-cnv ❴❵ -3 5 0 18 -262144 -4160
+0;
+#X obj 76 128 s \$0-selector;
+#X obj 184 83 t a b;
+#X obj 194 130 cnv 10 10 12 empty \$0-cnv ❴❵ -3 5 0 18 -262144
+-4160 0;
+#X obj 216 128 s \$0-selector;
+#X msg 216 105 symbol setGraph;
+#X obj 33 532 cnv 10 10 17 empty empty empty 20 12 0 14 -260097 -225470
+0;
+#X obj 44 532 s \$0-updateMinMax;
+#X obj 44 473 t b a;
+#X obj 230 282 route float;
+#X obj 100 482 cnv 10 10 12 empty \$0-cnv ❴❵ -3 5 0 18 -262144
+-121998 0;
+#X obj 122 480 r \$0-outlet;
+#X obj 208 433 cnv 10 10 12 empty \$0-cnv ❴❵ -3 5 0 18 -262144
+-121998 0;
+#X obj 230 431 s \$0-outlet;
+#X obj 282 313 cnv 10 10 12 empty \$0-cnv ❴❵ -3 5 0 18 -262144
+-121998 0;
+#X obj 304 311 s \$0-outlet;
+#X text 337 385 floats are mapped;
+#X text 323 232 anything that is not float or set is passed unchanged
+, f 13;
+#X connect 0 0 7 0;
+#X connect 1 0 30 0;
+#X connect 5 0 6 0;
+#X connect 5 1 13 0;
+#X connect 6 0 8 0;
+#X connect 6 1 4 0;
+#X connect 7 0 11 0;
+#X connect 7 1 19 0;
+#X connect 7 2 19 0;
+#X connect 7 3 26 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 1 1;
+#X connect 10 0 1 2;
+#X connect 11 0 5 0;
+#X connect 11 1 12 0;
+#X connect 12 0 18 0;
+#X connect 13 0 14 0;
+#X connect 14 0 25 0;
+#X connect 16 0 13 1;
+#X connect 19 0 5 0;
+#X connect 19 1 22 0;
+#X connect 22 0 21 0;
+#X connect 25 0 24 0;
+#X connect 25 1 2 0;
+#X connect 26 0 1 0;
+#X connect 26 1 32 0;
+#X connect 28 0 2 0;
+#X restore 320 110 pd router;
+#X obj 485 278 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 496 278 r \$0-outputRange;
+#X obj 496 300 unpack f f;
+#X floatatom 563 321 5 0 0 0 - - -, f 5;
+#X floatatom 496 322 5 0 0 0 - - -, f 5;
+#X obj 320 208 curves \$5 \$6 \$7 \$8 \$9 \$10 \$11;
+#X text 545 200 We actually use a [curves] with same arguments to plot
+the curve, f 24;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 1 9 0;
+#X connect 5 0 22 0;
+#X connect 6 0 16 0;
+#X connect 9 0 22 0;
+#X connect 10 0 7 0;
+#X connect 11 0 13 0;
+#X connect 12 0 14 0;
+#X connect 13 0 10 1;
+#X connect 14 0 10 2;
+#X connect 15 0 22 0;
+#X connect 16 0 22 0;
+#X connect 18 0 19 0;
+#X connect 19 0 21 0;
+#X connect 19 1 20 0;
+#X connect 20 0 10 4;
+#X connect 21 0 10 3;
+#X connect 22 0 10 0;
+#X coords 0 1 1 -1 75 33 1 160 153;

@@ -1,9 +1,0 @@
-#N canvas 0 50 476 289 10;
-#X obj 42 133 getFolder;
-#X msg 42 102 symbol C:/Samples/Drums/Hihat.wav;
-#X obj 299 202 easyflow-info;
-#X text 40 30 Takes an input file path (as a symbol) and outputs the
-folder;
-#X obj 42 155 printHere -s;
-#X connect 0 0 4 0;
-#X connect 1 0 0 0;

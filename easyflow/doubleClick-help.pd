@@ -1,0 +1,23 @@
+#N canvas 0 50 544 205 10;
+#X obj 412 174 easyflow-info;
+#X obj 53 91 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 53 135 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 48 31 [doubleClick] outputs a bang whenever it receives two
+bangs in a specified period of time., f 38;
+#X text 142 113 no args: defaults to 200ms;
+#X obj 356 89 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 356 133 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 356 111 doubleClick 1000;
+#X obj 53 113 doubleClick;
+#X msg 465 53 1000;
+#X msg 474 82 150;
+#X connect 1 0 8 0;
+#X connect 5 0 7 0;
+#X connect 7 0 6 0;
+#X connect 8 0 2 0;
+#X connect 9 0 7 1;
+#X connect 10 0 7 1;
