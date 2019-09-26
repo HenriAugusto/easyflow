@@ -1,0 +1,279 @@
+#N canvas 550 137 509 483 10;
+#X obj 400 450 easyflow-info;
+#X obj 61 338 easyflow/printHere -s;
+#X obj 61 293 * 100;
+#X obj 61 272 l2r;
+#X obj 61 249 trigger l l;
+#X text 42 23 [listCollect] is an abstraction to be using in reconstructing
+lists after processing their elements one by one.;
+#X text 42 71 Without [listCollect] the best solution was to use [arrayList].
+See motivation below:;
+#N canvas 0 50 599 637 motivation 0;
+#X obj 128 225 easyflow/printHere -s;
+#X msg 64 74 1 2 3 4;
+#X obj 128 160 * 100;
+#X obj 64 95 trigger bang list bang;
+#X msg 64 160 getList;
+#X msg 193 162 clear;
+#X obj 128 129 left2right;
+#X obj 128 204 arrayList;
+#X text 44 14 Lets say you want to process a list of numbers and multiply
+every element by 100 Below we could see a good workflow.;
+#X text 274 149 This is kinda of short but we will make it even shorter!
+, f 29;
+#X text 49 287 Also it can get more complicated in cases like this
+one:;
+#X obj 70 542 arrayList;
+#X obj 70 325 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 70 399 easyflow/counter;
+#X obj 70 421 % 4;
+#X obj 235 470 select 0;
+#X msg 235 502 clear;
+#X obj 70 470 select 3;
+#X obj 152 471 random 100;
+#X obj 70 443 trigger float bang float;
+#X floatatom 152 503 5 0 0 0 - - -;
+#X obj 70 372 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 70 505 getList;
+#X text 97 322 <- init;
+#X obj 70 347 metro 1000;
+#X obj 70 564 easyflow/printHere -s;
+#X text 228 371 Pick 4 random integers and only outputs them after
+getting all 4, f 34;
+#X text 237 342 (from the [arrayList] help file;
+#X connect 1 0 3 0;
+#X connect 2 0 7 0;
+#X connect 3 0 4 0;
+#X connect 3 1 6 0;
+#X connect 3 2 5 0;
+#X connect 4 0 7 0;
+#X connect 5 0 7 0;
+#X connect 6 0 2 0;
+#X connect 7 0 0 0;
+#X connect 11 0 25 0;
+#X connect 12 0 24 0;
+#X connect 13 0 14 0;
+#X connect 14 0 19 0;
+#X connect 15 0 16 0;
+#X connect 16 0 11 0;
+#X connect 17 0 22 0;
+#X connect 18 0 20 0;
+#X connect 19 0 17 0;
+#X connect 19 1 18 0;
+#X connect 19 2 15 0;
+#X connect 20 0 11 0;
+#X connect 21 0 13 0;
+#X connect 22 0 11 0;
+#X connect 24 0 21 0;
+#X restore 117 109 pd motivation;
+#X text 43 142 Cold inlet: list that is being processed;
+#X text 45 160 Hot inlet: processed elements;
+#X text 247 195 Here is the same case as in our motivation subpatch
+\, but with listCollect!, f 32;
+#X text 247 241 When the cold inlet receives the list being processed
+it automatically it's size and when the resulting list is equal or
+bigger in size it knows it's time to output!, f 32;
+#N canvas 19 50 443 340 4 random integers 0;
+#X obj 41 130 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 41 200 random 100;
+#X obj 41 177 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 68 127 <- init;
+#X obj 41 152 metro 1000;
+#X obj 41 269 easyflow/printHere -s;
+#X floatatom 41 221 5 0 0 0 - - -;
+#X text 40 32 Instead of passing a list to the cold inlet you can use
+the "set" selector to manually pass the size of the resulting list.
+;
+#X text 173 190 Look how the code is way shorter!;
+#X text 44 77 Also you can initialize this value by passing it as an
+argument;
+#X floatatom 116 198 5 1 5 0 - - -;
+#X msg 116 218 set \$1;
+#N canvas 0 50 669 337 be careful! 0;
+#X text 55 30 One possible mistake is this;
+#X obj 51 120 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 51 190 random 100;
+#X obj 51 167 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 78 117 <- init;
+#X obj 51 142 metro 1000;
+#X obj 51 259 easyflow/printHere -s;
+#X floatatom 51 211 5 0 0 0 - - -;
+#X floatatom 126 188 5 1 5 0 - - -;
+#X msg 126 208 set \$1;
+#X obj 271 120 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 271 190 random 100;
+#X obj 271 167 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 298 117 <- init;
+#X obj 271 142 metro 1000;
+#X obj 271 259 easyflow/printHere -s;
+#X floatatom 271 211 5 0 0 0 - - -;
+#X floatatom 346 188 5 2 4 0 - - -;
+#X text 56 71 Working;
+#X text 274 72 Non working!;
+#X text 389 188 Don't forget to use the set selector!;
+#X text 387 210 This is treated as a single element list!;
+#X obj 51 237 listCollect 4;
+#X obj 271 237 listCollect 4;
+#X connect 1 0 5 0;
+#X connect 2 0 7 0;
+#X connect 3 0 2 0;
+#X connect 5 0 3 0;
+#X connect 7 0 22 0;
+#X connect 8 0 9 0;
+#X connect 9 0 22 1;
+#X connect 10 0 14 0;
+#X connect 11 0 16 0;
+#X connect 12 0 11 0;
+#X connect 14 0 12 0;
+#X connect 16 0 23 0;
+#X connect 17 0 23 1;
+#X connect 22 0 6 0;
+#X connect 23 0 15 0;
+#X restore 248 269 pd be careful!;
+#X obj 41 247 listCollect 4;
+#X connect 0 0 4 0;
+#X connect 1 0 6 0;
+#X connect 2 0 1 0;
+#X connect 4 0 2 0;
+#X connect 6 0 13 0;
+#X connect 10 0 11 0;
+#X connect 11 0 13 1;
+#X connect 13 0 5 0;
+#X restore 248 332 pd 4 random integers;
+#N canvas 0 50 779 481 number of additions mode 0;
+#X obj 57 341 easyflow/printHere -s;
+#X obj 57 195 l2r;
+#X obj 57 172 trigger l l, f 31;
+#X obj 94 239 expr pow($f1 \, 2);
+#X msg 57 120 3 4 5;
+#X text 50 27 Instead of counting the number of added elements you
+can use the "-a" flag.;
+#X obj 57 287 pack f f f;
+#X obj 57 216 trigger f f f;
+#X obj 132 262 expr pow($f1 \, 3);
+#X text 53 68 It makes the [listCollect] object wait for a determined
+number of addition operations.;
+#X text 292 140 For example:;
+#X text 292 161 For each element of our original list we make a single
+addition containing 3 elements at once.;
+#X text 292 195 The number \, it's square \, it's cube.;
+#X msg 117 120 1 2 3 4 5 6 7;
+#X text 293 220 Sicne the number of add operations is the same as the
+list length it automatically knows when to output the resulting list!
+;
+#X obj 57 320 listCollect -a, f 31;
+#X connect 1 0 7 0;
+#X connect 2 0 1 0;
+#X connect 2 1 15 1;
+#X connect 3 0 6 1;
+#X connect 4 0 2 0;
+#X connect 6 0 15 0;
+#X connect 7 0 6 0;
+#X connect 7 1 3 0;
+#X connect 7 2 8 0;
+#X connect 8 0 6 2;
+#X connect 13 0 2 0;
+#X connect 15 0 0 0;
+#X restore 248 355 pd number of additions mode;
+#X obj 61 317 listCollect;
+#N canvas 0 50 691 343 -a flag and max value 0;
+#X obj 396 28 listCollect -a 5;
+#X text 37 21 If you are going to use the -a flag AND provide an initialization
+value you must use the flag as THE FIRST ARGUMENT.;
+#X msg 41 123 1 2 3 4 5;
+#X obj 41 174 trigger list bang;
+#X msg 140 195 list my new list:;
+#X obj 41 195 l2r;
+#X obj 41 216 * 100;
+#X obj 41 237 listCollect -a, f 40;
+#X obj 41 144 trigger list list, f 40;
+#X obj 278 170 list length;
+#X obj 278 191 + 1;
+#X msg 278 212 set \$1;
+#X obj 41 258 printHere -s;
+#X text 391 152 You can also use the "set" selector to change the number
+of additions to the list before output. In this case we add 1 because
+we make 1 more addition by beggining our list with "my new list:",
+f 43;
+#X connect 2 0 8 0;
+#X connect 3 0 5 0;
+#X connect 3 1 4 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 12 0;
+#X connect 8 0 3 0;
+#X connect 8 1 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 7 1;
+#X restore 248 380 pd -a flag and max value;
+#X msg 131 197 1 2 3 4 5;
+#X msg 61 197 1 2;
+#X msg 89 197 3 4 5;
+#N canvas 0 50 447 544 list collect and iterators 0;
+#X obj 41 150 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 41 220 random 100;
+#X text 68 147 <- init;
+#X obj 41 479 easyflow/printHere -s;
+#X floatatom 41 261 5 0 0 0 - - -;
+#X floatatom 116 372 5 1 5 0 - - -;
+#X msg 116 394 set \$1;
+#X obj 41 417 listCollect 4;
+#X msg 104 311 next;
+#X obj 104 336 iterator;
+#X obj 149 294 loadbang;
+#X msg 58 337 first;
+#X obj 41 438 trigger anything bang;
+#X msg 149 315 1 2 3 4;
+#X obj 164 472 s \$0-next;
+#X obj 153 472 cnv 10 10 17 empty empty empty 20 12 0 14 -243772 -1
+0;
+#X obj 93 273 cnv 10 10 17 empty empty empty 20 12 0 14 -243772 -1
+0;
+#X obj 104 273 r \$0-next;
+#X text 41 23 [listCollect] can be very powerful in combination with
+other objects.;
+#X text 43 58 Say you want to pick random numbers and pack them in
+groups of variable length.;
+#X text 44 89 First you want 1 random number. Then 2 Then 3 Then 4
+Then 1 again and everything repeats.;
+#X text 198 205 This becomes trivial!;
+#X obj 41 196 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 41 172 metro 1000;
+#X connect 0 0 23 0;
+#X connect 1 0 4 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 1;
+#X connect 7 0 12 0;
+#X connect 8 0 9 0;
+#X connect 9 0 11 0;
+#X connect 9 2 5 0;
+#X connect 10 0 13 0;
+#X connect 11 0 9 0;
+#X connect 12 0 3 0;
+#X connect 12 1 14 0;
+#X connect 13 0 9 1;
+#X connect 17 0 8 0;
+#X connect 22 0 1 0;
+#X connect 23 0 22 0;
+#X restore 248 403 pd list collect and iterators;
+#X connect 2 0 14 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 4 1 14 1;
+#X connect 14 0 1 0;
+#X connect 16 0 4 0;
+#X connect 17 0 4 0;
+#X connect 18 0 4 0;

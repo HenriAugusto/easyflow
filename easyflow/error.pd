@@ -1,0 +1,15 @@
+#N canvas 555 177 450 300 10;
+#X obj 250 41 namecanvas \$0-this;
+#X msg 80 153 vis 1;
+#X obj 80 174 s \$0-this;
+#X obj 43 42 inlet;
+#X obj 80 124 receive e\$0;
+#X obj 43 63 print [e\$0] \$1 error;
+#X obj 233 95 loadbang;
+#X obj 233 116 f \$0;
+#X floatatom 233 137 5 0 0 0 - - -, f 5;
+#X connect 1 0 2 0;
+#X connect 3 0 5 0;
+#X connect 4 0 1 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;

@@ -36,11 +36,7 @@ of your patch when you are following the data flow of your wireless
 connections.;
 #X text 27 316 Try using the circles to find the [v] boxes;
 #X obj 43 450 for;
-#X text 38 418 Example of usage: see [for] and [GOPTool], f 62;
 #X obj 307 525 colorHighlighting-info;
-#N canvas 0 50 450 300 GOPTool 0;
-#X obj 41 29 GOPTool;
-#X restore 87 450 pd GOPTool;
 #X obj 307 497 cnv 11 164 17 empty empty complete information 2 9
 0 14 -1 -262144 0;
 #X text 37 515 see also:;
@@ -78,4 +74,8 @@ color is read automatically..;
 #X obj 232 363 colorCirc \$0-value5;
 #X obj 118 516 colorCircF;
 #X text 141 513 [colorCircF];
+#X text 40 420 Example of usage: see [for] and [gopTool], f 62;
+#N canvas 0 50 450 300 gopTool 0;
+#X obj 61 47 gopTool;
+#X restore 87 450 pd gopTool;
 #X coords 0 563 1 562 10 17 0;

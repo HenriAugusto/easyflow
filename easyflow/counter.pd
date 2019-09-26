@@ -2,9 +2,9 @@
 #X obj 83 246 outlet;
 #X obj 210 133 + 1;
 #X obj 71 29 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
-#X obj 124 131 cnv 8 11 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 116 131 cnv 8 11 17 empty empty 2 2 9 0 14 -1 -262144 0;
 #X obj 72 246 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
-#X floatatom 83 73 5 0 0 0 - - -, f 5;
+#X floatatom 83 73 5 0 0 0 - - -;
 #X obj 83 92 until;
 #N canvas 0 50 433 150 print 0;
 #X obj 45 51 inlet;
@@ -12,7 +12,7 @@
 #X connect 0 0 1 0;
 #X restore 325 79 pd print error;
 #X obj 210 173 t f;
-#X obj 136 131 inlet;
+#X obj 128 131 inlet;
 #X obj 83 29 inlet;
 #X obj 83 213 t f f;
 #X obj 83 51 route float bang set increment stop;

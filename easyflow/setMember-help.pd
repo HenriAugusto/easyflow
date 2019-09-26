@@ -1,0 +1,4 @@
+#N canvas 892 71 463 192 10;
+#X obj 331 136 easyflow-info;
+#X obj 156 62 public;
+#X text 26 36 Please see the help file of the [public] object;

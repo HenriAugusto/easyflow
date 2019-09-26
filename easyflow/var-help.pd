@@ -1,29 +1,29 @@
-#N canvas 739 171 681 489 10;
+#N canvas 493 81 681 489 10;
 #X floatatom 52 90 5 0 0 0 - - -, f 5;
 #X obj 52 281 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 52 229 t b a;
 #X msg 118 116 1 2 3 4;
 #X text 143 315 <- [var] objects with same name;
-#X text 174 251 <- [var] objects with same name;
+#X text 169 251 <- [var] objects with same name;
 #X text 254 111 <- different data types;
 #X obj 52 337 easyflow/printHere -m3;
 #X msg 104 89 symbol Puckette;
 #X msg 127 146 list a b c d;
 #X msg 146 173 customSelector;
-#X text 51 16 [var] behaves just like [value] but stores any kind of
-data (using [mutant]) including custom selectors.;
 #X obj 511 435 easyflow-info;
 #X obj 52 315 var \$0-test;
 #X text 442 169 Since the data is stored in each [var] instance if
 you delete all of them the data is lost (just like [value], f 30;
-#X obj 84 253 var \$0-test;
+#X obj 79 253 var \$0-test;
+#X text 51 16 [var] behaves just like [value] but stores any kind of
+data (using [any]) including custom selectors.;
 #X connect 0 0 2 0;
-#X connect 1 0 13 0;
+#X connect 1 0 12 0;
 #X connect 2 0 1 0;
-#X connect 2 1 15 0;
+#X connect 2 1 14 0;
 #X connect 3 0 2 0;
 #X connect 8 0 2 0;
 #X connect 9 0 2 0;
 #X connect 10 0 2 0;
-#X connect 13 0 7 0;
+#X connect 12 0 7 0;

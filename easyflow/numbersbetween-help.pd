@@ -1,19 +1,21 @@
 #N canvas 0 50 456 300 10;
-#X obj 64 82 hsl 128 15 0 150 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 61 127 numbersbetween 50 100;
+#X obj 64 62 hsl 128 15 0 150 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 4000 1;
+#X obj 61 137 numbersBetween 50 100;
 #X floatatom 61 209 5 0 0 0 - - -, f 5;
 #X floatatom 133 182 5 0 0 0 - - -, f 5;
 #X floatatom 205 162 5 0 0 0 - - -, f 5;
-#X floatatom 61 102 5 0 0 0 - - -, f 5;
+#X floatatom 61 112 5 0 0 0 - - -, f 5;
 #X text 105 206 numbers in the range;
 #X text 179 180 under the range;
 #X text 249 160 over the range;
 #X obj 308 262 easyflow-info;
 #X text 29 17 Part a numeric stream depending on being on a given range
 ;
-#X connect 0 0 5 0;
+#X obj 61 82 i;
+#X connect 0 0 11 0;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
 #X connect 1 2 4 0;
 #X connect 5 0 1 0;
+#X connect 11 0 5 0;

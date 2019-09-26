@@ -1,0 +1,204 @@
+#N canvas 345 126 924 386 10;
+#X obj 50 33 inlet;
+#X obj 350 33 inlet;
+#X text 28 10 bang to check;
+#X text 328 10 actual output;
+#X obj 480 33 inlet;
+#X text 572 7 expected output;
+#X obj 730 33 inlet;
+#X text 708 10 bang on start;
+#X obj 349 288 outlet;
+#X obj 719 98 cnv 10 10 17 empty empty empty 20 12 0 14 -135232 -1
+0;
+#X obj 132 121 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -105671
+0;
+#X obj 730 54 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 730 75 0;
+#X obj 730 98 v \$0-gotOutput;
+#X obj 48 55 ifValue \$0-gotOutput;
+#X obj 37 55 cnv 10 10 17 empty empty empty 20 12 0 14 -135232 -1 0
+;
+#N canvas 282 363 450 300 error! 0;
+#X obj 43 32 inlet;
+#X restore 165 83 pd error!;
+#X obj 38 33 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 338 33 cnv 8 11 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 469 33 cnv 8 11 17 empty empty 3 2 9 0 14 -1 -262144 0;
+#X obj 718 33 cnv 8 11 17 empty empty 5 2 9 0 14 -1 -262144 0;
+#X obj 402 113 cnv 10 10 17 empty empty empty 20 12 0 14 -135232 -1
+0;
+#X obj 413 113 v \$0-gotOutput;
+#X obj 48 199 listCompare;
+#X obj 48 164 list;
+#X obj 350 54 trigger a b;
+#X msg 413 83 1;
+#X obj 599 58 cnv 10 10 17 empty empty empty 20 12 0 14 -2112 -1 0
+;
+#X obj 610 58 s \$0-expected;
+#X obj 100 175 cnv 10 10 17 empty empty empty 20 12 0 14 -2112 -1 0
+;
+#X obj 111 175 r \$0-expected;
+#X obj 48 76 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 58 140 cnv 10 10 17 empty empty empty 20 12 0 14 -241948 -1
+0;
+#X obj 69 140 r \$0-actual;
+#X obj 339 141 cnv 10 10 17 empty empty empty 20 12 0 14 -241948 -1
+0;
+#X obj 350 141 s \$0-actual;
+#X obj 610 33 inlet;
+#X obj 469 57 cnv 10 10 17 empty empty empty 20 12 0 14 -105671 -1
+0;
+#X obj 598 33 cnv 8 11 17 empty empty 4 2 9 0 14 -1 -262144 0;
+#X text 478 14 input;
+#X obj 480 57 var \$0-input;
+#X obj 48 96 trigger bang bang;
+#N canvas 0 50 600 313 printInput 0;
+#X obj 63 41 inlet;
+#X obj 384 115 var \$0-input;
+#X obj 384 204 s \$0-outlet;
+#X obj 373 116 cnv 10 10 17 empty empty empty 20 12 0 14 -105671 -1
+0;
+#X obj 373 204 cnv 10 10 17 empty empty empty 20 12 0 14 -219780 -1
+0;
+#X obj 384 178 list trim;
+#X obj 73 131 cnv 10 10 17 empty empty empty 20 12 0 14 -2112 -1 0
+;
+#X obj 63 62 trigger b b, f 54;
+#X obj 63 245 s \$0-outlet;
+#X obj 52 245 cnv 10 10 17 empty empty empty 20 12 0 14 -219780 -1
+0;
+#X obj 63 219 list trim;
+#X obj 63 158 list;
+#X obj 84 131 r \$0-expected;
+#X text 153 166 Using the blank char " ";
+#X obj 384 136 list prepend Current Test:;
+#X obj 63 187 list prepend         expected:;
+#X obj 52 85 cnv 10 10 17 empty empty empty 20 12 0 14 -88735 -1 0
+;
+#X obj 63 85 ifValue \$0-onlyFailures;
+#X obj 63 108 t a;
+#X connect 0 0 7 0;
+#X connect 1 0 14 0;
+#X connect 5 0 2 0;
+#X connect 7 0 17 0;
+#X connect 7 1 1 0;
+#X connect 10 0 8 0;
+#X connect 11 0 15 0;
+#X connect 12 0 11 1;
+#X connect 14 0 5 0;
+#X connect 15 0 10 0;
+#X connect 17 1 18 0;
+#X connect 18 0 11 0;
+#X restore 147 118 pd printInput;
+#X obj 337 287 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 119 121 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -256323
+0;
+#X obj 338 255 cnv 10 10 17 empty empty empty 20 12 0 14 -256323 -1
+0;
+#X obj 349 255 r \$0-outlet;
+#X obj 48 275 s \$0-outlet;
+#X obj 37 275 cnv 10 10 17 empty empty empty 20 12 0 14 -256323 -1
+0;
+#N canvas 647 437 450 300 success 1;
+#X obj 37 37 inlet;
+#X obj 172 122 list trim;
+#X obj 172 143 outlet;
+#X obj 172 97 list prepend         success:;
+#X obj 26 63 cnv 10 10 17 empty empty empty 20 12 0 14 -88735 -1 0
+;
+#X obj 37 63 ifValue \$0-onlyFailures;
+#X msg 37 84 ok;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;
+#X connect 5 0 6 0;
+#X connect 5 1 3 0;
+#X connect 6 0 2 0;
+#X restore 48 230 pd success;
+#N canvas 0 50 689 516 failure 0;
+#X obj 37 37 inlet;
+#X obj 95 334 list trim;
+#X obj 95 385 outlet;
+#X obj 37 168 trigger b anything b;
+#X obj 37 222 until;
+#X obj 95 309 list prepend         FAILURE:;
+#X msg 37 246 --------------------------------------;
+#X msg 37 201 1;
+#X obj 380 281 cnv 10 10 17 empty empty empty 20 12 0 14 -2112 -1 0
+;
+#X obj 370 369 list trim;
+#X obj 370 308 list;
+#X obj 391 281 r \$0-expected;
+#X text 460 316 Using the blank char " ";
+#X obj 370 337 list prepend         expected:;
+#X obj 359 222 cnv 10 10 17 empty empty empty 20 12 0 14 -88735 -1
+0;
+#X obj 370 222 ifValue \$0-onlyFailures;
+#X msg 370 253 bang;
+#X obj 37 58 t a a, f 56;
+#X connect 0 0 17 0;
+#X connect 1 0 2 0;
+#X connect 3 0 7 0;
+#X connect 3 1 5 0;
+#X connect 3 2 7 0;
+#X connect 4 0 6 0;
+#X connect 5 0 1 0;
+#X connect 6 0 2 0;
+#X connect 7 0 4 0;
+#X connect 9 0 2 0;
+#X connect 10 0 13 0;
+#X connect 11 0 10 1;
+#X connect 13 0 9 0;
+#X connect 15 0 16 0;
+#X connect 16 0 10 0;
+#X connect 17 0 3 0;
+#X connect 17 1 15 0;
+#X restore 111 250 pd failure;
+#X obj 623 181 loadbang;
+#X obj 623 223 easyflow/searchIncomingLists -F;
+#X obj 623 244 list split 1;
+#X obj 623 265 != -1;
+#X obj 612 330 cnv 10 10 17 empty empty empty 20 12 0 14 -88735 -1
+0;
+#X obj 623 330 v \$0-onlyFailures;
+#X obj 623 286 sel 1;
+#X msg 623 307 1;
+#X obj 31 233 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -88735
+0;
+#X obj 623 202 list 666 \$1;
+#X obj 107 121 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -88735
+0;
+#X obj 91 253 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -88735
+0;
+#X connect 0 0 14 0;
+#X connect 1 0 25 0;
+#X connect 4 0 40 0;
+#X connect 6 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 14 0 31 0;
+#X connect 14 1 16 0;
+#X connect 23 0 49 0;
+#X connect 23 1 50 0;
+#X connect 24 0 23 0;
+#X connect 25 0 35 0;
+#X connect 25 1 26 0;
+#X connect 26 0 22 0;
+#X connect 30 0 23 1;
+#X connect 31 0 41 0;
+#X connect 33 0 24 1;
+#X connect 36 0 28 0;
+#X connect 41 0 24 0;
+#X connect 41 1 42 0;
+#X connect 46 0 8 0;
+#X connect 49 0 47 0;
+#X connect 50 0 47 0;
+#X connect 51 0 60 0;
+#X connect 52 0 53 0;
+#X connect 53 0 54 0;
+#X connect 54 0 57 0;
+#X connect 57 0 58 0;
+#X connect 58 0 56 0;
+#X connect 60 0 52 0;

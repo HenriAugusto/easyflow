@@ -4,7 +4,7 @@
 #X obj 174 23 inlet;
 #X obj 248 23 inlet;
 #X obj 27 146 outlet;
-#X obj 27 84 HueSaturationBrightness \$1 \$2 \$3;
+#X obj 27 84 hueSaturationBrightness \$1 \$2 \$3;
 #X obj 248 150 outlet;
 #X obj 241 197 easyflow-info;
 #X connect 0 0 5 0;

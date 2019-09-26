@@ -1,7 +1,6 @@
-#N canvas 0 50 333 150 10;
+#N canvas 0 50 217 138 10;
 #X obj 39 23 inlet;
 #X obj 39 87 outlet;
-#X obj 202 87 easyflow-info;
 #X obj 39 45 expr rint($f1);
-#X connect 0 0 3 0;
-#X connect 3 0 1 0;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;

@@ -8,7 +8,7 @@
 #X obj 582 82 loadbang;
 #X obj 166 77 del 100;
 #X obj 243 35 r globalColorHighlightingUpdateAll;
-#X obj 100 100 cnv 10 10 17 empty \$0-cnv ❴❵ -3 5 0 18 -262144
+#X obj 100 100 cnv 10 10 17 empty \$0-cnv ❴❵ -3 5 0 15 -262144
 -258405 0;
 #X msg 533 52 color 0 666 \$1;
 #X msg 582 104 color 0 666 -1;

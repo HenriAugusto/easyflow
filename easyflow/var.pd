@@ -10,10 +10,10 @@
 #X msg 441 148 0;
 #X obj 147 463 send;
 #X obj 441 124 trigger bang bang bang symbol;
-#X symbolatom 641 153 20 0 0 0 - - -, f 20;
+#X symbolatom 641 153 20 0 0 0 - - -;
 #X obj 436 250 loadbang;
 #X obj 459 511 symbol \$0-thisVarObject;
-#X symbolatom 459 533 20 0 0 0 - - -, f 20;
+#X symbolatom 459 533 20 0 0 0 - - -;
 #X obj 459 564 s easyflowGlobalNamespaceVarGet\$1;
 #X obj 115 19 r \$0-thisVarObject;
 #X obj 441 98 spigot;
@@ -60,7 +60,7 @@
 #X msg 861 82 1;
 #X obj 575 486 s easyflowGlobalNamespaceVarOpenRequest\$1;
 #X obj 861 60 r easyflowGlobalNamespaceVarOpenRequest\$1;
-#X obj 861 154 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 861 154 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 822 176 spigot;
 #X obj 822 198 t a b;
@@ -79,7 +79,7 @@
 #X obj 822 34 r \$0-fulfillRequest;
 #X obj 31 570 loadbang;
 #X obj 31 592 f \$0;
-#X floatatom 31 614 5 0 0 0 - - -, f 5;
+#X floatatom 31 614 5 0 0 0 - - -;
 #X obj 89 395 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
 -1 0;
 #X obj 101 537 spigot;
@@ -117,19 +117,20 @@ is no need to send it to other instances of [var];
 #X text 192 115 0 -> 1 1 -> 0, f 6;
 #X obj 927 520 cnv 11 116 17 empty \$0-cnv how this works 2 9 0 14
 -1 -262144 0;
-#N canvas 16 50 522 322 how 0;
-#X text 40 119 To mimic [value] we must load previously stored values
-from older [var] objects. We do this by sending a request to all older
-instances. The first one to receive the request is the requesting one
-(that intelligently ignores it). The second one will be the penultimate
-[var] instance created. It will fulfill the request and close that
-request so other instances don't send redundant data!;
+#N canvas 305 192 522 322 how 0;
 #X text 41 18 All [var] objects share data through global sendNames
 that are common for all [var] instances with same arguments (for that
 we just use \$1) in the send name. Anytime a [var] instance receives
 a new value it just sends it to the others.;
-#X text 40 252 Since the data is stored in each [var] instance if you
-delete all of them the data is lost (just like [value];
+#X text 40 251 Since the data is stored in each [var] instance if you
+delete all of them the data is lost (just like [value]);
+#X text 40 119 To mimic [value] we must \, upon [var] initialization
+\, load previously stored values from older [var] objects. We do this
+by sending a request to all older instances. The first one to receive
+the request is the requesting one (that intelligently ignores it).
+The second one will be the penultimate [var] instance created. It will
+fulfill the request and close that request so other instances don't
+send redundant data!;
 #X restore 927 546 pd how this works;
 #X connect 0 0 2 0;
 #X connect 2 0 20 0;

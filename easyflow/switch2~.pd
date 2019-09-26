@@ -9,7 +9,7 @@
 #X obj 26 145 trigger bang float;
 #X obj 131 176 outlet rightmost = index;
 #X msg 131 69 1;
-#X text 181 37 This is part of EasyFlow library of abstractions.;
+#X text 181 37 This is part of easyflow library of abstractions.;
 #X text 181 67 Created by Henri Augusto - v1.0 - 11 July 2015;
 #X text 181 86 henriaugusto.github.io;
 #X connect 0 0 3 0;

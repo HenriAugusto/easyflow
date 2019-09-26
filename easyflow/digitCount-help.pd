@@ -1,0 +1,14 @@
+#N canvas 722 205 797 466 10;
+#X obj 330 257 easyflow-info;
+#X obj 58 127 digitCount;
+#X obj 58 148 easyflow/printHere;
+#X text 50 37 [digitCount] outputs the number of digits in a number
+;
+#X msg 58 97 1 \, 21 \, 321 \, 4321 \, 54321 \, 54321.1;
+#X msg 485 103 54321.1;
+#X floatatom 485 145 10 0 0 0 - - -;
+#X obj 485 124 frac;
+#X connect 1 0 2 0;
+#X connect 4 0 1 0;
+#X connect 5 0 7 0;
+#X connect 7 0 6 0;

@@ -1,31 +1,58 @@
-#N canvas 525 187 345 699 10;
-#X symbolatom 54 275 20 0 0 0 - - -, f 20;
-#X obj 194 633 easyflow-info;
-#X text 49 76 Currently it does NOT check if the indexes are valid.
-, f 25;
-#X floatatom 98 229 5 0 0 0 - - -, f 5;
-#X floatatom 142 229 5 0 0 0 - - -, f 5;
-#X text 49 168 The index is 0-based.;
-#X obj 54 253 substring 2 4;
-#X text 50 310 You can use negative numbers to count from the string
+#N canvas 525 187 469 662 10;
+#X symbolatom 44 175 20 0 0 0 - - -;
+#X obj 339 597 easyflow-info;
+#X floatatom 88 129 5 0 0 0 - - -;
+#X floatatom 132 129 5 0 0 0 - - -;
+#X text 39 68 The index is 0-based.;
+#X obj 44 153 substring 2 4;
+#X text 40 270 You can use negative numbers to count from the string
 end., f 27;
-#X symbolatom 54 424 20 0 0 0 - - -, f 20;
-#X msg 54 200 symbol abcdefg;
-#X msg 54 370 symbol abcdefg;
-#X symbolatom 54 577 20 0 0 0 - - -, f 20;
-#X msg 54 520 symbol abcdefg;
-#X text 55 461 You can use "L" or "l" to use the string length., f
+#X symbolatom 44 384 20 0 0 0 - - -;
+#X msg 44 100 symbol abcdefg;
+#X msg 44 330 symbol abcdefg;
+#X symbolatom 44 537 20 0 0 0 - - -;
+#X msg 44 480 symbol abcdefg;
+#X text 45 421 You can use "L" or "l" to use the string length., f
 23;
-#X obj 54 402 substring 0 -2;
-#X obj 54 552 substring -3 L;
-#X text 49 15 [substring] takes a symbol and outputs a substring of
-that symbol., f 25;
-#X text 49 129 So [substring 5 2] will fail silently., f 25;
-#X connect 3 0 6 1;
-#X connect 4 0 6 2;
-#X connect 6 0 0 0;
-#X connect 9 0 6 0;
-#X connect 10 0 14 0;
-#X connect 12 0 15 0;
-#X connect 14 0 8 0;
-#X connect 15 0 11 0;
+#X obj 44 362 substring 0 -2;
+#X obj 44 512 substring -3 L;
+#X text 39 15 [substring] takes a symbol and outputs a substring of
+that symbol., f 66;
+#X text 171 116 1st index is inclusive;
+#X text 171 135 2nd index is exclusive;
+#X text 38 210 It might help to think of a selection.;
+#X obj 287 210 cnv 11 25 18 empty empty a 2 9 0 16 -1 -262144 0;
+#X text 281 193 0;
+#X text 296 193 1;
+#X obj 303 210 cnv 11 25 18 empty empty b 2 9 0 16 -1 -262144 0;
+#X obj 319 210 cnv 11 25 18 empty empty c 2 9 0 16 -2112 -262144 0
+;
+#X obj 334 210 cnv 11 25 18 empty empty d 2 9 0 16 -2112 -262144 0
+;
+#X obj 352 210 cnv 11 25 18 empty empty e 2 9 0 16 -1 -262144 0;
+#X obj 368 210 cnv 11 25 18 empty empty f 2 9 0 16 -1 -262144 0;
+#X obj 387 210 cnv 11 20 18 empty empty g 2 9 0 16 -1 -262144 0;
+#X text 313 193 2;
+#X text 328 193 3;
+#X text 344 193 4;
+#X text 361 193 5;
+#X text 380 193 6;
+#X text 399 193 7;
+#X text 300 170 [substring 2 4];
+#X msg 274 402 symbol ab;
+#X symbolatom 274 445 10 0 0 0 - - -;
+#X obj 274 423 substring 0 15;
+#X symbolatom 355 446 10 0 0 0 - - -;
+#X text 258 330 If the indexes are not contained in the string the
+input is passed unchanged through the right outlet, f 26;
+#X connect 2 0 5 1;
+#X connect 3 0 5 2;
+#X connect 5 0 0 0;
+#X connect 8 0 5 0;
+#X connect 9 0 13 0;
+#X connect 11 0 14 0;
+#X connect 13 0 7 0;
+#X connect 14 0 10 0;
+#X connect 35 0 37 0;
+#X connect 37 0 36 0;
+#X connect 37 1 38 0;

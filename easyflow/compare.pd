@@ -9,7 +9,7 @@
 #X obj 92 425 outlet;
 #X obj 50 76 route float symbol;
 #X obj 284 74 route float symbol;
-#X obj 407 100 easyflow/symbolize;
+#X obj 389 103 easyflow/symbolize;
 #X obj 79 290 cnv 11 12 17 empty empty empty 2 9 0 14 -213332 -262144
 0;
 #X obj 92 290 r \$0-selHot;
@@ -80,13 +80,13 @@
 #X restore 145 373 pd recoverInput;
 #X obj 132 401 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;
 #X obj 145 401 outlet;
-#X obj 132 320 cnv 11 12 17 empty empty empty 2 9 0 14 -59819 -262144
+#X obj 124 320 cnv 11 12 17 empty empty empty 2 9 0 14 -59819 -262144
 0;
-#X obj 145 320 r \$0-selCold;
-#X obj 332 218 cnv 11 12 17 empty empty empty 2 9 0 14 -59819 -262144
+#X obj 137 320 r \$0-selCold;
+#X obj 323 218 cnv 11 12 17 empty empty empty 2 9 0 14 -59819 -262144
 0;
-#X obj 345 218 s \$0-selCold;
-#N canvas 0 50 297 329 floats 0;
+#X obj 336 218 s \$0-selCold;
+#N canvas 0 50 297 329 floats 1;
 #X obj 45 234 makefilename %d;
 #X obj 45 48 t f b;
 #X obj 45 150 t f f;
@@ -123,7 +123,7 @@
 #X connect 1 1 3 0;
 #X connect 3 0 2 0;
 #X connect 6 0 1 0;
-#X restore 111 130 pd symbols;
+#X restore 102 130 pd symbols;
 #N canvas 0 50 377 330 others 0;
 #X obj 44 64 easyflow/symbolize;
 #X msg 133 148 symbol o;
@@ -144,8 +144,8 @@
 #X connect 8 0 3 0;
 #X connect 8 1 1 0;
 #X connect 8 2 9 0;
-#X restore 173 107 pd others;
-#N canvas 0 50 181 143 initialization 1;
+#X restore 155 107 pd others;
+#N canvas 0 50 181 124 initialization 0;
 #X obj 26 31 loadbang;
 #X obj 26 53 list 666 \$1;
 #X msg 26 75 \$2;
@@ -154,6 +154,28 @@
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X restore 336 34 pd initialization;
+#X obj 36 163 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -213332
+0;
+#X obj 86 134 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -213332
+0;
+#X obj 23 163 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -4160 0
+;
+#X obj 74 134 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -4160 0
+;
+#X obj 124 110 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -4160
+0;
+#X obj 29 151 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -48090
+0;
+#X obj 137 110 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -213332
+0;
+#X obj 130 99 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260097
+0;
+#X obj 122 368 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -48090
+0;
+#X obj 129 378 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260097
+0;
+#X obj 115 378 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -4160
+0;
 #X connect 0 0 8 0;
 #X connect 1 0 9 0;
 #X connect 4 0 19 0;

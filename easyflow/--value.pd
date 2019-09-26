@@ -1,0 +1,14 @@
+#N canvas 0 50 450 300 10;
+#X obj 87 40 inlet;
+#X msg 87 61 bang;
+#X obj 87 82 v \$1;
+#X obj 198 153 v \$1;
+#X obj 87 129 trigger float float;
+#X obj 87 150 outlet;
+#X obj 87 104 - 1;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 6 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 0;
+#X connect 6 0 4 0;

@@ -1,12 +1,12 @@
 #N canvas 599 95 786 646 10;
 #X obj 629 596 easyflow-info;
-#X obj 91 157 GOPTool;
+#X obj 91 157 gopTool;
 #X text 257 440 defines the canvas;
-#X text 196 484 then you can use GOPTool to send message to this canvas
+#X text 196 484 then you can use gopTool to send message to this canvas
 to adjust GOP;
 #X text 201 533 then you can finally delete [namecanvas this] when
 you are done;
-#X text 90 33 [GOPTool] allows you to quickly adjust the Graph-On-Parent
+#X text 90 33 [gopTool] allows you to quickly adjust the Graph-On-Parent
 parameters of a patch! No more suffering with the properties window!
 ;
 #X text 355 594 Inspired by an patch of Brady Sharp;
@@ -36,7 +36,7 @@ parameters of a patch! No more suffering with the properties window!
 #X connect 10 0 11 0;
 #X restore 91 121 pd setMessages;
 #X msg 392 376 coords 0 1 1 -1 188.235 135.529 1 464.314 180.51 7;
-#X text 431 396 send this message to the GOPTool inlet to;
+#X text 431 396 send this message to the gopTool inlet to;
 #X text 431 409 return to that state!;
 #X obj 109 440 namecanvas \$0-this;
 #X obj 91 485 send \$0-this;

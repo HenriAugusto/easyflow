@@ -1,0 +1,18 @@
+#N canvas 430 140 410 377 10;
+#X text 44 37 Repeat outputs whatever you send through it's inlet an
+N number of times;
+#X floatatom 47 79 5 0 0 0 - - -;
+#X msg 65 100 symbol foo;
+#X msg 79 127 msg with custom selector;
+#X obj 47 241 printHere;
+#X obj 306 330 easyflow-info;
+#X obj 47 213 repeat 3;
+#X floatatom 92 192 5 0 0 0 - - -;
+#X msg 88 154 1 2 3 this is a list;
+#X text 131 191 sets the # of times (min = 1);
+#X connect 1 0 6 0;
+#X connect 2 0 6 0;
+#X connect 3 0 6 0;
+#X connect 6 0 4 0;
+#X connect 7 0 6 1;
+#X connect 8 0 6 0;

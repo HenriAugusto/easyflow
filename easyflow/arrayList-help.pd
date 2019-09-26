@@ -1,4 +1,4 @@
-#N canvas 552 353 807 540 10;
+#N canvas 90 101 758 626 10;
 #X obj 54 385 arrayList;
 #X obj 54 168 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -9,23 +9,15 @@
 #X obj 54 313 select 3;
 #X obj 136 314 random 100;
 #X obj 54 286 trigger float bang float;
-#X floatatom 136 346 5 0 0 0 - - -, f 5;
+#X floatatom 136 346 5 0 0 0 - - -;
 #X obj 54 215 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 54 407 easyflow/printHere -s;
-#X obj 678 491 easyflow-info;
+#X obj 640 573 easyflow-info;
 #X msg 54 348 getList;
-#X obj 406 369 arraylist;
-#X obj 406 391 easyflow/printHere;
+#X obj 406 399 arrayList;
 #X text 566 142 add elements;
 #X msg 458 197 getList;
 #X msg 406 114 clear;
-#X obj 54 190 metro 500;
-#X text 50 126 Sums up 4 random integers and only outputs them after
-getting all 4, f 34;
-#X text 51 57 It works similarly as an ArrayList in java but holds
-floats and symbols. ALso note that the index is 1-based to conform
-with the \$1 notation used by pd for element access in lists.;
 #X text 520 196 outputs the list;
 #X msg 458 223 get 2;
 #X text 508 223 outputs the second element;
@@ -44,28 +36,133 @@ based get \, set and remove operations on its members.;
 #X msg 439 172 set 3 new;
 #X msg 487 327 getList \, set -3 backwards \, getList \, get -3, f
 26;
-#X connect 0 0 11 0;
-#X connect 1 0 19 0;
+#X text 51 57 It works similarly as an ArrayList in java and holds
+floats and symbols. Also note that the index is 1-based to conform
+with the \$1 notation used by pd for element access in lists.;
+#X obj 368 321 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 337 289 output the list, f 8;
+#X obj 54 190 metro 1000;
+#X text 50 116 Example: Pick 4 random integers and only outputs them
+after getting all 4, f 34;
+#N canvas 43 50 537 679 explanation on empty lists 0;
+#X msg 67 83 list;
+#X obj 67 104 print;
+#X text 36 33 PD understand "empty lists" as a bang message!;
+#X text 121 92 will print "bang" on console!;
+#X obj 232 253 list;
+#X obj 232 211 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 51 253 list;
+#X obj 51 211 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 72 229 list;
+#X text 39 142 You can see that behaviour also in the [list] object
+(and all it's variants);
+#X obj 72 205 loadbang;
+#X obj 253 205 loadbang;
+#X text 357 211 Note that list elements are always a float or a symbol
+so a list containing only "bang" actually contains the symbol bang!
+, f 24;
+#X obj 67 392 list split 3;
+#X obj 67 449 printHere -s;
+#X obj 232 274 easyflow/printHere -s;
+#X obj 51 274 easyflow/printHere -s;
+#X obj 101 414 printHere -s;
+#X text 192 362 Note the case where the list contains only 3 elements
+;
+#X msg 82 365 1 2 3;
+#X msg 67 341 1 2 3 4 5;
+#X text 190 388 The middle outlet of split 3 outputs a "empty list"
+which turns into a bang!;
+#X text 51 507 For that reason abstractions on [easyflow] whose output
+is a list will \, accordingly \, output "bang" when the list is empty!
+, f 71;
+#X obj 51 569 route bang;
+#X obj 51 599 select bang;
+#X text 127 569 So you can use [route bang] to detect "empty lists"
+;
+#X text 127 599 So you can use [sel bang] to detect 'symbol bang';
+#X msg 253 229 list bang;
+#X obj 139 253 list;
+#X obj 139 211 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 160 205 loadbang;
+#X obj 139 274 easyflow/printHere -s;
+#X msg 160 229 bang;
+#X connect 0 0 1 0;
+#X connect 4 0 15 0;
+#X connect 5 0 4 0;
+#X connect 6 0 16 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 1;
+#X connect 10 0 8 0;
+#X connect 11 0 27 0;
+#X connect 13 0 14 0;
+#X connect 13 1 17 0;
+#X connect 19 0 13 0;
+#X connect 20 0 13 0;
+#X connect 27 0 4 1;
+#X connect 28 0 31 0;
+#X connect 29 0 28 0;
+#X connect 30 0 32 0;
+#X connect 32 0 28 1;
+#X restore 107 550 pd explanation on empty lists;
+#X obj 54 407 easyflow/printHere -s;
+#X obj 406 421 easyflow/printHere;
+#X text 39 526 see also:;
+#X obj 108 525 listCollect;
+#N canvas 1024 199 680 529 send 0;
+#X msg 112 130 send arrayListHelp -3 -2;
+#X msg 102 109 send arrayListHelp 2 L;
+#X msg 82 51 send arrayListHelp L;
+#X obj 72 220 outlet;
+#X msg 72 29 send arrayListHelp 3;
+#X text 214 28 send 3rd element;
+#X text 221 50 send last;
+#X msg 92 71 send arrayListHelp -1;
+#X text 237 70 send penultimate;
+#X text 255 109 send sublists!;
+#X msg 123 171 send arrayListHelp;
+#X text 251 170 send entire list;
+#X text 374 157 notice that this is the only way to safely get an 0-element
+list (which is a bang), f 29;
+#X text 146 263 See the [list]'s help file on the [pd append] subpatch
+for details.;
+#X obj 64 311 r arrayListHelp;
+#X obj 64 332 easyflow/printHere -s;
+#X connect 0 0 3 0;
+#X connect 1 0 3 0;
+#X connect 2 0 3 0;
+#X connect 4 0 3 0;
+#X connect 7 0 3 0;
+#X connect 10 0 3 0;
+#X connect 14 0 15 0;
+#X restore 490 369 pd send;
+#X connect 0 0 39 0;
+#X connect 1 0 36 0;
 #X connect 2 0 3 0;
 #X connect 3 0 8 0;
 #X connect 4 0 5 0;
 #X connect 5 0 0 0;
-#X connect 6 0 13 0;
+#X connect 6 0 12 0;
 #X connect 7 0 9 0;
 #X connect 8 0 6 0;
 #X connect 8 1 7 0;
 #X connect 8 2 4 0;
 #X connect 9 0 0 0;
 #X connect 10 0 2 0;
-#X connect 13 0 0 0;
-#X connect 14 0 15 0;
-#X connect 17 0 14 0;
-#X connect 18 0 14 0;
-#X connect 19 0 10 0;
-#X connect 23 0 14 0;
-#X connect 30 0 14 0;
-#X connect 31 0 14 0;
-#X connect 32 0 14 0;
-#X connect 34 0 14 0;
-#X connect 36 0 14 0;
-#X connect 37 0 14 0;
+#X connect 12 0 0 0;
+#X connect 13 0 40 0;
+#X connect 15 0 13 0;
+#X connect 16 0 13 0;
+#X connect 18 0 13 0;
+#X connect 25 0 13 0;
+#X connect 26 0 13 0;
+#X connect 27 0 13 0;
+#X connect 29 0 13 0;
+#X connect 31 0 13 0;
+#X connect 32 0 13 0;
+#X connect 34 0 13 0;
+#X connect 36 0 10 0;
+#X connect 43 0 13 0;

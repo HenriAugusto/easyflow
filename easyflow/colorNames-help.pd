@@ -2,16 +2,16 @@
 #X obj 426 340 easyflow-info;
 #X obj 59 136 hradio 15 1 0 8 empty empty test me! 0 -8 0 10 -262144
 -1 -1 0;
-#X symbolatom 59 188 10 0 0 0 - - -, f 10;
+#X symbolatom 59 188 10 0 0 0 - - -;
 #X obj 59 282 tgl 30 0 empty empty empty 17 7 0 10 -1 -1 -1 0 1;
 #X obj 240 224 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 240 137 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #N canvas 876 121 691 428 color 0;
-#X symbolatom 276 264 10 0 0 0 - - -, f 10;
+#X symbolatom 276 264 10 0 0 0 - - -;
 #X msg 276 315 color \$1;
-#X obj 276 337 tgl 35 0 empty empty empty 17 7 0 10 -200656 -1 -1 0
+#X obj 276 337 tgl 35 0 empty empty empty 17 7 0 10 -258405 -1 -1 0
 1;
 #X obj 276 164 guilla/dropdownMenu \$0-this red/lightRed/darkRed/wine/blood
 ;
@@ -165,7 +165,7 @@
 #X connect 29 0 30 0;
 #X connect 30 0 28 0;
 #X restore 50 244 pd set;
-#X symbolatom 50 211 10 0 0 0 - - -, f 10;
+#X symbolatom 50 211 10 0 0 0 - - -;
 #X text 40 72 1 - select a color group;
 #X text 275 71 2 - select a color;
 #X obj 56 16 namecanvas \$0-this;
@@ -191,7 +191,7 @@ without using;
 #X obj 123 103 loadbang;
 #X obj 123 125 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X symbolatom 70 205 10 0 0 0 - - -, f 10;
+#X symbolatom 70 205 10 0 0 0 - - -;
 #X obj 70 224 outlet;
 #X msg 123 152 list black red yellow green cyan blue purple pink;
 #X obj 70 184 listPick;

@@ -1,0 +1,115 @@
+#N canvas 0 50 822 369 10;
+#X obj 52 37 inlet;
+#X obj 52 271 outlet;
+#X obj 202 35 inlet;
+#X floatatom 202 56 5 0 0 0 - - -;
+#X obj 52 240 bang;
+#X obj 52 73 bang;
+#X obj 52 209 moses, f 8;
+#N canvas 0 50 1218 561 HOW 0;
+#X obj 52 37 inlet;
+#X obj 52 108 random 100;
+#X obj 52 271 outlet;
+#X obj 389 37 inlet;
+#X floatatom 389 58 5 0 0 0 - - -;
+#X obj 416 183 expr modf($f1);
+#X floatatom 416 204 5 0 0 0 - - -;
+#X obj 416 224 > 0;
+#X obj 416 117 t f f b;
+#X obj 487 138 v \$0-i;
+#X msg 487 116 0;
+#X obj 492 230 f;
+#X obj 492 251 * 10;
+#X obj 416 255 sel 0 1;
+#X obj 492 302 t f f b;
+#X obj 416 296 v \$0-i;
+#X msg 416 347 10 \$1;
+#X obj 416 368 pow;
+#X obj 416 429 * 100;
+#X obj 389 78 t f f;
+#X obj 224 136 *;
+#X floatatom 97 181 15 0 0 0 - - -;
+#X floatatom 109 86 15 0 0 0 - - -;
+#X obj 52 240 bang;
+#X obj 52 73 bang;
+#X obj 416 399 t a a;
+#X obj 476 138 cnv 10 10 17 empty empty empty 20 12 0 14 -74480 -1
+0;
+#X text 611 30 If the input is something like 66.6 we multiply by 10
+until we find an integer;
+#X text 611 73 So instead of [random 100] and moses [66] we use;
+#X text 610 104 [random 1000] and [moses 666];
+#X text 614 137 Due to floating point errors sometimes we get a number
+bigger than the actual fractional digit count for the [v \$0-i] but
+that is okay because the same number will be used for both the [random]
+and [moses] objects, f 62;
+#X obj 531 324 ++v \$0-i;
+#X obj 520 324 cnv 10 10 17 empty empty empty 20 12 0 14 -74480 -1
+0;
+#X obj 416 276 bang;
+#X obj 405 296 cnv 10 10 17 empty empty empty 20 12 0 14 -74480 -1
+0;
+#X floatatom 416 317 5 0 0 0 - - -;
+#X obj 52 209 moses, f 8;
+#X obj 327 38 loadbang;
+#X obj 327 59 f \$1;
+#X text 701 390 PROBLEM: some numbers might \, due to their fractional
+part and floating point inaccuracy \, result in some very large numbers
+which will \, rounded \, give wrong results;
+#X connect 0 0 24 0;
+#X connect 1 0 36 0;
+#X connect 3 0 4 0;
+#X connect 4 0 19 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 13 0;
+#X connect 8 0 5 0;
+#X connect 8 1 11 1;
+#X connect 8 2 10 0;
+#X connect 10 0 9 0;
+#X connect 11 0 12 0;
+#X connect 12 0 14 0;
+#X connect 13 0 33 0;
+#X connect 13 1 11 0;
+#X connect 14 0 5 0;
+#X connect 14 1 11 1;
+#X connect 14 2 31 0;
+#X connect 15 0 35 0;
+#X connect 16 0 17 0;
+#X connect 17 0 25 0;
+#X connect 18 0 22 0;
+#X connect 19 0 20 0;
+#X connect 19 1 8 0;
+#X connect 20 0 21 0;
+#X connect 21 0 36 1;
+#X connect 22 0 1 1;
+#X connect 23 0 2 0;
+#X connect 24 0 1 0;
+#X connect 25 0 20 1;
+#X connect 25 1 18 0;
+#X connect 33 0 15 0;
+#X connect 35 0 16 0;
+#X connect 36 0 23 0;
+#X connect 37 0 38 0;
+#X connect 38 0 4 0;
+#X restore 427 222 pd HOW TO DO THIS;
+#X floatatom 202 107 5 0 0 0 - - -;
+#X obj 273 33 loadbang;
+#X obj 273 54 f \$1;
+#X obj 52 108 random 10000;
+#X obj 202 86 expr rint(100*$f1);
+#X text 385 72 Current idea:;
+#X text 353 192 Alternative idea \, which didn't work as expected;
+#X text 397 90 Just multiply both by 100 to have accuracy up to 2 decimals
+;
+#X connect 0 0 5 0;
+#X connect 2 0 3 0;
+#X connect 3 0 12 0;
+#X connect 4 0 1 0;
+#X connect 5 0 11 0;
+#X connect 6 0 4 0;
+#X connect 8 0 6 1;
+#X connect 9 0 10 0;
+#X connect 10 0 3 0;
+#X connect 11 0 6 0;
+#X connect 12 0 8 0;

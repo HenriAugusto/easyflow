@@ -1,0 +1,163 @@
+#N canvas 1185 93 660 780 10;
+#X obj 157 399 listPick;
+#X obj 66 173 list length;
+#X floatatom 66 195 5 0 0 0 - - -, f 5;
+#X floatatom 66 292 5 0 0 0 - - -, f 5;
+#X obj 39 19 inlet hotinlet list;
+#X obj 167 333 cnv 10 10 17 empty empty empty 20 12 0 14 -99096 -66577
+0;
+#X msg 227 669;
+#X obj 61 67 cnv 10 10 17 empty empty empty 20 12 0 14 -88065 -66577
+0;
+#X obj 71 67 s \$0-Initialization;
+#X obj 246 522 cnv 10 10 17 empty empty empty 20 12 0 14 -88065 -66577
+0;
+#X obj 256 522 r \$0-Initialization;
+#X msg 256 624 set;
+#X obj 39 101 trigger anything anything;
+#X obj 39 43 t a b;
+#X obj 39 123 t b a;
+#X obj 29 146 cnv 10 10 17 empty empty empty 20 12 0 14 -147521 -66577
+0;
+#X obj 39 146 s \$0-Output;
+#X obj 50 454 cnv 10 10 17 empty empty empty 20 12 0 14 -147521 -66577
+0;
+#X obj 60 454 r \$0-Output;
+#X obj 227 721 outlet;
+#X obj 177 333 v \$0-index;
+#X obj 50 625 cnv 10 10 17 empty empty empty 20 12 0 14 -2269 -66577
+0;
+#X obj 60 625 v \$0-counter;
+#X obj 83 240 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 66 214 t f f;
+#X obj 60 476 t b a;
+#X obj 68 553 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 93 240 s \$0-Length;
+#X obj 78 553 r \$0-Length;
+#X obj 60 583 ==;
+#X obj 50 509 cnv 10 10 17 empty empty empty 20 12 0 14 -99096 -66577
+0;
+#X obj 60 509 v \$0-index;
+#X obj 60 605 sel 1;
+#X obj 60 647 == 0;
+#X msg 288 564 0;
+#X obj 60 669 sel 1;
+#X obj 60 691 f -1;
+#N canvas 766 138 285 199 for 0;
+#X obj 26 18 inlet;
+#X obj 26 132 f;
+#X obj 61 132 + 1;
+#X msg 191 69 1;
+#X obj 26 40 trigger float float bang;
+#X obj 26 100 until 0;
+#X obj 72 71 inlet;
+#X obj 26 161 outlet;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 1 0 7 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 1;
+#X connect 4 0 5 0;
+#X connect 4 2 3 0;
+#X connect 5 0 1 0;
+#X connect 6 0 5 1;
+#X restore 66 268 pd for;
+#X obj 278 586 cnv 10 10 17 empty empty empty 20 12 0 14 -2269 -66577
+0;
+#X obj 288 586 v \$0-counter;
+#X obj 256 544 t b b;
+#N canvas 435 237 610 552 comparison 0;
+#X obj 39 34 inlet;
+#X obj 29 314 cnv 10 10 17 empty empty empty 20 12 0 14 -99096 -66577
+0;
+#X msg 39 338 add2 \$1;
+#X obj 39 314 v \$0-index;
+#X obj 56 230 cnv 10 10 17 empty empty empty 20 12 0 14 -2269 -66577
+0;
+#X obj 66 230 v \$0-counter;
+#X obj 56 280 cnv 10 10 17 empty empty empty 20 12 0 14 -2269 -66577
+0;
+#X obj 66 280 v \$0-counter;
+#X obj 66 252 + 1;
+#X obj 39 361 outlet;
+#X obj 39 201 trigger bang;
+#X obj 39 151 compare;
+#X text 128 32 symbol to search;
+#X obj 88 34 inlet;
+#N canvas 0 50 366 283 initialize from argument 0;
+#X obj 48 49 loadbang;
+#X obj 48 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 48 139 route float symbol;
+#X msg 48 114 \$2;
+#X obj 48 92 list 666 \$1;
+#X obj 171 166 list prepend symbol;
+#X obj 171 188 list trim;
+#X obj 48 221 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 7 0;
+#X connect 2 2 5 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X restore 78 125 pd initialize from argument;
+#X obj 88 55 route list;
+#X obj 88 82 print [searchIncomingLists] error. Can't send list to
+cold inlet;
+#X connect 0 0 11 0;
+#X connect 2 0 9 0;
+#X connect 3 0 2 0;
+#X connect 5 0 8 0;
+#X connect 8 0 7 0;
+#X connect 10 0 5 0;
+#X connect 10 0 3 0;
+#X connect 11 0 10 0;
+#X connect 13 0 15 0;
+#X connect 14 0 11 1;
+#X connect 15 0 16 0;
+#X connect 15 1 11 1;
+#X restore 157 431 pd comparison;
+#X obj 232 397 inlet symbol to search;
+#X obj 222 397 cnv 8 11 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 27 19 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 215 721 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 66 311 trigger float float;
+#X connect 0 0 41 0;
+#X connect 1 0 2 0;
+#X connect 2 0 24 0;
+#X connect 3 0 46 0;
+#X connect 4 0 13 0;
+#X connect 6 0 19 0;
+#X connect 10 0 40 0;
+#X connect 11 0 6 0;
+#X connect 12 0 14 0;
+#X connect 12 1 0 1;
+#X connect 13 0 12 0;
+#X connect 13 1 8 0;
+#X connect 14 0 16 0;
+#X connect 14 1 1 0;
+#X connect 18 0 25 0;
+#X connect 22 0 33 0;
+#X connect 24 0 37 0;
+#X connect 24 1 27 0;
+#X connect 25 0 31 0;
+#X connect 25 1 6 0;
+#X connect 28 0 29 1;
+#X connect 29 0 32 0;
+#X connect 31 0 29 0;
+#X connect 32 0 22 0;
+#X connect 33 0 35 0;
+#X connect 34 0 39 0;
+#X connect 35 0 36 0;
+#X connect 36 0 19 0;
+#X connect 37 0 3 0;
+#X connect 40 0 11 0;
+#X connect 40 1 34 0;
+#X connect 41 0 6 0;
+#X connect 42 0 41 1;
+#X connect 46 0 0 0;
+#X connect 46 1 20 0;

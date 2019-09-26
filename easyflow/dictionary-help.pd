@@ -1,0 +1,33 @@
+#N canvas 823 198 520 336 10;
+#X obj 71 234 dictionary;
+#X text 59 22 [dictionary] is an associative array of (key \, value)
+pairs. This type of array is also called "map" or "dictionary".;
+#X obj 71 255 easyflow/printHere -s;
+#X msg 30 168 clear;
+#X text 64 303 TO DO ADD SUPPORT FOR FLOAT KEYS!;
+#X msg 92 112 get name;
+#X msg 101 134 get profession;
+#X msg 105 158 get appearances;
+#X msg 114 209 remove profession;
+#X msg 110 182 get species;
+#X obj 289 203 dictionary;
+#X msg 305 143 get 666 \, get 81;
+#X floatatom 337 163 5 0 0 0 - - -;
+#X msg 289 120 set 666 2 3 3 37 \, set 81 8 8;
+#X obj 289 224 easyflow/printHere -m2;
+#X msg 337 183 set 666 \$1 \$1\$1 \$1\$1\$1;
+#X msg 71 75 set name dogmeat \, set profession game npc (companion)
+\, set species dog \, set appearances Fo1 Fo2 Fo3 Fo4;
+#X connect 0 0 2 0;
+#X connect 3 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 10 0 14 0;
+#X connect 11 0 10 0;
+#X connect 12 0 15 0;
+#X connect 13 0 10 0;
+#X connect 15 0 10 0;
+#X connect 16 0 0 0;

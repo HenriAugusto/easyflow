@@ -1,8 +1,7 @@
-#N canvas 375 124 728 557 10;
+#N canvas 375 124 686 443 10;
 #X obj 265 111 cnv 15 100 15 empty empty SPECIAL 10 8 0 14 -1 -262144
 0;
-#X obj 269 212 easyflow/CopyList;
-#X msg 269 234 9.29202e+006;
+#X obj 269 212 easyflow/copyList;
 #X obj 334 111 cnv 15 300 15 empty empty CASES 10 8 0 14 -1 -262144
 0;
 #X text 358 155 leading zeros are not considered (09 = 9);
@@ -10,13 +9,37 @@
 ;
 #X obj 334 268 cnv 5 300 5 empty empty empty 10 8 0 14 -1 -262144 0
 ;
-#X obj 234 24 cnv 2 2 500 empty empty empty 10 8 0 14 -1 -262144 0
+#X obj 234 24 cnv 2 2 350 empty empty empty 10 8 0 14 -1 -262144 0
 ;
-#X text 275 304 ListConcatenate uses;
-#X obj 424 304 route list;
-#X text 505 304 to be able to handle;
-#X text 275 333 cases like;
-#X msg 361 331 t h i s i s c o o l;
+#X obj 265 18 cnv 15 100 15 empty empty LIST 10 8 0 14 -1 -258080 0
+;
+#X obj 331 18 cnv 15 300 15 empty empty CONCATENATE -10 8 0 14 -1 -258081
+0;
+#X text 360 138 Since numbers in lists cannot be symbols;
+#X msg 269 153 9 29 2017;
+#X msg 51 90 list t h i s i s c o o l;
+#X msg 64 117 t h i s i s c o o l;
+#X msg 76 146 a;
+#X msg 77 183 2;
+#X msg 45 50 list 10 20 30 40;
+#X msg 30 22 list a1 b2 c3 a4;
+#X obj 30 234 easyflow/listConcatenate;
+#X symbolatom 30 256 15 0 0 0 - - -, f 15;
+#X obj 269 183 easyflow/listConcatenate;
+#X text 112 177 (output is still a float), f 14;
+#X text 271 42 listConcatenate takes a message and outputs symbol which
+is a concatenation of all of its elements, f 52;
+#X text 464 189 try changing 9 to;
+#X text 573 189 0;
+#X text 583 189 9;
+#X msg 269 234;
+#X text 470 205 in the message box;
+#N canvas 0 50 541 263 curiosityForDevelopers 0;
+#X text 56 47 listConcatenate uses;
+#X obj 205 47 route list;
+#X text 286 47 to be able to handle;
+#X text 56 76 cases like;
+#X msg 142 74 t h i s i s c o o l;
 #N canvas 176 50 1444 798 justForCuriosity 0;
 #X obj 132 322 list length;
 #X floatatom 132 344 5 0 0 0 - - -, f 5;
@@ -153,7 +176,7 @@
 #X obj 616 181 r \$0-outlet_A;
 #X obj 476 434 s \$0-updateList_A;
 #X floatatom 52 224 5 0 0 0 - - -, f 5;
-#X obj 476 186 easyflow/Switch2;
+#X obj 476 186 easyflow/switch2;
 #X connect 0 0 1 0;
 #X connect 1 0 45 0;
 #X connect 2 0 46 0;
@@ -245,7 +268,7 @@
 #X obj 133 336 s \$0-bangList_B;
 #X obj 127 223 s \$0-updateList_B;
 #X obj 203 194 s \$0-whereToSendList_B;
-#X obj 476 186 easyflow/Switch2;
+#X obj 476 186 easyflow/switch2;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 4 0;
@@ -308,7 +331,7 @@
 0;
 #X obj 806 64 cnv 15 300 15 empty empty attempt 10 8 0 14 -1 -262144
 0;
-#X obj 58 420 easyflow/Switch2;
+#X obj 58 420 easyflow/switch2;
 #X obj 959 431 easyflow/switch2;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
@@ -349,39 +372,22 @@
 #X connect 53 1 48 0;
 #X connect 54 0 37 0;
 #X connect 54 1 43 0;
-#X restore 276 463 pd justForCuriosity;
-#X text 515 331 and to avoid errors;
-#X text 275 359 with;
-#X obj 325 359 trigger;
-#X text 275 408 On the following subpatch I've isolated the routing
+#X restore 57 206 pd justForCuriosity;
+#X text 296 74 and to avoid errors;
+#X text 56 102 with;
+#X obj 106 102 trigger;
+#X text 56 151 On the following subpatch I've isolated the routing
 logic;
-#X text 276 427 so you can see for yourself:;
-#X obj 265 18 cnv 15 100 15 empty empty LIST 10 8 0 14 -1 -258080 0
-;
-#X obj 331 18 cnv 15 300 15 empty empty CONCATENATE -10 8 0 14 -1 -258081
-0;
-#X text 360 138 Since numbers in lists cannot be symbols;
-#X text 465 179 try changing 9 to 9;
-#X msg 269 153 9 29 2017;
-#X msg 51 90 list t h i s i s c o o l;
-#X msg 64 117 t h i s i s c o o l;
-#X msg 76 146 a;
-#X msg 77 183 2;
-#X msg 45 50 list 10 20 30 40;
-#X msg 30 22 list a1 b2 c3 a4;
-#X obj 30 234 easyflow/ListConcatenate;
-#X symbolatom 30 256 15 0 0 0 - - -, f 15;
-#X obj 269 183 easyflow/ListConcatenate;
-#X text 112 177 (output is still a float), f 14;
-#X text 271 42 ListConcatenate takes a message and outputs symbol which
-is a concatenation of all of its elements, f 52;
-#X connect 1 0 2 0;
-#X connect 23 0 32 0;
-#X connect 24 0 30 0;
-#X connect 25 0 30 0;
-#X connect 26 0 30 0;
-#X connect 27 0 30 0;
-#X connect 28 0 30 0;
-#X connect 29 0 30 0;
-#X connect 30 0 31 0;
-#X connect 32 0 1 0;
+#X text 57 170 so you can see for yourself:;
+#X restore 273 311 pd curiosityForDevelopers;
+#X obj 555 396 easyflow-info;
+#X connect 1 0 25 0;
+#X connect 10 0 19 0;
+#X connect 11 0 17 0;
+#X connect 12 0 17 0;
+#X connect 13 0 17 0;
+#X connect 14 0 17 0;
+#X connect 15 0 17 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 19 0 1 0;

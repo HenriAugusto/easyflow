@@ -1,0 +1,72 @@
+#N canvas 1253 250 455 297 10;
+#X obj 137 161 loadbang;
+#X obj 44 209 listIntersection;
+#X msg 44 81 E G# B D;
+#X msg 54 103 D F A C;
+#X msg 137 182 C E G B D F#;
+#X msg 64 128 Eb G Bb Db;
+#X text 57 18 [listIntersection] calculates the intersection of two
+lists. That is the set of common elements.;
+#X obj 324 256 easyflow-info;
+#X msg 72 154 F Ab Cb;
+#X obj 44 230 printHere -s;
+#N canvas 43 50 537 679 explanation on empty lists 0;
+#X msg 67 83 list;
+#X obj 67 104 print;
+#X text 36 33 PD understand "empty lists" as a bang message!;
+#X text 121 92 will print "bang" on console!;
+#X obj 151 253 list;
+#X obj 151 211 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 51 253 list;
+#X obj 51 211 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 72 229 list;
+#X text 39 142 You can see that behaviour also in the [list] object
+(and all it's variants);
+#X msg 172 229 list bang;
+#X obj 72 205 loadbang;
+#X obj 172 205 loadbang;
+#X text 276 211 Note that list elements are always a float or a symbol
+so a list containing only "bang" actually contains the symbol bang!
+, f 24;
+#X obj 67 392 list split 3;
+#X obj 67 449 printHere -s;
+#X obj 151 274 easyflow/printHere -s;
+#X obj 51 274 easyflow/printHere -s;
+#X obj 101 414 printHere -s;
+#X text 192 362 Note the case where the list contains only 3 elements
+;
+#X msg 82 365 1 2 3;
+#X msg 67 341 1 2 3 4 5;
+#X text 190 388 The middle outlet of split 3 outputs a "empty list"
+which turns into a bang!;
+#X text 51 507 For that reason abstractions on [easyflow] whose output
+is a list will \, accordingly \, output "bang" when the list is empty!
+, f 71;
+#X obj 51 569 route bang;
+#X obj 51 599 select bang;
+#X text 127 569 So you can use [route bang] to detect "empty lists"
+;
+#X text 127 599 So you can use [sel bang] to detect 'symbol bang';
+#X connect 0 0 1 0;
+#X connect 4 0 16 0;
+#X connect 5 0 4 0;
+#X connect 6 0 17 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 1;
+#X connect 10 0 4 1;
+#X connect 11 0 8 0;
+#X connect 12 0 10 0;
+#X connect 14 0 15 0;
+#X connect 14 1 18 0;
+#X connect 20 0 14 0;
+#X connect 21 0 14 0;
+#X restore 241 106 pd explanation on empty lists;
+#X connect 0 0 4 0;
+#X connect 1 0 9 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 1;
+#X connect 5 0 1 0;
+#X connect 8 0 1 0;

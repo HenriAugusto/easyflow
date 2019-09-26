@@ -1,4 +1,4 @@
-#N canvas 326 140 770 503 10;
+#N canvas 65 436 770 503 10;
 #X msg 27 94 coords 0 1 1 -1 111 37 1 160.863 153 1;
 #X obj 163 168 tgl 14 0 \$0-GOPToggle \$0-justSoInletIsHidden empty
 17 7 0 14 -262144 -1 -1 0 1;
@@ -7,7 +7,7 @@
 #X obj 534 87 r \$0-GOPToggle;
 #X obj 534 109 select 0 1;
 #X msg 534 131 close;
-#X text 27 73 GOPTool;
+#X text 27 73 gopTool;
 #X msg 581 131 show;
 #X obj 380 342 r \$0-min;
 #X obj 448 342 r \$0-max;
@@ -32,7 +32,7 @@
 #X connect 7 0 1 0;
 #X connect 7 0 0 0;
 #X restore 601 178 pd loadMinMax;
-#N canvas 1167 145 433 580 router 0;
+#N canvas 6 307 433 580 router 1;
 #X obj 44 35 inlet;
 #X obj 76 508 outlet;
 #X obj 73 266 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470

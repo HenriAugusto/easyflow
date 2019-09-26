@@ -1,0 +1,280 @@
+#N canvas 0 50 743 779 10;
+#X obj 53 23 inlet;
+#X text 95 24 needle;
+#X obj 453 33 inlet;
+#X text 493 33 haystack;
+#X obj 168 716 outlet;
+#X obj 453 137 list fromsymbol;
+#X obj 453 158 trigger list list;
+#X floatatom 552 203 5 0 0 0 - - -;
+#X obj 552 182 list length;
+#X obj 541 222 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 552 222 s \$0-haystackSize;
+#X obj 453 84 symbolize;
+#X obj 82 237 list fromsymbol;
+#X floatatom 307 303 5 0 0 0 - - -;
+#X obj 307 282 list length;
+#X obj 296 322 cnv 10 10 17 empty empty empty 20 12 0 14 -18299 -225470
+0;
+#X obj 53 114 symbolize;
+#X obj 307 322 s \$0-needleSize;
+#X obj 496 312 cnv 10 10 17 empty empty empty 20 12 0 14 -18299 -225470
+0;
+#X obj 577 336 cnv 10 10 17 empty empty empty 20 12 0 14 -225470 -225470
+0;
+#X obj 588 336 r \$0-haystackSize;
+#X obj 507 312 r \$0-needleSize;
+#X obj 507 360 expr $f2-$f1+1;
+#X floatatom 507 381 5 0 0 0 - - -;
+#X obj 168 508 sublist;
+#X obj 442 183 cnv 10 10 17 empty empty empty 20 12 0 14 -84936 -225470
+0;
+#X obj 453 183 s \$0-haystack;
+#X obj 496 401 cnv 10 10 17 empty empty empty 20 12 0 14 -240453 -225470
+0;
+#X obj 507 401 v \$0-nOfComparisons;
+#X obj 89 390 cnv 10 10 17 empty empty empty 20 12 0 14 -84936 -225470
+0;
+#X obj 100 390 r \$0-haystack;
+#X obj 82 419 list;
+#X obj 71 286 cnv 10 10 17 empty empty empty 20 12 0 14 -240453 -225470
+0;
+#X obj 82 286 v \$0-nOfComparisons;
+#X obj 82 341 until;
+#X obj 82 307 trigger float bang;
+#X msg 187 331 set 1;
+#X obj 187 359 easyflow/counter;
+#X obj 82 362 trigger b b;
+#X floatatom 187 383 5 0 0 0 - - -;
+#X obj 187 433 t f f;
+#X obj 214 458 +;
+#X obj 236 437 cnv 10 10 17 empty empty empty 20 12 0 14 -18299 -225470
+0;
+#X obj 247 437 r \$0-needleSize;
+#X obj 247 458 - 1;
+#X obj 168 529 list tosymbol;
+#X obj 100 206 cnv 10 10 17 empty empty empty 20 12 0 14 -119846 -225470
+0;
+#X obj 82 258 trigger b l, f 38;
+#X obj 111 206 s \$0-needle;
+#X obj 53 165 trigger b s s b;
+#X obj 129 184 cnv 10 10 17 empty empty empty 20 12 0 14 -193030 -225470
+0;
+#X obj 140 184 s \$0-start;
+#X obj 256 514 cnv 10 10 17 empty empty empty 20 12 0 14 -119846 -225470
+0;
+#X symbolatom 267 535 10 0 0 0 - - -;
+#X obj 168 559 select symbolMode;
+#X obj 267 514 r \$0-needle;
+#X obj 229 403 cnv 10 10 17 empty empty empty 20 12 0 14 -19439 -225470
+0;
+#X obj 240 403 v \$0-index;
+#X obj 187 403 t f f;
+#X obj 157 581 cnv 10 10 17 empty empty empty 20 12 0 14 -19439 -225470
+0;
+#X obj 168 581 v \$0-index;
+#X obj 168 652 arrayList;
+#X obj 180 607 cnv 10 10 17 empty empty empty 20 12 0 14 -193030 -225470
+0;
+#X obj 191 607 r \$0-start;
+#X msg 191 628 clear;
+#X obj 91 609 cnv 10 10 17 empty empty empty 20 12 0 14 -261234 -225470
+0;
+#X obj 102 609 r \$0-stop;
+#X msg 102 630 getList;
+#X obj 42 186 cnv 10 10 17 empty empty empty 20 12 0 14 -261234 -225470
+0;
+#X obj 53 186 s \$0-stop;
+#X obj 168 673 route bang;
+#X msg 168 694 -1;
+#X text 241 688 -1 on empty list;
+#N canvas 764 23 708 707 load_args 0;
+#X obj 358 251 makefilename $%d;
+#X obj 272 327 pack f \$0;
+#X text 192 79 Maximum attempts, f 8;
+#X obj 484 338 send pd-\$0-test_arg;
+#X msg 358 282 obj 37 135 list append \$1, f 14;
+#X obj 59 101 r \$0-noarg;
+#X obj 206 219 select;
+#X obj 272 219 trigger float float float;
+#X msg 151 85 4096;
+#X text 257 87 (that might be engouh);
+#X obj 484 245 makefilename $%d-test;
+#N canvas 344 339 309 232 \$0-test_arg 0;
+#X obj 10 60 symbol \$1-test;
+#X obj 133 60 makefilename $%d-test;
+#X obj 37 135 list append \$1;
+#X obj 10 10 r 106892-i;
+#X obj 10 35 trigger bang float;
+#X obj 10 85 sel s;
+#X obj 37 110 b;
+#X obj 37 160 s 106892-arg;
+#X obj 10 185 s 106892-noarg;
+#X connect 0 0 5 0;
+#X connect 1 0 5 1;
+#X connect 2 0 7 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 4 1 1 0;
+#X connect 5 0 8 0;
+#X connect 5 1 6 0;
+#X connect 6 0 2 0;
+#X restore 498 178 pd \$0-test_arg;
+#X obj 164 428 r \$0-arg;
+#X obj 203 496 list;
+#X obj 164 463 list prepend;
+#X obj 120 492 list;
+#X text 181 631 list of arguments, f 9;
+#X msg 272 380 \; pd-\$2-test_arg obj 10 10 r \$2-i \; pd-\$2-test_arg
+obj 10 35 trigger bang float \; pd-\$2-test_arg obj 10 85 sel s \;
+pd-\$2-test_arg obj 37 110 b \; pd-\$2-test_arg obj 37 160 s \$2-arg
+\; pd-\$2-test_arg obj 10 185 s \$2-noarg \; pd-\$2-test_arg connect
+3 0 4 0 \; pd-\$2-test_arg connect 4 1 1 0 \; pd-\$2-test_arg connect
+4 0 0 0 \; pd-\$2-test_arg connect 1 0 5 1 \; pd-\$2-test_arg connect
+0 0 5 0 \; pd-\$2-test_arg connect 5 1 6 0 \; pd-\$2-test_arg connect
+6 0 2 0 \; pd-\$2-test_arg connect 2 0 7 0 \; pd-\$2-test_arg connect
+5 0 8 0 \; \$2-i \$1 \;;
+#X msg 484 272 clear \, obj 10 60 symbol \$1 \, obj 133 60 makefilename
+$%d-test, f 27;
+#X obj 120 638 outlet;
+#X obj 151 157 until;
+#X obj 206 189 + 1;
+#X msg 233 147 0;
+#X obj 151 123 trigger float bang float;
+#X obj 151 188 float;
+#X obj 151 55 inlet;
+#X text 274 31 https://forum.pdpatchrepo.info/topic/10892/collect-all-arguments-as-a-list/4
+;
+#X connect 0 0 4 0;
+#X connect 1 0 17 0;
+#X connect 4 0 3 0;
+#X connect 5 0 15 0;
+#X connect 5 0 20 1;
+#X connect 6 0 15 0;
+#X connect 6 1 7 0;
+#X connect 7 0 1 0;
+#X connect 7 1 0 0;
+#X connect 7 2 10 0;
+#X connect 8 0 23 0;
+#X connect 10 0 18 0;
+#X connect 12 0 14 0;
+#X connect 13 0 14 1;
+#X connect 13 0 15 1;
+#X connect 14 0 13 0;
+#X connect 15 0 19 0;
+#X connect 18 0 3 0;
+#X connect 20 0 24 0;
+#X connect 21 0 24 1;
+#X connect 21 0 6 0;
+#X connect 22 0 24 1;
+#X connect 23 0 20 0;
+#X connect 23 1 22 0;
+#X connect 23 2 6 1;
+#X connect 24 0 21 0;
+#X connect 25 0 8 0;
+#X restore 490 502 pd load_args;
+#X obj 490 478 loadbang;
+#X obj 469 612 cnv 11 20 17 empty empty -c 2 9 0 14 -128992 -262144
+0;
+#X obj 490 547 route -1;
+#X msg 535 569 1;
+#X msg 490 569 0;
+#X obj 490 612 v \$0-caseInsensitive;
+#N canvas 0 50 293 222 caseInsensitive 0;
+#X obj 46 34 inlet;
+#X obj 46 55 ifValue \$0-caseInsensitive;
+#X obj 46 76 lowerCase;
+#X obj 46 117 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 2 0 3 0;
+#X restore 453 108 pd caseInsensitive;
+#N canvas 0 50 293 222 caseInsensitive 0;
+#X obj 46 34 inlet;
+#X obj 46 55 ifValue \$0-caseInsensitive;
+#X obj 46 76 lowerCase;
+#X obj 46 117 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 2 0 3 0;
+#X restore 53 137 pd caseInsensitive;
+#X floatatom 490 590 5 0 0 0 - - -;
+#X obj 240 382 - 1;
+#X text 273 382 string indexes are 0-based;
+#X obj 490 526 searchIncomingLists -i;
+#X obj 53 44 route -i;
+#X obj 34 84 cnv 11 20 17 empty empty -c 2 9 0 14 -128992 -262144 0
+;
+#X obj 55 84 v \$0-caseInsensitive;
+#X floatatom 53 65 5 0 0 0 - - -;
+#X connect 0 0 86 0;
+#X connect 2 0 11 0;
+#X connect 5 0 6 0;
+#X connect 6 0 26 0;
+#X connect 6 1 8 0;
+#X connect 7 0 10 0;
+#X connect 8 0 7 0;
+#X connect 11 0 80 0;
+#X connect 12 0 47 0;
+#X connect 13 0 17 0;
+#X connect 14 0 13 0;
+#X connect 16 0 81 0;
+#X connect 20 0 22 1;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 23 0 28 0;
+#X connect 24 0 45 0;
+#X connect 30 0 31 1;
+#X connect 31 0 24 0;
+#X connect 33 0 35 0;
+#X connect 34 0 38 0;
+#X connect 35 0 34 0;
+#X connect 35 1 36 0;
+#X connect 36 0 37 0;
+#X connect 37 0 39 0;
+#X connect 38 0 31 0;
+#X connect 38 1 37 0;
+#X connect 39 0 58 0;
+#X connect 40 0 24 1;
+#X connect 40 1 41 0;
+#X connect 41 0 24 2;
+#X connect 43 0 44 0;
+#X connect 44 0 41 1;
+#X connect 45 0 54 0;
+#X connect 47 0 33 0;
+#X connect 47 1 14 0;
+#X connect 49 0 69 0;
+#X connect 49 1 12 0;
+#X connect 49 2 48 0;
+#X connect 49 3 51 0;
+#X connect 53 0 54 1;
+#X connect 54 0 60 0;
+#X connect 55 0 53 0;
+#X connect 58 0 40 0;
+#X connect 58 1 83 0;
+#X connect 60 0 61 0;
+#X connect 61 0 70 0;
+#X connect 63 0 64 0;
+#X connect 64 0 61 0;
+#X connect 66 0 67 0;
+#X connect 67 0 61 0;
+#X connect 70 0 71 0;
+#X connect 70 1 4 0;
+#X connect 71 0 4 0;
+#X connect 73 0 85 0;
+#X connect 74 0 73 0;
+#X connect 76 0 78 0;
+#X connect 76 1 77 0;
+#X connect 77 0 82 0;
+#X connect 78 0 82 0;
+#X connect 80 0 5 0;
+#X connect 81 0 49 0;
+#X connect 82 0 79 0;
+#X connect 83 0 57 0;
+#X connect 85 0 76 0;
+#X connect 86 0 89 0;
+#X connect 86 1 16 0;
+#X connect 89 0 88 0;

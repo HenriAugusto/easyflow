@@ -1,9 +1,9 @@
 #N canvas 0 51 322 280 10;
 #X obj 67 126 list fromsymbol;
-#X obj 107 176 list tosymbol;
-#X symbolatom 107 198 10 0 0 0 - - -, f 10;
+#X obj 101 176 list tosymbol;
+#X symbolatom 101 198 10 0 0 0 - - -;
 #X obj 67 34 inlet;
-#X obj 107 217 outlet;
+#X obj 101 217 outlet;
 #X msg 67 101 symbol s\$1;
 #X obj 67 148 list split 1;
 #N canvas 935 188 450 300 dealWithTypes 0;
@@ -13,9 +13,9 @@
 #X obj 160 276 outlet;
 #X obj 263 75 list prepend symbol;
 #X obj 263 97 list trim;
-#X floatatom 118 78 5 0 0 0 - - -, f 5;
-#X symbolatom 166 179 10 0 0 0 - - -, f 10;
-#X symbolatom 263 119 10 0 0 0 - - -, f 10;
+#X floatatom 118 78 5 0 0 0 - - -;
+#X symbolatom 166 179 10 0 0 0 - - -;
+#X symbolatom 263 119 10 0 0 0 - - -;
 #X obj 214 144 list split 1;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;

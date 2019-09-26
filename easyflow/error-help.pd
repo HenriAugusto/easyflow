@@ -1,0 +1,23 @@
+#N canvas 722 166 669 433 10;
+#X obj 66 119 easyflow/sublist;
+#X msg 66 91 not_a_list;
+#X text 54 27 [error] provides a mechanism for abstractions to report
+trackable errors.;
+#X text 221 84 1 - trigger an error by sending something that is not
+a list to the [sublist] object.;
+#X text 221 124 2 - watch the console. You should see a line like this
+;
+#X text 249 160 [e1348] [easyflow/sublist]: not_a_list;
+#X text 223 182 The 1348 is the \$0 value of the object that reported
+an error. This value changes at every PD run so it will be different
+for you. Change it accordingly.;
+#X msg 334 273 whtvr;
+#X text 219 233 3 - send whatever you want to the e1348 identifier
+and the window of the object that reported the error will open!;
+#X text 391 296 <-change this!;
+#X obj 334 294 s e1006;
+#X text 220 324 4 - Go to the PD menu and click "window -> parent window".
+By calling "parent window" now you can go up the hierarchy to see exactly
+where that error came from.;
+#X connect 1 0 0 0;
+#X connect 7 0 10 0;

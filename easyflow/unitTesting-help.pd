@@ -1,0 +1,55 @@
+#N canvas 471 219 490 581 10;
+#X obj 45 395 unitTesting, f 37;
+#X obj 352 439 easyflow-info;
+#X obj 74 364 listUniques;
+#X obj 74 295 listSplitOnChar /;
+#X obj 45 261 trigger bang anything bang, f 37;
+#X text 304 282 5 - bang on start;
+#X obj 45 421 print -n;
+#X text 304 329 2 - actual output;
+#X text 304 346 1 - bang on end;
+#X obj 74 339 trigger a a, f 13;
+#X text 304 297 4 - expected output;
+#X text 304 313 3 - input;
+#X msg 45 140 list a b c a b c d a b / list a b c d \, 1 1 1 2 2 1
+3 / 1 2 3 \, list C# E G# B E G# B D# / C# E G# B D#;
+#X msg 68 181 list a b c / NOT the expected output just to showcase
+the failure msg;
+#X text 37 47 [unitTesting] allows you to run unit tests on your object
+in order to validate it's output;
+#X text 324 260 INLETS;
+#X obj 40 14 cnv 11 108 17 empty \$0-cnv [unitTesting] 2 9 0 14 -135232
+-262144 0;
+#N canvas 0 50 450 300 FLAGS 0;
+#X obj 51 87 trigger bang anything bang, f 37;
+#X obj 51 247 print -n;
+#X obj 80 165 trigger a a, f 13;
+#X obj 51 221 unitTesting -F, f 37;
+#X obj 80 121 list split 1, f 27;
+#X obj 80 190 * 10;
+#X msg 51 29 1 10 \, 2 20 \, 3 30 \, 4 666 \, 5 50;
+#X text 172 254 Use the -F flag to only print failures;
+#X connect 0 0 3 0;
+#X connect 0 1 4 0;
+#X connect 0 2 3 4;
+#X connect 2 0 5 0;
+#X connect 2 1 3 2;
+#X connect 3 0 1 0;
+#X connect 4 0 2 0;
+#X connect 4 1 3 3;
+#X connect 5 0 3 1;
+#X connect 6 0 0 0;
+#X restore 45 483 pd FLAGS;
+#X obj 74 318 alternate, f 23;
+#X connect 0 0 6 0;
+#X connect 2 0 0 1;
+#X connect 3 0 18 0;
+#X connect 4 0 0 0;
+#X connect 4 1 3 0;
+#X connect 4 2 0 4;
+#X connect 9 0 2 0;
+#X connect 9 1 0 2;
+#X connect 12 0 4 0;
+#X connect 13 0 4 0;
+#X connect 18 0 9 0;
+#X connect 18 1 0 3;

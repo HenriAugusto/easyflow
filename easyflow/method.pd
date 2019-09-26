@@ -1,0 +1,52 @@
+#N canvas 511 315 1042 455 10;
+#X obj 60 64 receive easyflowMethod\$1;
+#X obj 60 336 send easyflowMethodInput\$1;
+#X obj 60 196 trigger anything anything;
+#X obj 60 228 list split 2;
+#X obj 232 231 list split 1;
+#X obj 232 266 send easyflowMethodOutputDestination\$1;
+#X msg 60 18 format: (receive name of calling [callMethod] object)
+(method name) (arguments...);
+#X text 332 231 destination of possible output;
+#X text 63 260 take destination and method name out leaving only the
+arguments, f 15;
+#X text 299 329 (the method name is not needed here because it was
+only used to direct the message to this object!);
+#X obj 245 65 receive easyflowMethodPrivate\$1;
+#X obj 60 156 spigot;
+#X obj 245 157 spigot;
+#X obj 99 131 tgl 15 0 empty \$0-tgl1 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 284 131 tgl 15 0 empty \$0-tgl2 empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 656 91 loadbang;
+#X obj 656 113 list 666 \$2;
+#X obj 656 135 list split 1;
+#X obj 696 160 route symbol;
+#X obj 696 182 select private;
+#X obj 696 290 s \$0-tgl1;
+#X obj 768 291 s \$0-tgl2;
+#X msg 696 224 0 1;
+#X obj 696 256 unpack f f;
+#X msg 864 190 1 0;
+#X connect 0 0 11 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 1 1 0;
+#X connect 4 0 5 0;
+#X connect 10 0 12 0;
+#X connect 11 0 2 0;
+#X connect 12 0 2 0;
+#X connect 13 0 11 1;
+#X connect 14 0 12 1;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 17 1 18 0;
+#X connect 18 0 19 0;
+#X connect 18 1 24 0;
+#X connect 19 0 22 0;
+#X connect 19 1 24 0;
+#X connect 22 0 23 0;
+#X connect 23 0 20 0;
+#X connect 23 1 21 0;
+#X connect 24 0 23 0;

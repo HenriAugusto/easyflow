@@ -1,85 +1,45 @@
-#N canvas 34 64 585 594 10;
-#X obj 97 33 inlet;
-#X obj 241 144 value \$0-state;
-#X floatatom 241 166 5 0 0 0 - - -, f 5;
-#X obj 241 187 == 1;
-#X obj 241 209 sel 1;
-#X obj 263 114 r \$0-StartStop;
-#X obj 169 94 loadbang;
-#X msg 169 116 1;
-#X obj 97 61 trigger anything bang;
-#X msg 287 267 0;
-#X obj 287 293 s \$0-StartStop;
-#X obj 41 472 spigot;
-#X obj 80 448 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 34 64 455 384 10;
+#X obj 50 33 inlet;
+#X obj 50 340 outlet;
+#X obj 179 340 outlet;
+#X obj 50 314 easyflow/switch2, f 22;
+#X obj 179 189 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 97 472 spigot;
-#X obj 136 448 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 136 426 r \$0-rightOutlet;
-#X obj 80 369 r \$0-leftOutlet;
-#X msg 241 364 1;
-#X obj 241 386 s \$0-leftOutlet;
-#X obj 241 243 t b b b;
-#X msg 264 317 0;
-#X obj 437 293 s \$0-StartStop;
-#X obj 391 386 s \$0-leftOutlet;
-#X obj 391 243 t b b b;
-#X msg 437 267 1;
-#X msg 414 317 1;
-#X msg 391 364 0;
-#X obj 264 339 s \$0-rightOutlet;
-#X obj 414 339 s \$0-rightOutlet;
-#X obj 29 532 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
-#X obj 85 497 cnv 8 11 17 empty empty 2 2 9 0 14 -1 -262144 0;
-#X obj 85 33 cnv 8 11 17 empty empty 1 2 9 0 14 -1 -262144 0;
-#X obj 41 532 outlet;
-#X obj 97 497 outlet;
-#X obj 252 114 cnv 10 10 17 empty empty empty 20 12 0 14 -6329 -1 0
-;
-#X obj 69 369 cnv 10 10 17 empty empty empty 20 12 0 14 -195002 -1
-0;
-#X obj 230 386 cnv 10 10 17 empty empty empty 20 12 0 14 -195002 -1
-0;
-#X obj 380 386 cnv 10 10 17 empty empty empty 20 12 0 14 -195002 -1
-0;
-#X obj 276 293 cnv 10 10 17 empty empty empty 20 12 0 14 -6329 -1 0
-;
-#X obj 426 293 cnv 10 10 17 empty empty empty 20 12 0 14 -6329 -1 0
-;
-#X obj 254 339 cnv 10 10 17 empty empty empty 20 12 0 14 -43978 -1
-0;
-#X obj 404 339 cnv 10 10 17 empty empty empty 20 12 0 14 -43978 -1
-0;
-#X obj 126 426 cnv 10 10 17 empty empty empty 20 12 0 14 -43978 -1
-0;
-#X connect 0 0 8 0;
-#X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 3 0 4 0;
-#X connect 4 0 19 0;
-#X connect 4 1 23 0;
-#X connect 5 0 1 0;
-#X connect 6 0 7 0;
-#X connect 7 0 1 0;
-#X connect 8 0 11 0;
-#X connect 8 0 13 0;
-#X connect 8 1 1 0;
-#X connect 9 0 10 0;
-#X connect 11 0 32 0;
-#X connect 12 0 11 1;
-#X connect 13 0 33 0;
-#X connect 14 0 13 1;
-#X connect 15 0 14 0;
-#X connect 16 0 12 0;
-#X connect 17 0 18 0;
-#X connect 19 0 17 0;
-#X connect 19 1 20 0;
-#X connect 19 2 9 0;
-#X connect 20 0 27 0;
-#X connect 23 0 26 0;
-#X connect 23 1 25 0;
-#X connect 23 2 24 0;
-#X connect 24 0 21 0;
-#X connect 25 0 28 0;
-#X connect 26 0 22 0;
+#X obj 179 33 loadbang;
+#X msg 179 54 0;
+#X obj 274 34 inlet;
+#X obj 77 141 f 1;
+#X msg 77 193 1;
+#X msg 110 193 0;
+#X floatatom 77 224 5 0 0 0 - - -;
+#X obj 274 55 sel 0;
+#X msg 274 76 1;
+#X msg 301 76 0;
+#X obj 77 162 sel 0, f 6;
+#X obj 77 244 t f f;
+#X obj 77 265 s \$0-f;
+#X obj 92 111 r \$0-f;
+#X obj 274 104 s \$0-f;
+#X obj 50 55 t a b;
+#X connect 0 0 20 0;
+#X connect 3 0 1 0;
+#X connect 3 1 2 0;
+#X connect 4 0 3 1;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
+#X connect 7 0 12 0;
+#X connect 8 0 15 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 11 0 16 0;
+#X connect 12 0 13 0;
+#X connect 12 1 14 0;
+#X connect 13 0 19 0;
+#X connect 14 0 19 0;
+#X connect 15 0 9 0;
+#X connect 15 1 10 0;
+#X connect 16 0 17 0;
+#X connect 16 1 4 0;
+#X connect 18 0 8 1;
+#X connect 20 0 3 0;
+#X connect 20 1 8 0;

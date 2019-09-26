@@ -1,4 +1,4 @@
-#N canvas 243 182 759 651 10;
+#N canvas 461 6 759 651 10;
 #X msg 54 91 symbol 3;
 #X symbolatom 54 113 10 0 0 0 - - -, f 10;
 #X obj 50 181 symbol 3;
@@ -81,17 +81,41 @@ if it happens on other platforms).;
 #X connect 19 0 20 0;
 #X connect 20 0 21 0;
 #X connect 21 0 16 1;
-#X restore 86 486 pd applications/motivation;
+#X restore 48 420 pd applications/motivation;
 #N canvas 0 50 549 118 comment 0;
 #X text 57 23 Since this is a somewhat unusual thing in pure data i
 have decided to make this abstraction especially to deal with that
 instead of adding that functionality to the [easyflow/symbolize] abstraction
 (which is more "natural");
-#X restore 136 531 pd comment;
+#X restore 48 443 pd comment;
+#X floatatom 50 341 5 0 0 0 - - -, f 5;
+#N canvas 901 44 450 507 converting 0;
+#X floatatom 40 77 5 0 0 0 - - -, f 5;
+#X symbolatom 40 120 10 0 0 0 - - -, f 10;
+#X obj 40 98 numberSymbol;
+#X text 118 119 symbol output;
+#X floatatom 40 170 5 0 0 0 - - -, f 5;
+#X text 118 167 float;
+#X obj 154 216 easyflow/printHere;
+#X msg 205 86 treta;
+#X floatatom 218 165 5 0 0 0 - - -, f 5;
+#X obj 40 139 symbolToFloat;
+#X text 45 22 For converting those "numeric symbols" back to floats
+you can use [symbolToFLoat];
+#X connect 0 0 2 0;
+#X connect 1 0 9 0;
+#X connect 2 0 1 0;
+#X connect 7 0 2 0;
+#X connect 8 0 6 0;
+#X connect 9 0 4 0;
+#X connect 9 0 6 0;
+#X restore 48 396 pd converting back;
+#X obj 50 319 symbolToFloat;
 #X connect 0 0 1 0;
 #X connect 2 0 4 0;
 #X connect 3 0 2 0;
 #X connect 7 0 26 0;
+#X connect 8 0 35 0;
 #X connect 10 0 11 0;
 #X connect 11 0 27 0;
 #X connect 14 0 27 0;
@@ -103,3 +127,4 @@ instead of adding that functionality to the [easyflow/symbolize] abstraction
 #X connect 26 0 8 0;
 #X connect 27 0 12 0;
 #X connect 28 0 22 0;
+#X connect 35 0 33 0;

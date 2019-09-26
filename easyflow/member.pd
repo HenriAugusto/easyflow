@@ -1,0 +1,56 @@
+#N canvas 397 188 780 432 10;
+#X obj 65 251 var \$1;
+#X obj 66 38 receive \$1EasyflowMember;
+#X obj 65 302 send;
+#X obj 65 200 trigger bang anything;
+#X obj 66 150 route getMember setMember;
+#X obj 188 249 easyflow/symbolize;
+#X obj 66 93 spigot;
+#X obj 244 97 spigot;
+#X obj 105 68 tgl 15 0 empty \$0-tgl1 empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 283 71 tgl 15 0 empty \$0-tgl2 empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 546 61 loadbang;
+#X obj 546 83 list 666 \$2;
+#X obj 546 105 list split 1;
+#X obj 586 130 route symbol;
+#X obj 586 152 select private;
+#X obj 586 280 s \$0-tgl1;
+#X obj 653 253 s \$0-tgl2;
+#X msg 586 191 0 1;
+#X obj 586 226 unpack f f;
+#X msg 645 190 1 0;
+#N canvas 0 50 450 210 developer comments 0;
+#X text 31 111 Why? Because having multiple [member] abstractions would
+result in multiple responses to [getMember];
+#X text 31 28 This abstraction does NOT have inlets and outlets to
+interact with the var object as this would encourage using it in the
+middle of the code. The user is \, instead \, encourage to declare
+all it's members and then use [var] objects and/or [getMember][setMember]
+objects in the middle of the code.;
+#X restore 64 358 pd developer comments;
+#X obj 244 39 receive \$1EasyflowMemberPrivate;
+#X connect 0 0 2 0;
+#X connect 1 0 6 0;
+#X connect 3 0 0 0;
+#X connect 3 1 5 0;
+#X connect 4 0 3 0;
+#X connect 4 1 0 0;
+#X connect 5 0 2 1;
+#X connect 6 0 4 0;
+#X connect 7 0 4 0;
+#X connect 8 0 6 1;
+#X connect 9 0 7 1;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 1 13 0;
+#X connect 13 0 14 0;
+#X connect 13 1 19 0;
+#X connect 14 0 17 0;
+#X connect 14 1 19 0;
+#X connect 17 0 18 0;
+#X connect 18 0 15 0;
+#X connect 18 1 16 0;
+#X connect 19 0 18 0;
+#X connect 21 0 7 0;

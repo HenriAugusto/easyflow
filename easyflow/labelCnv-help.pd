@@ -1,5 +1,5 @@
 #N canvas 839 117 664 439 10;
-#X text 45 38 [labelcnv] creates a colored rectangle of variable size
+#X text 45 38 [labelCnv] creates a colored rectangle of variable size
 and with a label. It's color is read automatically. It is a multi purpose
 tool to help you organizing your code.;
 #X obj 56 153 colorHighlighting;

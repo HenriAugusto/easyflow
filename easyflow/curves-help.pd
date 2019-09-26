@@ -1,7 +1,7 @@
 #N canvas 744 210 692 375 10;
 #N canvas 9 50 593 404 Windows 0;
 #X obj 59 137 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 0;
+-1 -1 12700 0;
 #X floatatom 56 157 5 0 0 0 - - -, f 5;
 #X obj 56 113 line 10;
 #X floatatom 56 245 10 0 0 0 - - -, f 10;
@@ -32,24 +32,24 @@
 #N canvas 0 50 703 469 Exponentials 0;
 #X text 176 23 Syntax = [exp exponent];
 #X obj 40 179 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 0;
+-1 -1 0 0;
 #X floatatom 37 199 5 0 0 0 - - -, f 5;
 #X floatatom 37 264 5 0 0 0 - - -, f 5;
 #X obj 428 180 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 0;
+-1 -1 0 0;
 #X floatatom 425 200 5 0 0 0 - - -, f 5;
 #X floatatom 425 264 5 0 0 0 - - -, f 5;
 #X obj 222 180 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 0;
+-1 -1 0 0;
 #X floatatom 219 200 5 0 0 0 - - -, f 5;
 #X obj 219 86 line 10;
 #X obj 222 330 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 222 351 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X floatatom 219 263 5 0 0 0 - - -, f 5;
 #X obj 222 372 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 219 301 t f;
 #X text 364 349 0.2;
 #X text 364 371 3;
@@ -111,8 +111,6 @@ but map is more lightweight because it contains only linear logic!
 , f 66;
 #X text 122 523 You could also substitute [map 0 127 0 1] for [/ 127]
 and [map 0 1 0 127 for [*127];
-#X obj 42 316 curves exp 3;
-#X obj 402 306 curves exp 3;
 #X text 53 21 You can use [curvesmap] for that purpose. But if you
 want to know the math it is really simple:;
 #X text 48 71 By default all ranges expects input from 0 to 1 If you
@@ -120,8 +118,10 @@ need to use input in a different range you can simply convert it to
 0:1 then convert it back to the original range.;
 #X text 51 118 ( [curves lin] is the only exception in the sense that
 it does not necessarily expects input between 0 and 1.), f 66;
+#X obj 42 316 curves exp 3;
+#X obj 402 306 curves exp 3;
 #X connect 0 0 1 0;
-#X connect 1 0 25 0;
+#X connect 1 0 28 0;
 #X connect 2 0 0 0;
 #X connect 3 0 2 0;
 #X connect 4 0 5 0;
@@ -132,17 +132,17 @@ it does not necessarily expects input between 0 and 1.), f 66;
 #X connect 17 0 21 0;
 #X connect 18 0 10 0;
 #X connect 19 0 18 0;
-#X connect 21 0 26 0;
-#X connect 25 0 4 0;
-#X connect 26 0 19 0;
+#X connect 21 0 29 0;
+#X connect 28 0 4 0;
+#X connect 29 0 19 0;
 #X restore 487 215 pd rangeConversion;
 #X obj 50 129 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 0;
+-1 -1 0 0;
 #X floatatom 47 149 5 0 0 0 - - -, f 5;
 #X floatatom 47 210 5 0 0 0 - - -, f 5;
 #X obj 47 103 line 10;
 #X obj 50 232 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X msg 47 71 0 \, 1 2000;
 #X obj 465 285 easyflow/easyflow-info;
 #N canvas 0 50 761 666 bounce 0;
@@ -199,16 +199,16 @@ the grounds";
 #N canvas 0 50 564 346 Sinusoidals 0;
 #X text 56 32 Syntax = [sin amp freq phase];
 #X obj 150 109 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 0;
+-1 -1 12700 0;
 #X floatatom 147 129 5 0 0 0 - - -, f 5;
 #X floatatom 57 226 10 0 0 0 - - -, f 10;
 #X obj 60 247 hsl 128 15 -5 5 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 6350 1;
 #X obj 147 83 line 10;
 #X msg 147 61 0 \, 1 2000;
 #X floatatom 267 226 10 0 0 0 - - -, f 10;
 #X obj 270 247 hsl 128 15 -2 2 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 12700 1;
 #X obj 57 181 curves sin 5 1 0;
 #X obj 267 181 curves sin 2 3 1.5708;
 #X connect 1 0 2 0;
@@ -292,12 +292,12 @@ the grounds";
 #X text 33 37 Syntax = [lin range1_min range1_max range2_min range2_max]
 ;
 #X obj 46 110 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 0;
+-1 -1 0 0;
 #X floatatom 43 130 5 0 0 0 - - -, f 5;
 #X obj 43 86 line 10;
 #X floatatom 43 195 5 0 0 0 - - -, f 5;
 #X obj 46 214 hsl 128 15 -100 100 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 12700 1;
+-262144 -1 -1 0 1;
 #X msg 43 64 0 \, 1 2000;
 #X text 47 344 this one is exactly analogous to [easyflow/map] still
 it provides the ability to change between modes so it might be useful.
@@ -360,14 +360,14 @@ should use map which is more lightweight;
 #X msg 47 191 0 \, 1 3000;
 #X text 73 60 <- init;
 #X text 46 20 You can use set messages to change between curves!;
-#X obj 47 342 curves exp 0.3;
-#X obj 421 252 curves exp 0.3;
 #X text 417 73 Please note that set does NOT updates the visualization.
 That design ensures maximum performance when needed. If you want to
 update the visualization after changing the curve then use setGraph
 ;
+#X obj 47 342 curves exp 0.3;
+#X obj 421 252 curves exp 0.3;
 #X connect 0 0 1 0;
-#X connect 1 0 21 0;
+#X connect 1 0 22 0;
 #X connect 2 0 4 0;
 #X connect 3 0 0 0;
 #X connect 5 0 17 0;
@@ -375,26 +375,26 @@ update the visualization after changing the curve then use setGraph
 #X connect 7 0 18 0;
 #X connect 7 1 8 0;
 #X connect 8 0 16 0;
-#X connect 8 0 21 0;
+#X connect 8 0 22 0;
 #X connect 9 0 7 0;
-#X connect 13 0 22 0;
-#X connect 14 0 22 0;
-#X connect 15 0 22 0;
+#X connect 13 0 23 0;
+#X connect 14 0 23 0;
+#X connect 15 0 23 0;
 #X connect 17 0 6 0;
 #X connect 18 0 3 0;
-#X connect 21 0 2 0;
+#X connect 22 0 2 0;
 #X restore 330 121 pd alternating;
 #X text 47 15 [curves] is an abstraction to converting between different
 curves. You can use a single [curves] object to alternate between different
 curves;
 #X obj 201 274 curvesmap;
-#X obj 121 314 curves~;
-#X obj 201 314 curvesmap~;
 #X text 45 322 signals:;
+#X obj 121 314 curves~;
 #X obj 47 172 curves exp 0.3;
+#X obj 201 314 curvesmap~;
 #X connect 3 0 4 0;
-#X connect 4 0 21 0;
+#X connect 4 0 20 0;
 #X connect 5 0 7 0;
 #X connect 6 0 3 0;
 #X connect 8 0 6 0;
-#X connect 21 0 5 0;
+#X connect 20 0 5 0;

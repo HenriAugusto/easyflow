@@ -1,0 +1,30 @@
+#N canvas 529 53 663 375 10;
+#X floatatom 98 93 5 0 0 0 - - -, f 5;
+#X obj 98 132 numberSymbol;
+#X symbolatom 98 174 10 0 0 0 - - -, f 10;
+#X floatatom 98 265 5 0 0 0 - - -, f 5;
+#X text 170 171 symbol;
+#X text 134 265 float;
+#X obj 316 101 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 316 121 random 100;
+#X obj 316 165 numberSymbol;
+#X floatatom 316 222 5 0 0 0 - - -, f 5;
+#X symbolatom 391 223 15 0 0 0 - - -, f 15;
+#X msg 316 143 \$1 \, symbol whatever_\$1;
+#X text 86 32 [symbolToFLoat] allows you to convert "numeric symbols"
+back again to floats.;
+#X text 346 254 2nd outlet passes non-numeric symbols;
+#X obj 98 223 symbolToFloat;
+#X obj 316 196 symbolToFloat;
+#X obj 535 324 easyflow-info;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 14 0;
+#X connect 6 0 7 0;
+#X connect 7 0 11 0;
+#X connect 8 0 15 0;
+#X connect 11 0 8 0;
+#X connect 14 0 3 0;
+#X connect 15 0 9 0;
+#X connect 15 1 10 0;

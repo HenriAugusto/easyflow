@@ -1,0 +1,4 @@
+#N canvas 0 50 347 221 10;
+#X obj 223 186 easyflow-info;
+#X text 75 61 [v--] is a shorthand for:;
+#X obj 132 101 value--;

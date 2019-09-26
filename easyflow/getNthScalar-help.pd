@@ -1,26 +1,26 @@
-#N struct 1003-struct1 float x float y float index float rgb;
+#N struct 3652-struct1 float x float y float index float rgb;
 #N canvas 548 175 633 444 10;
 #N canvas 1195 174 375 247 \$0-data 1;
-#X scalar 1003-struct1 0 0 0 0 \;;
-#X scalar 1003-struct1 10 10 1 0 \;;
-#X scalar 1003-struct1 20 20 2 0 \;;
-#X scalar 1003-struct1 30 30 3 101 \;;
-#X scalar 1003-struct1 40 40 4 101 \;;
-#X scalar 1003-struct1 50 50 5 202 \;;
-#X scalar 1003-struct1 60 60 6 202 \;;
-#X scalar 1003-struct1 70 70 7 303 \;;
-#X scalar 1003-struct1 80 80 8 303 \;;
-#X scalar 1003-struct1 90 90 9 404 \;;
-#X scalar 1003-struct1 100 100 10 404 \;;
-#X scalar 1003-struct1 110 110 11 404 \;;
-#X scalar 1003-struct1 120 120 12 505 \;;
-#X scalar 1003-struct1 130 130 13 505 \;;
-#X scalar 1003-struct1 140 140 14 606 \;;
-#X scalar 1003-struct1 150 150 15 606 \;;
-#X scalar 1003-struct1 160 160 16 707 \;;
-#X scalar 1003-struct1 170 170 17 707 \;;
-#X scalar 1003-struct1 180 180 18 808 \;;
-#X scalar 1003-struct1 190 190 19 808 \;;
+#X scalar 3652-struct1 0 0 0 0 \;;
+#X scalar 3652-struct1 10 10 1 0 \;;
+#X scalar 3652-struct1 20 20 2 0 \;;
+#X scalar 3652-struct1 30 30 3 101 \;;
+#X scalar 3652-struct1 40 40 4 101 \;;
+#X scalar 3652-struct1 50 50 5 202 \;;
+#X scalar 3652-struct1 60 60 6 202 \;;
+#X scalar 3652-struct1 70 70 7 303 \;;
+#X scalar 3652-struct1 80 80 8 303 \;;
+#X scalar 3652-struct1 90 90 9 404 \;;
+#X scalar 3652-struct1 100 100 10 404 \;;
+#X scalar 3652-struct1 110 110 11 404 \;;
+#X scalar 3652-struct1 120 120 12 505 \;;
+#X scalar 3652-struct1 130 130 13 505 \;;
+#X scalar 3652-struct1 140 140 14 606 \;;
+#X scalar 3652-struct1 150 150 15 606 \;;
+#X scalar 3652-struct1 160 160 16 707 \;;
+#X scalar 3652-struct1 170 170 17 707 \;;
+#X scalar 3652-struct1 180 180 18 808 \;;
+#X scalar 3652-struct1 190 190 19 808 \;;
 #X restore 430 131 pd \$0-data;
 #N canvas 0 50 450 300 \$0-template1 0;
 #X obj 46 96 filledpolygon rgb 111 2 0 0 10 0 10 10 0 10 0 -1;
@@ -78,7 +78,7 @@
 #X text 27 13 [getAllScalars] reads a data holding subPatch and outputs
 pointers to the scalars it contains \, one at a time.;
 #X obj 54 99 hsl 128 15 0 250 0 0 empty empty new position -2 -8 0
-10 -262144 -1 -1 0 0;
+10 -262144 -1 -1 5600 0;
 #X floatatom 51 119 5 0 0 0 - - -, f 5;
 #X msg 160 189 3;
 #X obj 160 220 getNthScalar \$0-data;
@@ -87,12 +87,12 @@ pointers to the scalars it contains \, one at a time.;
 #X obj 206 169 i;
 #X floatatom 206 191 5 0 0 0 - - -, f 5;
 #X obj 209 147 hsl 64 15 0 20 0 0 empty empty pointer index -2 -8
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 2300 1;
 #X obj 131 162 loadbang;
-#X text 356 249 (do not forget to send a pointer to [set] again after
-resetting the data holding subpatch), f 34;
-#X obj 246 169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 250 169 bng 15 250 50 0 empty empty empty 17 7 0 10 -206784
 -1 -1;
+#X text 356 249 do not forget to send a pointer to [set] again after
+resetting the data holding subpatch. (purple bang), f 34;
 #X connect 2 0 3 0;
 #X connect 6 0 7 0;
 #X connect 7 0 10 0;
@@ -102,4 +102,4 @@ resetting the data holding subpatch), f 34;
 #X connect 13 0 9 0;
 #X connect 14 0 12 0;
 #X connect 15 0 8 0;
-#X connect 17 0 13 0;
+#X connect 16 0 13 0;

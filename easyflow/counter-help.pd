@@ -20,7 +20,7 @@ the following syntax to avoid name conflicts.;
 #X text 81 341 send a float to step n times, f 15;
 #X text 152 392 counts from 0 to 9, f 11;
 #X msg 73 393 set 0 \, 10;
-#X obj 43 435 easyflow/Counter;
+#X obj 43 435 easyflow/counter;
 #X text 46 20 [easyflow/counter] is a simple abstraction to output
 sequences of numbers;
 #X floatatom 336 434 5 0 0 0 - - -, f 5;
@@ -30,7 +30,7 @@ sequences of numbers;
 #X obj 336 479 sel 0;
 #X text 374 348 coutn 10 times;
 #X text 381 456 stop after 5 times;
-#X obj 336 412 easyflow/Counter 1;
+#X obj 336 412 easyflow/counter 1;
 #X floatatom 89 164 5 0 0 0 - - -, f 5;
 #X msg 89 183 set \$1;
 #X text 150 181 sets next value;

@@ -1,0 +1,22 @@
+#N canvas 547 190 427 346 10;
+#X obj 38 221 listSearchAndRemove b;
+#X obj 311 312 easyflow-info;
+#X text 37 19 [listSearchAndRemove];
+#X text 38 39 removes every instance of a given element in a list,
+f 52;
+#X msg 38 80 list a b 1 a b 2 a b 3;
+#X msg 171 167 b;
+#X msg 161 145 symbol a;
+#X msg 179 191 2;
+#X obj 38 242 easyflow/printHere -s;
+#X text 203 167 implicitly converted to symbol;
+#X msg 47 107 a a b b 2 2;
+#X text 127 108 implicitly converted to list;
+#X text 37 312 see also:;
+#X obj 113 313 listRemove;
+#X connect 0 0 8 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 1;
+#X connect 6 0 0 1;
+#X connect 7 0 0 1;
+#X connect 10 0 0 0;

@@ -46,7 +46,7 @@
 0;
 #N canvas 0 50 370 381 GOP 0;
 #X msg 30 57 coords 0 1 1 -1 141 40 1 51.5686 35.0588 1;
-#X text 30 28 to be used with [easyflow/GOPTool];
+#X text 30 28 to be used with [easyflow/gopTool];
 #X coords 0 381 1 380 146 40 0;
 #X restore 609 476 pd GOP;
 #X obj 90 388 r~ \$0-amplitude1;

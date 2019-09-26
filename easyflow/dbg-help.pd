@@ -1,0 +1,18 @@
+#N canvas 778 285 450 300 10;
+#X obj 357 68 loadbang;
+#X msg 357 89 1;
+#X obj 357 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 357 131 v \$0-dbg;
+#X obj 338 263 easyflow-info;
+#X text 26 22 [dbg] prints it's input if and only if a given [value]
+is true (non-zero).;
+#X text 30 177 Arguments:;
+#X text 101 178 1) the [v] indicator of the variable to check;
+#X text 101 198 2) the message to be used with the [print] object;
+#X floatatom 28 79 5 0 0 0 - - -, f 5;
+#X obj 28 117 dbg \$0-dbg testing the [dbg] object;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 9 0 10 0;

@@ -350,7 +350,7 @@ numbers. Using "1" as default, f 27;
 #X obj 60 286 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -59724
 0;
 #N canvas 0 50 750 492 goptool 0;
-#X obj 38 203 easyflow/GOPTool;
+#X obj 38 203 easyflow/gopTool;
 #X obj 38 408 s \$0-this;
 #X obj 38 15 r \$0-GOPToggle;
 #X floatatom 38 67 5 0 0 0 - - -, f 5;

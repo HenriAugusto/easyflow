@@ -1,0 +1,78 @@
+#N canvas 187 68 678 478 10;
+#X text 53 13 [sublistIterator] allows you to get sublists of predefined
+length sequencially from a master list., f 98;
+#X msg 129 253 Name Sherlock Holmes Address 221B Baker_Street NW1_6XE
+Occupation detective, f 75;
+#X msg 42 75 Name (first_name) (last_name) Address (number) (street)
+(zip_code) Occupation (occupation), f 90;
+#X obj 42 277 sublistIterator;
+#X msg 42 155 next;
+#X obj 42 298 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 85 227 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 85 208 loadbang;
+#X text 38 107 So we have for the name \, address and occupation information
+the following sublist sizes: 3 4 2, f 94;
+#X msg 85 253 3 4 2;
+#X obj 98 387 iterator;
+#X text 35 386 see also:;
+#X obj 98 408 left2right;
+#X obj 98 428 right2left;
+#X obj 553 432 easyflow-info;
+#N canvas 817 127 687 300 more examples 0;
+#X obj 36 169 sublistIterator;
+#X msg 36 47 next;
+#X obj 36 190 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 79 119 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 79 100 loadbang;
+#X msg 49 68 first;
+#X obj 123 191 easyflow/printHere -s;
+#X msg 79 145 2 4;
+#X msg 123 145 1 2 3 4 5 6 7 8 9 10 11 12;
+#X obj 336 169 sublistIterator;
+#X msg 336 47 next;
+#X obj 336 190 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 379 119 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 379 100 loadbang;
+#X msg 349 68 first;
+#X obj 423 191 easyflow/printHere -s;
+#X msg 379 145 4;
+#X msg 423 145 1 2 3 4 5 6 7 8 9 10 11 12 13;
+#X connect 0 0 2 0;
+#X connect 0 1 6 0;
+#X connect 1 0 0 0;
+#X connect 3 0 7 0;
+#X connect 3 0 8 0;
+#X connect 4 0 3 0;
+#X connect 5 0 0 0;
+#X connect 7 0 0 1;
+#X connect 8 0 0 2;
+#X connect 9 0 11 0;
+#X connect 9 1 15 0;
+#X connect 10 0 9 0;
+#X connect 12 0 16 0;
+#X connect 12 0 17 0;
+#X connect 13 0 12 0;
+#X connect 14 0 9 0;
+#X connect 16 0 9 1;
+#X connect 17 0 9 2;
+#X restore 424 365 pd more examples;
+#X msg 55 176 first;
+#X obj 129 299 easyflow/printHere -s;
+#X text 39 40 Let's say you saved information about someone in the
+following format;
+#X text 33 327 bang when there are no more elements, f 14;
+#X connect 1 0 3 2;
+#X connect 3 0 5 0;
+#X connect 3 1 17 0;
+#X connect 4 0 3 0;
+#X connect 6 0 9 0;
+#X connect 6 0 1 0;
+#X connect 7 0 6 0;
+#X connect 9 0 3 1;
+#X connect 16 0 3 0;

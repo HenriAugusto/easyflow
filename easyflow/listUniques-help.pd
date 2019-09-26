@@ -1,0 +1,11 @@
+#N canvas 748 170 450 300 10;
+#X obj 60 189 printHere -s;
+#X obj 60 158 listUniques;
+#X msg 60 109 A B C A B C D A B C E F F G G G H A B C;
+#X msg 70 133 C# Bb E Gb Eb D# C C# G Gb E Eb D;
+#X obj 340 240 easyflow-info;
+#X text 59 41 [listUniques] removes duplicates from a list \, leaving
+only unique elements.;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;

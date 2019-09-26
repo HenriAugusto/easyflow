@@ -1,0 +1,23 @@
+#N canvas 159 146 862 303 10;
+#X msg 49 99 list a b c d e f g;
+#X obj 49 159 listShuffle;
+#X obj 49 180 easyflow/printHere -s;
+#X msg 69 124 1 2 3 4 5;
+#X text 44 22 [listShuffle] randomizes the elements position in a list
+;
+#X obj 635 250 easyflow-info;
+#X obj 189 180 easyflow/printHere -s;
+#X obj 189 159 listShuffle 2;
+#X msg 265 130 2;
+#X msg 189 99 list A a B b C c D d E e;
+#X obj 419 180 easyflow/printHere -s;
+#X obj 419 159 listShuffle 4;
+#X msg 419 99 list i like to sleep i hate to fail i love to eat;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;
+#X connect 7 0 6 0;
+#X connect 8 0 7 1;
+#X connect 9 0 7 0;
+#X connect 11 0 10 0;
+#X connect 12 0 11 0;

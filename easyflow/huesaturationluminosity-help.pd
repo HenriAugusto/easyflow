@@ -69,7 +69,7 @@ used by Pure Data.;
 #X text 267 79 Both H \, S and L range from 0 to 255;
 #X obj 140 408 cnv 15 125 20 empty empty IMPORTANT 10 11 0 14 -1 -262144
 0;
-#X obj 180 434 easyflow/HSL;
+#X obj 180 434 easyflow/hsl;
 #X text 142 455 (For that object you must use the slash declaration
 as [hsl] is the native horizontal slider);
 #X obj 318 194 hueSaturationLuminosity 64 255 128;

@@ -1,0 +1,147 @@
+#N canvas 111 0 811 639 10;
+#X obj 59 13 inlet;
+#X obj 59 590 outlet;
+#X obj 59 35 route symbol;
+#X obj 59 57 trigger bang anything bang;
+#X obj 135 189 list fromsymbol;
+#X msg 278 361 set 0;
+#X obj 278 383 easyflow/counter;
+#X floatatom 278 405 5 0 0 0 - - -, f 5;
+#X obj 135 338 trigger float bang;
+#X obj 59 444 float;
+#X obj 135 221 easyflow/right2left;
+#X obj 316 134 symbol;
+#X obj 316 166 outlet;
+#X obj 462 87 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 152 113 cnv 10 10 17 empty empty empty 20 12 0 14 -255367 -66577
+0;
+#X obj 202 92 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 212 92 s \$0-init;
+#X obj 268 325 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 278 325 r \$0-init;
+#X obj 305 32 cnv 10 10 17 empty empty empty 20 12 0 14 -91753 -66577
+0;
+#X obj 316 32 r \$0-nonNumericSymbol;
+#X obj 162 113 s \$0-symbolStore;
+#X obj 135 80 t s s;
+#X obj 339 94 cnv 10 10 17 empty empty empty 20 12 0 14 -255367 -66577
+0;
+#X obj 349 94 r \$0-symbolStore;
+#N canvas 508 50 431 512 getNumber 0;
+#X floatatom 56 61 5 0 0 0 - - -, f 5;
+#X obj 56 164 easyflow/numbersBetween 48 57;
+#X obj 56 241 - 48;
+#X obj 56 271 expr $f1*pow(10 \, $f2);
+#X obj 56 291 t b f;
+#X obj 113 385 +;
+#X obj 56 385 float;
+#X msg 83 349 0;
+#X obj 130 204 cnv 10 10 17 empty empty empty 20 12 0 14 -91753 -66577
+0;
+#X obj 73 321 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 83 322 r \$0-init;
+#X obj 141 204 s \$0-nonNumericSymbol;
+#X obj 56 24 inlet;
+#X obj 179 244 inlet;
+#X obj 113 407 outlet;
+#X text 104 87 ignore the minus sign;
+#X obj 56 90 sel 45;
+#X connect 0 0 16 0;
+#X connect 1 0 2 0;
+#X connect 1 1 11 0;
+#X connect 1 2 11 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 4 1 5 1;
+#X connect 5 0 6 1;
+#X connect 5 0 14 0;
+#X connect 6 0 5 0;
+#X connect 7 0 6 1;
+#X connect 10 0 7 0;
+#X connect 12 0 0 0;
+#X connect 13 0 3 1;
+#X connect 16 1 1 0;
+#X restore 135 412 pd getNumber;
+#X obj 46 13 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 303 166 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;
+#X obj 46 590 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 316 61 trigger bang bang bang;
+#X obj 472 87 s \$0-clear;
+#X obj 59 339 spigot;
+#X obj 82 262 cnv 10 10 17 empty empty empty 20 12 0 14 -98339 -66577
+0;
+#X obj 92 262 r \$0-init;
+#X msg 92 284 1;
+#X obj 92 306 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 166 262 cnv 10 10 17 empty empty empty 20 12 0 14 -51135 -66577
+0;
+#X obj 176 262 r \$0-clear;
+#X msg 176 284 0;
+#X text 167 485 -1 = negative;
+#X text 167 497 1 = positive;
+#X obj 73 496 cnv 10 10 17 empty empty empty 20 12 0 14 -4034 -66577
+0;
+#X obj 84 496 r \$0-signal;
+#X obj 59 543 * 1;
+#X floatatom 84 518 5 0 0 0 - - -, f 5;
+#X floatatom 59 565 5 0 0 0 - - -, f 5;
+#N canvas 0 50 426 245 test 0;
+#X obj 73 26 inlet;
+#X obj 73 168 outlet;
+#X obj 73 48 trigger symbol symbol;
+#X obj 196 83 easyflow/substring 0 1;
+#X obj 196 105 select -;
+#X obj 185 167 cnv 10 10 17 empty empty empty 20 12 0 14 -4034 -66577
+0;
+#X obj 196 167 s \$0-signal;
+#X msg 196 127 -1;
+#X msg 241 128 1;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 2 1 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 7 0;
+#X connect 4 1 8 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 0;
+#X restore 135 152 pd test pos or neg;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 31 0;
+#X connect 3 1 22 0;
+#X connect 3 2 16 0;
+#X connect 4 0 10 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 25 1;
+#X connect 8 0 25 0;
+#X connect 8 1 6 0;
+#X connect 9 0 43 0;
+#X connect 10 0 8 0;
+#X connect 11 0 12 0;
+#X connect 18 0 5 0;
+#X connect 20 0 29 0;
+#X connect 22 0 46 0;
+#X connect 22 1 21 0;
+#X connect 24 0 11 1;
+#X connect 25 0 9 1;
+#X connect 29 0 11 0;
+#X connect 29 1 10 1;
+#X connect 29 2 30 0;
+#X connect 31 0 9 0;
+#X connect 33 0 34 0;
+#X connect 34 0 35 0;
+#X connect 35 0 31 1;
+#X connect 37 0 38 0;
+#X connect 38 0 35 0;
+#X connect 42 0 44 0;
+#X connect 43 0 45 0;
+#X connect 44 0 43 1;
+#X connect 45 0 1 0;
+#X connect 46 0 4 0;

@@ -1,0 +1,24 @@
+#N canvas 252 471 450 272 10;
+#X obj 351 237 easyflow-info;
+#X text 44 25 [listSearchIterator] allows you to search for ocurrences
+on a list \, one at a time.;
+#X obj 54 116 listSearchIterator a b c a b c x y z a b;
+#X obj 172 62 loadbang;
+#X msg 172 83 symbol a;
+#X obj 54 66 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 54 137 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 291 144 5 0 0 0 - - -;
+#X msg 67 88 restart;
+#X msg 291 71 list a a b b c c;
+#X msg 313 95 1 2 3 4 5;
+#X text 51 191 It outputs -1 when none was found.;
+#X connect 2 0 6 0;
+#X connect 2 1 7 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 1;
+#X connect 5 0 2 0;
+#X connect 8 0 2 0;
+#X connect 9 0 2 2;
+#X connect 10 0 2 2;

@@ -1,0 +1,34 @@
+#N canvas 563 164 441 413 10;
+#X obj 46 231 listSearch;
+#X obj 103 161 loadbang;
+#X obj 323 363 easyflow-info;
+#X obj 46 252 printHere -s;
+#X msg 46 110 C;
+#X msg 65 158 Gb;
+#X msg 103 182 C E G B D E F#;
+#X msg 57 132 E;
+#X obj 89 322 searchIncomingLists;
+#X text 22 321 See also:;
+#X msg 123 205 Eb Gb Bb C Db Gb A;
+#X text 40 16 [listSearch] takes as input elements to be searched in
+a stored list.;
+#X text 41 46 It outputs the indexes of all the occurences of the element
+on the list.;
+#X text 41 74 If none are found it outputs -1;
+#N canvas 961 200 440 269 listSearch vs searchIncomingLists 0;
+#X text 47 16 The difference betweet [listSearch] and [searchIncomingLists]
+is just the type of input of each inlet.;
+#X obj 163 104 listSearch;
+#X obj 139 163 searchIncomingLists;
+#X text 135 84 element;
+#X text 212 84 list;
+#X text 121 140 list;
+#X text 231 140 element;
+#X restore 30 363 pd listSearch vs searchIncomingLists;
+#X connect 0 0 3 0;
+#X connect 1 0 6 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 1;
+#X connect 7 0 0 0;
+#X connect 10 0 0 1;

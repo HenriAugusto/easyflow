@@ -9,7 +9,7 @@
 #X msg 440 99 close;
 #X obj 320 39 inlet;
 #X obj 320 417 outlet;
-#X text 27 69 GOPTool;
+#X text 27 69 gopTool;
 #X msg 487 99 show;
 #X obj 320 375 map 666 666 \$3 \$4;
 #X obj 349 278 r \$0-min;

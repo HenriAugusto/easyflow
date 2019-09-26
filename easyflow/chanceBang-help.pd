@@ -1,0 +1,141 @@
+#N canvas 139 76 470 325 10;
+#X obj 59 75 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 59 96 metro 500;
+#X obj 159 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 159 161 chanceBang 50;
+#X obj 259 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 59 120 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 59 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 59 161 chanceBang 10;
+#X obj 345 284 easyflow-info;
+#X text 52 29 [chanceBang] outputs a bang according to a chance that
+is passed as an argument.;
+#N canvas 0 50 721 509 metrics 0;
+#N canvas 0 50 482 549 sample 1000 random values 0;
+#X obj 160 141 until;
+#X obj 192 238 chanceBang 68.55;
+#X obj 160 162 t b b b, f 28;
+#X msg 325 258 0;
+#X obj 160 289 f, f 19;
+#X msg 192 259 1;
+#X obj 263 122 v \$0-true;
+#X obj 252 122 cnv 10 10 17 empty empty empty 20 12 0 14 -48138 -1
+0;
+#X obj 337 122 cnv 10 10 17 empty empty empty 20 12 0 14 -258113 -1
+0;
+#X obj 348 122 v \$0-false;
+#X msg 263 99 0;
+#X obj 160 308 sel 0 1;
+#X obj 168 330 cnv 10 10 17 empty empty empty 20 12 0 14 -48138 -1
+0;
+#X obj 149 356 cnv 10 10 17 empty empty empty 20 12 0 14 -258113 -1
+0;
+#X obj 160 356 ++v \$0-false;
+#X obj 179 331 ++v \$0-true;
+#X obj 57 74 t f f b, f 35;
+#X obj 57 412 v \$0-true;
+#X obj 46 412 cnv 10 10 17 empty empty empty 20 12 0 14 -48138 -1 0
+;
+#X obj 57 388 t b f, f 11;
+#X obj 57 453 /, f 11;
+#X floatatom 57 474 10 0 0 0 - - -;
+#X floatatom 57 433 5 0 0 0 - - -;
+#X floatatom 120 433 5 0 0 0 - - -;
+#X msg 57 55 1000;
+#X obj 57 29 inlet;
+#X obj 57 494 outlet;
+#X obj 285 192 inlet;
+#X floatatom 285 213 10 0 0 0 - - -;
+#X connect 0 0 2 0;
+#X connect 1 0 5 0;
+#X connect 2 0 4 0;
+#X connect 2 1 1 0;
+#X connect 2 2 3 0;
+#X connect 3 0 4 1;
+#X connect 4 0 11 0;
+#X connect 5 0 4 1;
+#X connect 10 0 6 0;
+#X connect 10 0 9 0;
+#X connect 11 0 14 0;
+#X connect 11 1 15 0;
+#X connect 16 0 19 0;
+#X connect 16 1 0 0;
+#X connect 16 2 10 0;
+#X connect 17 0 22 0;
+#X connect 19 0 17 0;
+#X connect 19 1 23 0;
+#X connect 20 0 21 0;
+#X connect 21 0 26 0;
+#X connect 22 0 20 0;
+#X connect 23 0 20 1;
+#X connect 24 0 16 0;
+#X connect 25 0 24 0;
+#X connect 27 0 28 0;
+#X connect 28 0 1 1;
+#X restore 178 236 pd sample 1000 random values;
+#X msg 282 178 0;
+#X obj 178 317 +;
+#X floatatom 178 340 5 0 0 0 - - -;
+#X msg 75 114 750;
+#X obj 178 185 until;
+#X obj 75 153 t f f b, f 35;
+#X obj 75 274 t b f;
+#X obj 75 305 f;
+#X obj 75 336 pack f f;
+#X obj 178 286 list append;
+#X obj 75 357 /;
+#X floatatom 75 418 10 0 0 0 - - -;
+#X msg 343 208 50;
+#X msg 373 208 58.7;
+#X msg 409 208 87.35;
+#X msg 450 208 23.65;
+#X text 497 208 <- percentage to test;
+#X text 108 114 <- number of loteries to perform;
+#X floatatom 178 259 10 0 0 0 - - -;
+#X text 250 258 <- result percentage of a single lotery of 1000 [chanceBang]
+results, f 68;
+#X text 147 419 <- arithmetic mean of all lotery results!;
+#X obj 34 416 cnv 11 28 20 empty empty → 2 9 0 35 -135232 -262144
+0;
+#X obj 311 206 cnv 11 28 20 empty empty → 2 9 0 35 -36237 -262144
+0;
+#X text 67 31 Compare the number you've set in the green arrow with
+the result in the purple arrow;
+#X connect 0 0 19 0;
+#X connect 1 0 10 1;
+#X connect 2 0 3 0;
+#X connect 2 0 10 1;
+#X connect 3 0 8 1;
+#X connect 4 0 6 0;
+#X connect 5 0 0 0;
+#X connect 6 0 7 0;
+#X connect 6 1 5 0;
+#X connect 6 2 1 0;
+#X connect 7 0 8 0;
+#X connect 7 1 9 1;
+#X connect 8 0 9 0;
+#X connect 9 0 11 0;
+#X connect 10 0 2 0;
+#X connect 11 0 12 0;
+#X connect 13 0 0 1;
+#X connect 14 0 0 1;
+#X connect 15 0 0 1;
+#X connect 16 0 0 1;
+#X connect 19 0 10 0;
+#X restore 358 95 pd metrics;
+#X obj 259 161 chanceBang 90;
+#X obj 50 252 chanceBang 66.666;
+#X text 165 242 floats are NOT converted to integer, f 16;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 3 0 2 0;
+#X connect 5 0 7 0;
+#X connect 5 0 3 0;
+#X connect 5 0 11 0;
+#X connect 7 0 6 0;
+#X connect 11 0 4 0;

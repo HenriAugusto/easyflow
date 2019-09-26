@@ -1,26 +1,31 @@
 #N canvas 543 92 662 300 10;
-#X obj 64 190 alternate;
-#X floatatom 64 215 5 0 0 0 - - -, f 5;
-#X floatatom 124 216 5 0 0 0 - - -, f 5;
-#X floatatom 64 159 5 0 0 0 - - -, f 5;
-#X obj 184 190 alternate;
-#X msg 184 158 bang;
-#X obj 244 217 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 54 190 alternate;
+#X floatatom 54 215 5 0 0 0 - - -;
+#X floatatom 105 216 5 0 0 0 - - -;
+#X floatatom 54 159 5 0 0 0 - - -;
+#X obj 234 210 alternate;
+#X msg 234 181 bang;
+#X obj 285 237 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 184 217 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 234 237 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 474 130 alternate;
-#X symbolatom 474 181 10 0 0 0 - - -, f 10;
-#X symbolatom 525 157 10 0 0 0 - - -, f 10;
-#X msg 474 34 symbol cat;
-#X msg 484 56 symbol dog;
-#X msg 493 79 symbol weasel;
-#X msg 499 102 symbol lion;
-#X text 30 40 Alternate passes what it receives one time to it's left
+#X obj 494 130 alternate;
+#X symbolatom 494 181 10 0 0 0 - - -;
+#X symbolatom 545 157 10 0 0 0 - - -;
+#X msg 494 34 symbol cat;
+#X msg 504 56 symbol dog;
+#X msg 513 79 symbol weasel;
+#X msg 519 102 symbol lion;
+#X text 30 40 alternate passes what it receives one time to it's left
 inlet \, then to it's right inlet \, then to it's left inlet... It
 works with "anything". So it can alternate numbers \, bangs and symbols
 ;
-#X obj 478 259 easyflow-info;
+#X obj 498 259 easyflow-info;
+#X obj 234 155 t b f, f 9;
+#X msg 234 118 0;
+#X msg 270 118 1;
+#X text 309 151 send a float to the cold inlet to set the next outlet
+that will output, f 21;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 3 0 0 0;
@@ -33,3 +38,7 @@ works with "anything". So it can alternate numbers \, bangs and symbols
 #X connect 12 0 8 0;
 #X connect 13 0 8 0;
 #X connect 14 0 8 0;
+#X connect 17 0 5 0;
+#X connect 17 1 4 1;
+#X connect 18 0 17 0;
+#X connect 19 0 17 0;

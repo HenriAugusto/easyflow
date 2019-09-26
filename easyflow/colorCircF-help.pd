@@ -85,11 +85,7 @@ connections.;
 #X text 48 229 [colorCircF sky];
 #X obj 30 249 colorCircF orange;
 #X text 48 247 [colorCircF orange];
-#X text 38 437 Example of usage: see [for] and [GOPTool], f 62;
 #X obj 307 544 colorHighlighting-info;
-#N canvas 0 50 450 300 GOPTool 0;
-#X obj 41 29 GOPTool;
-#X restore 81 468 pd GOPTool;
 #X obj 307 516 cnv 11 164 17 empty empty complete information 2 9
 0 14 -1 -262144 0;
 #X text 37 534 see also:;
@@ -98,4 +94,8 @@ connections.;
 colored circle of fixed size. Then you can copy-paste the [cnv] into
 your patch. (don't forget to delete the receive name);
 #X obj 115 537 colorCirc;
+#X text 38 437 Example of usage: see [for] and [gopTool], f 62;
+#N canvas 0 50 450 300 gopTool 0;
+#X obj 51 36 gopTool;
+#X restore 81 468 pd gopTool;
 #X coords 0 588 1 587 10 17 0;

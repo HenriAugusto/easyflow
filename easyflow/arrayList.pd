@@ -1,193 +1,197 @@
-#N canvas 469 16 611 611 10;
+#N canvas 878 69 804 738 10;
 #X obj 86 13 inlet;
-#X obj 104 515 outlet;
+#X obj 122 657 outlet;
 #X obj 86 314 list prepend;
-#X obj 122 390 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
+#X obj 259 404 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
 0;
 #X obj 75 195 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
 ;
 #X obj 86 195 r \$0-listStore;
-#X obj 447 108 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
-;
-#X obj 458 108 s \$0-listStore;
 #X obj 71 123 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
 0;
 #X obj 57 123 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -2097 0
 ;
 #N canvas 0 50 331 232 getList 0;
 #X obj 48 25 inlet;
-#X obj 48 55 trigger bang bang bang;
-#X msg 199 89 1;
-#X obj 105 167 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
-0;
-#X msg 48 87 0;
-#X obj 112 122 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
+#X msg 147 86 1;
+#X obj 37 130 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
 ;
-#X obj 123 122 s \$0-listStore;
-#X obj 115 167 s \$0-outputSwitch;
-#X connect 0 0 1 0;
-#X connect 1 0 4 0;
-#X connect 1 1 6 0;
-#X connect 1 2 2 0;
-#X connect 2 0 7 0;
-#X connect 4 0 7 0;
+#X obj 48 130 s \$0-listStore;
+#X obj 48 55 trigger bang bang;
+#X obj 137 108 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
+0;
+#X obj 147 108 s \$0-outputSwitch;
+#X connect 0 0 4 0;
+#X connect 1 0 6 0;
+#X connect 4 0 3 0;
+#X connect 4 1 1 0;
 #X restore 86 120 pd getList;
 #X obj 167 275 t a a;
 #X obj 199 302 list length;
-#X floatatom 199 324 5 0 0 0 - - -, f 5;
+#X floatatom 199 324 5 0 0 0 - - -;
 #X obj 199 343 v \$0-length;
 #X obj 188 343 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
 0;
-#X obj 86 35 route getList get;
-#X obj 239 35 route clear set;
+#X obj 287 35 route clear set;
 #N canvas 569 297 437 479 get 0;
 #X obj 48 25 inlet;
 #X obj 48 47 route float;
-#X obj 301 155 v \$0-length;
-#X obj 290 155 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
+#X obj 264 155 v \$0-length;
+#X obj 253 155 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
 0;
-#X obj 122 68 print error;
 #X obj 48 99 trigger float float;
-#X obj 178 131 trigger float bang;
-#X floatatom 301 177 5 0 0 0 - - -, f 5;
-#X obj 178 191 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 159 131 trigger float bang;
+#X floatatom 264 177 5 0 0 0 - - -;
+#X obj 159 191 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 48 211 switch2;
-#X obj 94 240 print [arrayList] OutOfBounds exception;
-#X obj 165 359 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -1
+#X obj 147 359 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -1
 0;
 #X obj 38 418 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
 0;
 #X obj 48 418 s \$0-outputSwitch;
-#X msg 241 314 2;
+#X msg 213 314 2;
 #X msg 48 314 0;
-#X obj 101 384 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
+#X obj 92 384 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
 ;
 #X obj 48 282 trigger bang bang float bang;
-#X obj 112 384 s \$0-listStore;
-#X obj 178 164 >;
-#X obj 176 359 s \$0-operationIndex;
+#X obj 103 384 s \$0-listStore;
+#X obj 159 164 >;
+#X obj 158 359 s \$0-operationIndex;
 #X obj 48 131 select 0;
 #X msg 48 153 0;
+#X obj 87 251 print [arrayList] error. (Get) OutOfBounds exception
+;
+#X obj 111 68 error [arrayList] error. 'Get' expects an integer argument
+;
 #X connect 0 0 1 0;
-#X connect 1 0 5 0;
-#X connect 1 1 4 0;
-#X connect 2 0 7 0;
-#X connect 5 0 21 0;
-#X connect 5 1 6 0;
-#X connect 6 0 19 0;
-#X connect 6 1 2 0;
-#X connect 7 0 19 1;
-#X connect 8 0 9 1;
-#X connect 9 0 17 0;
-#X connect 9 1 10 0;
-#X connect 14 0 13 0;
+#X connect 1 0 4 0;
+#X connect 1 1 22 0;
+#X connect 2 0 6 0;
+#X connect 4 0 19 0;
+#X connect 4 1 5 0;
+#X connect 5 0 17 0;
+#X connect 5 1 2 0;
+#X connect 6 0 17 1;
+#X connect 7 0 8 1;
+#X connect 8 0 15 0;
+#X connect 8 1 21 0;
+#X connect 12 0 11 0;
+#X connect 13 0 11 0;
 #X connect 15 0 13 0;
-#X connect 17 0 15 0;
-#X connect 17 1 18 0;
-#X connect 17 2 20 0;
-#X connect 17 3 14 0;
-#X connect 19 0 8 0;
-#X connect 21 0 22 0;
-#X connect 21 1 9 0;
-#X connect 22 0 10 0;
-#X restore 144 90 pd get;
-#X obj 220 157 cnv 10 10 12 empty empty ❴❵ -3 5 0 18 -262144 -260097
+#X connect 15 1 16 0;
+#X connect 15 2 18 0;
+#X connect 15 3 12 0;
+#X connect 17 0 7 0;
+#X connect 19 0 20 0;
+#X connect 19 1 8 0;
+#X connect 20 0 21 0;
+#X restore 172 90 pd get;
+#X obj 248 157 cnv 10 10 12 empty empty ❴❵ -3 5 0 18 -262144 -260097
 0;
-#X obj 105 230 cnv 10 10 12 empty empty ❴❵ -3 5 0 18 -262144 -260097
+#X obj 148 248 cnv 10 10 12 empty empty ❴❵ -3 5 0 18 -262144 -260097
 0;
-#X obj 132 390 r \$0-outputSwitch;
-#X obj 132 412 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
+#X obj 269 404 r \$0-outputSwitch;
+#X obj 269 426 hradio 15 1 0 6 empty empty empty 0 -8 0 10 -262144
 -1 -1 0;
 #N canvas 0 50 450 300 get 0;
 #X obj 41 35 inlet;
-#X obj 41 217 outlet;
-#X obj 109 44 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -1
+#X obj 41 227 outlet;
+#X obj 57 136 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -1
 0;
-#X floatatom 120 66 5 0 0 0 - - -, f 5;
-#X msg 120 85 set \, adddollar \$1;
-#X msg 41 129 \$1;
-#X obj 120 44 r \$0-operationIndex;
-#X connect 0 0 5 0;
+#X floatatom 68 158 5 0 0 0 - - -;
+#X msg 68 177 set \, adddollar \$1;
+#X msg 41 199 \$13;
+#X obj 68 136 r \$0-operationIndex;
+#X obj 58 97 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1 0
+;
+#X msg 68 77 0;
+#X obj 68 97 s \$0-outputSwitch;
+#X obj 41 56 t a b;
+#X connect 0 0 10 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
 #X connect 5 0 1 0;
 #X connect 6 0 3 0;
-#X restore 123 478 pd get;
-#X obj 128 94 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
+#X connect 8 0 9 0;
+#X connect 10 0 5 0;
+#X connect 10 1 8 0;
+#X restore 159 620 pd get;
+#X obj 156 94 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
 0;
-#X obj 109 481 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
+#X obj 145 623 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
 0;
-#X obj 113 94 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
+#X obj 141 94 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
 0;
-#X obj 128 82 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -2097 0
+#X obj 156 82 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -2097 0
 ;
-#X obj 113 82 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+#X obj 141 82 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
 0;
-#X obj 275 97 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
+#X obj 323 97 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
 0;
-#X obj 262 97 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
+#X obj 310 97 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
 0;
-#X obj 270 86 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -2097 0
+#X obj 318 86 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -2097 0
 ;
-#X obj 249 97 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+#X obj 297 97 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
 0;
 #N canvas 1179 158 447 546 set 0;
 #X obj 48 25 inlet;
-#X obj 301 155 v \$0-length;
-#X obj 290 155 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
+#X obj 283 155 v \$0-length;
+#X obj 272 155 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
 0;
 #X obj 48 99 trigger float float;
 #X obj 178 131 trigger float bang;
-#X floatatom 301 177 5 0 0 0 - - -, f 5;
+#X floatatom 283 177 5 0 0 0 - - -;
 #X obj 178 191 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 48 211 switch2;
-#X obj 94 240 print [arrayList] OutOfBounds exception;
-#X obj 165 359 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -1
+#X obj 147 359 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -1
 0;
 #X obj 38 418 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
 0;
 #X obj 48 418 s \$0-outputSwitch;
 #X msg 48 314 0;
-#X obj 101 384 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
+#X obj 92 384 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
 ;
 #X obj 48 282 trigger bang bang float bang;
-#X obj 112 384 s \$0-listStore;
+#X obj 103 384 s \$0-listStore;
 #X obj 178 164 >;
-#X obj 176 359 s \$0-operationIndex;
+#X obj 158 359 s \$0-operationIndex;
 #X obj 48 47 unpack float symbol;
-#X obj 167 70 cnv 10 10 17 empty empty empty 20 12 0 14 -51491 -1 0
+#X obj 148 70 cnv 10 10 17 empty empty empty 20 12 0 14 -51491 -1 0
 ;
-#X obj 178 70 s \$0-setNewValue;
-#X msg 241 314 3;
+#X obj 159 70 s \$0-setNewValue;
+#X msg 213 310 3;
 #X obj 48 131 select 0;
 #X msg 48 153 0;
-#X floatatom 102 163 5 0 0 0 - - -, f 5;
-#X connect 0 0 18 0;
+#X floatatom 102 163 5 0 0 0 - - -;
+#X obj 87 240 print [arrayList] error. (Set) OutOfBounds exception
+;
+#X connect 0 0 17 0;
 #X connect 1 0 5 0;
-#X connect 3 0 22 0;
+#X connect 3 0 21 0;
 #X connect 3 1 4 0;
-#X connect 4 0 16 0;
+#X connect 4 0 15 0;
 #X connect 4 1 1 0;
-#X connect 5 0 16 1;
+#X connect 5 0 15 1;
 #X connect 6 0 7 1;
-#X connect 7 0 14 0;
-#X connect 7 1 8 0;
-#X connect 12 0 11 0;
-#X connect 14 0 12 0;
-#X connect 14 1 15 0;
-#X connect 14 2 17 0;
-#X connect 14 3 21 0;
-#X connect 16 0 6 0;
-#X connect 18 0 3 0;
-#X connect 18 1 20 0;
-#X connect 21 0 11 0;
-#X connect 22 0 23 0;
-#X connect 22 1 7 0;
-#X connect 22 1 24 0;
-#X connect 23 0 8 0;
-#X restore 290 91 pd set;
+#X connect 7 0 13 0;
+#X connect 7 1 24 0;
+#X connect 11 0 10 0;
+#X connect 13 0 11 0;
+#X connect 13 1 14 0;
+#X connect 13 2 16 0;
+#X connect 13 3 20 0;
+#X connect 15 0 6 0;
+#X connect 17 0 3 0;
+#X connect 17 1 19 0;
+#X connect 20 0 10 0;
+#X connect 21 0 22 0;
+#X connect 21 1 7 0;
+#X connect 21 1 23 0;
+#X connect 22 0 24 0;
+#X restore 338 91 pd set;
 #N canvas 0 50 397 221 set 0;
 #X obj 41 35 inlet;
 #X obj 41 157 outlet;
@@ -202,22 +206,18 @@
 #X connect 3 0 1 0;
 #X connect 5 0 3 1;
 #X connect 6 0 3 2;
-#X restore 212 480 pd set;
-#X msg 239 127 list;
-#X obj 239 156 s \$0-listCold;
-#X obj 124 229 r \$0-listCold;
-#X obj 196 482 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
+#X restore 195 548 pd set;
+#X msg 287 127 list;
+#X obj 287 156 s \$0-listCold;
+#X obj 167 247 r \$0-listCold;
+#X obj 179 550 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
 0;
-#X obj 185 482 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -51491
+#X obj 168 550 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -51491
 0;
-#X obj 404 32 route remove add;
-#X text 272 379 0 = nothing 1 = getList 2 = getter 3 = setter 4 = remove
-, f 11;
-#X obj 86 438 switch5, f 11;
-#X obj 323 513 cnv 10 10 12 empty empty ❴❵ -3 5 0 18 -262144 -260097
+#X obj 213 519 cnv 10 10 12 empty empty ❴❵ -3 5 0 18 -262144 -260097
 0;
-#X obj 342 512 s \$0-listCold;
-#X obj 326 483 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
+#X obj 232 518 s \$0-listCold;
+#X obj 216 489 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
 0;
 #N canvas 0 50 380 329 remove 0;
 #X obj 41 35 inlet;
@@ -228,7 +228,7 @@
 #X obj 41 177 list split;
 #X obj 41 219 list append;
 #X obj 41 57 trigger anything anything;
-#X obj 213 176 list split;
+#X obj 188 176 list split;
 #X obj 124 105 t f f;
 #X obj 124 127 - 1;
 #X connect 0 0 6 0;
@@ -241,76 +241,77 @@
 #X connect 8 0 9 0;
 #X connect 8 1 7 1;
 #X connect 9 0 4 1;
-#X restore 342 480 pd remove;
+#X restore 232 486 pd remove;
 #N canvas 928 295 447 546 remove 0;
 #X obj 48 25 inlet;
-#X obj 301 115 v \$0-length;
-#X obj 290 115 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
+#X obj 264 115 v \$0-length;
+#X obj 253 115 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
 0;
 #X obj 48 59 trigger float float;
-#X obj 178 91 trigger float bang;
-#X floatatom 301 137 5 0 0 0 - - -, f 5;
-#X obj 178 151 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 159 91 trigger float bang;
+#X floatatom 264 137 5 0 0 0 - - -;
+#X obj 159 151 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 48 171 switch2;
-#X obj 94 200 print [arrayList] OutOfBounds exception;
-#X obj 165 319 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -1
+#X obj 147 319 cnv 10 10 17 empty empty empty 20 12 0 14 -260145 -1
 0;
 #X obj 38 378 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
 0;
 #X obj 48 378 s \$0-outputSwitch;
 #X msg 48 274 0;
-#X obj 101 344 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
+#X obj 92 344 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
 ;
 #X obj 48 242 trigger bang bang float bang;
-#X obj 112 344 s \$0-listStore;
-#X obj 178 124 >;
-#X obj 176 319 s \$0-operationIndex;
-#X msg 241 274 4;
+#X obj 103 344 s \$0-listStore;
+#X obj 159 124 >;
+#X obj 158 319 s \$0-operationIndex;
+#X msg 213 274 4;
 #X obj 48 81 select 0;
 #X msg 48 103 0;
+#X obj 94 200 print [arrayList] error. (remove) OutOfBounds exception
+;
 #X connect 0 0 3 0;
 #X connect 1 0 5 0;
-#X connect 3 0 19 0;
+#X connect 3 0 18 0;
 #X connect 3 1 4 0;
-#X connect 4 0 16 0;
+#X connect 4 0 15 0;
 #X connect 4 1 1 0;
-#X connect 5 0 16 1;
+#X connect 5 0 15 1;
 #X connect 6 0 7 1;
-#X connect 7 0 14 0;
-#X connect 7 1 8 0;
-#X connect 12 0 11 0;
-#X connect 14 0 12 0;
-#X connect 14 1 15 0;
-#X connect 14 2 17 0;
-#X connect 14 3 18 0;
-#X connect 16 0 6 0;
-#X connect 18 0 11 0;
+#X connect 7 0 13 0;
+#X connect 7 1 20 0;
+#X connect 11 0 10 0;
+#X connect 13 0 11 0;
+#X connect 13 1 14 0;
+#X connect 13 2 16 0;
+#X connect 13 3 17 0;
+#X connect 15 0 6 0;
+#X connect 17 0 10 0;
+#X connect 18 0 19 0;
+#X connect 18 1 7 0;
 #X connect 19 0 20 0;
-#X connect 19 1 7 0;
-#X connect 20 0 8 0;
-#X restore 404 137 pd remove;
-#X obj 257 86 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -51491
+#X restore 452 197 pd remove;
+#X obj 305 86 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -51491
 0;
-#X obj 388 146 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
+#X obj 436 206 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260145
 0;
-#X obj 375 146 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
+#X obj 423 206 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
 0;
-#X obj 383 135 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -2097
+#X obj 431 195 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -2097
 0;
-#X obj 362 146 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+#X obj 410 206 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
 0;
-#X obj 370 135 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -51491
+#X obj 418 195 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -51491
 0;
-#X obj 193 513 cnv 10 10 12 empty empty ❴❵ -3 5 0 18 -262144 -260097
+#X obj 176 581 cnv 10 10 12 empty empty ❴❵ -3 5 0 18 -262144 -260097
 0;
-#X obj 212 512 s \$0-listCold;
+#X obj 195 580 s \$0-listCold;
 #N canvas 291 53 286 399 posAndNeg 0;
 #X obj 83 303 outlet;
 #X obj 34 17 inlet;
 #X obj 34 79 moses 0;
-#X floatatom 34 106 5 0 0 0 - - -, f 5;
-#X floatatom 131 106 5 0 0 0 - - -, f 5;
+#X floatatom 34 106 5 0 0 0 - - -;
+#X floatatom 131 106 5 0 0 0 - - -;
 #X obj 34 211 v \$0-length;
 #X obj 34 175 trigger b f, f 15;
 #X obj 83 273 +, f 8;
@@ -318,7 +319,7 @@
 #X text 65 126 make index 1-based;
 #X obj 24 211 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
 0;
-#N canvas 921 108 347 291 checkForEmptyList 0;
+#N canvas 812 210 347 291 checkForEmptyList 0;
 #X obj 52 31 inlet;
 #X obj 52 53 trigger float bang;
 #X obj 175 80 v \$0-length;
@@ -331,10 +332,10 @@
 #X obj 52 207 outlet;
 #N canvas 0 50 314 97 error 0;
 #X obj 41 15 inlet;
-#X obj 41 60 print [arrayList] exception;
 #X msg 41 37 empty list;
-#X connect 0 0 2 0;
-#X connect 2 0 1 0;
+#X obj 41 60 print [arrayList] exception (remove);
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
 #X restore 98 183 pd error;
 #X connect 0 0 1 0;
 #X connect 1 0 7 0;
@@ -358,12 +359,12 @@
 #X connect 7 0 0 0;
 #X connect 8 0 6 0;
 #X connect 11 0 2 0;
-#X restore 404 78 pd posAndNeg;
+#X restore 452 171 pd posAndNeg;
 #N canvas 82 236 288 456 posAndNeg 0;
 #X obj 34 27 inlet;
 #X obj 34 119 moses 0;
-#X floatatom 34 146 5 0 0 0 - - -, f 5;
-#X floatatom 131 146 5 0 0 0 - - -, f 5;
+#X floatatom 34 146 5 0 0 0 - - -;
+#X floatatom 131 146 5 0 0 0 - - -;
 #X obj 34 251 v \$0-length;
 #X obj 34 215 trigger b f, f 15;
 #X obj 80 313 +, f 8;
@@ -377,20 +378,20 @@
 #N canvas 921 108 347 291 checkForEmptyList 0;
 #X obj 52 31 inlet;
 #X obj 52 53 trigger float bang;
-#X obj 175 80 v \$0-length;
-#X obj 165 80 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
+#X obj 157 80 v \$0-length;
+#X obj 147 80 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
 0;
-#X obj 175 102 sel 0;
-#X msg 175 124 1;
-#X msg 207 124 0;
+#X obj 157 102 sel 0;
+#X msg 157 124 1;
+#X msg 188 124 0;
 #X obj 52 155 switch2;
 #X obj 52 207 outlet;
 #N canvas 0 50 314 97 error 0;
 #X obj 41 15 inlet;
-#X obj 41 60 print [arrayList] exception;
 #X msg 41 37 empty list;
-#X connect 0 0 2 0;
-#X connect 2 0 1 0;
+#X obj 41 60 print [arrayList] exception (set);
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
 #X restore 98 183 pd error;
 #X connect 0 0 1 0;
 #X connect 1 0 7 0;
@@ -417,13 +418,13 @@
 #X connect 10 1 11 1;
 #X connect 11 0 12 0;
 #X connect 13 0 1 0;
-#X restore 290 63 pd posAndNeg;
-#N canvas 5 50 294 396 posAndNeg 1;
+#X restore 338 63 pd posAndNeg;
+#N canvas 5 50 294 396 posAndNeg 0;
 #X obj 80 313 outlet;
 #X obj 34 27 inlet;
 #X obj 34 79 moses 0;
-#X floatatom 34 106 5 0 0 0 - - -, f 5;
-#X floatatom 131 106 5 0 0 0 - - -, f 5;
+#X floatatom 34 106 5 0 0 0 - - -;
+#X floatatom 131 106 5 0 0 0 - - -;
 #X obj 34 211 v \$0-length;
 #X obj 34 175 trigger b f, f 15;
 #X obj 80 263 +, f 8;
@@ -434,21 +435,21 @@
 #N canvas 921 108 347 291 checkForEmptyList 0;
 #X obj 52 31 inlet;
 #X obj 52 53 trigger float bang;
-#X obj 175 80 v \$0-length;
-#X obj 165 80 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
+#X obj 157 80 v \$0-length;
+#X obj 147 80 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
 0;
-#X obj 175 102 sel 0;
-#X msg 175 124 1;
-#X msg 207 124 0;
+#X obj 157 102 sel 0;
+#X msg 157 124 1;
+#X msg 189 124 0;
 #X obj 52 155 switch2;
 #X obj 52 207 outlet;
 #N canvas 0 50 314 97 error 0;
 #X obj 41 15 inlet;
-#X obj 41 60 print [arrayList] exception;
 #X msg 41 37 empty list;
-#X connect 0 0 2 0;
-#X connect 2 0 1 0;
-#X restore 98 183 pd error;
+#X obj 41 60 print [arrayList] exception (get);
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 91 183 pd error;
 #X connect 0 0 1 0;
 #X connect 1 0 7 0;
 #X connect 1 1 2 0;
@@ -471,41 +472,331 @@
 #X connect 7 0 0 0;
 #X connect 8 0 6 0;
 #X connect 11 0 2 0;
-#X restore 144 60 pd posAndNeg;
-#X obj 131 63 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+#X restore 172 60 pd posAndNeg;
+#X obj 159 63 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
 0;
-#X obj 275 67 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+#X obj 323 67 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
 0;
-#X obj 389 81 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+#X obj 437 174 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
 0;
-#X connect 0 0 16 0;
-#X connect 2 0 11 0;
-#X connect 2 0 42 0;
+#X obj 86 336 t a a;
+#X obj 86 35 route getList bang get;
+#X obj 86 458 switch6, f 31;
+#N canvas 427 184 621 618 send 0;
+#X obj 41 35 inlet;
+#X obj 109 134 cnv 10 10 17 empty empty empty 20 12 0 14 -196609 -1
+0;
+#X obj 69 358 send;
+#X obj 79 293 cnv 10 10 17 empty empty empty 20 12 0 14 -146887 -1
+0;
+#X obj 90 293 r \$0-sendDestination;
+#X symbolatom 90 314 25 0 0 0 - - -;
+#X obj 120 134 r \$0-operationlist;
+#X obj 120 155 unpack f f;
+#X obj 41 209 list split;
+#X obj 120 176 - 1;
+#X obj 41 253 list split;
+#X obj 58 101 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
+0;
+#X obj 68 101 s \$0-outputSwitch;
+#X obj 41 56 t a b;
+#X msg 68 77 0;
+#X text 255 193 output will be a bang on 1st and 2nd inlet of [list
+split];
+#X text 257 163 on the case of an empty list and no sublist specified
+;
+#X connect 0 0 13 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 1;
+#X connect 6 0 7 0;
+#X connect 7 0 9 0;
+#X connect 7 1 8 1;
+#X connect 8 0 10 0;
+#X connect 9 0 10 1;
+#X connect 10 1 2 0;
+#X connect 13 0 8 0;
+#X connect 13 1 14 0;
+#X connect 14 0 12 0;
+#X restore 368 495 pd send;
+#X text 175 383 0 = nothing 1 = getList 2 = getter 3 = setter 4 = remove
+5 = send, f 11;
+#X obj 470 149 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
+0;
+#X obj 485 136 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -2097
+0;
+#X obj 470 136 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+0;
+#N canvas 455 55 538 604 posAndNeg 0;
+#X obj 34 27 inlet;
+#X obj 146 199 moses 0;
+#X floatatom 146 226 5 0 0 0 - - -;
+#X floatatom 353 186 5 0 0 0 - - -;
+#X obj 146 291 v \$0-length;
+#X obj 194 343 +, f 5;
+#X obj 136 291 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
+0;
+#X obj 173 479 outlet;
+#X obj 34 77 t b l l, f 39;
+#X obj 194 424 t l l;
+#X obj 173 455 list;
+#X msg 264 358 list;
+#X obj 146 255 t b f, f 13;
+#X obj 146 103 l2r;
+#X obj 194 393 list prepend;
+#X obj 146 124 select L l;
+#X msg 107 198 0;
+#X connect 0 0 8 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 2 0 12 0;
+#X connect 3 0 14 0;
+#X connect 4 0 5 0;
+#X connect 5 0 14 0;
+#X connect 8 0 10 0;
+#X connect 8 1 13 0;
+#X connect 8 2 11 0;
+#X connect 9 0 10 1;
+#X connect 9 1 14 1;
+#X connect 10 0 7 0;
+#X connect 11 0 14 1;
+#X connect 12 0 4 0;
+#X connect 12 1 5 1;
+#X connect 13 0 15 0;
+#X connect 14 0 9 0;
+#X connect 15 0 16 0;
+#X connect 15 1 16 0;
+#X connect 15 2 1 0;
+#X connect 16 0 2 0;
+#X restore 501 114 pd posAndNeg;
+#X obj 488 117 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+0;
+#N canvas 150 98 682 646 send 0;
+#X obj 48 25 inlet;
+#X obj 189 70 route float;
+#X obj 48 331 switch2;
+#X obj 167 450 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
+0;
+#X obj 177 450 s \$0-outputSwitch;
+#X obj 37 504 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
+;
+#X obj 48 504 s \$0-listStore;
+#X obj 48 46 easyflow/listsOfLength 2;
+#X msg 189 91 \$1 \$1;
+#X obj 101 473 cnv 10 10 17 empty empty empty 20 12 0 14 -196609 -1
+0;
+#X obj 112 473 s \$0-operationlist;
+#X obj 48 159 t l l l l, f 51;
+#X obj 149 232 ||;
+#N canvas 0 50 298 301 check if > length 0;
+#X obj 153 119 v \$0-length;
+#X obj 142 119 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
+0;
+#X obj 42 170 >;
+#X obj 99 169 >;
+#X obj 42 237 ||;
+#X obj 42 79 unpack f f;
+#X obj 42 30 inlet;
+#X obj 42 51 t l b, f 19;
+#X obj 42 258 outlet;
+#X connect 0 0 2 1;
+#X connect 0 0 3 1;
+#X connect 2 0 4 0;
+#X connect 3 0 4 1;
+#X connect 4 0 8 0;
 #X connect 5 0 2 0;
-#X connect 11 0 2 1;
-#X connect 11 1 12 0;
-#X connect 12 0 13 0;
-#X connect 13 0 14 0;
-#X connect 16 0 10 0;
-#X connect 16 1 58 0;
-#X connect 16 2 17 0;
-#X connect 17 0 35 0;
-#X connect 17 1 57 0;
-#X connect 17 2 40 0;
-#X connect 21 0 22 0;
-#X connect 22 0 42 1;
-#X connect 23 0 1 0;
-#X connect 34 0 55 0;
-#X connect 35 0 36 0;
-#X connect 37 0 11 0;
-#X connect 40 0 56 0;
-#X connect 40 1 7 0;
-#X connect 40 2 7 0;
-#X connect 42 1 1 0;
-#X connect 42 2 23 0;
-#X connect 42 3 34 0;
-#X connect 42 4 46 0;
-#X connect 46 0 44 0;
-#X connect 56 0 47 0;
-#X connect 57 0 33 0;
-#X connect 58 0 18 0;
+#X connect 5 1 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X connect 7 1 0 0;
+#X restore 149 201 pd check if > length;
+#N canvas 0 50 298 301 check if <= 0 0;
+#X obj 42 137 ||;
+#X obj 42 59 unpack f f;
+#X obj 42 30 inlet;
+#X obj 42 178 outlet;
+#X obj 42 100 <= 0;
+#X obj 99 99 <= 0;
+#X text 41 221 ex: list have 5 elements;
+#X text 41 249 users asks for send -7;
+#X text 43 271 result is -2;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 1 1 5 0;
+#X connect 2 0 1 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 1;
+#X restore 289 202 pd check if <= 0;
+#N canvas 0 50 298 301 check if end >= start 0;
+#X obj 42 137 ||;
+#X obj 42 59 unpack f f;
+#X obj 42 30 inlet;
+#X obj 42 178 outlet;
+#X obj 42 100 >;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 1 1 4 1;
+#X connect 2 0 1 0;
+#X connect 4 0 0 0;
+#X restore 409 202 pd check if end >= start;
+#X obj 149 253 ||;
+#X obj 149 276 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 177 429 5;
+#X obj 87 371 print [arrayList] error. (send) OutOfBounds exception
+;
+#X obj 252 91 error [arrayList] error. 'send' expects an integer argument
+;
+#X obj 48 402 trigger bang list bang;
+#X text 64 558 can NOT send 0 to outputSwitch whit this trigger because
+you would get stackoverflow on reentry when modifying the arrayList
+after a send of the same array list!;
+#X connect 0 0 7 0;
+#X connect 1 0 8 0;
+#X connect 1 1 20 0;
+#X connect 2 0 21 0;
+#X connect 2 1 19 0;
+#X connect 7 0 11 0;
+#X connect 7 1 1 0;
+#X connect 8 0 11 0;
+#X connect 11 0 2 0;
+#X connect 11 1 13 0;
+#X connect 11 2 14 0;
+#X connect 11 3 15 0;
+#X connect 12 0 16 0;
+#X connect 13 0 12 0;
+#X connect 14 0 12 1;
+#X connect 15 0 16 1;
+#X connect 16 0 2 1;
+#X connect 16 0 17 0;
+#X connect 18 0 4 0;
+#X connect 21 0 6 0;
+#X connect 21 1 10 0;
+#X connect 21 2 18 0;
+#X restore 501 144 pd send;
+#X obj 486 64 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -146887
+0;
+#N canvas 0 50 324 238 getDestination 0;
+#X obj 37 17 inlet;
+#X obj 64 84 list split 1;
+#X obj 53 110 cnv 10 10 17 empty empty empty 20 12 0 14 -146887 -1
+0;
+#X obj 64 110 s \$0-sendDestination;
+#X obj 37 61 t l l;
+#X obj 37 142 list split 1;
+#X obj 71 170 outlet;
+#X obj 37 38 list;
+#X connect 0 0 7 0;
+#X connect 1 0 3 0;
+#X connect 4 0 5 0;
+#X connect 4 1 1 0;
+#X connect 5 1 6 0;
+#X connect 7 0 4 0;
+#X restore 501 62 pd getDestination;
+#X obj 452 32 route remove send;
+#X obj 631 61 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
+;
+#X obj 642 61 s \$0-listStore;
+#X obj 642 31 route add;
+#X obj 485 149 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -196609
+0;
+#X obj 353 497 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -196609
+0;
+#X obj 341 497 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -146887
+0;
+#X text 249 377 (prevents stackoverflow for example when as a result
+of a send you change the array list!), f 82;
+#N canvas 9 50 632 539 checkIfSublist 0;
+#X obj 37 37 inlet;
+#X obj 37 58 route bang, f 36;
+#X obj 37 104 v \$0-length;
+#X obj 27 104 cnv 10 10 17 empty empty empty 20 12 0 14 -203904 -1
+0;
+#X msg 37 81 bang;
+#X obj 37 135 select 0;
+#X text 259 365 output will be a bang on 1st and 2nd inlet of [list
+split], f 21;
+#X msg 82 168 1 \$1;
+#X obj 156 340 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
+0;
+#X obj 166 340 s \$0-outputSwitch;
+#X obj 26 393 cnv 10 10 17 empty empty empty 20 12 0 14 -2097 -1 0
+;
+#X obj 37 393 s \$0-listStore;
+#X obj 90 363 cnv 10 10 17 empty empty empty 20 12 0 14 -196609 -1
+0;
+#X obj 101 363 s \$0-operationlist;
+#X msg 166 319 5;
+#X obj 37 292 t b b b, f 22;
+#X msg 101 333 0 0;
+#X obj 82 229 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 1 1 17 0;
+#X connect 2 0 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 15 0;
+#X connect 5 1 7 0;
+#X connect 7 0 17 0;
+#X connect 14 0 9 0;
+#X connect 15 0 11 0;
+#X connect 15 1 16 0;
+#X connect 15 2 14 0;
+#X connect 16 0 13 0;
+#X restore 501 83 pd checkIfSublist;
+#X obj 487 85 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -203904
+0;
+#X obj 475 85 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -196609
+0;
+#N canvas 0 50 450 300 getList 0;
+#X obj 68 117 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
+0;
+#X msg 78 97 0;
+#X obj 78 117 s \$0-outputSwitch;
+#X obj 51 76 t a b;
+#X obj 51 46 inlet;
+#X obj 51 147 outlet;
+#X connect 1 0 2 0;
+#X connect 3 0 5 0;
+#X connect 3 1 1 0;
+#X connect 4 0 3 0;
+#X restore 122 502 pd getList;
+#X connect 0 0 57 0;
+#X connect 2 0 56 0;
+#X connect 5 0 2 0;
+#X connect 9 0 2 1;
+#X connect 9 1 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 14 0 32 0;
+#X connect 14 1 51 0;
+#X connect 14 2 69 0;
+#X connect 18 0 19 0;
+#X connect 19 0 58 1;
+#X connect 20 0 1 0;
+#X connect 31 0 49 0;
+#X connect 32 0 33 0;
+#X connect 34 0 9 0;
+#X connect 40 0 38 0;
+#X connect 50 0 41 0;
+#X connect 51 0 30 0;
+#X connect 52 0 15 0;
+#X connect 56 0 58 0;
+#X connect 56 1 9 0;
+#X connect 57 0 8 0;
+#X connect 57 1 8 0;
+#X connect 57 2 52 0;
+#X connect 57 3 14 0;
+#X connect 58 1 80 0;
+#X connect 58 2 20 0;
+#X connect 58 3 31 0;
+#X connect 58 4 40 0;
+#X connect 58 5 59 0;
+#X connect 64 0 66 0;
+#X connect 68 0 77 0;
+#X connect 69 0 50 0;
+#X connect 69 1 68 0;
+#X connect 69 2 72 0;
+#X connect 72 0 71 0;
+#X connect 72 1 71 0;
+#X connect 77 0 64 0;
+#X connect 80 0 1 0;

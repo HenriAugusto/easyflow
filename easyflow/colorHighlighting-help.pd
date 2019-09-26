@@ -44,8 +44,8 @@ process the colors for every automatically colored objects.;
 #X obj 380 658 cnv 11 164 17 empty empty complete information 2 9
 0 14 -1 -262144 0;
 #X text 340 134 see it's help file for definitions.;
-#X obj 41 628 easyflow/labelcnv \$0-testName3 init;
-#X obj 41 600 easyflow/labelcnv \$0-testName1 update;
+#X obj 41 628 easyflow/labelCnv \$0-testName3 init;
+#X obj 41 600 easyflow/labelCnv \$0-testName1 update;
 #X text 99 601 [labelCnv \$0-testName1 update];
 #X text 99 627 [labelCnv \$0-testName3 init];
 #X text 307 194 <-- try changing the colors on those objects;

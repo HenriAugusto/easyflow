@@ -1,0 +1,4 @@
+#N canvas 0 50 379 195 10;
+#X obj 78 62 receive easyflowMethodInput\$1;
+#X obj 78 100 outlet;
+#X connect 0 0 1 0;

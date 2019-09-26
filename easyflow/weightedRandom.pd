@@ -1,0 +1,179 @@
+#N canvas 1020 97 825 540 10;
+#X obj 308 444 outlet;
+#X obj 45 36 inlet;
+#X obj 45 57 list;
+#X obj 45 157 v \$0-nOfTickets;
+#X obj 34 157 cnv 10 10 17 empty empty empty 20 12 0 14 -176564 -1
+0;
+#X msg 138 129 0;
+#X obj 308 181 list store;
+#X obj 463 182 list store;
+#X obj 365 159 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 80 102 cnv 10 10 17 empty empty empty 20 12 0 14 -2049 -1 0
+;
+#X obj 91 102 s \$0-start;
+#X obj 354 136 cnv 10 10 17 empty empty empty 20 12 0 14 -2049 -1 0
+;
+#X obj 365 136 r \$0-start;
+#X obj 520 161 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 509 138 cnv 10 10 17 empty empty empty 20 12 0 14 -2049 -1 0
+;
+#X obj 520 138 r \$0-start;
+#X obj 297 115 cnv 10 10 17 empty empty empty 20 12 0 14 -2112 -1 0
+;
+#X obj 308 115 r \$0-elemList;
+#X obj 452 116 cnv 10 10 17 empty empty empty 20 12 0 14 -239941 -1
+0;
+#X obj 463 116 r \$0-ticketsList;
+#N canvas 428 120 699 457 init 0;
+#X obj 46 20 inlet;
+#X obj 46 195 sublistIterator, f 16;
+#X msg 46 123 next;
+#X obj 46 216 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 92 149 loadbang;
+#X msg 92 171 2;
+#X obj 46 46 t b l, f 16;
+#X obj 46 67 f 6666;
+#X obj 46 88 until;
+#X floatatom 316 244 5 0 0 0 - - -;
+#X obj 408 329 cnv 10 10 17 empty empty empty 20 12 0 14 -176564 -1
+0;
+#X obj 419 329 ++v \$0-nOfTickets;
+#X obj 46 241 t b b;
+#X msg 139 264 append \$1;
+#X msg 316 328 append \$1;
+#X obj 128 286 cnv 10 10 17 empty empty empty 20 12 0 14 -2112 -1 0
+;
+#X obj 305 350 cnv 10 10 17 empty empty empty 20 12 0 14 -239941 -1
+0;
+#X obj 139 286 s \$0-elemList;
+#X obj 316 350 s \$0-ticketsList;
+#X obj 46 262 outlet;
+#X obj 512 306 cnv 10 10 17 empty empty empty 20 12 0 14 -67305 -1
+0;
+#X obj 316 264 t a b a, f 35;
+#X obj 523 285 until;
+#X obj 523 306 ++v \$0-ticketsSum;
+#X obj 139 219 t l l;
+#X msg 316 217 \$2;
+#X connect 0 0 6 0;
+#X connect 1 0 3 0;
+#X connect 1 1 24 0;
+#X connect 2 0 1 0;
+#X connect 3 0 12 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 1;
+#X connect 6 0 7 0;
+#X connect 6 1 1 2;
+#X connect 7 0 8 0;
+#X connect 8 0 2 0;
+#X connect 9 0 21 0;
+#X connect 12 0 19 0;
+#X connect 12 1 8 1;
+#X connect 13 0 17 0;
+#X connect 14 0 18 0;
+#X connect 21 0 14 0;
+#X connect 21 1 11 0;
+#X connect 21 2 22 0;
+#X connect 22 0 23 0;
+#X connect 24 0 13 0;
+#X connect 24 1 25 0;
+#X connect 25 0 9 0;
+#X restore 45 129 pd init;
+#X obj 45 78 t l b b, f 16;
+#X obj 45 265 easyflow/counter;
+#X msg 45 186 set 1 \, \$1;
+#X obj 145 157 cnv 10 10 17 empty empty empty 20 12 0 14 -67305 -1
+0;
+#X obj 156 157 v \$0-ticketsSum;
+#X obj 452 374 cnv 10 10 17 empty empty empty 20 12 0 14 -67305 -1
+0;
+#X obj 45 308 - 1;
+#X obj 34 405 cnv 10 10 17 empty empty empty 20 12 0 14 -2112 -1 0
+;
+#X obj 45 405 s \$0-elemList;
+#X msg 45 331 get \$1 1;
+#X obj 45 352 t a a;
+#X obj 61 377 cnv 10 10 17 empty empty empty 20 12 0 14 -239941 -1
+0;
+#X obj 72 377 s \$0-ticketsList;
+#X floatatom 463 203 5 0 0 0 - - -;
+#X obj 463 374 --v \$0-ticketsSum;
+#X obj 463 352 until;
+#X obj 557 248 cnv 10 10 17 empty empty empty 20 12 0 14 -67305 -1
+0;
+#X obj 568 248 v \$0-ticketsSum;
+#X obj 463 223 t f f b, f 18;
+#X obj 515 290 /;
+#X obj 324 419 cnv 10 10 17 empty empty empty 20 12 0 14 -253953 -1
+0;
+#X obj 66 209 cnv 10 10 17 empty empty empty 20 12 0 14 -253953 -1
+0;
+#X obj 327 277 easyflow/chanceBang;
+#X obj 515 311 * 100;
+#X obj 335 419 s \$0-stop;
+#X msg 77 230 stop;
+#X obj 77 209 r \$0-stop;
+#X obj 308 222 t a b b;
+#X msg 347 247 0;
+#X msg 327 298 1;
+#X obj 341 341 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 308 363 spigot;
+#X obj 308 394 t a b;
+#X floatatom 515 332 15 0 0 0 - - -;
+#X obj 479 460 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 479 502 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 479 481 easyflow/chanceBang 1.4771;
+#X connect 1 0 2 0;
+#X connect 2 0 21 0;
+#X connect 3 0 23 0;
+#X connect 5 0 3 0;
+#X connect 5 0 25 0;
+#X connect 6 0 48 0;
+#X connect 7 0 34 0;
+#X connect 8 0 6 1;
+#X connect 12 0 8 0;
+#X connect 13 0 7 1;
+#X connect 15 0 13 0;
+#X connect 17 0 6 0;
+#X connect 19 0 7 0;
+#X connect 20 0 3 0;
+#X connect 21 0 20 0;
+#X connect 21 1 10 0;
+#X connect 21 2 5 0;
+#X connect 22 0 27 0;
+#X connect 23 0 22 0;
+#X connect 27 0 30 0;
+#X connect 30 0 31 0;
+#X connect 31 0 29 0;
+#X connect 31 1 33 0;
+#X connect 34 0 39 0;
+#X connect 36 0 35 0;
+#X connect 38 0 40 1;
+#X connect 39 0 36 0;
+#X connect 39 1 40 0;
+#X connect 39 2 38 0;
+#X connect 40 0 44 0;
+#X connect 43 0 50 0;
+#X connect 44 0 43 1;
+#X connect 44 0 54 0;
+#X connect 46 0 22 0;
+#X connect 47 0 46 0;
+#X connect 48 0 52 0;
+#X connect 48 1 43 0;
+#X connect 48 2 49 0;
+#X connect 49 0 51 0;
+#X connect 50 0 51 0;
+#X connect 51 0 52 1;
+#X connect 52 0 53 0;
+#X connect 53 0 0 0;
+#X connect 53 1 45 0;
+#X connect 54 0 57 1;
+#X connect 55 0 57 0;
+#X connect 57 0 56 0;

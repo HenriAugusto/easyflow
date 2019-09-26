@@ -1,0 +1,23 @@
+#N canvas 747 126 509 493 10;
+#X obj 52 239 listMoses 4;
+#X msg 52 46 1 2 3 4 5 6 7 8 9;
+#X msg 69 70 1 2 3 4;
+#X msg 80 107 1 2 3;
+#X text 339 27 [listMoses];
+#X obj 401 445 easyflow-info;
+#X obj 115 263 easyflow/printHere -m4;
+#X obj 52 348 easyflow/printHere -m4;
+#X msg 98 150 a b c;
+#X text 157 161 implicitly converted to list, f 13;
+#X msg 98 176 a b c d;
+#X text 292 60 passes a list through it's left or right inlet by running
+a [moses] on the list length., f 32;
+#X floatatom 115 216 5 1 9 0 - - -, f 5;
+#X connect 0 0 7 0;
+#X connect 0 1 6 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 8 0 0 0;
+#X connect 10 0 0 0;
+#X connect 12 0 0 1;

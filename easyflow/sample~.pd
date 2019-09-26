@@ -26,20 +26,19 @@
 #X obj 44 370 list append \$0-left \$0-right;
 #N canvas 264 50 602 300 lastSample 0;
 #X obj 45 42 inlet;
-#X msg 112 174 symbol C:/Vst/Samples/musicradar-spiritual-samples/musicradar-spiritual-samples/Chords/Fake_Choir/Fake_Choir_D#.wav
-;
 #X obj 112 246 outlet;
 #X obj 112 114 trigger anything anything;
-#X obj 273 139 cnv 10 10 17 empty empty empty 20 12 0 14 -131136 -1
+#X obj 248 139 cnv 10 10 17 empty empty empty 20 12 0 14 -131136 -1
 0;
-#X obj 284 139 s \$0-lastFolder;
+#X obj 259 139 s \$0-lastFolder;
 #X obj 45 64 route bang;
-#X connect 0 0 6 0;
-#X connect 1 0 2 0;
-#X connect 3 0 1 0;
-#X connect 3 1 5 0;
+#X msg 112 174 symbol;
+#X connect 0 0 5 0;
+#X connect 2 0 6 0;
+#X connect 2 1 4 0;
+#X connect 5 0 6 0;
+#X connect 5 1 2 0;
 #X connect 6 0 1 0;
-#X connect 6 1 3 0;
 #X restore 191 217 pd lastSample;
 #X obj 47 13 inlet;
 #X obj 33 616 cnv 10 10 17 empty empty empty 20 12 0 14 -82680 -1 0
@@ -103,7 +102,7 @@ file paths \, so it wont be mistaken for anything that was there);
 #X msg 141 451 \$1;
 #X obj 47 275 getFolder;
 #X obj 98 301 s \$0-sampleName;
-#X obj 69 300 cnv 11 28 17 empty empty gui 2 9 0 14 -1 -262144 0;
+#X obj 69 301 cnv 11 28 17 empty empty gui 2 9 0 14 -1 -262144 0;
 #X obj 47 251 t s s;
 #X connect 0 0 1 0;
 #X connect 1 0 29 0;
@@ -397,10 +396,10 @@ file paths \, so it wont be mistaken for anything that was there);
 #X obj 68 349 catch~ \$0-leftOut;
 #X obj 208 349 catch~ \$0-rightOut;
 #N canvas 0 50 639 654 tabplay 0;
-#X msg 343 415 endRight;
-#X obj 332 438 cnv 10 10 17 empty empty empty 20 12 0 14 -82680 -1
+#X msg 343 435 endRight;
+#X obj 332 458 cnv 10 10 17 empty empty empty 20 12 0 14 -82680 -1
 0;
-#X obj 343 438 s \$0-outlet;
+#X obj 343 458 s \$0-outlet;
 #X obj 120 460 cnv 10 10 17 empty empty empty 20 12 0 14 -82680 -1
 0;
 #X obj 131 460 s \$0-outlet;
@@ -503,8 +502,6 @@ file paths \, so it wont be mistaken for anything that was there);
 #X connect 36 0 20 0;
 #X connect 37 0 30 0;
 #X restore 100 490 pd tabplay;
-#X obj 299 162 key;
-#X obj 299 184 sel 27;
 #X obj 272 519 trigger float float;
 #X obj 372 596 cnv 10 10 17 empty empty empty 20 12 0 14 -82680 -1
 0;
@@ -512,6 +509,10 @@ file paths \, so it wont be mistaken for anything that was there);
 #X obj 383 544 list prepend sampleRate;
 #X obj 383 565 list trim;
 #X symbolatom 614 38 18 0 0 0 - #0-sampleName -, f 18;
+#X obj 58 495 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -131136
+0;
+#X obj 58 516 cnv 10 10 17 empty empty ● 1 5 0 15 -262144 -131136
+0;
 #X connect 1 0 45 0;
 #X connect 2 0 51 0;
 #X connect 2 0 50 0;
@@ -526,13 +527,11 @@ file paths \, so it wont be mistaken for anything that was there);
 #X connect 45 1 6 0;
 #X connect 45 2 18 0;
 #X connect 45 3 47 0;
-#X connect 59 0 66 0;
+#X connect 59 0 64 0;
 #X connect 61 0 12 0;
 #X connect 62 0 10 0;
-#X connect 64 0 65 0;
-#X connect 65 0 2 0;
-#X connect 66 0 57 0;
-#X connect 66 1 69 0;
-#X connect 69 0 70 0;
-#X connect 70 0 68 0;
+#X connect 64 0 57 0;
+#X connect 64 1 67 0;
+#X connect 67 0 68 0;
+#X connect 68 0 66 0;
 #X coords 0 -1 1 1 250 190 1 500 30;

@@ -1,0 +1,9 @@
+#N canvas 423 148 446 218 10;
+#X obj 307 169 easyflow-info;
+#X obj 57 107 listReverse;
+#X text 51 22 [listReverse] takes a list and outputs it in reversed
+order;
+#X msg 57 80 1 2 3 4 5 6;
+#X obj 57 140 easyflow/printHere -s;
+#X connect 1 0 4 0;
+#X connect 3 0 1 0;

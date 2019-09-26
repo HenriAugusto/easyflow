@@ -1,0 +1,26 @@
+#N canvas 947 271 489 390 10;
+#X obj 381 343 easyflow-info;
+#X msg 55 35 1 2 3 4 5;
+#X obj 55 81 listRemove 3;
+#X obj 55 102 easyflow/printHere -s;
+#X floatatom 124 59 5 1 5 0 - - -, f 5;
+#X text 237 33 [listRemove] takes a list and remove it's n-th element
+, f 30;
+#X obj 55 292 easyflow/printHere -s;
+#X floatatom 124 249 5 1 5 0 - - -, f 5;
+#X msg 124 201 10;
+#X text 158 199 bigger than list length = pass unchanged;
+#X msg 134 225 0;
+#X msg 55 175 1 2 3 4 5;
+#X text 169 223 equal or smaller than 0 = pass unchanged;
+#X text 37 349 see also:;
+#X obj 113 350 listSearchAndRemove;
+#X obj 55 271 listRemove 3;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 4 0 2 1;
+#X connect 7 0 15 1;
+#X connect 8 0 7 0;
+#X connect 10 0 7 0;
+#X connect 11 0 15 0;
+#X connect 15 0 6 0;

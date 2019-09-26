@@ -556,7 +556,7 @@
 0;
 #X obj 35 52 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 597 190 easyflow/RGB 0 0 0;
+#X obj 597 190 easyflow/rgb 0 0 0;
 #X obj 59 134 select black red yellow green cyan blue purple pink;
 #X obj 748 123 outlet;
 #X obj 735 123 cnv 11 12 17 empty empty 2 2 9 0 14 -1 -262144 0;

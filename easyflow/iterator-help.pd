@@ -1,0 +1,102 @@
+#N canvas 777 149 570 429 10;
+#X msg 78 72 next;
+#X msg 159 246 list a b c d e f;
+#X obj 78 294 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 108 146 remove;
+#X msg 118 170 first;
+#X msg 128 194 get;
+#X obj 420 347 easyflow-info;
+#X text 73 20 [iterator] allows for a step-by-step iteration through
+a list \, optionally removing elements.;
+#X text 338 110 It was inspired by Java's Iterator interface., f 26
+;
+#N canvas 356 72 646 532 use example 0;
+#X text 49 21 Let's remove from a list every multiple of 3 and every
+symbol starting with an A;
+#X obj 51 190 until;
+#X obj 273 84 cnv 10 10 17 empty empty empty 20 12 0 14 -34999 -131009
+0;
+#X obj 284 84 r \$0-iterator;
+#X obj 284 181 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 330 352 printHere -s;
+#X obj 377 190 route float symbol;
+#X obj 377 218 % 3;
+#X obj 377 239 sel 0;
+#X msg 377 263 remove;
+#X obj 366 309 cnv 10 10 17 empty empty empty 20 12 0 14 -34999 -131009
+0;
+#X obj 377 309 s \$0-iterator;
+#X obj 429 239 sel A;
+#X obj 284 201 t b b;
+#X msg 51 211 next;
+#X obj 40 235 cnv 10 10 17 empty empty empty 20 12 0 14 -34999 -131009
+0;
+#X obj 51 235 s \$0-iterator;
+#X msg 284 259 get;
+#X obj 429 218 substring 0 1;
+#X obj 377 109 r \$0-startList;
+#X obj 103 141 cnv 10 10 17 empty empty empty 20 12 0 14 -130313 -131009
+0;
+#X obj 51 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 114 141 s \$0-startList;
+#X obj 311 226 s \$0-stop;
+#X obj 67 166 cnv 10 10 17 empty empty empty 20 12 0 14 -209188 -131009
+0;
+#X obj 78 166 r \$0-stop;
+#X obj 51 116 trigger b b;
+#X msg 377 133 1 2 3 6 9 10 Apple Kiwi Apricot Banana;
+#X obj 366 109 cnv 10 10 17 empty empty empty 20 12 0 14 -130313 -131009
+0;
+#X obj 300 226 cnv 10 10 17 empty empty empty 20 12 0 14 -209188 -131009
+0;
+#X obj 284 160 iterator, f 16;
+#X connect 1 0 14 0;
+#X connect 3 0 30 0;
+#X connect 4 0 13 0;
+#X connect 6 0 7 0;
+#X connect 6 1 18 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 11 0;
+#X connect 12 0 9 0;
+#X connect 13 0 17 0;
+#X connect 13 1 23 0;
+#X connect 14 0 16 0;
+#X connect 17 0 11 0;
+#X connect 18 0 12 0;
+#X connect 19 0 27 0;
+#X connect 21 0 26 0;
+#X connect 25 0 1 1;
+#X connect 26 0 1 0;
+#X connect 26 1 22 0;
+#X connect 27 0 30 1;
+#X connect 30 0 4 0;
+#X connect 30 1 5 0;
+#X connect 30 2 6 0;
+#X restore 367 150 pd use example;
+#X obj 159 308 printHere -s;
+#X obj 118 346 printHere -s;
+#X obj 50 72 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 116 72 output the next element;
+#X text 157 194 current state of the list;
+#X text 17 312 bang when done iterating, f 9;
+#X text 310 216 It includes a first method that is not present on the
+Java Iterator that is needeed on PD for repeating iteration, f 31
+;
+#X msg 91 104 set 3;
+#X obj 78 272 iterator x y z;
+#X text 173 271 args: initialize list;
+#X connect 0 0 18 0;
+#X connect 1 0 18 1;
+#X connect 3 0 18 0;
+#X connect 4 0 18 0;
+#X connect 5 0 18 0;
+#X connect 12 0 18 0;
+#X connect 17 0 18 0;
+#X connect 18 0 2 0;
+#X connect 18 1 11 0;
+#X connect 18 2 10 0;

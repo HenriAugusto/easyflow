@@ -406,7 +406,7 @@ numbers. Using "1" as default, f 27;
 #X obj 60 286 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -59724
 0;
 #N canvas 0 50 750 492 goptool 0;
-#X obj 38 203 easyflow/GOPTool;
+#X obj 38 203 easyflow/gopTool;
 #X obj 38 408 s \$0-this;
 #X obj 38 15 r \$0-GOPToggle;
 #X floatatom 38 67 5 0 0 0 - - -, f 5;
@@ -443,7 +443,7 @@ numbers. Using "1" as default, f 27;
 #X msg 115 542 label parametrization;
 #X obj 115 616 s \$0-status;
 #X text 291 556 Reset status on \$0-graphWindow;
-#N canvas 0 50 880 302 router 0;
+#N canvas 0 50 880 302 router 1;
 #X obj 47 33 inlet;
 #N canvas 0 50 463 135 error 0;
 #X obj 53 69 print easyflow/parametrization error. Not a float;
@@ -455,45 +455,49 @@ numbers. Using "1" as default, f 27;
 #X msg 47 107 vis \$1;
 #X msg 47 77 1;
 #X msg 101 78 0;
-#N canvas 516 337 717 295 getMinMax 0;
+#N canvas 516 337 717 295 getMinMax 1;
 #X obj 70 41 inlet;
-#X obj 70 89 array min \$0-graph;
 #X obj 70 131 list append, f 21;
 #X obj 270 41 inlet;
 #X obj 270 131 list append, f 21;
-#X obj 270 89 array max \$0-graph;
 #X obj 70 235 send;
 #X obj 70 63 trigger bang anything;
 #X obj 270 63 trigger bang anything;
 #X text 435 56 [t b a] does implicit conversion of custom selector
 to symbol, f 32;
 #X obj 70 183 unpack float symbol;
-#X connect 0 0 7 0;
-#X connect 1 0 2 0;
-#X connect 2 0 10 0;
+#X obj 70 98 v \$0-min;
+#X obj 270 94 v \$0-max;
+#X obj 59 98 cnv 10 10 17 empty empty empty 20 12 0 14 -260129 -1 0
+;
+#X obj 259 94 cnv 10 10 17 empty empty empty 20 12 0 14 -184289 -1
+0;
+#X connect 0 0 5 0;
+#X connect 1 0 8 0;
+#X connect 2 0 6 0;
 #X connect 3 0 8 0;
-#X connect 4 0 10 0;
-#X connect 5 0 4 0;
-#X connect 7 0 1 0;
-#X connect 7 1 2 1;
-#X connect 8 0 5 0;
+#X connect 5 0 9 0;
+#X connect 5 1 1 1;
+#X connect 6 0 10 0;
+#X connect 6 1 3 1;
+#X connect 8 0 4 0;
 #X connect 8 1 4 1;
-#X connect 10 0 6 0;
-#X connect 10 1 6 1;
+#X connect 9 0 1 0;
+#X connect 10 0 3 0;
 #X restore 191 90 pd getMinMax;
 #X obj 191 55 route getmin getmax;
-#N canvas 644 110 1023 462 set 0;
+#N canvas 433 107 1023 462 set 0;
 #X obj 58 26 inlet;
 #X obj 47 151 cnv 10 10 17 empty empty empty 20 12 0 14 -169502 -1
 0;
 #X obj 58 151 s \$0-modeSelector;
-#X obj 58 48 list split 1;
+#X obj 58 78 list split 1;
 #X obj 237 371 s \$0-arg1;
 #X obj 224 371 cnv 11 12 17 empty empty 1 2 9 0 14 -258081 -262144
 0;
 #X obj 323 371 cnv 11 12 17 empty empty 2 2 9 0 14 -258081 -262144
 0;
-#X obj 237 81 list;
+#X obj 237 111 list;
 #X obj 237 134 trigger anything bang;
 #X obj 336 371 s \$0-arg2;
 #X obj 424 371 cnv 11 12 17 empty empty 3 2 9 0 14 -258081 -262144
@@ -516,7 +520,78 @@ the data types beforehand.;
 #X text 583 128 but also;
 #X msg 581 151 someCurve float arg1 string arg2 float arg3;
 #X text 582 175 and any combination of 4 arguments;
-#X connect 0 0 3 0;
+#N canvas 36 439 825 413 minMaxSet 0;
+#X obj 36 27 inlet;
+#X obj 191 358 v \$0-min;
+#X obj 314 358 v \$0-max;
+#X msg 206 107 0 1;
+#X obj 74 134 unpack f f;
+#X obj 74 156 * -1;
+#X obj 74 179 pack f f;
+#X msg 135 106 0 1;
+#X obj 36 75 route lin sin exp;
+#X obj 186 75 route sinWin Blackman-Harris;
+#X obj 409 75 route log ln logb;
+#X msg 36 217 \$1 \$2;
+#X msg 263 107 0 1;
+#X msg 409 147 -25.3284 1;
+#X obj 486 194 expr log(1e-011)/log($f1);
+#X msg 486 216 \$1 1;
+#X msg 559 108 0 1;
+#X msg 631 106 0 1;
+#X msg 681 107 0 1;
+#X obj 180 358 cnv 10 10 17 empty empty empty 20 12 0 14 -260129 -1
+0;
+#X obj 303 358 cnv 10 10 17 empty empty empty 20 12 0 14 -184289 -1
+0;
+#X obj 191 304 unpack float float;
+#X floatatom 191 326 5 0 0 0 - - -, f 5;
+#X floatatom 314 328 5 0 0 0 - - -, f 5;
+#X floatatom 585 167 5 0 0 0 - - -, f 5;
+#X floatatom 558 237 5 0 0 0 - - -, f 5;
+#X obj 559 76 route bounce bounce2 bounce3;
+#X connect 0 0 8 0;
+#X connect 3 0 21 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 1;
+#X connect 5 0 6 0;
+#X connect 6 0 21 0;
+#X connect 7 0 21 0;
+#X connect 8 0 11 0;
+#X connect 8 1 4 0;
+#X connect 8 2 7 0;
+#X connect 8 3 9 0;
+#X connect 9 0 3 0;
+#X connect 9 1 12 0;
+#X connect 9 2 10 0;
+#X connect 10 0 13 0;
+#X connect 10 1 13 0;
+#X connect 10 2 14 0;
+#X connect 10 2 24 0;
+#X connect 10 3 26 0;
+#X connect 11 0 21 0;
+#X connect 12 0 21 0;
+#X connect 13 0 21 0;
+#X connect 14 0 15 0;
+#X connect 14 0 25 0;
+#X connect 15 0 21 0;
+#X connect 16 0 21 0;
+#X connect 17 0 21 0;
+#X connect 18 0 21 0;
+#X connect 21 0 22 0;
+#X connect 21 1 23 0;
+#X connect 22 0 1 0;
+#X connect 23 0 2 0;
+#X connect 26 0 16 0;
+#X connect 26 1 17 0;
+#X connect 26 2 18 0;
+#X restore 230 75 pd minMaxSet;
+#X obj 58 49 trigger anything anything;
+#X obj 202 78 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260129
+0;
+#X obj 214 78 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -184289
+0;
+#X connect 0 0 27 0;
 #X connect 3 0 2 0;
 #X connect 3 1 7 0;
 #X connect 7 0 8 0;
@@ -532,6 +607,8 @@ the data types beforehand.;
 #X connect 17 3 13 0;
 #X connect 18 0 17 1;
 #X connect 19 0 16 0;
+#X connect 27 0 3 0;
+#X connect 27 1 26 0;
 #X restore 544 170 pd set;
 #X obj 349 199 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
 0;
@@ -540,6 +617,14 @@ the data types beforehand.;
 #X obj 529 174 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -169502
 0;
 #X obj 359 55 route setgraph setGraph set;
+#X obj 505 174 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260129
+0;
+#X obj 517 174 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -184289
+0;
+#X obj 165 94 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260129
+0;
+#X obj 177 94 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -184289
+0;
 #X connect 0 0 3 0;
 #X connect 3 0 5 0;
 #X connect 3 1 6 0;
@@ -718,30 +803,119 @@ the min and max;
 #X msg 622 210 vis \$1;
 #N canvas 198 438 803 211 initialization 0;
 #X obj 51 15 loadbang;
-#X obj 279 77 list 666 \$1;
 #X obj 279 99 list split 1;
 #X obj 41 111 cnv 10 10 17 empty empty empty 20 12 0 14 -159808 -1
 0;
 #X obj 51 111 s \$0-graphVisualization;
 #X obj 153 20 inlet;
-#X obj 308 130 cnv 10 10 17 empty empty empty 20 12 0 14 -169502 -1
+#X obj 308 178 cnv 10 10 17 empty empty empty 20 12 0 14 -169502 -1
 0;
-#X obj 319 130 s \$0-modeSelector;
+#X obj 319 178 s \$0-modeSelector;
 #X obj 154 82 cnv 10 10 17 empty empty empty 20 12 0 14 -59724 -1 0
 ;
 #X obj 165 82 s \$0-loadArgs;
 #X obj 51 47 trigger bang bang bang, f 33;
-#X connect 0 0 10 0;
-#X connect 1 0 2 0;
-#X connect 2 1 7 0;
-#X connect 5 0 10 0;
-#X connect 10 0 4 0;
-#X connect 10 1 9 0;
-#X connect 10 2 1 0;
+#X obj 463 157 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260129
+0;
+#X obj 475 157 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -184289
+0;
+#N canvas 761 344 822 413 minMaxSetFromInitArguments 0;
+#X obj 36 17 inlet;
+#X obj 190 378 v \$0-min;
+#X obj 313 378 v \$0-max;
+#X msg 186 140 0 1;
+#X obj 74 184 unpack f f;
+#X obj 74 206 * -1;
+#X obj 74 229 pack f f;
+#X msg 113 152 0 1;
+#X obj 36 75 route lin sin exp;
+#X obj 186 75 route sinWin Blackman-Harris;
+#X obj 409 75 route log ln logb;
+#X msg 36 267 \$1 \$2;
+#X msg 282 138 0 1;
+#X msg 409 177 -25.3284 1;
+#X obj 486 224 expr log(1e-011)/log($f1);
+#X msg 486 246 \$1 1;
+#X msg 559 138 0 1;
+#X msg 623 139 0 1;
+#X msg 687 138 0 1;
+#X obj 179 378 cnv 10 10 17 empty empty empty 20 12 0 14 -260129 -1
+0;
+#X obj 302 378 cnv 10 10 17 empty empty empty 20 12 0 14 -184289 -1
+0;
+#X obj 190 334 unpack float float;
+#X obj 559 76 route bounce bounce2 bounce3;
+#X obj 36 97 list \$4 \$5;
+#X obj 74 152 f \$2;
+#X obj 74 132 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 190 356 5 0 0 0 - - -, f 5;
+#X floatatom 313 358 5 0 0 0 - - -, f 5;
+#X obj 486 116 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 486 136 f \$2;
+#X floatatom 616 192 5 0 0 0 - - -, f 5;
+#X obj 36 39 list trim;
+#X text 154 25 (can i use this logic a single time? yes. so this is
+a to do reminder);
+#X connect 0 0 31 0;
+#X connect 3 0 21 0;
+#X connect 4 0 5 0;
+#X connect 4 1 6 1;
+#X connect 5 0 6 0;
+#X connect 6 0 21 0;
+#X connect 7 0 21 0;
+#X connect 8 0 23 0;
+#X connect 8 1 25 0;
+#X connect 8 2 7 0;
+#X connect 8 3 9 0;
+#X connect 9 0 3 0;
+#X connect 9 1 12 0;
+#X connect 9 2 10 0;
+#X connect 10 0 13 0;
+#X connect 10 1 13 0;
+#X connect 10 2 28 0;
+#X connect 10 3 22 0;
+#X connect 11 0 21 0;
+#X connect 12 0 21 0;
+#X connect 13 0 21 0;
+#X connect 14 0 15 0;
+#X connect 15 0 21 0;
+#X connect 16 0 21 0;
+#X connect 17 0 21 0;
+#X connect 18 0 21 0;
+#X connect 21 0 26 0;
+#X connect 21 1 27 0;
+#X connect 22 0 16 0;
+#X connect 22 1 17 0;
+#X connect 22 2 18 0;
+#X connect 23 0 11 0;
+#X connect 24 0 4 0;
+#X connect 25 0 24 0;
+#X connect 26 0 1 0;
+#X connect 27 0 2 0;
+#X connect 28 0 29 0;
+#X connect 29 0 14 0;
+#X connect 29 0 30 0;
+#X connect 31 0 8 0;
+#X restore 491 154 pd minMaxSetFromInitArguments;
+#X text 452 76 assure valid;
+#X text 378 98 remove 666;
+#X obj 319 128 trigger anything anything;
+#X obj 279 77 list 666 \$1 \$2 \$3 \$4 \$5;
+#X connect 0 0 9 0;
+#X connect 1 1 15 0;
+#X connect 4 0 9 0;
+#X connect 9 0 3 0;
+#X connect 9 1 8 0;
+#X connect 9 2 16 0;
+#X connect 15 0 6 0;
+#X connect 15 1 12 0;
+#X connect 16 0 1 0;
 #X restore 339 46 pd initialization;
 #X obj 321 49 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -159808
 0;
-#X obj 304 49 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -245978
+#X obj 308 49 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -245978
 0;
 #X obj 311 162 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -59724
 0;
@@ -753,60 +927,64 @@ the min and max;
 ;
 #X obj 310 134 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -749 0
 ;
-#N canvas 0 50 938 381 mode 0;
-#X obj 238 253 cnv 10 10 17 empty empty empty 20 12 0 14 -245978 -1
-0;
-#X obj 249 253 s \$0-modeIndex;
-#X msg 79 141 0;
-#X msg 135 141 1;
-#X floatatom 249 230 5 0 0 0 - - -, f 5;
-#X msg 192 141 2;
-#X msg 249 141 3;
-#X msg 306 141 4;
-#X msg 452 141 5;
-#X obj 452 109 select log ln logb;
-#X msg 534 142 6;
-#X obj 229 109 select sinWin Blackman-Harris;
-#X obj 79 109 select lin sin exp;
-#X msg 602 142 7;
-#X msg 674 140 8;
-#X obj 602 110 select bounce bounce2 bounce3;
-#X msg 724 141 9;
+#N canvas 0 50 842 380 mode 0;
+#X msg 79 151 0;
+#X msg 135 151 1;
+#X floatatom 249 240 5 0 0 0 - - -, f 5;
+#X msg 192 151 2;
+#X msg 249 151 3;
+#X msg 306 151 4;
+#X msg 452 151 5;
+#X obj 452 119 select log ln logb;
+#X msg 534 152 6;
+#X obj 229 119 select sinWin Blackman-Harris;
+#X obj 79 119 select lin sin exp;
+#X msg 602 152 7;
+#X msg 674 150 8;
+#X obj 602 120 select bounce bounce2 bounce3;
+#X msg 724 151 9;
 #X obj 68 68 cnv 10 10 17 empty empty empty 20 12 0 14 -169502 -1 0
 ;
 #X obj 79 68 r \$0-modeSelector;
-#X connect 2 0 4 0;
-#X connect 3 0 4 0;
-#X connect 4 0 1 0;
-#X connect 5 0 4 0;
-#X connect 6 0 4 0;
-#X connect 7 0 4 0;
-#X connect 8 0 4 0;
-#X connect 9 0 8 0;
-#X connect 9 1 8 0;
-#X connect 9 2 10 0;
-#X connect 9 3 15 0;
-#X connect 10 0 4 0;
-#X connect 11 0 6 0;
-#X connect 11 1 7 0;
-#X connect 11 2 9 0;
+#X obj 238 273 cnv 10 10 17 empty empty empty 20 12 0 14 -245978 -1
+0;
+#X obj 249 273 s \$0-modeIndex;
+#X connect 0 0 2 0;
+#X connect 1 0 2 0;
+#X connect 2 0 18 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 6 0 2 0;
+#X connect 7 0 6 0;
+#X connect 7 1 6 0;
+#X connect 7 2 8 0;
+#X connect 7 3 13 0;
+#X connect 8 0 2 0;
+#X connect 9 0 4 0;
+#X connect 9 1 5 0;
+#X connect 9 2 7 0;
+#X connect 10 0 0 0;
+#X connect 10 1 1 0;
+#X connect 10 2 3 0;
+#X connect 10 3 9 0;
+#X connect 11 0 2 0;
 #X connect 12 0 2 0;
-#X connect 12 1 3 0;
-#X connect 12 2 5 0;
-#X connect 12 3 11 0;
-#X connect 13 0 4 0;
-#X connect 14 0 4 0;
-#X connect 15 0 13 0;
-#X connect 15 1 14 0;
-#X connect 15 2 16 0;
-#X connect 16 0 4 0;
-#X connect 18 0 12 0;
+#X connect 13 0 11 0;
+#X connect 13 1 12 0;
+#X connect 13 2 14 0;
+#X connect 14 0 2 0;
+#X connect 16 0 10 0;
 #X restore 341 159 pd mode selector;
 #X obj 324 162 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -169502
 0;
 #X obj 154 104 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -169502
 0;
-#X obj 274 48 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -169502
+#X obj 295 49 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -169502
+0;
+#X obj 131 104 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -260129
+0;
+#X obj 143 104 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -184289
 0;
 #X connect 0 0 2 0;
 #X connect 2 0 3 0;

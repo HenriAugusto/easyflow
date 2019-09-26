@@ -1,0 +1,34 @@
+#N canvas 1109 145 434 499 10;
+#X obj 313 458 easyflow-info;
+#X msg 60 134 a b c a b c a b c;
+#X msg 185 295 symbol b;
+#X msg 198 323 c;
+#X text 235 323 custom selectors are treated like symbols, f 19;
+#X obj 60 164 searchIncomingLists a;
+#X obj 60 186 easyflow/printHere -s;
+#X obj 62 373 easyflow/printHere -s;
+#X obj 62 351 searchIncomingLists a;
+#X msg 62 261 a a a b b b c c c;
+#X text 35 432 See also:;
+#X obj 103 433 listSearch;
+#X text 34 14 [searchIncomingLists] takes as input a list and seaches
+it for a previously stored element.;
+#X text 35 52 It outputs the indexes of all the occurences of the element
+on the list.;
+#X text 36 87 If none are found it outputs -1;
+#N canvas 961 200 440 269 listSearch vs searchIncomingLists 0;
+#X text 47 16 The difference betweet [listSearch] and [searchIncomingLists]
+is just the type of input of each inlet.;
+#X obj 163 104 listSearch;
+#X obj 139 163 searchIncomingLists;
+#X text 135 84 element;
+#X text 212 84 list;
+#X text 121 140 list;
+#X text 231 140 element;
+#X restore 33 462 pd listSearch vs searchIncomingLists;
+#X connect 1 0 5 0;
+#X connect 2 0 8 1;
+#X connect 3 0 8 1;
+#X connect 5 0 6 0;
+#X connect 8 0 7 0;
+#X connect 9 0 8 0;

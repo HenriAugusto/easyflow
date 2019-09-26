@@ -8,7 +8,7 @@
 #X obj 421 9 loadbang;
 #X msg 421 42 1;
 #N canvas 966 194 598 394 gopTool 0;
-#X obj 17 23 easyflow/GOPTool;
+#X obj 17 23 easyflow/gopTool;
 #X obj 17 241 s \$0-this;
 #X msg 318 248 coords 0 1 1 -1 204.824 165.176 1 46.6078 70.9804 1
 ;

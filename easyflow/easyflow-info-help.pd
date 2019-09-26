@@ -1,90 +1,93 @@
-#N canvas 691 110 559 397 10;
+#N canvas 650 170 559 397 10;
 #X obj 39 21 cnv 15 250 25 empty empty easyflow abstractions 5 12
 0 14 -131089 -262144 0;
 #X obj 342 221 cnv 15 150 20 empty empty Coding 5 9 0 14 -221436 -262144
 0;
 #X obj 41 221 cnv 15 150 20 empty empty Color 5 9 0 14 -22713 -262144
 0;
-#N canvas 510 119 803 674 coding 0;
-#X text 162 193 [colorCnvF];
-#N canvas 0 50 450 300 GOPTool 0;
-#X obj 32 34 GOPTool;
-#X restore 570 103 pd GOPTool;
-#X text 163 222 [colorCircF];
-#X obj 52 248 easyflow/colorTriF;
-#X text 164 247 [colorTriF];
-#X text 632 144 [printHere];
+#N canvas 666 145 329 311 coding 0;
+#X text 116 214 [printHere];
 #X obj 52 23 cnv 15 150 20 empty empty Coding 5 9 0 14 -221436 -262144
 0;
-#X obj 138 191 colorCnvF 0 0 0;
-#X obj 54 191 colorCnvF 0 255 128;
-#X obj 82 191 colorCnvF 64 255 128;
-#X obj 96 191 colorCnvF 18 255 128;
-#X obj 124 191 colorCnvF 192 255 128;
-#X obj 68 191 colorCnvF 32 255 128;
-#X obj 110 191 colorCnvF 154 255 128;
-#X obj 72 248 colorTriF gold;
-#X obj 91 248 colorTriF hotPink;
-#X obj 53 225 easyflow/colorCircF 156 200 128;
-#X obj 91 225 colorCircF purple;
-#X obj 73 225 easyflow/colorCircF 64 200 200;
-#X obj 53 100 colorHighlighting-info;
-#X obj 571 138 printHere;
-#X obj 48 399 colorHighlighting;
-#X obj 50 472 colorCnv \$0-listOfObjects;
-#X obj 50 498 colorCirc \$0-listOfObjects;
-#X text 74 470 [colorCnv \$0-listOfObjects];
-#X text 74 495 [colorCirc \$0-listOfObjects];
-#X text 74 519 [colorTri \$0-listOfObjects];
-#X obj 46 573 labelCnv \$0-listOfObjects labelCnv;
-#X obj 54 304 labelCnvF labelCnvF navyBlue;
-#X text 164 305 [labelCnvF labelCnvF navyBlue];
+#X obj 55 208 printHere;
 #X obj 52 65 cnv 15 160 20 empty empty Color highlighting 5 9 0 14
 -1 -262144 0;
-#X obj 47 155 cnv 15 160 17 empty empty →factory abstractions←
-5 9 0 13 -262144 -1 0;
-#X obj 48 355 cnv 15 165 17 empty empty →automatic abstractions←
-5 9 0 13 -262144 -33289 0;
-#X obj 570 65 cnv 15 160 20 empty empty Other 5 9 0 14 -1 -262144 0
-;
-#X obj 52 126 cnv 1 160 1 empty empty empty 5 9 0 14 -1 -262144 0;
-#X obj 49 522 colorTri \$0-listOfObjects;
-#X text 127 572 [labelCnv \$0-listOfObjects labelCnv];
-#X obj 93 275 colorCurlyF red;
-#X text 164 274 [colorCurlyF];
-#X obj 47 546 colorCurly \$0-listOfObjects;
-#X text 74 546 [colorCurly \$0-listOfObjects];
-#X obj 73 275 colorCurlyF navyBlue;
-#X obj 53 275 colorCurlyF black;
-#X obj 427 390 colorDef \$0-sendName1 orange;
-#X obj 427 410 colorDef \$0-sendName2 purple;
-#X obj 433 507 rColor \$0-sendName1;
-#X obj 433 478 sColor \$0-sendName1;
-#X floatatom 433 453 5 0 0 0 - - -, f 5;
-#X floatatom 433 529 5 0 0 0 - - -, f 5;
-#X floatatom 603 453 5 0 0 0 - - -, f 5;
-#X floatatom 603 529 5 0 0 0 - - -, f 5;
-#X obj 603 478 sColor \$0-sendName2;
-#X obj 603 507 rColor \$0-sendName2;
-#X obj 551 187 cnv 2 200 2 empty empty empty 5 9 0 14 -1 -262144 0
-;
-#X obj 551 37 cnv 2 200 2 empty empty empty 5 9 0 14 -1 -262144 0;
-#X obj 551 37 cnv 2 2 150 empty empty empty 5 9 0 14 -1 -262144 0;
-#X obj 749 37 cnv 2 2 150 empty empty empty 5 9 0 14 -1 -262144 0;
-#X obj 49 435 colorDef \$0-listOfObjects deepPink;
-#X obj 404 632 cnv 15 350 20 empty empty See also the objects in the Color category
+#X obj 54 135 cnv 15 160 20 empty empty Others 5 9 0 14 -1 -262144
+0;
+#N canvas 123 41 781 686 colorHighlighting 0;
+#X text 162 123 [colorCnvF];
+#X text 163 152 [colorCircF];
+#X obj 52 178 easyflow/colorTriF;
+#X text 164 177 [colorTriF];
+#X obj 138 121 colorCnvF 0 0 0;
+#X obj 54 121 colorCnvF 0 255 128;
+#X obj 82 121 colorCnvF 64 255 128;
+#X obj 96 121 colorCnvF 18 255 128;
+#X obj 124 121 colorCnvF 192 255 128;
+#X obj 68 121 colorCnvF 32 255 128;
+#X obj 110 121 colorCnvF 154 255 128;
+#X obj 72 178 colorTriF gold;
+#X obj 91 178 colorTriF hotPink;
+#X obj 53 155 easyflow/colorCircF 156 200 128;
+#X obj 91 155 colorCircF purple;
+#X obj 73 155 easyflow/colorCircF 64 200 200;
+#X obj 48 379 colorHighlighting;
+#X obj 50 452 colorCnv \$0-listOfObjects;
+#X obj 50 478 colorCirc \$0-listOfObjects;
+#X text 74 450 [colorCnv \$0-listOfObjects];
+#X text 74 475 [colorCirc \$0-listOfObjects];
+#X text 74 499 [colorTri \$0-listOfObjects];
+#X obj 46 553 labelCnv \$0-listOfObjects labelCnv;
+#X obj 54 234 labelCnvF labelCnvF navyBlue;
+#X text 164 235 [labelCnvF labelCnvF navyBlue];
+#X obj 47 85 cnv 15 180 17 empty empty factory abstractions 5 9 0
+13 -1 -262144 0;
+#X obj 48 335 cnv 15 185 17 empty empty automatic abstractions 5 9
+0 13 -1 -262144 0;
+#X obj 49 502 colorTri \$0-listOfObjects;
+#X text 127 552 [labelCnv \$0-listOfObjects labelCnv];
+#X text 164 204 [colorCurlyF];
+#X obj 47 526 colorCurly \$0-listOfObjects;
+#X text 74 526 [colorCurly \$0-listOfObjects];
+#X obj 53 205 colorCurlyF black;
+#X obj 49 415 colorDef \$0-listOfObjects deepPink;
+#X obj 93 205 colorCurlyF red;
+#X obj 73 205 colorCurlyF navyBlue;
+#X obj 427 380 colorDef \$0-sendName1 orange;
+#X obj 427 400 colorDef \$0-sendName2 purple;
+#X obj 433 527 rColor \$0-sendName1;
+#X obj 433 498 sColor \$0-sendName1;
+#X floatatom 433 473 5 0 0 0 - - -;
+#X floatatom 433 549 5 0 0 0 - - -;
+#X floatatom 603 473 5 0 0 0 - - -;
+#X floatatom 603 549 5 0 0 0 - - -;
+#X obj 603 498 sColor \$0-sendName2;
+#X obj 603 527 rColor \$0-sendName2;
+#X obj 390 32 cnv 15 350 20 empty empty See also the objects in the Color category
 5 10 0 14 -22713 -262144 0;
-#X connect 45 0 48 0;
-#X connect 47 0 46 0;
-#X connect 49 0 51 0;
-#X connect 52 0 50 0;
+#X obj 427 421 colorDef \$0-sendName3 green;
+#X obj 429 599 easyflow/s \$0-sendName3;
+#X obj 600 598 easyflow/r \$0-sendName3;
+#X floatatom 600 620 5 0 0 0 - - -;
+#X floatatom 429 578 5 0 0 0 - - -;
+#X obj 48 40 colorHighlighting-info;
+#X connect 38 0 41 0;
+#X connect 40 0 39 0;
+#X connect 42 0 44 0;
+#X connect 45 0 43 0;
+#X connect 49 0 50 0;
+#X connect 51 0 48 0;
+#X restore 54 98 pd colorHighlighting;
+#N canvas 0 50 450 300 gopTool 0;
+#X obj 54 38 gopTool;
+#X restore 54 173 pd gopTool;
 #X restore 342 255 pd coding;
 #N canvas 219 126 296 288 color 0;
 #X obj 24 24 cnv 15 150 20 empty empty Color 5 9 0 14 -22713 -262144
 0;
-#X obj 26 60 RedGreenBlue;
-#X obj 26 84 HueSaturationBrightness;
-#X obj 26 110 HueSaturationLuminosity;
+#X obj 26 60 redGreenBlue;
+#X obj 26 84 hueSaturationBrightness;
+#X obj 26 110 hueSaturationLuminosity;
 #N canvas 0 50 502 265 LINKS 0;
 #X text 24 36 https://www.w3schools.com/colors/colors_names.asp;
 #X text 24 59 http://www.color-hex.com/color-names.html;
@@ -93,21 +96,13 @@
 #X text 22 117 https://photo.stackexchange.com/questions/48984/what-is-the-difference-or-relation-between-a-color-model-and-a-color-space
 ;
 #X text 23 165 http://colorizer.org/;
-#X restore 172 249 pd LINKS;
+#X restore 202 249 pd LINKS;
 #X obj 24 180 hexColor #FF00FF;
 #X obj 24 207 colorSyntax;
 #X obj 24 145 colorNames purple;
 #X restore 41 252 pd color;
-#X obj 191 221 cnv 15 150 20 empty empty Tables 5 9 0 14 -252418 -262144
-0;
-#X obj 397 335 easyflow-info;
-#N canvas 165 50 316 200 tables 0;
-#X obj 40 29 cnv 15 150 20 empty empty Tables 5 9 0 14 -252418 -262144
-0;
-#X obj 43 59 tabReverse;
-#X obj 43 89 tabReverseCopy;
-#X obj 43 117 tabCopy;
-#X restore 195 254 pd tables;
+#X obj 191 221 cnv 15 150 20 empty empty Tables/Arrays 5 9 0 14 -252418
+-262144 0;
 #X obj 192 301 cnv 15 150 20 empty empty Data structures 5 9 0 14
 -2307 -262144 0;
 #N canvas 510 119 539 368 data structures 0;
@@ -119,7 +114,7 @@
 #X restore 193 335 pd data structures;
 #X obj 191 65 cnv 15 150 20 empty empty Symbols 5 9 0 14 -105674 -262144
 0;
-#N canvas 380 50 258 291 symbols 0;
+#N canvas 380 50 284 280 symbols 0;
 #X obj 36 16 cnv 15 150 20 empty empty Symbols 5 9 0 14 -41 -262144
 0;
 #X obj 35 168 symbolSplit;
@@ -131,10 +126,12 @@
 #X obj 116 142 getFile;
 #X obj 35 192 substring;
 #X obj 35 217 stringLength;
+#X obj 125 244 searchIncomingStrings;
+#X obj 35 244 stringSearch;
 #X restore 191 97 pd symbols;
 #X obj 342 65 cnv 15 150 20 empty empty Signals 5 9 0 14 -33289 -262144
 0;
-#N canvas 331 64 456 579 audio 0;
+#N canvas 331 64 511 642 audio 0;
 #X obj 22 24 cnv 15 150 20 empty empty Signals 5 9 0 14 -33289 -262144
 0;
 #X text 187 127 equal-power panning;
@@ -144,43 +141,73 @@
 #X obj 22 87 switch2~;
 #X obj 20 436 scope~;
 #X obj 21 164 map~ -1 1 0 255;
-#X obj 165 204 backups/curvesfix;
 #X obj 21 191 curves~;
 #X obj 91 87 switch3~;
 #X obj 199 87 switch7~, f 14;
 #X text 160 85 ...;
+#X obj 91 57 metrosnap~;
 #X restore 342 97 pd audio;
 #X obj 40 144 cnv 15 150 20 empty empty Utilities 5 9 0 14 -165038
 -262144 0;
-#N canvas 269 427 310 318 utilities 0;
+#N canvas 96 102 391 641 utilities 0;
 #X obj 28 17 cnv 15 150 20 empty empty Utils 5 9 0 14 -165038 -262144
 0;
-#X obj 26 192 metrosnap~;
-#X obj 26 218 mixAB;
-#X obj 26 169 keyChange;
-#X obj 25 119 for;
-#X obj 26 142 hold;
-#X obj 25 271 var;
-#X obj 25 56 any;
-#X obj 25 80 counter;
+#X obj 118 186 keyChange;
+#X obj 29 126 for;
+#X obj 62 75 var;
+#X obj 30 75 any;
+#X obj 64 126 counter;
+#X obj 31 257 public;
+#X obj 89 257 private;
+#X obj 31 286 member;
+#X obj 31 314 method;
+#X obj 89 286 getMember;
+#X obj 167 286 setMember;
+#X obj 89 313 callMethod;
+#X obj 170 313 methodInput;
+#X obj 255 313 methodOutput;
+#X obj 31 341 objAccess;
+#X obj 28 409 unitTesting;
+#X obj 29 225 cnv 11 250 15 empty \$0-cnv public workflow 4 8 0 12
+-1 -262144 0;
+#X obj 29 375 cnv 11 250 15 empty \$0-cnv debugging and testing 4
+8 0 12 -1 -262144 0;
+#X obj 105 409 error;
+#X obj 145 409 dbg;
+#X obj 28 470 chanceBang;
+#X obj 27 494 weightedRandom;
+#X obj 28 441 cnv 11 250 15 empty \$0-cnv randomness 4 8 0 12 -1 -262144
+0;
+#X obj 28 50 cnv 11 250 15 empty \$0-cnv storing information 4 8 0
+12 -1 -262144 0;
+#X obj 28 102 cnv 11 250 15 empty \$0-cnv iteration 4 8 0 12 -1 -262144
+0;
+#X obj 29 158 cnv 11 250 15 empty \$0-cnv user input 4 8 0 12 -1 -262144
+0;
+#X obj 29 186 doubleClick;
+#X obj 27 519 addNoise;
+#X obj 121 126 repeat;
 #X restore 41 176 pd utilities;
 #X obj 191 144 cnv 15 150 20 empty empty Flow control 5 9 0 14 -2097
 -262144 0;
-#N canvas 115 84 310 207 flow 0;
+#N canvas 115 84 331 280 flow 0;
 #X obj 34 19 cnv 15 150 20 empty empty Flow control 5 9 0 14 -2097
 -262144 0;
-#X obj 124 144 Switch7, f 11;
+#X obj 124 144 switch7, f 11;
 #X obj 149 114 switch4;
 #X obj 206 114 switch5;
-#X obj 33 144 Switch6, f 11;
+#X obj 33 144 switch6, f 11;
 #X obj 92 114 switch3;
-#X obj 33 79 compare;
 #X obj 33 114 switch2;
 #X obj 34 51 alternate;
+#X obj 33 202 ifValue;
+#X text 87 202 to do: [ifVar];
+#X obj 33 79 compare;
+#X obj 33 173 gateCounter;
 #X restore 195 177 pd flow control;
 #X obj 340 144 cnv 15 150 20 empty empty Math 5 9 0 14 -258065 -262144
 0;
-#N canvas 88 348 351 289 math 0;
+#N canvas 88 348 353 476 math 0;
 #X obj 43 90 map 0 1 0 255;
 #X obj 43 43 nearest;
 #X obj 43 66 numbersBetween 5 10;
@@ -189,52 +216,94 @@
 #X obj 43 138 hexCharToDec;
 #X obj 109 114 keepMin;
 #X obj 42 114 keepMax;
-#X obj 42 240 roundIfVeryClose;
+#X obj 42 210 roundIfVeryClose;
 #X obj 43 163 curves;
-#X obj 42 201 curvesmap;
+#X obj 132 163 curvesmap;
+#X obj 42 243 value++;
+#X obj 95 243 value--;
+#X obj 42 270 ++value;
+#X obj 95 270 --value;
+#X obj 173 243 v++;
+#X obj 206 243 v--;
+#X obj 206 270 --v;
+#X obj 173 270 ++v;
+#X obj 40 303 mixAB;
+#X obj 38 387 hold;
+#X obj 39 356 cnv 11 250 15 empty \$0-cnv math gizmos 4 8 0 12 -1
+-262144 0;
+#X obj 37 411 addNoise;
 #X restore 342 178 pd math;
 #X obj 40 65 cnv 15 150 20 empty empty Lists 5 9 0 14 -226404 -262144
 0;
-#N canvas 604 139 343 564 Lists 0;
+#N canvas 423 48 642 769 Lists 0;
 #X obj 28 30 cnv 15 150 20 empty empty Lists 5 9 0 14 -2065 -262144
 0;
-#X obj 27 415 passNthElement;
-#X obj 28 155 left2Right;
-#X obj 28 177 right2Left;
-#X obj 114 155 l2r;
-#X obj 114 176 r2l;
-#X obj 75 443 passPair;
-#X obj 229 443 listPickPair;
-#X text 27 436 |__;
-#X text 52 442 >;
-#X text 180 436 |__;
-#X text 212 442 >;
-#X obj 180 415 listPick;
-#X obj 28 199 funnel;
-#X obj 28 61 addList;
-#X obj 27 112 copyList;
-#X obj 114 201 l2r;
-#X obj 177 201 r2l;
-#X obj 88 201 cnv 11 12 17 empty \$0-cnv = 2 9 0 14 -1 -262144 0;
-#X obj 151 201 cnv 11 12 17 empty \$0-cnv + 2 9 0 14 -1 -262144 0;
-#X obj 138 414 cnv 16 22 17 empty \$0-cnv != 2 9 0 14 -1 -262144 0
-;
-#X obj 27 387 listToSymbol;
-#X obj 25 474 popLastN;
-#X obj 25 500 searchElem;
-#X obj 27 225 listCompare;
-#X obj 27 247 listConcatenate;
-#X obj 27 268 listPlus;
-#X obj 27 340 listReplace;
-#X obj 27 363 listSplit;
-#X obj 27 316 listReplaceAtIndex;
-#X obj 25 522 sublist;
-#X obj 27 291 listsOfLength;
-#X obj 27 86 arrayList;
+#X obj 27 243 passNthElement;
+#X obj 27 97 left2right;
+#X obj 27 121 right2Left;
+#X obj 114 97 l2r;
+#X obj 114 121 r2l;
+#X obj 121 243 passPair;
+#X obj 27 265 listPick;
+#X obj 27 145 funnel;
+#X obj 331 95 addList;
+#X obj 331 122 copyList;
+#X obj 114 146 l2r;
+#X obj 154 146 r2l;
+#X obj 27 592 listToSymbol;
+#X obj 27 360 popLastN;
+#X obj 27 536 searchIncomingLists;
+#X obj 331 172 listCompare;
+#X obj 26 637 listConcatenate;
+#X obj 27 459 listReplace;
+#X obj 104 459 listReplaceAtIndex;
+#X obj 26 698 listsOfLength;
+#X obj 330 265 listReverse;
+#X obj 27 286 listRandom;
+#X obj 27 220 cnv 11 250 15 empty \$0-cnv picking elements 4 8 0 12
+-1 -262144 0;
+#X obj 27 71 cnv 11 250 15 empty \$0-cnv iteration 4 8 0 12 -1 -262144
+0;
+#X obj 331 71 cnv 11 250 15 empty \$0-cnv other operations 4 8 0 12
+-1 -262144 0;
+#X obj 27 339 cnv 11 250 15 empty \$0-cnv removing elements 4 8 0
+12 -1 -262144 0;
+#X obj 27 488 cnv 11 250 15 empty \$0-cnv searching for elements
+4 8 0 12 -1 -262144 0;
+#X text 87 146 =;
+#X text 139 146 +;
+#X obj 27 436 cnv 11 250 15 empty \$0-cnv replacing elements 4 8 0
+12 -1 -262144 0;
+#X obj 27 568 cnv 11 250 15 empty \$0-cnv lists and symbols 4 8 0
+12 -1 -262144 0;
+#X obj 27 310 sublist;
+#X obj 26 724 listMoses;
+#X obj 26 670 cnv 11 250 15 empty \$0-cnv list length 4 8 0 12 -1
+-262144 0;
+#X obj 330 242 listOperator;
+#X obj 27 615 listSplitOnChar;
+#X obj 27 383 listRemove;
+#X obj 26 408 listSearchAndRemove;
+#X obj 27 172 iterator;
+#X obj 330 293 listUniques;
+#X obj 331 194 listIntersection;
+#X obj 27 512 listSearch;
+#X obj 331 216 listMin;
+#X obj 382 216 listMax;
+#X obj 27 195 sublistIterator;
+#X obj 331 147 listCollect;
+#X obj 134 194 listSearchIterator;
+#X obj 331 348 cnv 11 250 15 empty \$0-cnv creating lists 4 8 0 12
+-1 -262144 0;
+#X text 331 457 See also the "collections" category.;
+#X obj 330 318 listShuffle;
+#X obj 330 374 randomList;
+#X obj 331 428 cnv 11 250 15 empty \$0-cnv collections 4 8 0 12 -1
+-262144 0;
 #X restore 40 97 pd Lists;
 #X obj 42 301 cnv 15 150 20 empty empty Extra 5 9 0 14 -82961 -262144
 0;
-#N canvas 510 119 472 221 extras 1;
+#N canvas 510 119 472 221 extras 0;
 #X obj 29 30 cnv 15 150 20 empty empty Extra 5 9 0 14 -82961 -262144
 0;
 #N canvas 519 203 697 432 quick-reference 0;
@@ -264,8 +333,22 @@
 write resize print, f 7;
 #X msg 101 152 ylabel xPos yCoord1 yCoord2 ...;
 #X text 34 23 The 15.arrays.pd and 16.morearrays.pd help files are
-somewhat clustered so i find it easier to find everything here., f
-39;
+somewhat clustered so i find its easier to have everything here.,
+f 39;
 #X restore 30 93 pd quick-reference garray messages;
-#X obj 29 66 doubleClick;
 #X restore 42 335 pd extras;
+#N canvas 0 50 450 300 collections 0;
+#X obj 42 70 arrayList;
+#X obj 42 93 dictionary;
+#X obj 40 32 cnv 15 150 20 empty empty Collections 5 9 0 14 -25118
+-262144 0;
+#X restore 345 336 pd collections;
+#X obj 343 301 cnv 15 150 20 empty empty Collections 5 9 0 14 -25118
+-262144 0;
+#N canvas 165 50 316 200 tables/arrays 0;
+#X obj 40 29 cnv 15 150 20 empty empty Tables 5 9 0 14 -252418 -262144
+0;
+#X obj 43 59 tabReverse;
+#X obj 43 89 tabReverseCopy;
+#X obj 43 117 tabCopy;
+#X restore 195 254 pd tables/arrays;

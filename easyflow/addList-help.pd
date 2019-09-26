@@ -1,17 +1,17 @@
-#N canvas 832 161 568 529 10;
-#X obj 69 261 AddList;
-#X msg 69 433 a b c;
+#N canvas 832 161 524 476 10;
+#X obj 69 261 addList;
+#X msg 69 393 a b c d e f g h i j k l m n o p;
 #X msg 69 158 d e f;
-#X obj 111 352 loadbang;
-#X msg 111 374 set a b c;
+#X obj 111 312 loadbang;
+#X msg 111 334 set a b c;
 #X msg 79 188 g h i j k l;
 #X msg 89 218 m n o p;
 #X text 46 17 [AddList] adds a list to a msgbox;
 #X text 48 63 It works like using;
 #X msg 216 70 add2 \$1;
 #X floatatom 216 46 5 0 0 0 - - -, f 5;
-#X obj 385 462 easyflow-info;
-#X text 58 95 But instead of passing a float like in the example you
+#X obj 406 435 easyflow-info;
+#X text 50 95 But instead of passing a float like in the example you
 can pass a list.;
 #X connect 0 0 1 0;
 #X connect 2 0 0 0;

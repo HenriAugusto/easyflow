@@ -1,0 +1,29 @@
+#N canvas 1039 164 593 326 10;
+#X obj 441 264 easyflow-info;
+#X obj 319 174 easyflow/printHere -m8;
+#X text 422 142 init state: 3;
+#X obj 319 143 gateCounter 3;
+#X msg 319 82 1 \, 2 \, 3 \, 4 \, 5;
+#X obj 394 174 easyflow/printHere -m8;
+#X obj 69 174 easyflow/printHere -m8;
+#X msg 69 82 1 \, 2 \, 3 \, 4 \, 5;
+#X obj 132 174 easyflow/printHere -m8;
+#X text 172 142 init state: closed;
+#X obj 69 143 gateCounter;
+#X text 82 24 [gateCounter] allows it's input throught the left outlet
+a specific numbers of time. After that it goes into a "closed" state
+where the output passed through the right outlet.;
+#X msg 132 113 1;
+#X msg 162 113 4;
+#X msg 394 113 1;
+#X msg 424 113 4;
+#X connect 3 0 1 0;
+#X connect 3 1 5 0;
+#X connect 4 0 3 0;
+#X connect 7 0 10 0;
+#X connect 10 0 6 0;
+#X connect 10 1 8 0;
+#X connect 12 0 10 1;
+#X connect 13 0 10 1;
+#X connect 14 0 3 1;
+#X connect 15 0 3 1;

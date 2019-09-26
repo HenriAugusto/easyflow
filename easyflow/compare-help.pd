@@ -1,15 +1,15 @@
-#N canvas 931 157 621 406 10;
+#N canvas 931 157 621 598 10;
 #X obj 37 300 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X msg 93 225 symbol test;
 #X obj 83 197 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
+-1 1;
 #X obj 37 116 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
+-1 1;
 #X obj 83 300 print;
 #X msg 47 138 symbol test;
 #X msg 103 248 foo;
-#X obj 496 355 easyflow-info;
+#X obj 505 553 easyflow-info;
 #X msg 60 166 foo;
 #X obj 37 330 print [compare];
 #X obj 37 278 compare;
@@ -42,8 +42,8 @@ symbols and floats. See the motivation bellow:;
 #X obj 205 437 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X text 152 268 works with both!;
-#X obj 159 414 compare;
 #X text 263 55 only works with symbols :(;
+#X obj 159 414 compare;
 #X connect 0 0 1 0;
 #X connect 1 0 4 0;
 #X connect 1 1 4 1;
@@ -57,23 +57,41 @@ symbols and floats. See the motivation bellow:;
 #X connect 12 0 8 0;
 #X connect 12 1 9 0;
 #X connect 14 0 15 0;
-#X connect 15 0 20 0;
-#X connect 15 1 20 1;
+#X connect 15 0 21 0;
+#X connect 15 1 21 1;
 #X connect 17 0 15 0;
-#X connect 20 0 16 0;
-#X connect 20 1 18 0;
+#X connect 21 0 16 0;
+#X connect 21 1 18 0;
 #X restore 157 64 pd motivation;
 #X text 137 247 implicitly converted to symbol, f 17;
-#X obj 316 211 compare foo;
 #X obj 316 233 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 316 102 foo;
 #X msg 332 124 symbol foo;
-#X text 456 188 converted to symbol;
+#X text 445 188 converted to symbol;
 #X msg 340 149 symbol dogmeat;
-#X msg 390 189 dogmeat;
+#X msg 379 189 dogmeat;
 #X text 420 67 custom selectors are implicitly converted to symbols
 , f 24;
+#X text 36 383 Note that [compare] is closer to [select] than it is
+to [==]., f 62;
+#X text 37 419 Like [select] it bangs on matching but passes the input
+in the case of a no-match.;
+#X obj 316 211 compare foo;
+#X text 37 463 If you need functionality similar to [==] you can do
+;
+#X obj 43 523 compare 127;
+#X msg 43 544 1;
+#X msg 106 544 0;
+#X msg 43 492 127;
+#X msg 73 492 0;
+#X msg 163 492 127;
+#X msg 193 492 0;
+#X obj 163 523 == 127;
+#X obj 43 565 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 163 544 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X connect 0 0 9 0;
 #X connect 1 0 10 1;
 #X connect 2 0 10 1;
@@ -83,8 +101,17 @@ symbols and floats. See the motivation bellow:;
 #X connect 8 0 10 0;
 #X connect 10 0 0 0;
 #X connect 10 1 4 0;
-#X connect 14 0 15 0;
-#X connect 16 0 14 0;
-#X connect 17 0 14 0;
-#X connect 19 0 14 0;
-#X connect 20 0 14 1;
+#X connect 15 0 23 0;
+#X connect 16 0 23 0;
+#X connect 18 0 23 0;
+#X connect 19 0 23 1;
+#X connect 23 0 14 0;
+#X connect 25 0 26 0;
+#X connect 25 1 27 0;
+#X connect 26 0 33 0;
+#X connect 27 0 33 0;
+#X connect 28 0 25 0;
+#X connect 29 0 25 0;
+#X connect 30 0 32 0;
+#X connect 31 0 32 0;
+#X connect 32 0 34 0;

@@ -1,4 +1,4 @@
-#N canvas 571 151 795 510 10;
+#N canvas 190 50 795 510 10;
 #X obj 83 26 inlet;
 #X obj 83 154 list length;
 #X obj 507 93 list;
@@ -55,7 +55,7 @@
 #X obj 643 157 cnv 10 10 17 empty empty empty 20 12 0 14 -1 -66577
 0;
 #X obj 654 157 r \$0-outlet;
-#N canvas 1139 152 385 490 testForOneElementLists 1;
+#N canvas 944 147 385 490 testForOneElementLists 0;
 #X obj 21 20 inlet;
 #X obj 21 392 outlet;
 #X obj 21 65 route list;
@@ -67,7 +67,7 @@
 -1;
 #X obj 260 178 list length;
 #X floatatom 260 200 5 0 0 0 - - -, f 5;
-#X obj 260 241 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 260 241 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 88 294 list;
 #X obj 98 88 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -99,8 +99,10 @@
 -1 -1;
 #X floatatom 83 200 5 0 0 0 - - -, f 5;
 #X obj 68 59 cnv 10 10 12 empty empty ● 1 5 0 15 -262144 -1 0;
-#X msg 507 329 a1b2c3a4;
-#X obj 507 162 easyflow/Switch2;
+#X msg 507 329 666666;
+#X obj 507 162 easyflow/switch2;
+#X obj 70 26 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
+#X obj 603 194 cnv 11 12 17 empty empty 1 2 9 0 14 -1 -262144 0;
 #X connect 0 0 44 0;
 #X connect 1 0 47 0;
 #X connect 2 0 46 0;

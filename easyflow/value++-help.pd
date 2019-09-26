@@ -1,0 +1,23 @@
+#N canvas 0 50 450 300 10;
+#X obj 57 104 value++ \$0-apple;
+#X obj 247 81 loadbang;
+#X msg 247 102 0;
+#X obj 57 79 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 57 125 5 0 0 0 - - -, f 5;
+#X obj 60 170 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 60 190 v \$0-apple;
+#X obj 247 123 value \$0-apple;
+#X floatatom 60 211 5 0 0 0 - - -, f 5;
+#X text 48 15 [value++] provides a post-increment operator to work
+on [value] objects;
+#X obj 299 251 easyflow-info;
+#X text 51 255 shorthand:;
+#X obj 125 255 v++;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 7 0;
+#X connect 3 0 0 0;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;

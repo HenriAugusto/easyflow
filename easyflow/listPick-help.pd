@@ -1,44 +1,50 @@
-#N canvas 488 108 587 414 10;
-#X obj 55 221 listPick;
-#X obj 55 253 easyflow/printHere -s;
-#X obj 55 173 + 1;
-#X floatatom 55 195 5 0 0 0 - - -, f 5;
-#X obj 55 59 vradio 15 1 0 7 empty empty try me 0 -8 0 10 -262144
+#N canvas 488 108 591 399 10;
+#X obj 55 231 listPick;
+#X obj 55 263 easyflow/printHere -s;
+#X obj 55 183 + 1;
+#X floatatom 55 205 5 0 0 0 - - -;
+#X obj 55 69 vradio 15 1 0 7 empty empty try me 0 -8 0 10 -262144
 -1 -1 1;
 #X text 50 17 pick elements from a previously stored list;
-#X text 45 317 see also:;
-#X obj 122 317 listPickPair;
-#X obj 249 316 easyflow-info;
-#X obj 415 32 loadbang;
-#X obj 415 54 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 469 346 easyflow-info;
+#X obj 415 42 loadbang;
+#X obj 415 64 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X msg 415 76 a b c d e f g;
-#X obj 235 253 easyflow/printHere -s;
-#X obj 235 173 + 1;
-#X floatatom 235 195 5 0 0 0 - - -, f 5;
-#X obj 235 59 vradio 15 1 0 7 empty empty try me 0 -8 0 10 -262144
--1 -1 0;
-#X obj 235 221 listPick 2;
-#X obj 404 98 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
+#X msg 415 86 a b c d e f g;
+#X obj 235 263 easyflow/printHere -s;
+#X obj 235 183 + 1;
+#X floatatom 235 205 5 0 0 0 - - -;
+#X obj 235 69 vradio 15 1 0 7 empty empty try me 0 -8 0 10 -262144
+-1 -1 1;
+#X obj 235 231 listPick 2;
+#X obj 404 108 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
 0;
-#X obj 292 187 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
+#X obj 292 197 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
 0;
-#X obj 98 193 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
+#X obj 98 203 cnv 10 10 17 empty empty empty 20 12 0 14 -187912 -1
 0;
-#X obj 415 98 s \$0-init;
-#X obj 302 187 r \$0-init;
-#X obj 108 193 r \$0-init;
-#X text 347 214 number of elements to pick, f 12;
+#X obj 415 108 s \$0-init;
+#X obj 302 197 r \$0-init;
+#X obj 108 203 r \$0-init;
+#X text 317 230 ARG:;
+#X text 355 230 number of elements to pick (default = 1), f 24;
+#X text 45 343 see also:;
+#X obj 114 344 passNthElement;
+#X text 342 146 how many arguments to pick;
+#X floatatom 290 125 5 1 5 0 - - -;
+#X msg 290 146 size \$1;
 #X connect 0 0 1 0;
 #X connect 2 0 3 0;
 #X connect 3 0 0 0;
 #X connect 4 0 2 0;
-#X connect 9 0 10 0;
-#X connect 10 0 11 0;
-#X connect 11 0 20 0;
-#X connect 13 0 14 0;
-#X connect 14 0 16 0;
-#X connect 15 0 13 0;
-#X connect 16 0 12 0;
-#X connect 21 0 16 1;
-#X connect 22 0 0 1;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 18 0;
+#X connect 11 0 12 0;
+#X connect 12 0 14 0;
+#X connect 13 0 11 0;
+#X connect 14 0 10 0;
+#X connect 19 0 14 1;
+#X connect 20 0 0 1;
+#X connect 26 0 27 0;
+#X connect 27 0 14 0;

@@ -1,0 +1,547 @@
+#N canvas 223 139 1090 541 12;
+#X text 47 18 [public] allows you to expose variables and methods of
+your abstractions wirelessly.;
+#X obj 163 201 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 332 201 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 878 488 easyflow-info;
+#X obj 47 161 r somePerson;
+#X obj 216 161 r somePerson2;
+#X obj 226 183 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 56 183 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#N canvas 489 29 875 708 calling 0;
+#X text 46 16 You can also define methods inside abstractions. Here
+is how to do the setup:;
+#X text 119 59 A) declaring the method using the [method] object (don't
+forget to use the \$0), f 83;
+#X text 120 88 B) create a [methodInput] with the same identifier to
+receive the method's input (if any), f 83;
+#X text 120 128 C) If the method has output \, create a [methodOutput]
+with the same identifier to send the method's output to the caller
+, f 83;
+#X text 121 173 D) create the method logic (preferably into a subpatch)
+and connect it to the [methodInput] and \, if present \, the [methodOutput]
+, f 83;
+#X text 190 252 Again \, take a look inside the [randomPerson] abstraction
+to see that in action;
+#N canvas 907 145 745 424 calling 0;
+#X text 160 43 no arguments and no output, f 15;
+#X msg 365 299 somePerson2 changeName;
+#X obj 365 326 callMethod;
+#X symbolatom 45 203 10 0 0 0 - - -;
+#X msg 45 159 list somePerson2 name;
+#X obj 45 181 getMember;
+#X obj 77 111 callMethod somePerson2 changeName;
+#X obj 45 64 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 45 84 t b b;
+#X text 86 344 initialized obj id and method name, f 14;
+#X text 536 300 alternative;
+#X obj 34 307 callMethod somePerson2 changeName;
+#X obj 291 308 cnv 11 52 17 empty empty equals 2 9 0 14 -1 -262144
+0;
+#X connect 1 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;
+#X connect 7 0 8 0;
+#X connect 8 0 4 0;
+#X connect 8 1 6 0;
+#X restore 56 562 pd calling methods with no output;
+#X text 51 330 [randomPerson] has 3 methods:;
+#X text 54 355 walk:;
+#X text 87 372 input: how much to walk;
+#X text 87 384 output: total walked distance;
+#X text 54 415 horrorStory:;
+#X text 87 432 input: none;
+#X text 87 444 output: an horror story \, told by that person;
+#X text 87 492 input: none;
+#X text 54 475 changeName:;
+#X text 87 504 output: none;
+#X text 87 518 effect: change the person's name;
+#N canvas 590 79 656 500 calling methods with arguments and output
+0;
+#X text 42 17 you can use [callMethod] to call routines defined in
+an object.;
+#X msg 36 302 somePerson horrorStory;
+#X msg 45 327 somePerson2 horrorStory;
+#X obj 36 376 easyflow/printHere -m2;
+#X text 37 66 After the method name specify each argument for that
+method;
+#X obj 36 354 callMethod;
+#X obj 37 217 easyflow/printHere -s;
+#X msg 37 133 somePerson walk 15;
+#X msg 47 163 list somePerson walk 15;
+#X text 196 131 the list selector is not necessary;
+#X obj 37 195 callMethod;
+#X connect 1 0 5 0;
+#X connect 2 0 5 0;
+#X connect 5 0 3 0;
+#X connect 7 0 10 0;
+#X connect 8 0 10 0;
+#X connect 10 0 6 0;
+#X restore 55 594 pd calling methods with arguments and output
+;
+#N canvas 596 69 844 475 calling methods internally 0;
+#X obj 35 296 help/musicalFortuneTeller;
+#X obj 35 266 r fortuneTeller;
+#X text 37 25 Take a loot at [musicalFortuneTeller]. It has 3 methods
+;
+#X text 407 95 input: none;
+#X text 87 98 input: name of the person;
+#X text 87 110 output: person's fortune;
+#X text 87 190 input: name of the person;
+#X text 87 206 output: an melody conscructed by mapping the persons
+fortune to the chromatic scale;
+#X text 374 65 randomFortune:;
+#X text 54 155 playFortune:;
+#X text 54 65 tellFortune:;
+#X text 86 82 (public);
+#X text 86 174 (public);
+#X text 406 81 (private);
+#X text 407 107 output: a random fortune taken randomly from predefined
+sentences;
+#X text 236 296 <- take a look inside!;
+#N canvas 30 50 718 619 playFortune 0;
+#X msg 34 121 list fortuneTeller playFortune Henri;
+#N canvas 542 172 537 482 miniSynth 0;
+#X obj 45 21 inlet;
+#X obj 46 301 outlet~;
+#X obj 45 43 unpack float float;
+#X obj 45 65 mtof;
+#X floatatom 45 87 5 0 0 0 - - -;
+#X floatatom 168 65 5 0 0 0 - - -;
+#X obj 168 84 select 0;
+#X obj 168 178 line~;
+#X msg 168 136 0 200;
+#X msg 221 136 \$1 50;
+#X obj 45 220 *~;
+#X obj 221 111 / 127;
+#X obj 45 272 *~ 0.8;
+#N canvas 0 50 478 294 osc 0;
+#X obj 59 33 inlet;
+#X obj 123 85 * 2;
+#X obj 187 84 * 3;
+#X obj 251 84 * 4;
+#X obj 59 106 osc~;
+#X obj 187 106 osc~;
+#X obj 154 259 outlet~;
+#X obj 59 55 trigger float float float float float;
+#X obj 315 106 osc~;
+#X obj 315 84 * 5;
+#X obj 123 107 cos~;
+#X obj 251 106 cos~;
+#X obj 123 189 *~;
+#X obj 141 146 osc~ 1;
+#X obj 251 183 *~;
+#X obj 269 140 osc~ 0.7;
+#X connect 0 0 7 0;
+#X connect 1 0 10 0;
+#X connect 2 0 5 0;
+#X connect 3 0 11 0;
+#X connect 4 0 6 0;
+#X connect 5 0 6 0;
+#X connect 7 0 4 0;
+#X connect 7 1 1 0;
+#X connect 7 2 2 0;
+#X connect 7 3 3 0;
+#X connect 7 4 9 0;
+#X connect 8 0 6 0;
+#X connect 9 0 8 0;
+#X connect 10 0 12 0;
+#X connect 11 0 14 0;
+#X connect 12 0 6 0;
+#X connect 13 0 12 1;
+#X connect 14 0 6 0;
+#X connect 15 0 14 1;
+#X restore 45 129 pd osc bank;
+#X obj 45 242 *~;
+#X obj 141 264 +~ 0.1;
+#X obj 141 220 osc~ 0.4;
+#X obj 141 242 *~ 0.9;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 13 0;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;
+#X connect 6 1 11 0;
+#X connect 7 0 10 1;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 10 0 14 0;
+#X connect 11 0 9 0;
+#X connect 12 0 1 0;
+#X connect 13 0 10 0;
+#X connect 14 0 12 0;
+#X connect 15 0 14 1;
+#X connect 16 0 17 0;
+#X connect 17 0 15 0;
+#X restore 34 221 pd miniSynth;
+#X obj 34 263 bob~/output~;
+#X obj 178 245 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 178 277 dsp \$1;
+#X obj 178 299 s pd;
+#X text 223 243 <- turn DSP on/off;
+#X text 34 21 The playFortune method takes the person's fortune and
+turn it into a melody! The output is a midi (pitch \, velocity) pair.
+;
+#X text 29 346 Notice that the playFortune calls the tellFortune method
+which in turn calls the randomFortune!;
+#X obj 50 168 easyflow/printHere -m2;
+#X text 27 395 Also see how the playFortune calls the tellFortune method
+by using the [private] object although tellFortune is actually public!
+;
+#X text 24 450 That happens because [private] try to call both a public
+and private method with the given method name.;
+#N canvas 0 50 1138 492 Explanation 0;
+#X text 45 26 1) You should NOT have two methods with the same name
+anyway!;
+#X text 45 105 3) if you have only private methods all your "internal"
+calls will be directed to a [private] object;
+#X text 45 66 2) If you only have public methods all your "internal"
+calls will be directed to a [public] object;
+#X text 44 149 For now in the above scenarios you will use a single
+receive name for all your internal calls. The problem arises in the
+following case;
+#X text 45 211 4) you might have public and private stuff. So let's
+say you will use a single [callMethod] object to call various methods
+from the same abstraction;
+#X text 45 278 In that case you would have to alternate by passing
+to the [callMethod] send/receive names related some times to the [public]
+object and other times to the [private] object.;
+#X text 46 346 To solve that issue [private] try to call both a public
+and private method with the given method name. This way you can call
+public methods through [private] (which makes sense for an internal
+call).;
+#X text 46 425 So if you have a [private] object you can pass all your
+public AND private method calls to it \, making calling various methods
+with a single [callMethod] object easier.;
+#X text 631 183 Resume:;
+#X text 645 199 If you have both public and private stuff \, send all
+your INTERNAL method calls to [private];
+#X restore 179 540 pd Explanation;
+#X text 208 506 Why??;
+#X obj 34 143 callMethod;
+#X connect 0 0 14 0;
+#X connect 1 0 2 0;
+#X connect 1 0 2 1;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 14 0 1 0;
+#X connect 14 0 9 0;
+#X restore 35 403 pd playFortune;
+#N canvas 602 73 749 324 tellFortune and private methods 0;
+#X obj 24 85 easyflow/printHere -s;
+#X msg 24 41 list fortuneTeller tellFortune Henri;
+#X text 27 136 It is perfectly possible to call methods from the same
+abstraction. Notice how internally the [musicalFortuneTeller]'s tellFortune
+method calls the randomFortune., f 71;
+#X text 28 192 Also notice that this methods was declared "private"
+in the [method] object. So it is only usable inside that abstraction.
+That happens because you connect a local [receive] object to the [private]
+object \, ie \, an [receive] that uses \$0., f 71;
+#X obj 24 63 callMethod;
+#X connect 1 0 4 0;
+#X connect 4 0 0 0;
+#X restore 35 367 pd tellFortune and private methods;
+#X connect 1 0 0 0;
+#X restore 55 625 pd calling methods internally;
+#X obj 297 292 help/randomPerson;
+#X restore 721 312 pd calling Methods;
+#N canvas 600 61 746 520 reading members 0;
+#N canvas 615 50 572 691 more 0;
+#X msg 39 213 list \$1 name \, list \$1 age \, list \$1 favoriteFood
+;
+#X obj 39 270 easyflow/printHere -m3;
+#X msg 39 147 symbol somePerson;
+#X msg 49 174 symbol somePerson2;
+#X text 39 16 you can access the members from anywhere without creating
+a lot of send/receive names. [getMember] does that for you.;
+#X text 42 73 Notice you can have as many instances of getMember as
+you want without worrying about givem each one of them a unique identifier!
+;
+#X obj 39 248 getMember;
+#X obj 39 347 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 39 391 printHere -s;
+#X obj 39 447 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 39 491 printHere -s;
+#X obj 39 527 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 39 571 printHere -s;
+#X obj 39 367 getMember somePerson name;
+#X obj 39 467 getMember somePerson age;
+#X obj 39 547 getMember somePerson favoriteFood;
+#X connect 0 0 6 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 6 0 1 0;
+#X connect 7 0 13 0;
+#X connect 9 0 14 0;
+#X connect 11 0 15 0;
+#X connect 13 0 8 0;
+#X connect 14 0 10 0;
+#X connect 15 0 12 0;
+#X restore 75 368 pd more;
+#N canvas 621 50 477 300 identifier and member name 0;
+#X obj 48 210 easyflow/printHere -s;
+#X msg 48 96 list somePerson name;
+#X msg 58 126 list somePerson age;
+#X msg 68 156 list somePerson favoriteFood;
+#X text 52 32 you can also send the unique identifier along with the
+member name at the same time;
+#X obj 48 188 getMember;
+#X connect 1 0 5 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 5 0 0 0;
+#X restore 75 341 pd identifier and member name;
+#N canvas 610 50 616 302 using 0;
+#X obj 271 115 help/seconds;
+#X obj 75 72 bng 20 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 444 98 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 444 76 r \$0-timer;
+#X text 56 13 You can prepend the unique identifier with a "*" in order
+to use a special send/receive name instead defined [objR];
+#X text 443 123 never triggered;
+#X text 67 206 This way you can make it clear this is a connection
+made only for receiving messages regarding [public] stuff;
+#X obj 271 79 objAccess \$0-timer;
+#X floatatom 75 137 15 0 0 0 - - -;
+#X obj 75 111 getMember *\$0-timer time;
+#X connect 1 0 9 0;
+#X connect 3 0 2 0;
+#X connect 7 0 0 0;
+#X connect 9 0 8 0;
+#X restore 75 394 pd using special sends and receives;
+#X text 60 22 You can set up a member variable inside an abstraction
+by:;
+#X text 119 49 A) declaring the member using the [member] object (don't
+forget to use the \$0), f 83;
+#X text 120 78 B) setting it's value using a [var] object with the
+same identifier, f 83;
+#X text 74 165 Take a look inside the [randomPerson] abstraction to
+see that in action;
+#X text 75 267 After everything is set up you can read members using
+the [getMember] object, f 78;
+#N canvas 612 50 764 510 reading 0;
+#X obj 42 294 easyflow/printHere -s;
+#X msg 224 160 symbol age;
+#X msg 232 183 symbol favoriteFood;
+#X msg 214 137 symbol name;
+#X msg 62 151 symbol somePerson;
+#X symbolatom 214 209 13 0 0 0 - - -;
+#X text 42 89 [getMember] input: symbol with the identifier of the
+abstraction we wish to read;
+#X text 345 154 <--;
+#X text 47 19 Let's say you wanna read a single member. You can use
+that as an argument for the [getMember] object;
+#X text 382 144 afterwards you can change the member you're reading
+with the 2nd inlet, f 28;
+#X msg 71 178 symbol somePerson2;
+#X obj 42 251 getMember somePerson name;
+#X obj 42 128 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 230 249 args;
+#X text 285 249 1 - object's receive identifier;
+#X text 46 360 a bang messages uses the last object identifier that
+went through the inlet or the one passed as an argument if none was
+used.;
+#X text 285 302 3 - name of the member to get, f 31;
+#X text 285 271 2 - [receive] identifier of the object whose member
+you will read;
+#X connect 1 0 5 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 4 0 11 0;
+#X connect 5 0 11 2;
+#X connect 10 0 11 0;
+#X connect 11 0 0 0;
+#X connect 12 0 11 0;
+#X restore 75 315 pd reading a single member;
+#X text 120 108 C) routing the object's input to the [public] object.
+, f 83;
+#X text 140 125 (notice that you NEED to pass \$0 as an argument to
+[public]), f 63;
+#N canvas 604 64 722 628 private 0;
+#X text 38 29 As you can see inside the abstraction there is a member
+that is declared "private".;
+#X text 148 81 [member \$0-secret private];
+#X text 37 114 Members are public by default. When you declare a member
+private it you have to create a [private] object inside the abstraction
+with a corresponding receive object and use that [private] object to
+access private members with [getMember] and [setMember].;
+#X text 36 190 Take a look inside the [randomPerson] abstraction. There
+is a [pd secret] subpatch where the secret is set and it shows how
+you can read it.;
+#X symbolatom 37 299 10 0 0 0 - - -;
+#X text 246 253 as you can see here you cannot access it from the outside
+(because there is no connection between the outside and the [private]
+object!);
+#N canvas 608 70 725 319 example 0;
+#X text 64 78 You can read them one at a time by doing;
+#X obj 61 136 easyflow/counter;
+#X msg 61 114 set 1 \, 10;
+#X obj 61 159 makefilename \$0-secret%d;
+#X symbolatom 61 181 15 0 0 0 - - -;
+#X obj 61 210 list prepend \$0-private;
+#X text 261 164 <- imagine this is inside the [pd secret] subpatch
+\, inside [randomPerson]., f 51;
+#X text 47 26 Imagine that [randomPerson] actually have 10 secrets
+\, named \$0-secret1 \, %0-secret2 \, \$0-secret3 and so on...;
+#X obj 61 235 easyflow/getMember secret;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X restore 34 529 pd example;
+#X text 33 341 You might be wondering what is the advantage of having
+private members instead of just using [var] objects. Great question.
+, f 91;
+#X text 31 379 1st: when using various [var] objects \, each one receives
+a copy of the information being stored. By using a single [member]
+object and [getMember][setMember] to set and retrieve the values you
+only store the information once. This usually involves the information
+going through more objects but it is only being stored once. So choose
+your workflow according to your (memory X processing speed) needs.
+, f 91;
+#X text 31 480 2nd: Having private members means that using only a
+single [getMember] you can access more than one variable while you
+would need one [var] object for every variable you wanna read., f
+90;
+#X obj 37 277 getMember somePerson secret;
+#X obj 37 256 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 10 0 4 0;
+#X connect 11 0 10 0;
+#X restore 75 419 pd private members;
+#X obj 181 205 help/randomPerson;
+#N canvas 605 67 667 569 the "this" member 0;
+#X obj 343 301 help/fruitDelivery;
+#X obj 343 269 r fruitDelivery;
+#X obj 61 404 callMethod;
+#X msg 61 367 list fruitDelivery delivery \$1;
+#X obj 61 428 easyflow/printHere -s;
+#X text 60 28 Here the [fruitDelivery] object reads the person's name
+and favorite food to "deliver them some fruits.";
+#X symbolatom 61 317 10 0 0 0 - - -;
+#X text 152 317 the reference;
+#X text 61 82 1 - First we use the special "this" member to get a reference
+to the desired person.;
+#X text 61 122 2 - Then we pass that reference as an argument to the
+[fruitDelivery]'s delivery method. It allows the fruitDelivery object
+to have access to all public members and methods of that person!;
+#X obj 61 239 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 61 262 getMember somePerson this;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X connect 6 0 3 0;
+#X connect 10 0 11 0;
+#X connect 11 0 6 0;
+#X restore 74 446 pd the "this" member;
+#X restore 722 181 pd reading members;
+#X obj 50 69 cnv 11 168 17 empty empty Tutorial 2 9 0 14 -1 -262144
+0;
+#X text 50 99 First lets create two instances of the abstraction [randomPerson]
+;
+#X text 42 380 (Each person also has 3 methods as we will see later)
+;
+#X text 351 200 <- randomize;
+#X text 599 136 1) First let's start learning how to read those variables
+(that we call members);
+#X text 599 211 2) Then let's learn how to set members values;
+#N canvas 872 18 729 529 set 0;
+#X symbolatom 51 181 10 0 0 0 - - -;
+#X obj 51 214 trigger bang symbol;
+#X obj 51 370 easyflow/printHere -s;
+#X obj 51 81 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 51 157 listRandom;
+#X msg 51 105 list Abraham Beatrice Charles Dan Edgar Finn Gabriel
+Hellen Ingmar Jules Karol Marianne Nancy Oscar Peter Quinn Rachel Sophie
+Trevor Ugo Valerie Wendy Xavier Yasmin Zoey;
+#X text 45 18 use the [setMember] object to change member values;
+#X obj 51 348 getMember somePerson name;
+#X obj 387 202 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 387 222 random 100;
+#X obj 387 274 trigger bang float;
+#X floatatom 387 390 5 0 0 0 - - -;
+#X obj 510 321 setMember somePerson2 age;
+#X floatatom 387 246 5 0 0 0 - - -;
+#X obj 387 368 getMember somePerson2 age;
+#X obj 181 270 setMember somePerson name;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 1 1 15 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
+#X connect 5 0 4 0;
+#X connect 7 0 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 13 0;
+#X connect 10 0 14 0;
+#X connect 10 1 12 0;
+#X connect 13 0 10 0;
+#X connect 14 0 11 0;
+#X restore 722 243 pd set members;
+#X text 600 281 3) Finally let's learn about methods;
+#X text 45 263 Those are the two persons whose members and methods
+we will use.;
+#X text 331 158 <- identifiers;
+#X text 593 402 Notice all of this was made wirelessly and you only
+needed to create a single send/receive name for each object!;
+#X text 45 430 Note that we have created a [receive] object for them.
+We will use "somePerson" and "somePerson2" to communicate with them!
+;
+#X obj 47 227 help/randomPerson;
+#X text 44 350 Each person has 3 public variables: name \, age and
+favorite food, f 63;
+#X obj 216 227 help/randomPerson;
+#N canvas 546 125 1108 600 rounting Chain 0;
+#X obj 42 107 inlet;
+#X obj 42 131 route get set clear whatever stuff your abstraction uses
+;
+#X obj 431 160 public \$0;
+#X text 39 170 |__________________________________________________|
+;
+#X text 98 205 Here you respond to the messages your abstraction expects
+and do stuff, f 35;
+#X text 43 39 Note that [public] can be placed at the start or end
+of your routing chain. Example:;
+#X obj 42 327 inlet;
+#X obj 42 391 route get set clear whatever stuff your abstraction uses
+;
+#X obj 42 356 public \$0;
+#X text 39 430 |__________________________________________________|
+;
+#X text 98 465 Here you respond to the messages your abstraction expects
+and do stuff, f 35;
+#X obj 582 121 route getMember setMember callMethod;
+#X text 581 76 Inside member there is a router wich responds to three
+messages;
+#X text 580 165 Your abstraction \, of course \, will not be able to
+respond to then in any different way because those are meant to be
+used by the [public] object.;
+#X connect 0 0 1 0;
+#X connect 1 8 2 0;
+#X connect 6 0 8 0;
+#X connect 8 0 7 0;
+#X restore 721 367 pd rounting Chain;
+#X connect 1 0 22 1;
+#X connect 2 0 24 1;
+#X connect 4 0 7 0;
+#X connect 4 0 22 0;
+#X connect 5 0 6 0;
+#X connect 5 0 24 0;

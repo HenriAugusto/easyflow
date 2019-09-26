@@ -1,13 +1,25 @@
-#N canvas 958 59 397 284 10;
+#N canvas 281 124 397 284 10;
 #X text 34 212 abrev:;
 #X text 34 241 see also:;
 #X obj 249 244 easyflow-info;
 #X msg 54 95 a 1 b 2 c 3 d 4;
-#X obj 54 133 easyflow/left2right;
 #X obj 90 212 l2r;
 #X obj 113 241 right2left;
 #X obj 54 155 print;
 #X text 28 21 This abstraction takes a list and outputs it's elements
 one at a time. Left To Right Order., f 35;
-#X connect 3 0 4 0;
-#X connect 4 0 7 0;
+#N canvas 600 84 450 300 stopping 0;
+#X msg 92 90 1 2 3 4 5 6 7 8 9;
+#X obj 92 122 left2right;
+#X obj 92 164 select 5;
+#X floatatom 137 195 5 0 0 0 - - -, f 5;
+#X text 44 18 you can send a bang to the right inlet to stop the iteration
+( just like [until] );
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 1 1;
+#X connect 2 1 3 0;
+#X restore 256 105 pd stopping;
+#X obj 54 133 easyflow/left2right;
+#X connect 3 0 9 0;
+#X connect 9 0 6 0;

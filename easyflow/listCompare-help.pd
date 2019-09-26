@@ -1,24 +1,25 @@
 #N canvas 751 222 552 313 10;
-#X obj 47 220 ListCompare;
+#X obj 47 220 listCompare;
 #X obj 416 262 easyflow-info;
-#X obj 121 141 loadbang;
-#X floatatom 47 54 5 5 10 0 - - -, f 5;
-#X msg 121 166 list a b e d;
-#X obj 47 272 print equals;
-#X obj 121 244 print different;
+#X obj 110 141 loadbang;
+#X floatatom 47 54 5 5 10 0 - - -;
+#X msg 110 166 list a b e d;
 #X msg 61 108 list a b e d;
-#X msg 138 192 10 2 3 4;
+#X msg 127 192 10 2 3 4;
 #X msg 47 76 \$1 2 3 4;
-#X text 249 24 Compares two lists;
-#X text 246 58 If they are equal \, outputs the list on the hot inlet
-to the left outlet., f 36;
-#X text 245 104 If they are different \, outputs the list on the hot
+#X text 257 154 If they are different \, outputs the list on the hot
 inlet to the right outlet., f 37;
-#X connect 0 0 5 0;
-#X connect 0 1 6 0;
+#X text 257 20 [listCompare];
+#X text 257 84 Compares two lists.;
+#X text 256 108 If they are equal \, outputs to the left outlet.,
+f 36;
+#X obj 47 272 printHere -s;
+#X obj 110 244 printHere -s;
+#X connect 0 0 12 0;
+#X connect 0 1 13 0;
 #X connect 2 0 4 0;
-#X connect 3 0 9 0;
+#X connect 3 0 7 0;
 #X connect 4 0 0 1;
+#X connect 5 0 0 0;
+#X connect 6 0 0 1;
 #X connect 7 0 0 0;
-#X connect 8 0 0 1;
-#X connect 9 0 0 0;

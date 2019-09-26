@@ -1,0 +1,53 @@
+#N canvas 1221 189 511 415 10;
+#X obj 360 371 easyflow-info;
+#X obj 58 342 printHere -s;
+#X text 50 19 [stringSearch] lets you find substrings on a string.
+;
+#N canvas 0 50 446 215 string indexes 0;
+#X text 45 49 1st index is inclusive;
+#X text 45 68 2nd index is exclusive;
+#X text 28 121 It might help to think of a selection.;
+#X obj 277 121 cnv 11 25 18 empty empty a 2 9 0 16 -1 -262144 0;
+#X text 271 104 0;
+#X text 286 104 1;
+#X obj 293 121 cnv 11 25 18 empty empty b 2 9 0 16 -1 -262144 0;
+#X obj 309 121 cnv 11 25 18 empty empty c 2 9 0 16 -2112 -262144 0
+;
+#X obj 324 121 cnv 11 25 18 empty empty d 2 9 0 16 -2112 -262144 0
+;
+#X obj 342 121 cnv 11 25 18 empty empty e 2 9 0 16 -1 -262144 0;
+#X obj 358 121 cnv 11 25 18 empty empty f 2 9 0 16 -1 -262144 0;
+#X obj 377 121 cnv 11 20 18 empty empty g 2 9 0 16 -1 -262144 0;
+#X text 303 104 2;
+#X text 318 104 3;
+#X text 334 104 4;
+#X text 351 104 5;
+#X text 370 104 6;
+#X text 389 104 7;
+#X text 290 81 [substring 2 4];
+#X restore 325 244 pd string indexes;
+#X text 53 43 Output is a list of the found indexes. it outputs -1
+if there were no matches.;
+#X text 242 322 use the -i for Case Insensivity;
+#X text 49 93 INLET 2: haystack;
+#X text 49 77 INLET 1: needles;
+#X text 196 76 if you need inverted inlets use;
+#X obj 398 75 stringSearch;
+#X obj 58 226 printHere -s;
+#X obj 58 205 searchIncomingStrings abc;
+#X msg 58 161 symbol abcabcxyzABC;
+#X msg 216 176 ABC;
+#X msg 205 155 abc;
+#X text 255 160 implicitly converted to symbol, f 13;
+#X msg 58 279 symbol abcabcxyzABC;
+#X msg 234 299 ABC;
+#X msg 223 278 abc;
+#X obj 58 321 searchIncomingStrings abc -i;
+#X connect 11 0 10 0;
+#X connect 12 0 11 0;
+#X connect 13 0 11 1;
+#X connect 14 0 11 1;
+#X connect 16 0 19 0;
+#X connect 17 0 19 1;
+#X connect 18 0 19 1;
+#X connect 19 0 1 0;

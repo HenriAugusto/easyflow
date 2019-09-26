@@ -1,20 +1,20 @@
 #N canvas 373 389 428 492 10;
 #X obj 57 229 easyflow/listToSymbol;
-#X symbolatom 57 291 35 0 0 0 - - -, f 35;
+#X symbolatom 57 261 35 0 0 0 - - -, f 35;
 #X msg 57 85 i hate underlines in labels;
 #X obj 298 449 easyflow-info;
-#X obj 60 364 hsl 128 15 0 127 0 0 empty empty i hate underlines in labels
+#X obj 60 334 hsl 128 15 0 127 0 0 empty empty i hate underlines in labels
 10 -8 0 15 -262144 -1 -1 0 1;
-#X msg 57 320 label \$1;
+#X msg 57 290 label \$1;
 #X msg 80 114 1 2 3 4;
 #X msg 143 147 a b c;
-#X msg 143 177 list a b c;
 #X msg 87 141 10;
-#X text 57 23 converts a list to a symbol \, adding the special char
-" " between words., f 36;
 #X obj 36 416 cnv 11 190 17 empty \$0-cnv not to be confused with
 2 9 0 14 -184990 -262144 0;
 #X obj 77 448 list tosymbol;
+#X text 53 16 converts a list to a symbol \, adding the special blank
+char " " between words., f 48;
+#X msg 143 177 list Igor Stravinsky;
 #X connect 0 0 1 0;
 #X connect 1 0 5 0;
 #X connect 2 0 0 0;
@@ -22,4 +22,4 @@
 #X connect 6 0 0 0;
 #X connect 7 0 0 0;
 #X connect 8 0 0 0;
-#X connect 9 0 0 0;
+#X connect 12 0 0 0;

@@ -1,0 +1,36 @@
+#N canvas 514 138 714 340 10;
+#X msg 43 86 1 2 3 4 5;
+#X floatatom 142 93 5 0 0 0 - - -, f 5;
+#X obj 547 299 easyflow-info;
+#X text 37 16 [listOperator] runs an operator on each element of a
+list;
+#X obj 43 115 listOperator + 10;
+#X obj 43 141 easyflow/printHere -s;
+#X floatatom 369 94 5 0 0 0 - - -, f 5;
+#X msg 276 87 1 2 3;
+#X obj 276 116 listOperator * 5;
+#X obj 276 140 easyflow/printHere -s;
+#X text 431 37 ARGUMENTS:;
+#X text 505 37 1) binary operator to use;
+#X text 505 56 2) initial value passed to the operator's cold inlet
+, f 30;
+#X text 544 84 (default = 0);
+#X msg 44 196 0 0 0 1 1 1;
+#X obj 44 237 listOperator &&;
+#X obj 44 258 easyflow/printHere -s;
+#X obj 131 216 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 276 258 easyflow/printHere -s;
+#X msg 276 196 1 2 3 4 5;
+#X obj 276 237 listOperator >= 3;
+#X connect 0 0 4 0;
+#X connect 1 0 4 1;
+#X connect 4 0 5 0;
+#X connect 6 0 8 1;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 17 0 15 1;
+#X connect 19 0 20 0;
+#X connect 20 0 18 0;

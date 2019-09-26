@@ -102,7 +102,7 @@
 #X obj 697 501 cnv 10 10 17 empty empty empty 20 12 0 14 -40346 -225470
 0;
 #X obj 640 447 unpack f f;
-#X obj 640 329 select s1 sr2l sR2L;
+#X obj 640 329 select s1 sr2l sr2l;
 #X msg 640 307 symbol s\$2;
 #X msg 640 401 0 1;
 #X msg 770 397 1 0;

@@ -1,0 +1,51 @@
+#N canvas 0 50 804 544 12;
+#X obj 525 18 loadbang;
+#X obj 525 59 trigger bang bang;
+#X msg 525 86 100;
+#X obj 525 111 v \$0-banana;
+#X obj 641 111 v \$0-apple;
+#X obj 43 248 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 43 296 5 0 0 0 - - -, f 5;
+#X msg 641 86 20;
+#X obj 618 478 easyflow-info;
+#X obj 608 19 bng 15 250 50 0 empty empty reset 18 7 0 14 -262144 -1
+-1;
+#X text 85 299 <-current \$0-banana value;
+#X obj 313 248 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 313 296 5 0 0 0 - - -, f 5;
+#X text 355 299 <-current \$0-banana value;
+#X obj 43 378 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 43 426 5 0 0 0 - - -, f 5;
+#X obj 43 272 valueOp + \$0-banana \$0-apple;
+#X text 92 428 test once and banana will become zero because it is
+different;
+#X text 87 83 the operation to perform;
+#X text 44 66 arguments:;
+#X text 87 97 [value] 1;
+#X text 87 111 [value] 2;
+#X text 44 136 It reads values 1 and 2 and perform the operator on
+them. (the value 2 will be given to the operator's cold inlet);
+#X obj 43 402 valueOp == \$0-banana \$0-apple;
+#X obj 313 272 valueOp - \$0-banana \$0-apple;
+#X text 47 508 See also:;
+#X obj 135 508 valueOp;
+#X text 40 188 Aditionally it sets the output to [value] 1 (compared
+to [valueOp], f 66;
+#X text 92 468 then test when banana == 20;
+#X text 41 19 [valueOp] lets you perform an operation on two [value]
+objecs and set the result to the first value.;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 7 0;
+#X connect 2 0 3 0;
+#X connect 5 0 16 0;
+#X connect 7 0 4 0;
+#X connect 9 0 1 0;
+#X connect 11 0 24 0;
+#X connect 14 0 23 0;
+#X connect 16 0 6 0;
+#X connect 23 0 15 0;
+#X connect 24 0 12 0;

@@ -6,12 +6,7 @@
 #X floatatom 323 464 15 0 0 0 - - -, f 15;
 #X obj 80 477 *~ 1;
 #X obj 200 477 *~ 1;
-#X obj 388 439 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 454 438 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 323 412 route size endLeft endRight sampleRate;
-#X floatatom 520 439 5 0 0 0 - - -, f 5;
+#X floatatom 467 439 5 0 0 0 - - -, f 5;
 #X obj 580 565 easyflow-info;
 #X obj 144 433 r \$0-master;
 #X obj 133 433 cnv 10 10 17 empty empty empty 20 12 0 14 -135232 -1
@@ -55,9 +50,9 @@
 #X obj 312 488 cnv 10 10 17 empty empty empty 20 12 0 14 -173416 -1
 0;
 #X obj 323 488 s \$0-sampleSize;
-#X obj 509 463 cnv 10 10 17 empty empty empty 20 12 0 14 -79212 -1
+#X obj 456 463 cnv 10 10 17 empty empty empty 20 12 0 14 -79212 -1
 0;
-#X obj 520 463 s \$0-sampleSampleRate;
+#X obj 467 463 s \$0-sampleSampleRate;
 #N canvas 0 50 510 211 comments 0;
 #X text 42 38 *load last sample/browse last last folder*;
 #X text 41 73 The values are remembered only on the current session!
@@ -109,32 +104,31 @@ sound processing routines., f 28;
 #X text 63 624 [sample~] uses new implemented features of [soundfiler]
 that are bugged on pd 0.48.0. It requires Pure Data 0.48.1 or higher.
 , f 93;
+#X obj 323 412 route size sampleRate;
 #X connect 0 0 5 0;
 #X connect 0 1 6 0;
-#X connect 0 2 9 0;
-#X connect 1 0 39 0;
-#X connect 4 0 25 0;
+#X connect 0 2 41 0;
+#X connect 1 0 36 0;
+#X connect 4 0 22 0;
 #X connect 5 0 3 0;
 #X connect 6 0 3 1;
-#X connect 9 0 4 0;
-#X connect 9 1 7 0;
-#X connect 9 2 8 0;
-#X connect 9 3 10 0;
-#X connect 10 0 27 0;
-#X connect 12 0 5 1;
-#X connect 12 0 6 1;
-#X connect 14 0 16 0;
-#X connect 15 0 19 0;
-#X connect 16 0 17 0;
-#X connect 17 0 15 0;
-#X connect 20 0 0 0;
-#X connect 21 0 0 1;
-#X connect 23 0 21 1;
-#X connect 29 0 21 0;
-#X connect 31 0 40 0;
-#X connect 34 0 0 0;
-#X connect 35 0 36 0;
-#X connect 36 0 29 0;
-#X connect 38 0 2 0;
-#X connect 39 0 38 0;
-#X connect 40 0 35 0;
+#X connect 7 0 24 0;
+#X connect 9 0 5 1;
+#X connect 9 0 6 1;
+#X connect 11 0 13 0;
+#X connect 12 0 16 0;
+#X connect 13 0 14 0;
+#X connect 14 0 12 0;
+#X connect 17 0 0 0;
+#X connect 18 0 0 1;
+#X connect 20 0 18 1;
+#X connect 26 0 18 0;
+#X connect 28 0 37 0;
+#X connect 31 0 0 0;
+#X connect 32 0 33 0;
+#X connect 33 0 26 0;
+#X connect 35 0 2 0;
+#X connect 36 0 35 0;
+#X connect 37 0 32 0;
+#X connect 41 0 4 0;
+#X connect 41 2 7 0;

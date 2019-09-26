@@ -1,0 +1,13 @@
+#N canvas 1038 631 310 297 10;
+#X obj 46 49 inlet;
+#X obj 46 208 outlet;
+#X obj 67 109 inlet;
+#X obj 46 138 list;
+#X obj 46 70 trigger bang anything;
+#X obj 46 170 searchIncomingLists;
+#X connect 0 0 4 0;
+#X connect 2 0 3 1;
+#X connect 3 0 5 0;
+#X connect 4 0 3 0;
+#X connect 4 1 5 1;
+#X connect 5 0 1 0;

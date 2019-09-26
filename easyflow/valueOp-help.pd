@@ -1,0 +1,56 @@
+#N canvas 495 151 804 517 12;
+#X obj 495 38 loadbang;
+#X obj 495 79 trigger bang bang;
+#X msg 495 106 100;
+#X obj 495 131 v \$0-banana;
+#X obj 611 131 v \$0-apple;
+#X obj 43 218 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 43 266 5 0 0 0 - - -, f 5;
+#X msg 611 106 20;
+#X obj 618 448 easyflow-info;
+#X obj 578 39 bng 15 250 50 0 empty empty reset 18 7 0 14 -262144 -1
+-1;
+#X obj 313 218 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 313 266 5 0 0 0 - - -, f 5;
+#X obj 43 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 43 406 5 0 0 0 - - -, f 5;
+#X text 41 19 [valueOp] lets you perform an operation on two [value]
+objecs.;
+#X obj 43 242 valueOp + \$0-banana \$0-apple;
+#X text 87 83 the operation to perform;
+#X text 44 66 arguments:;
+#X text 87 97 [value] 1;
+#X text 87 111 [value] 2;
+#X text 44 136 It reads values 1 and 2 and perform the operator on
+them. (the value 2 will be given to the operator's cold inlet);
+#X obj 313 242 valueOp - \$0-banana \$0-apple;
+#X text 47 468 See also:;
+#X obj 135 468 valueOpSet;
+#X obj 283 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 283 406 5 0 0 0 - - -, f 5;
+#X obj 283 382 valueOp > \$0-banana \$0-apple;
+#X obj 495 357 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 495 405 5 0 0 0 - - -, f 5;
+#X obj 495 381 valueOp < \$0-banana \$0-apple;
+#X obj 43 382 valueOp && \$0-banana \$0-apple;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 7 0;
+#X connect 2 0 3 0;
+#X connect 5 0 15 0;
+#X connect 7 0 4 0;
+#X connect 9 0 1 0;
+#X connect 10 0 21 0;
+#X connect 12 0 30 0;
+#X connect 15 0 6 0;
+#X connect 21 0 11 0;
+#X connect 24 0 26 0;
+#X connect 26 0 25 0;
+#X connect 27 0 29 0;
+#X connect 29 0 28 0;
+#X connect 30 0 13 0;
