@@ -1,35 +1,58 @@
-#N canvas 816 191 515 419 10;
-#X obj 67 64 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#N canvas 147 121 485 418 10;
+#X obj 77 64 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X msg 67 228 color \$1 \$1 \$1;
-#X obj 67 251 tgl 30 0 empty empty empty 17 7 0 10 -258065 -258065
--258065 0 1;
-#X floatatom 112 130 5 0 255 0 - - -, f 5;
-#X floatatom 179 130 5 0 255 0 - - -, f 5;
-#X floatatom 246 130 5 0 255 0 - - -, f 5;
-#X text 114 108 red;
-#X text 175 108 green;
-#X text 247 110 blue;
-#X text 35 45 bang to output;
-#X floatatom 67 199 15 0 0 0 - - -, f 15;
-#X text 224 178 args: red \, green \, blue;
-#X text 26 16 Outputs a integer representing an RGB color as used by
+#X msg 77 228 color \$1 \$1 \$1;
+#X obj 77 251 tgl 30 0 empty empty empty 17 7 0 10 -17 -17 -17 0 1
+;
+#X floatatom 122 130 5 0 255 0 - - -;
+#X floatatom 189 130 5 0 255 0 - - -;
+#X floatatom 256 130 5 0 255 0 - - -;
+#X text 124 108 red;
+#X text 185 108 green;
+#X text 257 110 blue;
+#X text 45 45 bang to output;
+#X floatatom 77 202 15 0 0 0 - - -;
+#X text 36 16 Outputs a integer representing an RGB color as used by
 pd.;
-#X text 224 200 arguments range from 0 to 255;
-#X obj 397 363 easyflow-info;
-#X text 58 301 abrev:;
-#X text 28 331 see also:;
-#X msg 90 80 255 0 64;
-#X text 157 79 RGB;
-#X obj 67 177 redGreenBlue 0 255 0;
-#X obj 113 302 rgb;
-#X obj 113 332 hueSaturationBrightness;
-#X obj 113 357 hueSaturationLuminosity;
-#X connect 0 0 19 0;
+#X obj 377 362 easyflow-info;
+#X text 26 331 abrev:;
+#X text 8 361 see also:;
+#X msg 100 80 255 0 64;
+#X text 167 79 RGB;
+#X obj 77 177 redGreenBlue 0 255 0;
+#X obj 73 362 hueSaturationBrightness;
+#X obj 73 387 hueSaturationLuminosity;
+#X obj 73 332 rgb 255 255 255;
+#X msg 28 127 set \$1;
+#X floatatom 28 106 5 0 255 0 - - -;
+#N canvas 372 272 299 233 example 0;
+#X floatatom 55 33 5 0 255 0 - - -;
+#X floatatom 107 32 5 0 255 0 - - -;
+#X floatatom 160 32 5 0 255 0 - - -;
+#X msg 160 53 out \$1;
+#X msg 107 53 out \$1;
+#X msg 55 105 color \$1 \$1 \$1;
+#X obj 55 126 tgl 45 0 empty empty empty 17 7 0 10 -258112 -258112
+-258112 0 1;
+#X obj 55 83 redGreenBlue 0 0 0;
+#X connect 0 0 7 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 7 2;
+#X connect 4 0 7 1;
+#X connect 5 0 6 0;
+#X connect 7 0 5 0;
+#X restore 265 284 pd example;
+#X text 227 231 If you want output after changes to green and blue
+use a "out" selector:, f 27;
+#X text 206 178 args: r \, g \, b (0 to 255);
+#X connect 0 0 17 0;
 #X connect 1 0 2 0;
-#X connect 3 0 19 1;
-#X connect 4 0 19 2;
-#X connect 5 0 19 3;
+#X connect 3 0 17 0;
+#X connect 4 0 17 1;
+#X connect 5 0 17 2;
 #X connect 10 0 1 0;
-#X connect 17 0 19 0;
-#X connect 19 0 10 0;
+#X connect 15 0 17 0;
+#X connect 17 0 10 0;
+#X connect 21 0 17 0;
+#X connect 22 0 21 0;

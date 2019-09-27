@@ -1,9 +1,11 @@
-#N canvas 598 178 431 183 10;
+#N canvas 598 178 431 232 10;
 #X obj 43 101 listRandom;
 #X obj 43 123 easyflow/printHere -s;
 #X text 47 21 [listRandom] takes a list and outputs one of it's elements
 randomly.;
-#X obj 314 142 easyflow-info;
+#X obj 316 183 easyflow-info;
 #X msg 43 79 list banana mango kiwi avocado grapefruit persimmon;
+#X text 35 165 not to be confused with:;
+#X obj 36 185 randomList;
 #X connect 0 0 1 0;
 #X connect 4 0 0 0;

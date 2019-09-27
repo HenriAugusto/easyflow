@@ -19,7 +19,7 @@ from zero to the single argument or from the first to the second.;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
 #X connect 2 0 0 0;
-#X restore 30 326 pd random floats;
+#X restore 28 243 pd random floats;
 #X obj 43 74 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X floatatom 278 55 5 1 7 0 - - -;
@@ -27,6 +27,8 @@ from zero to the single argument or from the first to the second.;
 -1;
 #X obj 28 95 f 1;
 #X obj 278 95 f 1;
+#X text 25 285 not to be confused with:;
+#X obj 26 305 listRandom;
 #X connect 0 0 15 0;
 #X connect 3 0 1 0;
 #X connect 5 0 4 0;

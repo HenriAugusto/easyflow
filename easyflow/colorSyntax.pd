@@ -92,7 +92,7 @@
 #X obj 68 39 inlet;
 #X obj 262 40 inlet;
 #X obj 68 81 easyflow/switch3;
-#X floatatom 262 62 5 0 0 0 - - -, f 5;
+#X floatatom 262 62 5 0 0 0 - - -;
 #X obj 68 123 easyflow/rgb;
 #X obj 122 164 easyflow/hsb;
 #X obj 177 195 easyflow/hsl;

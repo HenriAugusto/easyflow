@@ -1,19 +1,19 @@
 #N canvas 90 101 758 626 10;
-#X obj 54 385 arrayList;
-#X obj 54 168 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 54 415 arrayList;
+#X obj 54 168 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 54 242 easyflow/counter;
 #X obj 54 264 % 4;
-#X obj 219 313 select 0;
-#X msg 219 345 clear;
-#X obj 54 313 select 3;
-#X obj 136 314 random 100;
-#X obj 54 286 trigger float bang float;
-#X floatatom 136 346 5 0 0 0 - - -;
+#X obj 219 343 select 0;
+#X msg 219 375 clear;
+#X obj 54 343 select 3;
+#X obj 136 344 random 100;
+#X obj 54 316 trigger float bang float;
+#X floatatom 136 376 5 0 0 0 - - -;
 #X obj 54 215 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 640 573 easyflow-info;
-#X msg 54 348 getList;
+#X msg 54 378 getList;
 #X obj 406 399 arrayList;
 #X text 566 142 add elements;
 #X msg 458 197 getList;
@@ -45,7 +45,7 @@ with the \$1 notation used by pd for element access in lists.;
 #X obj 54 190 metro 1000;
 #X text 50 116 Example: Pick 4 random integers and only outputs them
 after getting all 4, f 34;
-#N canvas 43 50 537 679 explanation on empty lists 0;
+#N canvas 43 50 537 679 explanation on empty lists 1;
 #X msg 67 83 list;
 #X obj 67 104 print;
 #X text 36 33 PD understand "empty lists" as a bang message!;
@@ -108,7 +108,7 @@ is a list will \, accordingly \, output "bang" when the list is empty!
 #X connect 30 0 32 0;
 #X connect 32 0 28 1;
 #X restore 107 550 pd explanation on empty lists;
-#X obj 54 407 easyflow/printHere -s;
+#X obj 54 437 easyflow/printHere -s;
 #X obj 406 421 easyflow/printHere;
 #X text 39 526 see also:;
 #X obj 108 525 listCollect;
@@ -139,10 +139,11 @@ for details.;
 #X connect 10 0 3 0;
 #X connect 14 0 15 0;
 #X restore 490 369 pd send;
+#X floatatom 54 285 5 0 0 0 - - -;
 #X connect 0 0 39 0;
 #X connect 1 0 36 0;
 #X connect 2 0 3 0;
-#X connect 3 0 8 0;
+#X connect 3 0 44 0;
 #X connect 4 0 5 0;
 #X connect 5 0 0 0;
 #X connect 6 0 12 0;
@@ -166,3 +167,4 @@ for details.;
 #X connect 34 0 13 0;
 #X connect 36 0 10 0;
 #X connect 43 0 13 0;
+#X connect 44 0 8 0;

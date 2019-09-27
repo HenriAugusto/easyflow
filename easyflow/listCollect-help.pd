@@ -4,8 +4,6 @@
 #X obj 61 293 * 100;
 #X obj 61 272 l2r;
 #X obj 61 249 trigger l l;
-#X text 42 23 [listCollect] is an abstraction to be using in reconstructing
-lists after processing their elements one by one.;
 #X text 42 71 Without [listCollect] the best solution was to use [arrayList].
 See motivation below:;
 #N canvas 0 50 599 637 motivation 0;
@@ -269,11 +267,13 @@ Then 1 again and everything repeats.;
 #X connect 22 0 1 0;
 #X connect 23 0 22 0;
 #X restore 248 403 pd list collect and iterators;
-#X connect 2 0 14 0;
+#X text 42 23 [listCollect] is an abstraction to be used in reconstructing
+lists after processing their elements one by one.;
+#X connect 2 0 13 0;
 #X connect 3 0 2 0;
 #X connect 4 0 3 0;
-#X connect 4 1 14 1;
-#X connect 14 0 1 0;
+#X connect 4 1 13 1;
+#X connect 13 0 1 0;
+#X connect 15 0 4 0;
 #X connect 16 0 4 0;
 #X connect 17 0 4 0;
-#X connect 18 0 4 0;

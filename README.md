@@ -1,6 +1,6 @@
-# EasyFlow
+# easyflow
 
-_EasyFlow_ is an library of PureData abstractions with two objectives:
+_easyflow_ is an library of PureData abstractions with two objectives:
 
 - Simplify your work by solving common problems of data flow.
 - Suggest and exemplify good Pure Data programming practices and stimulate thought and discussion on writing better organized and maintainable PD code.
@@ -21,21 +21,23 @@ Here are some highlights. Some are simple yet very useful because PD lacks some 
 
 - **[for]** = Convenient object to iterate over numeric intervals. Similar to a for in textual languages.
 - **[map]** = Converts a numeric stream from one range to another. "One-line" linear interpolation!
-* **[any]** - object able to store any kind of control data. It's like [float][symbol]and [list] packed into one. Also stores custom selectors.
-* **[var]** - behaves just like [value] but stores any kind of data (using [anything]) including custom selectors.
+- **[any]** - object able to store any kind of control data. It's like [float][symbol]and [list] packed into one. Also stores custom selectors.
+- **[var]** - behaves just like [value] but stores any kind of data (using [anything]) including custom selectors.
 - **[left2right][right2left][l2r][r2l]** - Miss Java iterators, huh? Yeah, me too. Let's fix this.
 - **[printHere]** - a portable console-like abstraction that you can use directly on your patch. No more switching windows!
 - **[listToSymbol]** - converts a list to a symbol, adding the special char " " between words. Great to add more than one word to labels.
 - **[HSB][HSL][RGB][colorNames][hexColor][colorSyntax]** = Easily generate colors to edit Pure Data vanilla GUI objects.
 - **[sublist][substring]** - Takes subsets on lists or symbols (strings). Includes a special "L" variable that resolves to the list/string length.
 - **[colorHighlighting]+related** - color highlighting for better code. See the [easyflow wiki](https://github.com/HenriAugusto/easyflow/wiki) for more information
-* **[arrayList]** - holds a list and provides index based get, set and remove methods. Similar to Java's ArrayList.
-* **[curves][curvesmap][curves~][curvesmap~}** - an abstraction for converting numeric streams between different curves.
-- **[GOPTool]** = controls the Graph-on-parent values directly from pd. No more editing vlaues then clicking apply!
+- **[arrayList]** - holds a list and provides index based get, set and remove methods. Similar to Java's ArrayList.
+- **[curves][curvesmap][curves~][curvesmap~}** - an abstraction for converting numeric streams between different curves.
+- **[gopTool]** - controls the Graph-on-parent values directly from pd. No more editing vlaues then clicking apply!
+- **[dictionary]** - associative array for (key,value) pairs!
+- **[listCollect]** - reconstructs (recollects) a list after changes to all it's elements
 
 ## Some gifs
 
-**[hueSaturationBrightness]**
+**[hsb]** or **[hueSaturationBrightness]**
 
 ![hsbDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/hueSaturationBrightnessDemo.gif)
 
@@ -53,9 +55,9 @@ Here are some highlights. Some are simple yet very useful because PD lacks some 
 
 ![printHereDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/printHereDemo.gif)
 
-**[GOPTool]**
+**[gopTool]**
 
-![GOPToolDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/GOPToolGif.gif)
+![gopToolDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/gopToolGif.gif)
 
 ## Installing and how to use
 
@@ -71,122 +73,7 @@ This way you can avoid naming conflicts. Easyflow have an abstraction called [co
 
 ## Abstractions
 
-### Lists
-
-- *[addList]* - adds a incoming list to a message box
-- *[arrayList]* - holds a list and provides index based get, set and remove methods. Similar to java's ArrayList.
-- *[copyList]* - copies a incoming list on a message box.
-- *[left2right][l2r]* - outputs one element of a list at a time, from left to right
-- *[right2left][r2l]* - outputs one element of a list at a time, from right to left
-- *[funnel]* - outputs a list one element at a time (switches between [l2r] and [r2l]. It's like both in the same abstraction).
-- *[passNthElement]* - takes an incoming list and let only it's nth element pass
-- *[passPair]* - takes an incoming list and a pair starting at it's nth element to pass
-- *[listPlus]* - add a value to each element on an input list
-- *[listCompare]* - compare two lists then output left if they're equal or right if they're different.
-- *[listConcatenate]* - ListConcatenate takes a message and outputs a symbol which is a concatenation of all of its elements
-- *[listsOfLength]* - passes lists of the desired length to the left outlet and other lists to the right outlet.
-- *[listPick]* - pick elements from a previously stored list
-- *[listPickPair]* - pick element pairs from a previously stored list
-- *[listReplace]* - replaces all occurences of an element on a list
-- *[listReplaceAtIndex]* - substitutes the n-th element of a incoming list. 
-- *[listSplit]* - splits a list on a given symbol.
-- *[popLastN]* - outputs a list without it's last n elements
-- *[searchElem]* - search for the position of elements on a list
-- *[sublist]* - takes a sublist from a list. Understands negative indexes and has a special variable "L" for the list length!
-
-
-
-### Symbols 
-
-- *[symbolize]* - Just a shortcut to add a symbol selector to messages
-- *[numberSymbol]* - allows you to have symbols that contain only numeric chars
-- *[lowerCase][upperCase]* - converts a symbol to lowerCase/upperCase
-- *[getFolder]* - get the folder from a symbol containing a file path (and additionally outputs the file name)
-- *[getFile]* - get the file name from a symbol containing a file path (and additionally outputs the folder path)
-- *[stringLength]* - convenient abstraction to shorten your code when you need to get a symbol's length.
-- *[substring]* - takes a substring from a symbol. Understands negative indexes and has a special variable "L" for the string length!
-- *[symbolSplit]* - splits a symbol in a specified char
-
-
-### Signals
-
-- *[spigot~]* - [spigot] for signals
-- *[switch2~]* - lets you control if a singnal passes through it's left or right outlet (like [switch2] but for signals)
-- *[mixAB~]* - easy equal-power panning with a built-in gui and ramps.
-- *[sample~]* - easily load play audio files. Great for experimenting without having spend much time doing the setup. Uses the new [soundfiler] ability to get the sample rate! (bugged as 0.48.0 but working on 0.48.1)
-- *[scope~]* - simple and easily controllabe osciloscope!
-
-
-### Utilities
-
-- *[any]* - object able to store any kind of control data. It's like [float][symbol]and [list] packed into one. Also stores custom selectors.
-- *[counter]* - simple counter object to output sequences of numbers
-- *[doubleClick]* - outputs a bang whenever it receives two bangs in a specified period of time.
-- *[for]* - works like until, but with an integrated counter on it's right outlet. It "bangs" on it's left outlet when it's done.
-- *[keyChange]* - works like vanilla's [keyname] but only output changes (ie: if you hold a key it will not trigger constantly)
-- *[hold]* - Interpolates linearly from a input number to 0 in a give time.
-- *[metrosnap~]* - simple [snapshot~] and [metro] bundle
-- *[mixAB]* - general purpose utility to mix two signals. Implements useful ramp methods.
-- *[var]* - behaves just like [value] but stores any kind of data (using [anything]) including custom selectors.
-
-### Flow Control
-
-- *[alternate]* - alternates banging on the left and right inlet
-- *[compare]* - lets you compare symbols and floats on the same stream
-- *[switch2]...[switch7]* - having from 2 to 7 outlets it gives you control of which outlet will be used to pass what comes through it's inlet
-
-### Math
-
-- *[nearest]* - rounds to the nearest integer ([i] rounds to th elowest). Works exactly like [expr rint($f1)] but it's name is easier to remember (heh)
-- *[numbersbetween]* - part a numeric stream depending on a specified given range (inside, over and under the range)
-- *[map]* = Converts a numeric stream from one range to another. Easy linear interpolation, baby!
-- *[keepMax][keepMin]* - Outputs the biggest/smallest number received since initialization or last bang on cold inlet.
-- *[hexCharToDec]* - converts an Hexadecimal char to an Decimal number 
-- *[roundIfVeryClose]* - rounds numbers that are close to an integer (1.6401e-8 to 0, for example). 
-- *[curves][curvesmap]* - an abstraction for converting numeric streams between different curves.
-- *[curves~][curvesmap~]* - just like [curves] and [curvesmap] but for signals
-You can use arbritary precision.
-
-### Color
-
-- *[colorNames]* - outputs a color depending on it's name (green, navyBlue, hotPink, etc)
-- *[redGreenBlue][rgb]* - Uses Red, Green and Blue information and outputs a integer representing an color to be used with PD vanilla objects.
-- *[hueSaturationBrightness][hsb]* - Uses Hue, Saturation and Brightness information and outputs a integer representing an color to be used with PD vanilla objects.
-- *[hueSaturationLuminosity][easyflow/hsl]* - Uses Hue, Saturation and Luminosity information and outputs a integer representing an color to be used with PD vanilla objects. (use the slash declaration to avoid confusion with vanilla's [hsl])
-- *[hexColor]* - Uses hexadecimal Red, Green and Blue information and outputs a integer representing an color to be used with PD vanilla objects.
-- *[colorSyntax]* - parses the color syntax used in [easyflow] and outputs a integer representing an color to be used with PD vanilla objects. Can be used in any object.
-
-### Tables
-
-- *[tabCopy]* - copies an array into another, resizing the destination when needed.
-- *[tabReverse]* - reverses an array and write on the same array
-- *[tabReverseCopy]* - reverses an array and writes writes on other array
-
-### Coding
-
-#### Color highlighting
-
-- *[colorHighlighting]* - process colors for the automatic highlighting abstractions
-- *[colorDef]* - define (unique name,color) associations
-- *[colorCirc]* - automatically colored abstraction for color highlighting [send][receive][value] objects
-- *[colorCnv]* - automatically colored abstraction for telling what "names" are inside a subpatch
-- *[colorTri]* - automatically colored abstraction for marking variable wireless connections
-- *[labelCnv]* - automatically colored and resized abstraction to display a labeled [cnv]. Multi-purpose abstraction
-- *[colorCircF][colorCnvF][colorTriF][labelCnvF]* - factory abstraction for color highlighting and tagging
-* *[colorCurly][colorCurlyF]* - Colorhighlighting abstractions containing a "{}". See the wiki for more information.
-* *[rColor][sColor]* - Automatic color highlighting and [send]/[receive] bundled together. See the wiki for more information.
-
-#### Debugging and utilities
-
-- *[GOPTool]* - abstraction to quickly manage your graph-on-parent settings without suffering with PD's gui.
-- *[printHere]* - in-patch console for debugging without having to switch windows.
-
-###Data Structures
-- *[getNthScalar]* - outputs a pointer to the Nth scalar in a given subpatch.
-- *[getNofScalars]* - outputs the number of scalars in a given subpatch.
-- *[getAllScalars]* - reads a data holding subPatch and outputs pointers to all the scalars it contains, one at a time.
-
-
+[List of abstractions](https://github.com/HenriAugusto/easyflow/blob/master/abstractions.md)
 
 ## Conventions
 
