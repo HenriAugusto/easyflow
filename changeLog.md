@@ -17,6 +17,7 @@
 - *[printHere]* - now the GOP (Graph-on-Parent) settings are adjusted as well as the canvas size for a seamless look!
 - *[sublist]* - now accepts floats (1 element lists)
 - *[arrayList]* - new |send( method to sending sublists to a named [receive] objects
+- *[rgb][hsl][hsb]* are now copies of the "full name" versions to avoid instatiation problems (see issue #16)
 
 ## new abstractions
 
