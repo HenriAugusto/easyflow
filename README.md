@@ -57,7 +57,7 @@ Here are some highlights. Some are simple yet very useful because PD lacks some 
 
 **[gopTool]**
 
-![gopToolDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/gopToolGif.gif)
+![gopToolDemo](https://github.com/HenriAugusto/easyflow/blob/master/wikiFiles/GOPToolGif.gif)
 
 ## Installing and how to use
 
